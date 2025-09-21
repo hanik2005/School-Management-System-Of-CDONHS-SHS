@@ -108,7 +108,20 @@ public class Grade {
         DefaultTableModel model = new DefaultTableModel(
                 null,
                 new Object[]{"LRN", "Student Name", "Grade"}
-        );
+        ) {
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                if (columnIndex == 2) {
+                    return Double.class; // grade column is numeric
+                }
+                return String.class;
+            }
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return column == 2; // only grade column editable
+            }
+        };
 
         try (Connection conn = MyConnection.getConnection()) {
             String sql = """
@@ -118,19 +131,23 @@ public class Grade {
             FROM student s
             INNER JOIN student_strand ss ON s.student_id = ss.student_id
             INNER JOIN section sec ON ss.section_id = sec.section_id
+            INNER JOIN student_subjects subj ON subj.student_id = s.student_id
+            INNER JOIN subject sub ON sub.subject_id = subj.subject_id
             LEFT JOIN grade_entry g ON g.student_id = s.student_id
                                     AND g.section_id = ss.section_id
-                                    AND g.subject_id = ?
+                                    AND g.subject_id = subj.subject_id
                                     AND g.quarter = ?
-            WHERE ss.grade_level = ?
+            WHERE subj.subject_id = ?
+              AND subj.status = 'Enrolled'
+              AND ss.grade_level = ?
               AND ss.strand_id = ?
               AND ss.section_id = ?
             ORDER BY s.last_name
         """;
 
             PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setInt(1, subjectId);
-            pst.setInt(2, quarter);
+            pst.setInt(1, quarter);
+            pst.setInt(2, subjectId);
             pst.setInt(3, gradeLevel);
             pst.setInt(4, strandId);
             pst.setInt(5, sectionId);
@@ -141,15 +158,9 @@ public class Grade {
                 String lrn = rs.getString("LRN");
                 String studentName = rs.getString("student_name");
 
-                BigDecimal gradeObj = (BigDecimal) rs.getObject("grade");
-                Double grade = null;
-                if (gradeObj != null) {
-                    grade = gradeObj.doubleValue();
-                }
-
-                // If null, just display 60 but don’t insert yet
-                if (grade == null) {
-                    grade = 60.00;
+                Double grade = rs.getDouble("grade");
+                if (rs.wasNull()) {
+                    grade = 60.00; // default if not yet graded
                 }
 
                 model.addRow(new Object[]{lrn, studentName, grade});
@@ -161,6 +172,62 @@ public class Grade {
         return model;
     }
 
+//    public DefaultTableModel getStudentGrades(int gradeLevel, int strandId, int sectionId, int subjectId, int quarter) {
+//        DefaultTableModel model = new DefaultTableModel(
+//                null,
+//                new Object[]{"LRN", "Student Name", "Grade"}
+//        );
+//
+//        try (Connection conn = MyConnection.getConnection()) {
+//            String sql = """
+//            SELECT s.LRN,
+//                   CONCAT(s.last_name, ', ', s.first_name, ' ', COALESCE(s.middle_name, '')) AS student_name,
+//                   g.grade
+//            FROM student s
+//            INNER JOIN student_strand ss ON s.student_id = ss.student_id
+//            INNER JOIN section sec ON ss.section_id = sec.section_id
+//            LEFT JOIN grade_entry g ON g.student_id = s.student_id
+//                                    AND g.section_id = ss.section_id
+//                                    AND g.subject_id = ?
+//                                    AND g.quarter = ?
+//            WHERE ss.grade_level = ?
+//              AND ss.strand_id = ?
+//              AND ss.section_id = ?
+//            ORDER BY s.last_name
+//        """;
+//
+//            PreparedStatement pst = conn.prepareStatement(sql);
+//            pst.setInt(1, subjectId);
+//            pst.setInt(2, quarter);
+//            pst.setInt(3, gradeLevel);
+//            pst.setInt(4, strandId);
+//            pst.setInt(5, sectionId);
+//
+//            ResultSet rs = pst.executeQuery();
+//
+//            while (rs.next()) {
+//                String lrn = rs.getString("LRN");
+//                String studentName = rs.getString("student_name");
+//
+//                BigDecimal gradeObj = (BigDecimal) rs.getObject("grade");
+//                Double grade = null;
+//                if (gradeObj != null) {
+//                    grade = gradeObj.doubleValue();
+//                }
+//
+//                // If null, just display 60 but don’t insert yet
+//                if (grade == null) {
+//                    grade = 60.00;
+//                }
+//
+//                model.addRow(new Object[]{lrn, studentName, grade});
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        return model;
+//    }
 //    public void saveStudentGrades(int subjectId, int sectionId, int quarter, DefaultTableModel model) {
 //        try (Connection conn = MyConnection.getConnection()) {
 //            conn.setAutoCommit(false); // transaction safety
@@ -297,10 +364,128 @@ public class Grade {
         }
     }
 
+//    public DefaultTableModel getStudentFormGrades(int studentId, int gradeLevel) {
+//        DefaultTableModel model = new DefaultTableModel(
+//                new Object[]{"Subject", "First Quarter", "Second Quarter", "Third Quarter", "Fourth Quarter", "Final Grade", "Remarks"}, 0
+//        );
+//
+//        String sql = """
+//        SELECT subj.subject_name,
+//               MAX(CASE WHEN g.quarter = 1 THEN g.grade END) AS first_quarter,
+//               MAX(CASE WHEN g.quarter = 2 THEN g.grade END) AS second_quarter,
+//               MAX(CASE WHEN g.quarter = 3 THEN g.grade END) AS third_quarter,
+//               MAX(CASE WHEN g.quarter = 4 THEN g.grade END) AS fourth_quarter
+//        FROM subject subj
+//        INNER JOIN student_strand ss 
+//               ON subj.strand_id = ss.strand_id 
+//              AND subj.grade_level = ss.grade_level
+//              AND ss.student_id = ?
+//        LEFT JOIN grade_entry g 
+//               ON subj.subject_id = g.subject_id 
+//              AND g.student_id = ss.student_id
+//        WHERE ss.grade_level = ?
+//          AND ss.student_id = ?
+//        GROUP BY subj.subject_id, subj.subject_name
+//        ORDER BY subj.subject_name
+//    """;
+//
+//        double totalFinalGrades = 0.0;
+//        int subjectsWithFinal = 0;
+//        boolean allSubjectsComplete = true; // track if every subject has 4 quarters
+//
+//        try (PreparedStatement ps = con.prepareStatement(sql)) {
+//            ps.setInt(1, studentId);
+//            ps.setInt(2, gradeLevel);
+//            ps.setInt(3, studentId);
+//
+//            try (ResultSet rs = ps.executeQuery()) {
+//                while (rs.next()) {
+//                    String subject = rs.getString("subject_name");
+//                    String q1s = rs.getString("first_quarter");
+//                    String q2s = rs.getString("second_quarter");
+//                    String q3s = rs.getString("third_quarter");
+//                    String q4s = rs.getString("fourth_quarter");
+//
+//                    String displayQ1 = (q1s == null) ? "N/A" : q1s;
+//                    String displayQ2 = (q2s == null) ? "N/A" : q2s;
+//                    String displayQ3 = (q3s == null) ? "N/A" : q3s;
+//                    String displayQ4 = (q4s == null) ? "N/A" : q4s;
+//
+//                    double sum = 0.0;
+//                    int count = 0;
+//
+//                    try {
+//                        if (q1s != null) {
+//                            sum += Double.parseDouble(q1s);
+//                            count++;
+//                        }
+//                    } catch (NumberFormatException ignored) {
+//                    }
+//                    try {
+//                        if (q2s != null) {
+//                            sum += Double.parseDouble(q2s);
+//                            count++;
+//                        }
+//                    } catch (NumberFormatException ignored) {
+//                    }
+//                    try {
+//                        if (q3s != null) {
+//                            sum += Double.parseDouble(q3s);
+//                            count++;
+//                        }
+//                    } catch (NumberFormatException ignored) {
+//                    }
+//                    try {
+//                        if (q4s != null) {
+//                            sum += Double.parseDouble(q4s);
+//                            count++;
+//                        }
+//                    } catch (NumberFormatException ignored) {
+//                    }
+//
+//                    String finalGradeStr = "N/A";
+//                    String remarks = "Pending";
+//
+//                    if (count > 0) {
+//                        double finalGradeVal = sum / count;
+//                        finalGradeStr = String.format("%.2f", finalGradeVal);
+//
+//                        if (count == 4) {
+//                            remarks = (finalGradeVal >= 75.0) ? "Passed" : "Failed";
+//                            totalFinalGrades += finalGradeVal;
+//                            subjectsWithFinal++;
+//                        } else {
+//                            allSubjectsComplete = false; // not all quarters filled for this subject
+//                        }
+//                    } else {
+//                        allSubjectsComplete = false;
+//                    }
+//
+//                    model.addRow(new Object[]{subject, displayQ1, displayQ2, displayQ3, displayQ4, finalGradeStr, remarks});
+//                }
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//
+//        // Add General Average row ONLY if all subjects have 4 quarters
+//        if (allSubjectsComplete && subjectsWithFinal > 0) {
+//            double generalAverage = totalFinalGrades / subjectsWithFinal;
+//            String generalAverageStr = String.format("%.2f", generalAverage);
+//            String generalRemarks = (generalAverage >= 75.0) ? "Passed" : "Failed";
+//
+//            model.addRow(new Object[]{"GENERAL AVERAGE", "", "", "", "", generalAverageStr, generalRemarks});
+//        }
+//
+//        return model;
+//    }
     public DefaultTableModel getStudentFormGrades(int studentId, int gradeLevel) {
         DefaultTableModel model = new DefaultTableModel(
                 new Object[]{"Subject", "First Quarter", "Second Quarter", "Third Quarter", "Fourth Quarter", "Final Grade", "Remarks"}, 0
         );
+
+        // Use helper method
+        String schoolYear = getCurrentSchoolYear();
 
         String sql = """
         SELECT subj.subject_name,
@@ -308,28 +493,28 @@ public class Grade {
                MAX(CASE WHEN g.quarter = 2 THEN g.grade END) AS second_quarter,
                MAX(CASE WHEN g.quarter = 3 THEN g.grade END) AS third_quarter,
                MAX(CASE WHEN g.quarter = 4 THEN g.grade END) AS fourth_quarter
-        FROM subject subj
-        INNER JOIN student_strand ss 
-               ON subj.strand_id = ss.strand_id 
-              AND subj.grade_level = ss.grade_level
-              AND ss.student_id = ?
+        FROM student_subjects ssj
+        INNER JOIN subject subj 
+               ON ssj.subject_id = subj.subject_id
         LEFT JOIN grade_entry g 
-               ON subj.subject_id = g.subject_id 
-              AND g.student_id = ss.student_id
-        WHERE ss.grade_level = ?
-          AND ss.student_id = ?
+               ON ssj.subject_id = g.subject_id
+              AND ssj.student_id = g.student_id
+        WHERE ssj.student_id = ?
+          AND subj.grade_level = ?
+          AND ssj.school_year = ?
+          AND ssj.status = 'Enrolled'
         GROUP BY subj.subject_id, subj.subject_name
         ORDER BY subj.subject_name
     """;
 
         double totalFinalGrades = 0.0;
         int subjectsWithFinal = 0;
-        boolean allSubjectsComplete = true; // track if every subject has 4 quarters
+        boolean allSubjectsComplete = true;
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, studentId);
             ps.setInt(2, gradeLevel);
-            ps.setInt(3, studentId);
+            ps.setString(3, schoolYear);
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
@@ -347,33 +532,21 @@ public class Grade {
                     double sum = 0.0;
                     int count = 0;
 
-                    try {
-                        if (q1s != null) {
-                            sum += Double.parseDouble(q1s);
-                            count++;
-                        }
-                    } catch (NumberFormatException ignored) {
+                    if (q1s != null) {
+                        sum += Double.parseDouble(q1s);
+                        count++;
                     }
-                    try {
-                        if (q2s != null) {
-                            sum += Double.parseDouble(q2s);
-                            count++;
-                        }
-                    } catch (NumberFormatException ignored) {
+                    if (q2s != null) {
+                        sum += Double.parseDouble(q2s);
+                        count++;
                     }
-                    try {
-                        if (q3s != null) {
-                            sum += Double.parseDouble(q3s);
-                            count++;
-                        }
-                    } catch (NumberFormatException ignored) {
+                    if (q3s != null) {
+                        sum += Double.parseDouble(q3s);
+                        count++;
                     }
-                    try {
-                        if (q4s != null) {
-                            sum += Double.parseDouble(q4s);
-                            count++;
-                        }
-                    } catch (NumberFormatException ignored) {
+                    if (q4s != null) {
+                        sum += Double.parseDouble(q4s);
+                        count++;
                     }
 
                     String finalGradeStr = "N/A";
@@ -388,7 +561,7 @@ public class Grade {
                             totalFinalGrades += finalGradeVal;
                             subjectsWithFinal++;
                         } else {
-                            allSubjectsComplete = false; // not all quarters filled for this subject
+                            allSubjectsComplete = false;
                         }
                     } else {
                         allSubjectsComplete = false;
@@ -401,7 +574,7 @@ public class Grade {
             e.printStackTrace();
         }
 
-        // Add General Average row ONLY if all subjects have 4 quarters
+        // ✅ Add General Average if all subjects complete
         if (allSubjectsComplete && subjectsWithFinal > 0) {
             double generalAverage = totalFinalGrades / subjectsWithFinal;
             String generalAverageStr = String.format("%.2f", generalAverage);
@@ -412,6 +585,19 @@ public class Grade {
 
         return model;
     }
-    // Get Strand name by strandId
+
+    public String getCurrentSchoolYear() {
+        java.time.LocalDate today = java.time.LocalDate.now();
+        int year = today.getYear();
+        int month = today.getMonthValue();
+
+        if (month >= 6) {
+            // June to December → currentYear-nextYear
+            return year + "-" + (year + 1);
+        } else {
+            // January to May → previousYear-currentYear
+            return (year - 1) + "-" + year;
+        }
+    }
 
 }

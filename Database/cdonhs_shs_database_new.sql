@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2025 at 03:38 PM
+-- Generation Time: Sep 21, 2025 at 05:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -60,72 +60,37 @@ CREATE TABLE `grade_entry` (
 --
 
 INSERT INTO `grade_entry` (`entry_id`, `student_id`, `subject_id`, `section_id`, `quarter`, `grade`) VALUES
-(3, 4, 1, 1, 1, 80.00),
-(4, 2, 1, 1, 1, 90.00),
-(6, 4, 1, 1, 2, 90.00),
-(7, 2, 1, 1, 2, 100.00),
-(9, 4, 1, 1, 3, 70.00),
-(10, 2, 1, 1, 3, 80.00),
-(12, 4, 1, 1, 4, 80.00),
-(13, 2, 1, 1, 4, 90.00),
-(16, 4, 2, 1, 1, 81.00),
-(17, 2, 2, 1, 1, 70.00),
-(18, 4, 2, 1, 2, 90.00),
-(19, 2, 2, 1, 2, 90.00),
-(20, 4, 2, 1, 3, 70.00),
-(21, 2, 2, 1, 3, 86.00),
-(22, 4, 2, 1, 4, 90.00),
-(23, 2, 2, 1, 4, 70.00),
-(25, 4, 3, 1, 1, 90.00),
-(26, 2, 3, 1, 1, 90.00),
-(27, 4, 4, 1, 1, 90.00),
-(28, 2, 4, 1, 1, 80.00),
-(29, 4, 5, 1, 1, 90.00),
-(30, 2, 5, 1, 1, 80.00),
-(31, 4, 6, 1, 1, 90.00),
-(32, 2, 6, 1, 1, 60.00),
-(33, 4, 7, 1, 1, 70.00),
-(34, 2, 7, 1, 1, 70.00),
-(38, 4, 8, 1, 1, 90.00),
-(39, 2, 8, 1, 1, 90.00),
-(41, 4, 7, 1, 2, 90.00),
-(42, 2, 7, 1, 2, 80.00),
-(43, 4, 7, 1, 3, 90.00),
-(44, 2, 7, 1, 3, 90.00),
-(45, 4, 7, 1, 4, 70.00),
-(46, 2, 7, 1, 4, 60.00),
-(47, 4, 3, 1, 2, 80.00),
-(48, 2, 3, 1, 2, 90.00),
-(49, 4, 3, 1, 3, 90.00),
-(50, 2, 3, 1, 3, 90.00),
-(51, 4, 3, 1, 4, 90.00),
-(52, 2, 3, 1, 4, 80.00),
-(53, 4, 5, 1, 2, 80.00),
-(54, 2, 5, 1, 2, 80.00),
-(55, 4, 5, 1, 3, 80.00),
-(56, 2, 5, 1, 3, 89.00),
-(57, 4, 5, 1, 4, 80.00),
-(58, 2, 5, 1, 4, 89.00),
-(59, 4, 6, 1, 2, 90.00),
-(60, 2, 6, 1, 2, 89.00),
-(61, 4, 6, 1, 3, 89.00),
-(62, 2, 6, 1, 3, 70.00),
-(63, 4, 6, 1, 4, 90.00),
-(64, 2, 6, 1, 4, 81.00),
-(65, 4, 8, 1, 2, 90.00),
-(66, 2, 8, 1, 2, 70.00),
-(67, 4, 8, 1, 3, 90.00),
-(68, 2, 8, 1, 3, 80.00),
-(69, 4, 8, 1, 4, 90.00),
-(70, 2, 8, 1, 4, 80.00),
-(72, 4, 4, 1, 2, 90.00),
-(73, 2, 4, 1, 2, 90.00),
-(74, 4, 4, 1, 3, 90.00),
-(75, 2, 4, 1, 3, 89.00),
-(76, 4, 4, 1, 4, 80.00),
-(77, 2, 4, 1, 4, 88.00),
-(78, 1, 33, 33, 1, 60.00),
-(79, 1, 33, 33, 2, 60.00);
+(80, 1, 36, 33, 1, 91.90),
+(81, 1, 37, 33, 1, 90.00),
+(82, 1, 38, 33, 1, 90.00),
+(83, 1, 39, 33, 1, 85.00),
+(84, 1, 40, 33, 1, 86.00),
+(85, 1, 36, 33, 2, 90.00),
+(86, 1, 36, 33, 3, 90.00),
+(87, 1, 36, 33, 4, 98.00),
+(88, 1, 38, 33, 2, 90.00),
+(89, 1, 38, 33, 3, 90.00),
+(90, 1, 38, 33, 4, 60.00),
+(91, 1, 39, 33, 2, 60.00),
+(92, 1, 39, 33, 3, 90.00),
+(93, 1, 39, 33, 4, 90.00),
+(94, 1, 40, 33, 2, 60.00),
+(95, 1, 40, 33, 3, 90.00),
+(96, 1, 40, 33, 4, 60.00),
+(97, 1, 37, 33, 2, 90.00),
+(98, 1, 37, 33, 3, 80.00),
+(99, 1, 37, 33, 4, 90.00),
+(100, 2, 1, 1, 1, 90.00),
+(101, 2, 2, 1, 1, 99.00),
+(102, 2, 2, 1, 3, 90.00),
+(103, 2, 3, 1, 3, 90.00),
+(104, 2, 4, 1, 3, 90.00),
+(105, 2, 3, 1, 1, 90.00),
+(106, 2, 4, 1, 1, 90.00),
+(107, 2, 5, 1, 1, 90.00),
+(108, 2, 6, 1, 1, 90.00),
+(109, 2, 7, 1, 1, 90.00),
+(110, 2, 8, 1, 1, 90.00);
 
 -- --------------------------------------------------------
 
@@ -286,7 +251,52 @@ INSERT INTO `student_strand` (`student_strand_id`, `student_id`, `strand_id`, `g
 (8, 2, 1, 11, 1),
 (9, 3, 7, 11, 49),
 (12, 1, 5, 11, 33),
-(13, 1, 5, 12, 37);
+(13, 1, 5, 12, 37),
+(14, 5, 5, 11, 33);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_subjects`
+--
+
+CREATE TABLE `student_subjects` (
+  `enrollment_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `status` enum('Enrolled','Dropped') DEFAULT 'Enrolled',
+  `school_year` varchar(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `student_subjects`
+--
+
+INSERT INTO `student_subjects` (`enrollment_id`, `student_id`, `subject_id`, `status`, `school_year`) VALUES
+(65, 1, 33, 'Dropped', '2025-2026'),
+(66, 1, 34, 'Dropped', '2025-2026'),
+(67, 1, 35, 'Dropped', '2025-2026'),
+(68, 1, 36, 'Enrolled', '2025-2026'),
+(69, 1, 37, 'Enrolled', '2025-2026'),
+(70, 1, 38, 'Enrolled', '2025-2026'),
+(71, 1, 39, 'Enrolled', '2025-2026'),
+(72, 1, 40, 'Enrolled', '2025-2026'),
+(81, 1, 89, 'Enrolled', '2025-2026'),
+(82, 1, 90, 'Enrolled', '2025-2026'),
+(83, 1, 91, 'Enrolled', '2025-2026'),
+(84, 1, 92, 'Enrolled', '2025-2026'),
+(85, 1, 93, 'Enrolled', '2025-2026'),
+(86, 1, 94, 'Enrolled', '2025-2026'),
+(87, 1, 95, 'Enrolled', '2025-2026'),
+(88, 1, 96, 'Enrolled', '2025-2026'),
+(97, 2, 1, 'Enrolled', '2025-2026'),
+(98, 2, 2, 'Enrolled', '2025-2026'),
+(99, 2, 3, 'Enrolled', '2025-2026'),
+(100, 2, 4, 'Enrolled', '2025-2026'),
+(101, 2, 5, 'Enrolled', '2025-2026'),
+(102, 2, 6, 'Enrolled', '2025-2026'),
+(103, 2, 7, 'Enrolled', '2025-2026'),
+(104, 2, 8, 'Enrolled', '2025-2026');
 
 -- --------------------------------------------------------
 
@@ -551,6 +561,14 @@ ALTER TABLE `student_strand`
   ADD KEY `section_id` (`section_id`);
 
 --
+-- Indexes for table `student_subjects`
+--
+ALTER TABLE `student_subjects`
+  ADD PRIMARY KEY (`enrollment_id`),
+  ADD UNIQUE KEY `uq_student_subject` (`student_id`,`subject_id`,`school_year`),
+  ADD KEY `fk_subject` (`subject_id`);
+
+--
 -- Indexes for table `subject`
 --
 ALTER TABLE `subject`
@@ -595,7 +613,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `grade_entry`
 --
 ALTER TABLE `grade_entry`
-  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- AUTO_INCREMENT for table `section`
@@ -619,7 +637,13 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `student_strand`
 --
 ALTER TABLE `student_strand`
-  MODIFY `student_strand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `student_strand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `student_subjects`
+--
+ALTER TABLE `student_subjects`
+  MODIFY `enrollment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `subject`
@@ -682,6 +706,13 @@ ALTER TABLE `student_strand`
   ADD CONSTRAINT `student_strand_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`),
   ADD CONSTRAINT `student_strand_ibfk_2` FOREIGN KEY (`strand_id`) REFERENCES `strands` (`strand_id`),
   ADD CONSTRAINT `student_strand_ibfk_3` FOREIGN KEY (`section_id`) REFERENCES `section` (`section_id`);
+
+--
+-- Constraints for table `student_subjects`
+--
+ALTER TABLE `student_subjects`
+  ADD CONSTRAINT `fk_student` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`),
+  ADD CONSTRAINT `fk_subject` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`);
 
 --
 -- Constraints for table `subject`
