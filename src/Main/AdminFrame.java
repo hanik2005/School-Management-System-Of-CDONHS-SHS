@@ -46,6 +46,8 @@ import javax.swing.Timer;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import model.Information;
+import model.SensitiveInformation;
 
 /**
  *
@@ -450,6 +452,16 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel30 = new javax.swing.JPanel();
         teacherDelBt = new javax.swing.JButton();
         teacherPrint_3 = new javax.swing.JButton();
+        jPanel31 = new javax.swing.JPanel();
+        jPanel32 = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        searchSensitive = new javax.swing.JTextField();
+        sensitiveSearch = new javax.swing.JButton();
+        jPanel33 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        SensitiveTable = new javax.swing.JTable();
+        jPanel34 = new javax.swing.JPanel();
+        teacherDelBt1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -2163,6 +2175,19 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(TeacherTable);
+        if (TeacherTable.getColumnModel().getColumnCount() > 0) {
+            TeacherTable.getColumnModel().getColumn(0).setHeaderValue("Teacher_ID");
+            TeacherTable.getColumnModel().getColumn(4).setHeaderValue("Last_Name");
+            TeacherTable.getColumnModel().getColumn(5).setHeaderValue("Date Of Birth");
+            TeacherTable.getColumnModel().getColumn(6).setHeaderValue("Gender");
+            TeacherTable.getColumnModel().getColumn(7).setHeaderValue("Email");
+            TeacherTable.getColumnModel().getColumn(8).setHeaderValue("Phone Number");
+            TeacherTable.getColumnModel().getColumn(9).setHeaderValue("Address Line 1");
+            TeacherTable.getColumnModel().getColumn(10).setHeaderValue("Address Line 2");
+            TeacherTable.getColumnModel().getColumn(11).setHeaderValue("Strand_name");
+            TeacherTable.getColumnModel().getColumn(12).setHeaderValue("hire_date");
+            TeacherTable.getColumnModel().getColumn(13).setHeaderValue("Image Path");
+        }
 
         jPanel30.setBackground(new java.awt.Color(153, 255, 255));
         jPanel30.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 4, true));
@@ -2250,6 +2275,152 @@ public class AdminFrame extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Teacher Table", jPanel27);
+
+        jPanel31.setBackground(new java.awt.Color(153, 255, 255));
+
+        jPanel32.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel32.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+
+        jLabel33.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel33.setText("Search Name");
+
+        searchSensitive.setBackground(new java.awt.Color(255, 255, 255));
+
+        sensitiveSearch.setBackground(new java.awt.Color(153, 255, 204));
+        sensitiveSearch.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        sensitiveSearch.setForeground(new java.awt.Color(0, 0, 0));
+        sensitiveSearch.setText("Search");
+        sensitiveSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sensitiveSearchActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
+        jPanel32.setLayout(jPanel32Layout);
+        jPanel32Layout.setHorizontalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel32Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchSensitive, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(sensitiveSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel32Layout.setVerticalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel32Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                        .addComponent(searchSensitive, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(sensitiveSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+
+        jPanel33.setBackground(new java.awt.Color(153, 255, 204));
+
+        SensitiveTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "User_ID", "Username", "Password", "Type"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        SensitiveTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SensitiveTableMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(SensitiveTable);
+
+        jPanel34.setBackground(new java.awt.Color(153, 255, 255));
+        jPanel34.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 4, true));
+
+        teacherDelBt1.setBackground(new java.awt.Color(102, 255, 255));
+        teacherDelBt1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        teacherDelBt1.setForeground(new java.awt.Color(0, 0, 0));
+        teacherDelBt1.setText("Logout");
+        teacherDelBt1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                teacherDelBt1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
+        jPanel34.setLayout(jPanel34Layout);
+        jPanel34Layout.setHorizontalGroup(
+            jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(teacherDelBt1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(524, 524, 524))
+        );
+        jPanel34Layout.setVerticalGroup(
+            jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(teacherDelBt1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
+        jPanel33.setLayout(jPanel33Layout);
+        jPanel33Layout.setHorizontalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel33Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1344, Short.MAX_VALUE)
+                    .addComponent(jPanel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel33Layout.setVerticalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel33Layout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
+        );
+
+        javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
+        jPanel31.setLayout(jPanel31Layout);
+        jPanel31Layout.setHorizontalGroup(
+            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel31Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel31Layout.setVerticalGroup(
+            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel31Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Sensitive Information", jPanel31);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -2674,25 +2845,25 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_stuStrandSearchBtActionPerformed
 
-   public void updateSection() {
-    String gradeLevelStr = (String) stuGradeLevel.getSelectedItem();
-    String strand = (String) stuStrand.getSelectedItem();
+    public void updateSection() {
+        String gradeLevelStr = (String) stuGradeLevel.getSelectedItem();
+        String strand = (String) stuStrand.getSelectedItem();
 
-    if (gradeLevelStr != null && strand != null) {
-        try {
-            int gradeLevel = Integer.parseInt(gradeLevelStr); // Convert to int
-            Strand strandObj = new Strand();
-            String section = strandObj.getNextSection(gradeLevel, strand);
+        if (gradeLevelStr != null && strand != null) {
+            try {
+                int gradeLevel = Integer.parseInt(gradeLevelStr); // Convert to int
+                Strand strandObj = new Strand();
+                String section = strandObj.getNextSection(gradeLevel, strand);
 
-            stuSection.removeAllItems(); // Clear old items
-            stuSection.addItem(section);  // Add the new section
+                stuSection.removeAllItems(); // Clear old items
+                stuSection.addItem(section);  // Add the new section
 
-        } catch (NumberFormatException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Invalid grade level selected.");
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Invalid grade level selected.");
+            }
         }
     }
-}
     private void stuGradeLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuGradeLevelActionPerformed
         updateSection();
 
@@ -3202,6 +3373,28 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void sensitiveSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sensitiveSearchActionPerformed
+        String searchName = searchSensitive.getText().trim();
+
+        try {
+            Information info = new SensitiveInformation();
+            DefaultTableModel model = info.searchByName(searchName);
+            SensitiveTable.setModel(model);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_sensitiveSearchActionPerformed
+
+    private void SensitiveTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SensitiveTableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SensitiveTableMouseClicked
+
+    private void teacherDelBt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherDelBt1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_teacherDelBt1ActionPerformed
+
     private ImageIcon imageAdjust(String path, byte[] pic) {
         ImageIcon myImage = null;
         if (path != null) {
@@ -3260,6 +3453,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Clear;
+    private javax.swing.JTable SensitiveTable;
     private javax.swing.JTable StudentTable;
     private javax.swing.JTable StudentTrackTable;
     private javax.swing.JTable TeacherTable;
@@ -3294,6 +3488,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -3334,6 +3529,10 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
+    private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel33;
+    private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel39;
@@ -3346,8 +3545,11 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton searchBt_1;
+    private javax.swing.JTextField searchSensitive;
+    private javax.swing.JButton sensitiveSearch;
     private javax.swing.JTextField stuAddress1;
     private javax.swing.JTextField stuAddress2;
     private com.toedter.calendar.JDateChooser stuBirth;
@@ -3387,6 +3589,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton teacherBrowseImg;
     private javax.swing.JButton teacherClear;
     private javax.swing.JButton teacherDelBt;
+    private javax.swing.JButton teacherDelBt1;
     private javax.swing.JTextField teacherEmail;
     private javax.swing.JTextField teacherFirstName;
     private javax.swing.JComboBox<String> teacherGender;
