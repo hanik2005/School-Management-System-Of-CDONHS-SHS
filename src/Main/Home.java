@@ -205,7 +205,6 @@ public class Home extends javax.swing.JFrame {
         jPanel20 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         stuStrandClearBt = new javax.swing.JButton();
-        stuPrint_2 = new javax.swing.JButton();
         stuSaveBt = new javax.swing.JButton();
         jPanel30 = new javax.swing.JPanel();
         jPanel31 = new javax.swing.JPanel();
@@ -221,9 +220,25 @@ public class Home extends javax.swing.JFrame {
         jLabel40 = new javax.swing.JLabel();
         gradeLevelSubjectBox = new javax.swing.JComboBox<>();
         jPanel48 = new javax.swing.JPanel();
-        clearFormBt1 = new javax.swing.JButton();
+        clearSubjectManageBt = new javax.swing.JButton();
         logoutFormGradeBt1 = new javax.swing.JButton();
         stuSubjectSaveBt = new javax.swing.JButton();
+        jPanel23 = new javax.swing.JPanel();
+        jPanel33 = new javax.swing.JPanel();
+        jPanel38 = new javax.swing.JPanel();
+        classListSearchBt = new javax.swing.JButton();
+        jLabel69 = new javax.swing.JLabel();
+        gradeLevelClassBox = new javax.swing.JComboBox<>();
+        strandClassBox = new javax.swing.JComboBox<>();
+        jLabel81 = new javax.swing.JLabel();
+        sectionClassBox = new javax.swing.JComboBox<>();
+        jLabel82 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        ClassListTable = new javax.swing.JTable();
+        jPanel49 = new javax.swing.JPanel();
+        classListLogoutBt = new javax.swing.JButton();
+        classListClearBt = new javax.swing.JButton();
+        classListPrintBt = new javax.swing.JButton();
         jPanel21 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
         jPanel37 = new javax.swing.JPanel();
@@ -1296,7 +1311,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(stuSearchField_2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(stuSearchBt_2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(stuSort_2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(stuRefresh_2)
@@ -1401,16 +1416,6 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        stuPrint_2.setBackground(new java.awt.Color(102, 255, 255));
-        stuPrint_2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        stuPrint_2.setForeground(new java.awt.Color(0, 0, 0));
-        stuPrint_2.setText("Print");
-        stuPrint_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stuPrint_2ActionPerformed(evt);
-            }
-        });
-
         stuSaveBt.setBackground(new java.awt.Color(102, 255, 255));
         stuSaveBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuSaveBt.setForeground(new java.awt.Color(0, 0, 0));
@@ -1428,23 +1433,20 @@ public class Home extends javax.swing.JFrame {
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(stuSaveBt, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(stuStrandClearBt, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(stuPrint_2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                     .addComponent(stuSaveBt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(stuPrint_2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(stuStrandClearBt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stuStrandClearBt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1548,6 +1550,11 @@ public class Home extends javax.swing.JFrame {
         jPanel47.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
 
         stuSubjectIDManage.setBackground(new java.awt.Color(255, 255, 255));
+        stuSubjectIDManage.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                stuSubjectIDManageKeyTyped(evt);
+            }
+        });
 
         stuSubjectSearch.setBackground(new java.awt.Color(153, 255, 204));
         stuSubjectSearch.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -1623,13 +1630,13 @@ public class Home extends javax.swing.JFrame {
         jPanel48.setBackground(new java.awt.Color(153, 255, 204));
         jPanel48.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
 
-        clearFormBt1.setBackground(new java.awt.Color(102, 255, 255));
-        clearFormBt1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        clearFormBt1.setForeground(new java.awt.Color(0, 0, 0));
-        clearFormBt1.setText("Clear");
-        clearFormBt1.addActionListener(new java.awt.event.ActionListener() {
+        clearSubjectManageBt.setBackground(new java.awt.Color(102, 255, 255));
+        clearSubjectManageBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        clearSubjectManageBt.setForeground(new java.awt.Color(0, 0, 0));
+        clearSubjectManageBt.setText("Clear");
+        clearSubjectManageBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearFormBt1ActionPerformed(evt);
+                clearSubjectManageBtActionPerformed(evt);
             }
         });
 
@@ -1661,7 +1668,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(stuSubjectSaveBt, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(clearFormBt1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(clearSubjectManageBt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(554, 554, 554))
             .addGroup(jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel48Layout.createSequentialGroup()
@@ -1675,7 +1682,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(stuSubjectSaveBt, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(clearFormBt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(clearSubjectManageBt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel48Layout.createSequentialGroup()
@@ -1738,6 +1745,230 @@ public class Home extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Subjects", jPanel30);
+
+        jPanel23.setBackground(new java.awt.Color(102, 255, 255));
+
+        jPanel33.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel33.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel33.setForeground(new java.awt.Color(0, 0, 0));
+
+        jPanel38.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel38.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel38.setForeground(new java.awt.Color(0, 0, 0));
+
+        classListSearchBt.setBackground(new java.awt.Color(153, 255, 204));
+        classListSearchBt.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        classListSearchBt.setForeground(new java.awt.Color(0, 0, 0));
+        classListSearchBt.setText("Search");
+        classListSearchBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classListSearchBtActionPerformed(evt);
+            }
+        });
+
+        jLabel69.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel69.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel69.setText("Grade Level");
+
+        gradeLevelClassBox.setBackground(new java.awt.Color(255, 255, 255));
+        gradeLevelClassBox.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        gradeLevelClassBox.setForeground(new java.awt.Color(0, 0, 0));
+        gradeLevelClassBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "11", "12" }));
+        gradeLevelClassBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gradeLevelClassBoxActionPerformed(evt);
+            }
+        });
+
+        strandClassBox.setBackground(new java.awt.Color(255, 255, 255));
+        strandClassBox.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        strandClassBox.setForeground(new java.awt.Color(0, 0, 0));
+        strandClassBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                strandClassBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel81.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel81.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel81.setText("Strand");
+
+        sectionClassBox.setBackground(new java.awt.Color(255, 255, 255));
+        sectionClassBox.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        sectionClassBox.setForeground(new java.awt.Color(0, 0, 0));
+        sectionClassBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sectionClassBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel82.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel82.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel82.setText("Section");
+
+        javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
+        jPanel38.setLayout(jPanel38Layout);
+        jPanel38Layout.setHorizontalGroup(
+            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel38Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gradeLevelClassBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel69))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel38Layout.createSequentialGroup()
+                        .addComponent(strandClassBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel38Layout.createSequentialGroup()
+                        .addComponent(jLabel81)
+                        .addGap(208, 208, 208)))
+                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel82)
+                    .addComponent(sectionClassBox, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(classListSearchBt, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(559, 559, 559))
+        );
+        jPanel38Layout.setVerticalGroup(
+            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel38Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel69)
+                    .addComponent(jLabel81)
+                    .addComponent(jLabel82))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gradeLevelClassBox)
+                    .addComponent(strandClassBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sectionClassBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel38Layout.createSequentialGroup()
+                .addComponent(classListSearchBt, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        ClassListTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "LRN", "Student Name"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane7.setViewportView(ClassListTable);
+
+        jPanel49.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel49.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+
+        classListLogoutBt.setBackground(new java.awt.Color(102, 255, 255));
+        classListLogoutBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        classListLogoutBt.setForeground(new java.awt.Color(0, 0, 0));
+        classListLogoutBt.setText("Logout");
+        classListLogoutBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classListLogoutBtActionPerformed(evt);
+            }
+        });
+
+        classListClearBt.setBackground(new java.awt.Color(102, 255, 255));
+        classListClearBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        classListClearBt.setForeground(new java.awt.Color(0, 0, 0));
+        classListClearBt.setText("Clear");
+        classListClearBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classListClearBtActionPerformed(evt);
+            }
+        });
+
+        classListPrintBt.setBackground(new java.awt.Color(102, 255, 255));
+        classListPrintBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        classListPrintBt.setForeground(new java.awt.Color(0, 0, 0));
+        classListPrintBt.setText("Print");
+        classListPrintBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classListPrintBtActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel49Layout = new javax.swing.GroupLayout(jPanel49);
+        jPanel49.setLayout(jPanel49Layout);
+        jPanel49Layout.setHorizontalGroup(
+            jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel49Layout.createSequentialGroup()
+                .addGap(378, 378, 378)
+                .addComponent(classListPrintBt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(classListClearBt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(classListLogoutBt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(423, 423, 423))
+        );
+        jPanel49Layout.setVerticalGroup(
+            jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel49Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(classListLogoutBt, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                    .addComponent(classListClearBt, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                    .addComponent(classListPrintBt, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
+        jPanel33.setLayout(jPanel33Layout);
+        jPanel33Layout.setHorizontalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel33Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7)
+                    .addComponent(jPanel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel33Layout.setVerticalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel33Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel49, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+        jPanel23.setLayout(jPanel23Layout);
+        jPanel23Layout.setHorizontalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel23Layout.setVerticalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Class List", jPanel23);
 
         jPanel21.setBackground(new java.awt.Color(102, 255, 255));
 
@@ -2092,6 +2323,16 @@ public class Home extends javax.swing.JFrame {
         jLabel35.setText("Grade Level");
 
         stuGradeIDManage.setBackground(new java.awt.Color(255, 255, 255));
+        stuGradeIDManage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stuGradeIDManageActionPerformed(evt);
+            }
+        });
+        stuGradeIDManage.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                stuGradeIDManageKeyTyped(evt);
+            }
+        });
 
         stuGradeFormSearch.setBackground(new java.awt.Color(153, 255, 204));
         stuGradeFormSearch.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -2594,6 +2835,7 @@ public class Home extends javax.swing.JFrame {
         tableViewStudent();
         tableViewSubject();
         tableViewStrand();
+        tableViewClassList();
         tableViewSectioningGrade();
         tableViewFormGrade();
         tableViewHonorTable();
@@ -2631,10 +2873,19 @@ public class Home extends javax.swing.JFrame {
 
             @Override
             public boolean isCellEditable(int row, int column) {
-                return column == 2; // Only checkbox editable
+                return column == 2;
             }
         };
         SubjectTable.setModel(subjectModel); // attach to JTable
+    }
+
+    public void tableViewClassList() {
+        model = (DefaultTableModel) ClassListTable.getModel();
+        ClassListTable.setRowHeight(30);
+        ClassListTable.setShowGrid(true);
+        ClassListTable.setGridColor(Color.black);
+        ClassListTable.setBackground(Color.white);
+
     }
 
     public void tableViewHonorTable() {
@@ -2718,15 +2969,31 @@ public class Home extends javax.swing.JFrame {
         subjectBox.removeAllItems();
         quarterBox.removeAllItems();
 
-        GradeSectioningManageTable.setModel(new DefaultTableModel(null, new Object[]{"LRN", "Student_Name", "Grade"}));
+        DefaultTableModel model = (DefaultTableModel) GradeSectioningManageTable.getModel();
+        model.setRowCount(0); // ✅ clears rows without breaking references
 
     }
 
     private void clearformGradeManage() {
         stuGradeIDManage.setText(null);
         gradeLevelStudentBox.setSelectedIndex(0);
-        formTable.setModel(new DefaultTableModel(null, new Object[]{"Subjects",
-            "First Quarter", "Second Quarter", "Third Quarter", "Fourth Quarter", "Final Rating", "Remarks"}));
+        DefaultTableModel model = (DefaultTableModel) formTable.getModel();
+        model.setRowCount(0); // ✅ clears rows without breaking references
+    }
+
+    public void clearSubjectManage() {
+        stuSubjectIDManage.setText(null);
+        gradeLevelSubjectBox.setSelectedIndex(0);
+        DefaultTableModel model = (DefaultTableModel) SubjectTable.getModel();
+        model.setRowCount(0); // ✅ clears rows without breaking references
+
+    }
+
+    public void clearClassListManage() {
+        gradeLevelClassBox.setSelectedIndex(0);
+        strandClassBox.removeAllItems();
+        sectionClassBox.removeAllItems();
+        ClassListTable.setModel(new DefaultTableModel(null, new Object[]{"LRN", "Student_Name"}));
     }
 
     public void setBackgroundPanel() {
@@ -3620,34 +3887,6 @@ public class Home extends javax.swing.JFrame {
         strand.loadStudentStrandsTable(StudentTrackTable, "");
         stuSearchField_2.setText(null);
     }//GEN-LAST:event_stuRefresh_2ActionPerformed
-
-    private void stuPrint_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuPrint_2ActionPerformed
-        try {
-            // Ask user to select Grade Level, Strand, Section
-            String gradeLevel = JOptionPane.showInputDialog(this, "Enter Grade Level (e.g., 11 or 12):");
-            String strandName = JOptionPane.showInputDialog(this, "Enter Strand (e.g., STEM, HUMSS):");
-            String section = JOptionPane.showInputDialog(this, "Enter Section (e.g., A, B):");
-
-            if (gradeLevel == null || strandName == null || section == null
-                    || gradeLevel.isEmpty() || strandName.isEmpty() || section.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Selection cancelled or invalid input.");
-                return;
-            }
-
-            // Call method from your Strand class
-            // If method is static
-            strand.generateClassList(gradeLevel, strandName, section);
-
-            // If method is not static
-            // Strand strandObj = new Strand();
-            // strandObj.generateClassList(gradeLevel, strandName, section);
-            JOptionPane.showMessageDialog(this, "Class List PDF Generated Successfully!");
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_stuPrint_2ActionPerformed
     private int getColumnIndex(DefaultTableModel model, String columnName) {
         for (int i = 0; i < model.getColumnCount(); i++) {
             if (model.getColumnName(i).equalsIgnoreCase(columnName)) {
@@ -3786,6 +4025,10 @@ public class Home extends javax.swing.JFrame {
             String quarterStr = quarterBox.getSelectedItem().toString();
             int quarter = Integer.parseInt(quarterStr.split(" - ")[0]);
 
+            System.out.println(gradeLevel);
+            System.out.println(strandId);
+            System.out.println(sectionId);
+
             // Call the query
             DefaultTableModel model = grade.getStudentGrades(
                     gradeLevel, strandId, sectionId, subjectId, quarter
@@ -3841,6 +4084,15 @@ public class Home extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error loading sections/subjects.");
         }
     }//GEN-LAST:event_strandBoxActionPerformed
+
+    public int getSelectedClassStrandId() {
+        System.out.println("it reads fucking reads");
+        ComboItem selectedItem = (ComboItem) strandClassBox.getSelectedItem();
+        if (selectedItem != null) {
+            return selectedItem.getId(); // assuming ComboItem has getId()
+        }
+        return -1; // or handle appropriately if nothing is selected
+    }
 
     public int getSelectedStrandId() {
         ComboItem selectedItem = (ComboItem) strandBox.getSelectedItem();
@@ -4307,12 +4559,19 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_stuGradeManageRefreshTable1ActionPerformed
 
-    private void clearFormBt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearFormBt1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_clearFormBt1ActionPerformed
+    private void clearSubjectManageBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearSubjectManageBtActionPerformed
+        clearSubjectManage();
+    }//GEN-LAST:event_clearSubjectManageBtActionPerformed
 
     private void logoutFormGradeBt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutFormGradeBt1ActionPerformed
-        // TODO add your handling code here:
+        //LOGOUT
+        int a = JOptionPane.showConfirmDialog(this, "Do you want to Logout now?", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            this.dispose();
+            LoginFrame frame = new LoginFrame();
+            frame.setVisible(true);
+            frame.setLocationRelativeTo(null);
+        }
     }//GEN-LAST:event_logoutFormGradeBt1ActionPerformed
 
     private void stuSubjectSaveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSubjectSaveBtActionPerformed
@@ -4334,6 +4593,148 @@ public class Home extends javax.swing.JFrame {
     private void gradeLevelSubjectBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeLevelSubjectBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_gradeLevelSubjectBoxActionPerformed
+
+    private void classListSearchBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classListSearchBtActionPerformed
+        try {
+            String gradeLevelStr = gradeLevelClassBox.getSelectedItem().toString();
+            int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
+
+            // Get strand id
+            int strandId = getSelectedClassStrandId();
+
+            // Get section id
+            int sectionId = strand.getSelectedSectionId(sectionClassBox);
+
+            System.out.println(gradeLevel);
+            System.out.println(strandId);
+            System.out.println(sectionId);
+
+            DefaultTableModel model = strand.getStudentClassList(gradeLevel, strandId, sectionId);
+
+            // 6. Apply results to the ListHonorTable
+            ClassListTable.setModel(model);
+
+            // 7. Handle empty case
+            if (model.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "No class list results found.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Class list generated successfully!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error fetching honor list: " + e.getMessage());
+        }
+    }//GEN-LAST:event_classListSearchBtActionPerformed
+
+    private void gradeLevelClassBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeLevelClassBoxActionPerformed
+        try {
+            int gradeLevel = Integer.parseInt(gradeLevelClassBox.getSelectedItem().toString());
+
+            // 1. Load strands available for that grade level
+            strand.loadStrands(strandClassBox, gradeLevel);
+
+            if (strandClassBox.getItemCount() > 0) {
+                int strandId = getSelectedClassStrandId();
+
+                strand.loadSections(sectionClassBox, strandId, gradeLevel);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error loading strands/sections/subjects.");
+        }
+    }//GEN-LAST:event_gradeLevelClassBoxActionPerformed
+
+    private void strandClassBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_strandClassBoxActionPerformed
+
+        try {
+            int gradeLevel = Integer.parseInt(gradeLevelBox.getSelectedItem().toString());
+            int strandId = getSelectedClassStrandId(); // helper to parse "1 - STEM"
+
+            // Update dependent dropdowns
+            strand.loadSections(sectionClassBox, strandId, gradeLevel);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error loading sections/subjects.");
+        }
+    }//GEN-LAST:event_strandClassBoxActionPerformed
+
+    private void sectionClassBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sectionClassBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sectionClassBoxActionPerformed
+
+    private void classListLogoutBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classListLogoutBtActionPerformed
+        //LOGOUT
+        int a = JOptionPane.showConfirmDialog(this, "Do you want to Logout now?", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            this.dispose();
+            LoginFrame frame = new LoginFrame();
+            frame.setVisible(true);
+            frame.setLocationRelativeTo(null);
+        }
+    }//GEN-LAST:event_classListLogoutBtActionPerformed
+
+    private void classListClearBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classListClearBtActionPerformed
+        clearClassListManage();
+    }//GEN-LAST:event_classListClearBtActionPerformed
+
+    private void classListPrintBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classListPrintBtActionPerformed
+        try {
+            if (strandClassBox.getSelectedItem() == null || sectionClassBox.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this,
+                        "Please select a Grade Level, Strand, and Section.",
+                        "Missing Field",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // ✅ Get values safely
+            String gradeLevelStr = gradeLevelClassBox.getSelectedItem().toString();
+            int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
+            int sectionId = strand.getSelectedSectionId(sectionClassBox);
+            int strandId = getSelectedClassStrandId();
+
+            // ✅ Fetch strand + section names using helper
+            String[] names = strand.getStrandAndSectionName(con, sectionId);
+            String strandName = names[0];
+            String sectionName = names[1];
+
+            // ✅ Debug check
+            System.out.println("DEBUG: grade=" + gradeLevel
+                    + ", strandId=" + strandId + " (" + strandName + ")"
+                    + ", sectionId=" + sectionId + " (" + sectionName + ")");
+
+            // ✅ Generate the class list with names
+            strand.generateClassList(ClassListTable, gradeLevel, strandId, sectionId, strandName, sectionName);
+
+            //JOptionPane.showMessageDialog(this, "Class List PDF Generated Successfully!");
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,
+                    "An error occurred: " + ex.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_classListPrintBtActionPerformed
+
+    private void stuSubjectIDManageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuSubjectIDManageKeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_stuSubjectIDManageKeyTyped
+
+    private void stuGradeIDManageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuGradeIDManageKeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_stuGradeIDManageKeyTyped
+
+    private void stuGradeIDManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuGradeIDManageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuGradeIDManageActionPerformed
 
     private String getSelectedStrandName() {
         String name = "";
@@ -4525,6 +4926,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable ClassListTable;
     private javax.swing.JButton Clear;
     private javax.swing.JTable GradeSectioningManageTable;
     private javax.swing.JTable ListHonorTable;
@@ -4535,8 +4937,12 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton browseBirthCertificate;
     private javax.swing.JButton browseForm137;
     private javax.swing.JButton browseImg;
+    private javax.swing.JButton classListClearBt;
+    private javax.swing.JButton classListLogoutBt;
+    private javax.swing.JButton classListPrintBt;
+    private javax.swing.JButton classListSearchBt;
     private javax.swing.JButton clearFormBt;
-    private javax.swing.JButton clearFormBt1;
+    private javax.swing.JButton clearSubjectManageBt;
     private javax.swing.JButton delBt;
     private javax.swing.JTable formTable;
     private javax.swing.JButton gradeClear;
@@ -4544,6 +4950,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton gradeHonorLogout;
     private javax.swing.JButton gradeHonorSectioningPrint;
     private javax.swing.JComboBox<String> gradeLevelBox;
+    private javax.swing.JComboBox<String> gradeLevelClassBox;
     private javax.swing.JComboBox<String> gradeLevelHonorBox;
     private javax.swing.JComboBox<String> gradeLevelStudentBox;
     private javax.swing.JComboBox<String> gradeLevelSubjectBox;
@@ -4583,6 +4990,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
@@ -4591,6 +4999,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel79;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -4606,6 +5016,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
@@ -4616,9 +5027,11 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
+    private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
@@ -4630,6 +5043,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel46;
     private javax.swing.JPanel jPanel47;
     private javax.swing.JPanel jPanel48;
+    private javax.swing.JPanel jPanel49;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -4641,6 +5055,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton logoutFormGradeBt;
     private javax.swing.JButton logoutFormGradeBt1;
@@ -4648,8 +5063,10 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> quarterHonorBox;
     private javax.swing.JButton searchBt_1;
     public static javax.swing.JComboBox<String> sectionBox;
+    public static javax.swing.JComboBox<String> sectionClassBox;
     public static javax.swing.JComboBox<String> sectionHonorBox;
     private javax.swing.JComboBox<String> strandBox;
+    private javax.swing.JComboBox<String> strandClassBox;
     private javax.swing.JComboBox<String> strandHonorBox;
     private javax.swing.JTextField stuAddress1;
     private javax.swing.JTextField stuAddress2;
@@ -4675,7 +5092,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextField stuMotherName;
     private javax.swing.JTextField stuPhone;
     private javax.swing.JButton stuPrint_1;
-    private javax.swing.JButton stuPrint_2;
     private javax.swing.JButton stuRefresh_1;
     private javax.swing.JButton stuRefresh_2;
     private javax.swing.JButton stuSaveBt;

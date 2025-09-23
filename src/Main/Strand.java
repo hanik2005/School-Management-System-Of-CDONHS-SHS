@@ -25,10 +25,12 @@ import java.sql.SQLException;
 import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import model.ComboItem;
 import picocli.CommandLine.Help.TextTable.Cell;
 
 public class Strand {
@@ -437,34 +439,39 @@ public class Strand {
         }
     }
 
-    public void generateClassList(String gradeLevel, String strand, String section) {
-        String sql = "SELECT s.LRN, "
-                + "CONCAT(s.last_name, ', ', s.first_name, ' ', COALESCE(s.middle_name, '')) AS full_name, "
-                + "sec.section_name, "
-                + "ss.grade_level, "
-                + "st.strand_name "
-                + "FROM student s "
-                + "INNER JOIN student_strand ss ON s.student_id = ss.student_id "
-                + "INNER JOIN section sec ON ss.section_id = sec.section_id "
-                + "INNER JOIN strands st ON ss.strand_id = st.strand_id "
-                + "WHERE ss.grade_level = ? "
-                + "AND st.strand_name = ? "
-                + "AND sec.section_name = ? "
-                + "ORDER BY s.last_name;";
+    public String[] getStrandAndSectionName(Connection con, int sectionId) {
+        String[] names = new String[2]; // [0] = strandName, [1] = sectionName
+        String sql = "SELECT st.strand_name, sec.section_name "
+                + "FROM section sec "
+                + "JOIN strands st ON sec.strand_id = st.strand_id "
+                + "WHERE sec.section_id = ?";
 
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, gradeLevel);
-            ps.setString(2, strand);
-            ps.setString(3, section);
-            ResultSet rs = ps.executeQuery();
+        try (PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setInt(1, sectionId);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                names[0] = rs.getString("strand_name");
+                names[1] = rs.getString("section_name");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        return names;
+    }
+
+    public void generateClassList(JTable table, int gradeLevel, int strandId, int sectionId,
+            String strandName, String sectionName) {
+        try {
             // Let user choose where to save file
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setDialogTitle("Save Class List PDF");
-            fileChooser.setSelectedFile(new File("ClassList_" + gradeLevel + "_" + strand + "_" + section + ".pdf"));
+            fileChooser.setSelectedFile(new File("ClassList_G" + gradeLevel + "_"
+                    + strandName + "_Sec" + sectionName + ".pdf"));
 
             int userSelection = fileChooser.showSaveDialog(null);
             if (userSelection != JFileChooser.APPROVE_OPTION) {
+                JOptionPane.showMessageDialog(null, "Save command canceled.");
                 System.out.println("Save command canceled.");
                 return;
             }
@@ -474,7 +481,7 @@ public class Strand {
             PdfWriter.getInstance(document, new FileOutputStream(fileToSave));
             document.open();
 
-            // Add Logo
+            // 🔹 Add Logo
             try (InputStream is = getClass().getResourceAsStream("/assets/logo_remBac.png")) {
                 if (is != null) {
                     byte[] bytes = is.readAllBytes();
@@ -489,32 +496,39 @@ public class Strand {
                 ex.printStackTrace();
             }
 
-            // Title
-            Paragraph title = new Paragraph("Class List", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18));
+            // 🔹 Title
+            Paragraph title = new Paragraph("Class List",
+                    FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18));
             title.setAlignment(Element.ALIGN_CENTER);
             document.add(title);
 
-            Paragraph sub = new Paragraph("Grade " + gradeLevel + " - " + strand + " - Section " + section,
-                    FontFactory.getFont(FontFactory.HELVETICA, 12));
+            // 🔹 Sub info with proper names
+            Paragraph sub = new Paragraph(
+                    "Grade " + gradeLevel
+                    + " | Strand: " + strandName
+                    + " | Section: " + sectionName,
+                    FontFactory.getFont(FontFactory.HELVETICA, 12)
+            );
             sub.setAlignment(Element.ALIGN_CENTER);
             sub.setSpacingAfter(20);
             document.add(sub);
 
-            // Table (2 columns: ID, Full Name)
-            PdfPTable table = new PdfPTable(2);
-            table.setWidthPercentage(100);
+            // 🔹 Table (2 columns: ID, Full Name)
+            PdfPTable pdfTable = new PdfPTable(2);
+            pdfTable.setWidthPercentage(100);
 
             // Headers
-            table.addCell(new PdfPCell(new Phrase("LRN")));
-            table.addCell(new PdfPCell(new Phrase("Full Name")));
+            pdfTable.addCell(new PdfPCell(new Phrase("LRN")));
+            pdfTable.addCell(new PdfPCell(new Phrase("Full Name")));
 
-            // Fill rows
-            while (rs.next()) {
-                table.addCell(rs.getString("LRN"));
-                table.addCell(rs.getString("full_name"));
+            // Fill rows from JTable
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            for (int i = 0; i < model.getRowCount(); i++) {
+                pdfTable.addCell(model.getValueAt(i, 0).toString()); // LRN
+                pdfTable.addCell(model.getValueAt(i, 1).toString()); // Name
             }
 
-            document.add(table);
+            document.add(pdfTable);
             document.close();
 
             System.out.println("PDF Created: " + fileToSave.getAbsolutePath());
@@ -523,6 +537,82 @@ public class Strand {
             e.printStackTrace();
         }
     }
-    
+
+    public int getSelectedSectionId(JComboBox sectionBox) {
+        ComboItem item = (ComboItem) sectionBox.getSelectedItem();
+        return item != null ? item.getId() : -1;
+    }
+
+    public DefaultTableModel getStudentClassList(int gradeLevel, int strandId, int sectionId) {
+        DefaultTableModel model = new DefaultTableModel(
+                null,
+                new Object[]{"LRN", "Student Name"}
+        );
+
+        try (Connection conn = MyConnection.getConnection()) {
+            String sql = "SELECT s.LRN, "
+                    + "CONCAT(s.last_name, ', ', s.first_name, ' ', COALESCE(s.middle_name, '')) AS full_name, "
+                    + "sec.section_name, "
+                    + "ss.grade_level, "
+                    + "st.strand_name "
+                    + "FROM student s "
+                    + "INNER JOIN student_strand ss ON s.student_id = ss.student_id "
+                    + "INNER JOIN section sec ON ss.section_id = sec.section_id "
+                    + "INNER JOIN strands st ON ss.strand_id = st.strand_id "
+                    + "WHERE ss.grade_level = ? "
+                    + "AND ss.strand_id = ? "
+                    + "AND ss.section_id = ? "
+                    + "ORDER BY s.last_name;";
+
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, gradeLevel);
+            pst.setInt(2, strandId);
+            pst.setInt(3, sectionId);
+
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                String lrn = rs.getString("LRN");
+                String studentName = rs.getString("full_name"); // ✅ fixed
+                model.addRow(new Object[]{lrn, studentName});
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return model;
+    }
+
+    public void loadStrands(JComboBox strandBox, int gradeLevel) {
+        strandBox.removeAllItems();
+        try (PreparedStatement pst = con.prepareStatement(
+                "SELECT strand_id, strand_name FROM strands WHERE strand_id IN "
+                + "(SELECT DISTINCT strand_id FROM section WHERE grade_level = ?)")) {
+
+            pst.setInt(1, gradeLevel);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                strandBox.addItem(new ComboItem(rs.getInt("strand_id"), rs.getString("strand_name")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loadSections(JComboBox sectionBox, int strandId, int gradeLevel) {
+        System.out.println("it reads");
+        sectionBox.removeAllItems();
+        try (PreparedStatement pst = con.prepareStatement(
+                "SELECT section_id, section_name FROM section WHERE strand_id = ? AND grade_level = ?")) {
+            pst.setInt(1, strandId);
+            pst.setInt(2, gradeLevel);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                sectionBox.addItem(new ComboItem(rs.getInt("section_id"), rs.getString("section_name")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

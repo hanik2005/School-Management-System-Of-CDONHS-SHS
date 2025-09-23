@@ -75,6 +75,7 @@ public class Grade {
     }
 
     public void loadSections(JComboBox sectionBox, int strandId, int gradeLevel) {
+        System.out.println("it reads");
         sectionBox.removeAllItems();
         try (PreparedStatement pst = con.prepareStatement(
                 "SELECT section_id, section_name FROM section WHERE strand_id = ? AND grade_level = ?")) {
