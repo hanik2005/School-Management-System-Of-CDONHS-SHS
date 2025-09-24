@@ -412,7 +412,7 @@ public class Strand {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0); // Clear existing data
 
-        String sql = "SELECT ss.student_strand_id, ss.student_id, ss.grade_level, st.strand_name, sec.section_name "
+        String sql = "SELECT ss.student_id, ss.grade_level, st.strand_name, sec.section_name "
                 + "FROM student_strand ss "
                 + "JOIN strands st ON ss.strand_id = st.strand_id "
                 + "JOIN section sec ON ss.section_id = sec.section_id "
@@ -427,7 +427,6 @@ public class Strand {
 
             while (rs.next()) {
                 model.addRow(new Object[]{
-                    rs.getInt("student_strand_id"),
                     rs.getInt("student_id"),
                     rs.getInt("grade_level"),
                     rs.getString("strand_name"),

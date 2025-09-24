@@ -41,6 +41,24 @@ public class Teacher {
 
     }
 
+    public String getUsername() {
+        int id = 0;
+        String sql = "SELECT MAX(teacher_id) FROM teacher";
+
+        try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
+
+            if (rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.getLogger(Teacher.class.getName())
+                    .log(System.Logger.Level.ERROR, "Error getting max teacher_id", ex);
+        }
+
+        // Format: 02-id+1
+        return "02-" + (id + 1);
+    }
+
     public boolean isidExist(int id) {
         try {
             ps = con.prepareStatement("select * from teacher where teacher_id = ?");
@@ -113,10 +131,11 @@ public class Teacher {
         }
 
     }
-    public void update(int teacher_id,  String fname, String midName, String lastName, String date_birth, String gender, String email, String phone, String addressLine1,
+
+    public void update(int teacher_id, String fname, String midName, String lastName, String date_birth, String gender, String email, String phone, String addressLine1,
             String addressLine2, String imagePath, int strand) {
-         String sql = "update teacher set first_name=?,middle_name=?,last_name=?,date_of_birth=?,gender=?,email=?,phone_number=?"
-                 + ",address1=?,address2=?,strand_id=?,image_path=? where teacher_id=?";
+        String sql = "update teacher set first_name=?,middle_name=?,last_name=?,date_of_birth=?,gender=?,email=?,phone_number=?"
+                + ",address1=?,address2=?,strand_id=?,image_path=? where teacher_id=?";
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, fname);
@@ -131,7 +150,6 @@ public class Teacher {
             ps.setInt(10, strand);
             ps.setString(11, imagePath);
             ps.setInt(12, teacher_id);
-            
 
             if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "Teacher data updated successfully ");
@@ -140,19 +158,19 @@ public class Teacher {
         } catch (SQLException ex) {
             System.getLogger(Teacher.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
-        
+
     }
 
     public void getTeacherValue(JTable table, String searchValue) {
         String sql = "SELECT t.teacher_id, t.user_id, t.first_name, t.middle_name, t.last_name, "
                 + "t.date_of_birth, t.gender, t.email, t.phone_number, t.address1, t.address2, "
-                + "s.strand_name, t.hire_date, t.image_path "
+                + "s.strand_name, t.hire_date "
                 + "FROM teacher t "
                 + "LEFT JOIN strands s ON t.strand_id = s.strand_id "
                 + "WHERE CONCAT(t.first_name, t.middle_name, t.last_name, t.email, t.phone_number) "
                 + "LIKE ? ORDER BY t.teacher_id DESC";
 
-        try (Connection con = MyConnection.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, "%" + searchValue + "%");
             ResultSet rs = ps.executeQuery();
@@ -161,7 +179,7 @@ public class Teacher {
             model.setRowCount(0); // Clear existing data
 
             while (rs.next()) {
-                Object[] row = new Object[14];
+                Object[] row = new Object[13];
                 row[0] = rs.getInt("teacher_id");
                 row[1] = rs.getInt("user_id");
                 row[2] = rs.getString("first_name");
@@ -175,7 +193,6 @@ public class Teacher {
                 row[10] = rs.getString("address2");
                 row[11] = rs.getString("strand_name");
                 row[12] = rs.getDate("hire_date");
-                row[13] = rs.getString("image_path");
 
                 model.addRow(row);
             }

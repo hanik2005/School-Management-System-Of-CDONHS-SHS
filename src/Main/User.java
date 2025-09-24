@@ -39,12 +39,12 @@ public class User {
 
     }
 
-    public void insert(int user_id, int username, String password, int type_id) {
+    public void insert(int user_id, String username, String password, int type_id) {
         String sql = "insert into user values(?,?,?,?)";
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, user_id);
-            ps.setInt(2, username);
+            ps.setString(2, username);
             ps.setString(3, password);
             ps.setInt(4, type_id);
 

@@ -985,11 +985,11 @@ public class Home extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Student_ID", "User_ID", "First_Name", "Middle_Name", "Last_Name", "Date Of Birth", "Gender", "Email", "Phone Number", "Father's Name", "Mother's Name", "Address Line 1", "Address Line 2", "Birth Cerificate", "Form137", "Image Path", "LRN"
+                "Student_ID", "User_ID", "First_Name", "Middle_Name", "Last_Name", "Date Of Birth", "Gender", "Email", "Phone Number", "Father's Name", "Mother's Name", "Address Line 1", "Address Line 2", "LRN"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, true, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1338,11 +1338,11 @@ public class Home extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Student_Strand_ID", "Student_ID", "Grade Level", "Strand", "Section"
+                "Student_ID", "Grade Level", "Strand", "Section"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -3313,7 +3313,7 @@ public class Home extends javax.swing.JFrame {
             }
 
             // Refresh table and clear fields
-            StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_Strand_ID", "Student_ID", "Grade_Level", "Strand", "Section"}));
+            StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_ID", "Grade_Level", "Strand", "Section"}));
             strand.loadStudentStrandsTable(StudentTrackTable, "");
             clearStrand();
 
@@ -3361,7 +3361,7 @@ public class Home extends javax.swing.JFrame {
 
     private void addNewBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewBtActionPerformed
         int id = student.getMax();
-        int username = student.getMax();
+        String username = student.getLRN(id);
         int userId = user.getMax();
         if (isEmptyStudent()) {
             if (!student.isEmailExist(stuEmail.getText(), id)) {
@@ -3394,7 +3394,7 @@ public class Home extends javax.swing.JFrame {
                             motherName, fatherName, addressLine1, addressLine2, birthCer, form137, imagePath, stuLrn);
 
                     StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
-                        "Mother's Name", "Address Line 1", "Address Line 2", "Birth Certificate", "Form137", "Image Path", "LRN"}));
+                        "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
                     student.getStudentValue(StudentTable, "");
                     clearStudent();
                 } else {
@@ -3695,7 +3695,7 @@ public class Home extends javax.swing.JFrame {
 //                    // ✅ Generate QR code with all details
 //                    generateQRCode(id, sname, qrContent);
                     StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
-                        "Mother's Name", "Address Line 1", "Address Line 2", "Birth Certificate", "Form137", "Image Path", "LRN"}));
+                        "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
                     student.getStudentValue(StudentTable, "");
                     clearStudent();
 
@@ -3763,6 +3763,8 @@ public class Home extends javax.swing.JFrame {
     private void StudentTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StudentTableMouseClicked
         model = (DefaultTableModel) StudentTable.getModel();
         rowIndex = StudentTable.getSelectedRow();
+
+        // Basic fields from the JTable
         stuID.setText(model.getValueAt(rowIndex, 0).toString());
         stuFname.setText(model.getValueAt(rowIndex, 2).toString());
         stuMiddleName.setText(model.getValueAt(rowIndex, 3).toString());
@@ -3776,25 +3778,40 @@ public class Home extends javax.swing.JFrame {
         }
 
         String gender = model.getValueAt(rowIndex, 6).toString();
-        if (gender.equals("Male")) {
+        if (gender.equalsIgnoreCase("Male")) {
             stuGender.setSelectedIndex(0);
-
         } else {
             stuGender.setSelectedIndex(1);
-
         }
+
         stuEmail.setText(model.getValueAt(rowIndex, 7).toString());
         stuPhone.setText(model.getValueAt(rowIndex, 8).toString());
         stuFatherName.setText(model.getValueAt(rowIndex, 9).toString());
         stuMotherName.setText(model.getValueAt(rowIndex, 10).toString());
         stuAddress1.setText(model.getValueAt(rowIndex, 11).toString());
         stuAddress2.setText(model.getValueAt(rowIndex, 12).toString());
-        stuBirthCer.setText(model.getValueAt(rowIndex, 13).toString());
-        stuForm137.setText(model.getValueAt(rowIndex, 14).toString());
-        String path = model.getValueAt(rowIndex, 15).toString();
-        imagePath = path;
-        imagePanel.setIcon(imageAdjust(path, null, imagePanel));//get image path and called image adjust method path to image
-        stuLRN.setText(model.getValueAt(rowIndex, 16).toString());
+        stuLRN.setText(model.getValueAt(rowIndex, 13).toString());
+
+        int studentId = Integer.parseInt(model.getValueAt(rowIndex, 0).toString());
+        String sql = "SELECT birth_certificate, form_137, image_path FROM student WHERE student_id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, studentId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                stuBirthCer.setText(rs.getString("birth_certificate"));
+                stuForm137.setText(rs.getString("form_137"));
+                String path = rs.getString("image_path");
+                imagePath = path;
+                if (path != null && !path.isEmpty()) {
+                    imagePanel.setIcon(imageAdjust(path, null, imagePanel));
+                } else {
+                    imagePanel.setIcon(null); // clear if no image
+                }
+            }
+        } catch (SQLException ex) {
+            System.getLogger(Home.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
     }//GEN-LAST:event_StudentTableMouseClicked
 
 
@@ -3823,7 +3840,7 @@ public class Home extends javax.swing.JFrame {
             student.delete(id);
             user.delete(id);
             StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
-                "Mother's Name", "Address Line 1", "Address Line 2", "Birth Certificate", "Form137", "Image Path", "LRN"}));
+                "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
             student.getStudentValue(StudentTable, "");
             clearStudent();
 
@@ -3838,7 +3855,7 @@ public class Home extends javax.swing.JFrame {
 
         } else {
             StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
-                "Mother's Name", "Address Line 1", "Address Line 2", "Birth Certificate", "Form137", "Image Path", "LRN"}));
+                "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
             student.getStudentValue(StudentTable, stuSearchField_1.getText());
 
         }
@@ -3846,7 +3863,7 @@ public class Home extends javax.swing.JFrame {
 
     private void stuRefresh_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuRefresh_1ActionPerformed
         StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
-            "Mother's Name", "Address Line 1", "Address Line 2", "Birth Certificate", "Form137", "Image Path", "LRN"}));
+            "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
         student.getStudentValue(StudentTable, "");
         stuSearchField_1.setText(null);
     }//GEN-LAST:event_stuRefresh_1ActionPerformed
@@ -3876,14 +3893,14 @@ public class Home extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Search field is empty");
 
         } else {
-            StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_Strand_ID", "Student_ID", "Grade_Level", "Strand", "Section"}));
+            StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{ "Student_ID", "Grade_Level", "Strand", "Section"}));
             strand.loadStudentStrandsTable(StudentTrackTable, stuSearchField_2.getText());
 
         }
     }//GEN-LAST:event_stuSearchBt_2ActionPerformed
 
     private void stuRefresh_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuRefresh_2ActionPerformed
-        StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_Strand_ID", "Student_ID", "Grade_Level", "Strand", "Section"}));
+        StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_ID", "Grade_Level", "Strand", "Section"}));
         strand.loadStudentStrandsTable(StudentTrackTable, "");
         stuSearchField_2.setText(null);
     }//GEN-LAST:event_stuRefresh_2ActionPerformed
@@ -4110,7 +4127,7 @@ public class Home extends javax.swing.JFrame {
         return -1; // or handle appropriately if nothing is selected
     }
 
-    private void loadQuarters(JComboBox<String> quarterBox) {
+    public void loadQuarters(JComboBox<String> quarterBox) {
         quarterBox.removeAllItems();
         quarterBox.addItem("1");
         quarterBox.addItem("2");
@@ -4545,7 +4562,7 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_stuSubjectSearchActionPerformed
 
-    private String getCurrentSchoolYear() {
+    public String getCurrentSchoolYear() {
         java.time.LocalDate today = java.time.LocalDate.now();
         int year = today.getYear();
 
@@ -4710,7 +4727,6 @@ public class Home extends javax.swing.JFrame {
             strand.generateClassList(ClassListTable, gradeLevel, strandId, sectionId, strandName, sectionName);
 
             //JOptionPane.showMessageDialog(this, "Class List PDF Generated Successfully!");
-
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this,
                     "An error occurred: " + ex.getMessage(),

@@ -33,6 +33,24 @@ public class Student {
 
     }
 
+    public String getLRN(int studentId) {
+        String lrn = null;
+        String sql = "SELECT LRN FROM student WHERE student_id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, studentId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                lrn = rs.getString("LRN");
+            }
+        } catch (SQLException ex) {
+            System.getLogger(Student.class.getName())
+                    .log(System.Logger.Level.ERROR, "Error fetching LRN", ex);
+        }
+
+        return lrn;
+    }
+
     //insert data into student table
     public void insert(int student_id, int user_id, String fname, String midName, String lastName, String date, String gender, String email, String phone,
             String motherName, String fatherName, String addressLine1,
@@ -114,41 +132,43 @@ public class Student {
 
     //get all student values from database student table
     public void getStudentValue(JTable table, String searchValue) {
-        String sql = "select * from student where concat(first_name,middle_name,last_name,email,phone_number) "
-                + "like ? order by student_id desc";
+        String sql = "SELECT student_id, user_id, first_name, middle_name, last_name, "
+                + "date_of_birth, gender, email, phone_number, mother_name, father_name, "
+                + "address1, address2, LRN "
+                + "FROM student "
+                + "WHERE CONCAT(first_name, middle_name, last_name, email, phone_number) LIKE ? "
+                + "ORDER BY student_id DESC";
 
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, "%" + searchValue + "%");
             ResultSet rs = ps.executeQuery();
+
             DefaultTableModel model = (DefaultTableModel) table.getModel();
+            model.setRowCount(0); // ✅ clear previous results
+
             Object[] row;
             while (rs.next()) {
-                row = new Object[17];
-                row[0] = rs.getInt(1);
-                row[1] = rs.getInt(2);
-                row[2] = rs.getString(3);
-                row[3] = rs.getString(4);
-                row[4] = rs.getString(5);
-                row[5] = rs.getString(6);
-                row[6] = rs.getString(7);
-                row[7] = rs.getString(8);
-                row[8] = rs.getString(9);
-                row[9] = rs.getString(10);
-                row[10] = rs.getString(11);
-                row[11] = rs.getString(12);
-                row[12] = rs.getString(13);
-                row[13] = rs.getString(14);
-                row[14] = rs.getString(15);
-                row[15] = rs.getString(16);
-                row[16] = rs.getString(17);
+                row = new Object[14];
+                row[0] = rs.getInt("student_id");
+                row[1] = rs.getInt("user_id");
+                row[2] = rs.getString("first_name");
+                row[3] = rs.getString("middle_name");
+                row[4] = rs.getString("last_name");
+                row[5] = rs.getDate("date_of_birth");
+                row[6] = rs.getString("gender");
+                row[7] = rs.getString("email");
+                row[8] = rs.getString("phone_number");
+                row[9] = rs.getString("mother_name");
+                row[10] = rs.getString("father_name");
+                row[11] = rs.getString("address1");
+                row[12] = rs.getString("address2");
+                row[13] = rs.getString("LRN");
                 model.addRow(row);
-
             }
         } catch (SQLException ex) {
-            System.getLogger(Student.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            ex.printStackTrace();
         }
-
     }
 
     public void update(int student_id, String fname, String midName, String lname, String date, String gender, String email, String phone,
@@ -175,7 +195,6 @@ public class Student {
             ps.setString(14, imagePath);
             ps.setString(15, lrn);
             ps.setInt(16, student_id);
-            
 
             if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "Student data updated successfully ");
@@ -205,5 +224,38 @@ public class Student {
 
         }
 
+    }
+
+    public DefaultTableModel getStudentSubjectGrades(int studentId, int gradeLevel, int quarter) {
+        String[] columnNames = {"Subject", "Grade"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
+        String sql = "SELECT subj.subject_name AS Subject, g.grade AS Grade "
+                + "FROM student_subjects ssj "
+                + "JOIN subject subj ON ssj.subject_id = subj.subject_id "
+                + "LEFT JOIN grade_entry g ON ssj.student_id = g.student_id "
+                + "    AND ssj.subject_id = g.subject_id "
+                + "    AND g.quarter = ? "
+                + "JOIN student_strand ss ON ssj.student_id = ss.student_id "
+                + "WHERE ssj.student_id = ? "
+                + "AND ss.grade_level = ? "
+                + "AND ssj.status = 'Enrolled'";
+
+        try (PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setInt(1, quarter);      // quarter for LEFT JOIN condition
+            pst.setInt(2, studentId);    // studentId
+            pst.setInt(3, gradeLevel);   // gradeLevel
+
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                String subject = rs.getString("Subject");
+                String grade = rs.getString("Grade"); // may be null if no grade yet
+                model.addRow(new Object[]{subject, grade != null ? grade : "Not Graded"});
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return model;
     }
 }
