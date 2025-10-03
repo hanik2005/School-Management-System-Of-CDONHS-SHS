@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+              http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="class_list" pageWidth="595" pageHeight="842" columnWidth="555"
+              leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+
+    <!-- Parameters -->
+    <parameter name="GradeLevel" class="java.lang.Integer"/>
+    <parameter name="StrandName" class="java.lang.String"/>
+    <parameter name="SectionName" class="java.lang.String"/>
+
+    <!-- Fields -->
+    <field name="lrn" class="java.lang.String"/>
+    <field name="fullName" class="java.lang.String"/>
+
+    <!-- Title Band -->
+    <title>
+        <band height="120">
+            <!-- Logo -->
+            <image>
+                <reportElement x="0" y="0" width="80" height="80"/>
+                <imageExpression><![CDATA[getClass().getResourceAsStream("/assets/logo_remBac.png")]]></imageExpression>
+            </image>
+
+            <!-- Title -->
+            <staticText>
+                <reportElement x="0" y="85" width="555" height="30" />
+                <textElement textAlignment="Center">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Class List]]></text>
+            </staticText>
+
+            <!-- Description -->
+            <textField>
+                <reportElement x="0" y="115" width="555" height="20"/>
+                <textElement textAlignment="Center">
+                    <font size="12" isItalic="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Grade: " + $P{GradeLevel} + " | Strand: " + $P{StrandName} + " | Section: " + $P{SectionName}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <!-- Column Header -->
+    <columnHeader>
+        <band height="25">
+            <staticText>
+                <reportElement x="0" y="0" width="150" height="25"/>
+                <textElement textAlignment="Center">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[LRN]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="150" y="0" width="405" height="25"/>
+                <textElement textAlignment="Center">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Full Name]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <!-- Detail Band -->
+    <detail>
+        <band height="20">
+            <textField>
+                <reportElement x="0" y="0" width="150" height="20"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{lrn}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="150" y="0" width="405" height="20"/>
+                <textElement textAlignment="Left"/>
+                <textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+</jasperReport>

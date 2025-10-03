@@ -23,14 +23,24 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.DriverManager;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.ComboItem;
+import model.PageNumberEvent;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import picocli.CommandLine.Help.TextTable.Cell;
 
 public class Strand {
@@ -459,6 +469,56 @@ public class Strand {
         return names;
     }
 
+//    public void generateClassList(JTable table, int gradeLevel, int strandId, int sectionId,
+//            String strandName, String sectionName) {
+//        try {
+//            // Let user choose where to save file
+//            JFileChooser fileChooser = new JFileChooser();
+//            fileChooser.setDialogTitle("Save Class List PDF");
+//            fileChooser.setSelectedFile(new File("ClassList_G" + gradeLevel + "_"
+//                    + strandName + "_Sec" + sectionName + ".pdf"));
+//
+//            int userSelection = fileChooser.showSaveDialog(null);
+//            if (userSelection != JFileChooser.APPROVE_OPTION) {
+//                JOptionPane.showMessageDialog(null, "Save command canceled.");
+//                return;
+//            }
+//
+//            File fileToSave = fileChooser.getSelectedFile();
+//
+//            // 🔹 Prepare data from JTable
+//            List<Map<String, Object>> dataList = new ArrayList<>();
+//            DefaultTableModel model = (DefaultTableModel) table.getModel();
+//            for (int i = 0; i < model.getRowCount(); i++) {
+//                Map<String, Object> row = new HashMap<>();
+//                row.put("lrn", model.getValueAt(i, 0).toString());
+//                row.put("fullName", model.getValueAt(i, 1).toString());
+//                dataList.add(row);
+//            }
+//
+//            JRDataSource dataSource = new JRBeanCollectionDataSource(dataList);
+//
+//            String reportPath = "D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/reports/class_list_fixed.jrxml";
+//            JasperReport jasperReport = JasperCompileManager.compileReport(reportPath);
+//
+//            // 🔹 Parameters
+//            Map<String, Object> params = new HashMap<>();
+//            params.put("GradeLevel", gradeLevel);
+//            params.put("StrandName", strandName);
+//            params.put("SectionName", sectionName);
+//
+//            // 🔹 Fill report
+//            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
+//
+//            // 🔹 Export to PDF
+//            JasperExportManager.exportReportToPdfFile(jasperPrint, fileToSave.getAbsolutePath());
+//
+//            JOptionPane.showMessageDialog(null, "PDF Created: " + fileToSave.getAbsolutePath());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+//        }
+//    }
     public void generateClassList(JTable table, int gradeLevel, int strandId, int sectionId,
             String strandName, String sectionName) {
         try {
@@ -477,7 +537,11 @@ public class Strand {
 
             File fileToSave = fileChooser.getSelectedFile();
             Document document = new Document(PageSize.A4);
-            PdfWriter.getInstance(document, new FileOutputStream(fileToSave));
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(fileToSave));
+
+            // ✅ Attach page event for numbering
+            writer.setPageEvent(new PageNumberEvent());
+
             document.open();
 
             // 🔹 Add Logo
@@ -516,9 +580,17 @@ public class Strand {
             PdfPTable pdfTable = new PdfPTable(2);
             pdfTable.setWidthPercentage(100);
 
+            // ✅ Allow multi-page
+            pdfTable.setSplitLate(false);
+            pdfTable.setHeaderRows(1);
+
             // Headers
-            pdfTable.addCell(new PdfPCell(new Phrase("LRN")));
-            pdfTable.addCell(new PdfPCell(new Phrase("Full Name")));
+            PdfPCell header1 = new PdfPCell(new Phrase("LRN"));
+            PdfPCell header2 = new PdfPCell(new Phrase("Full Name"));
+            header1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            header2.setHorizontalAlignment(Element.ALIGN_CENTER);
+            pdfTable.addCell(header1);
+            pdfTable.addCell(header2);
 
             // Fill rows from JTable
             DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -527,6 +599,7 @@ public class Strand {
                 pdfTable.addCell(model.getValueAt(i, 1).toString()); // Name
             }
 
+            // 🔹 Add table (will auto break pages)
             document.add(pdfTable);
             document.close();
 

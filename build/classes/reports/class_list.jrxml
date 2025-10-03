@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+                        http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+    name="class_list" pageWidth="595" pageHeight="842"
+    columnWidth="555" leftMargin="20" rightMargin="20"
+    topMargin="20" bottomMargin="20" uuid="12345678-1234-1234-1234-1234567890ab">
+
+    <!-- Report Parameters -->
+    <parameter name="ReportTitle" class="java.lang.String"/>
+    <parameter name="PreparedBy" class="java.lang.String"/>
+
+    <!-- Fields (from your SQL or Java datasource) -->
+    <field name="student_id" class="java.lang.Integer"/>
+    <field name="student_name" class="java.lang.String"/>
+    <field name="grade_level" class="java.lang.String"/>
+    <field name="section" class="java.lang.String"/>
+
+    <!-- Title Band -->
+    <title>
+        <band height="60">
+            <staticText>
+                <reportElement x="0" y="10" width="555" height="30" uuid="title-001"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[$P{ReportTitle}]]></text>
+            </staticText>
+        </band>
+    </title>
+
+    <!-- Column Headers -->
+    <columnHeader>
+        <band height="25">
+            <staticText>
+                <reportElement x="0" y="0" width="80" height="25" uuid="col-001"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text>Student ID</text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="80" y="0" width="200" height="25" uuid="col-002"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text>Student Name</text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="280" y="0" width="100" height="25" uuid="col-003"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text>Grade Level</text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="380" y="0" width="175" height="25" uuid="col-004"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text>Section</text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <!-- Detail Rows -->
+    <detail>
+        <band height="20">
+            <textField>
+                <reportElement x="0" y="0" width="80" height="20" uuid="det-001"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{student_id}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="80" y="0" width="200" height="20" uuid="det-002"/>
+                <textFieldExpression><![CDATA[$F{student_name}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="280" y="0" width="100" height="20" uuid="det-003"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{grade_level}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="380" y="0" width="175" height="20" uuid="det-004"/>
+                <textFieldExpression><![CDATA[$F{section}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <!-- Summary / Footer -->
+    <summary>
+        <band height="30">
+            <staticText>
+                <reportElement x="0" y="10" width="555" height="20" uuid="foot-001"/>
+                <textElement textAlignment="Right">
+                    <font size="10" isItalic="true"/>
+                </textElement>
+                <text><![CDATA[Prepared By: $P{PreparedBy}]]></text>
+            </staticText>
+        </band>
+    </summary>
+
+</jasperReport>
