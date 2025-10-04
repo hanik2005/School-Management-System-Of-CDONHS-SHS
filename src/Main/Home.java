@@ -67,6 +67,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import model.ComboItem;
+import model.PageNumberEvent;
 import org.apache.commons.io.IOUtils;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -3162,10 +3163,11 @@ public class Home extends javax.swing.JFrame {
         //idGradeManage.setText(String.valueOf(grade.getMax()));
     }
 
-    public void setStrandInformation(){
+    public void setStrandInformation() {
         Teacher teacher = new Teacher();
         teacher.setInformationStrandDatabase(teacherId, strandTxt);
     }
+
     public void setInformation() {
         Teacher teacher = new Teacher();
         teacher.loadStudentInformation(
@@ -3372,21 +3374,21 @@ public class Home extends javax.swing.JFrame {
         jPanel25.add(bgPanel7, BorderLayout.CENTER);
         jPanel25.revalidate();
         jPanel25.repaint();
-        
+
         BackgroundPanel bgPanel8 = new BackgroundPanel("/assets/background.jpg");
         bgPanel8.setLayout(new BorderLayout());
         jPanel31.setLayout(new BorderLayout());
         jPanel31.add(bgPanel8, BorderLayout.CENTER);
         jPanel31.revalidate();
         jPanel31.repaint();
-        
+
         BackgroundPanel bgPanel9 = new BackgroundPanel("/assets/background.jpg");
         bgPanel9.setLayout(new BorderLayout());
         jPanel23.setLayout(new BorderLayout());
         jPanel23.add(bgPanel9, BorderLayout.CENTER);
         jPanel23.revalidate();
         jPanel23.repaint();
-        
+
         BackgroundPanel bgPanel10 = new BackgroundPanel("/assets/background.jpg");
         bgPanel10.setLayout(new BorderLayout());
         jPanel19.setLayout(new BorderLayout());
@@ -4417,6 +4419,13 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_stuGradeManageSearchButtonActionPerformed
 
     private void gradeSaveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeSaveBtActionPerformed
+        // checking if they already selected
+        if (subjectBox.getSelectedIndex() == -1 && sectionBox.getSelectedIndex() == -1 && strandBox.getSelectedIndex() == -1
+                && quarterBox.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a grade level once to show subject, section, and strand \n before saving.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         int subjectId = grade.getSelectedSubjectId(subjectBox);   // pass the subject JComboBox
         int sectionId = grade.getSelectedSectionId(sectionBox);   // pass the section JComboBox
         int strandId = getSelectedStrandId();              // uses strandBox internally
@@ -4588,6 +4597,7 @@ public class Home extends javax.swing.JFrame {
             Integer sectionId = null;
             Integer strandId = null;
             Integer quarter = null;
+            
 
             try {
                 subjectId = grade.getSelectedSubjectId(subjectBox);
@@ -4615,7 +4625,10 @@ public class Home extends javax.swing.JFrame {
 
             // === Create PDF document ===
             Document document = new Document(PageSize.A4);
-            PdfWriter.getInstance(document, new FileOutputStream(pdfFile));
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(pdfFile));
+
+            writer.setPageEvent(new PageNumberEvent());
+
             document.open();
 
             // === Add Logo ===
@@ -4778,11 +4791,29 @@ public class Home extends javax.swing.JFrame {
                         JOptionPane.WARNING_MESSAGE);
                 return; // stop execution
             }
+            String section, gradeLevel, strand, quarter;
+            
+
+            try {
+                // === Section Information (from comboboxes) ===
+                section = sectionHonorBox.getSelectedItem() != null ? sectionHonorBox.getSelectedItem().toString() : "N/A";
+                gradeLevel = gradeLevelHonorBox.getSelectedItem() != null ? gradeLevelHonorBox.getSelectedItem().toString() : "N/A";
+                strand = strandHonorBox.getSelectedItem() != null ? strandHonorBox.getSelectedItem().toString() : "N/A";
+                quarter = quarterHonorBox.getSelectedItem().toString();
+
+            } catch (NullPointerException | NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Please select all required fields (Grade Level, Section, Strand).",
+                        "Missing Fields",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
             // === Let user pick save location ===
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setDialogTitle("Save Honor Sectioning PDF");
-            fileChooser.setSelectedFile(new File("HonorSectioning.pdf"));
+            fileChooser.setSelectedFile(new File("HonorSectioning" + gradeLevel + "_"
+                    + strand + "_Sec" + section + ".pdf"));
 
             int userSelection = fileChooser.showSaveDialog(this);
             if (userSelection != JFileChooser.APPROVE_OPTION) {
@@ -4794,7 +4825,11 @@ public class Home extends javax.swing.JFrame {
 
             // === Create PDF ===
             Document document = new Document();
-            PdfWriter.getInstance(document, new java.io.FileOutputStream(fileName));
+            PdfWriter writer = PdfWriter.getInstance(document, new java.io.FileOutputStream(fileName));
+            
+            // ✅ Attach page event for numbering
+            writer.setPageEvent(new PageNumberEvent());
+            
             document.open();
 
             // === Add Logo ===
@@ -4809,20 +4844,22 @@ public class Home extends javax.swing.JFrame {
             }
 
             // === Title ===
-            com.itextpdf.text.Font titleFont
-                    = new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.HELVETICA, 14, com.itextpdf.text.Font.BOLD);
-            document.add(new Paragraph("HONOR SECTIONING REPORT - CDONHS-SHS", titleFont));
+            Paragraph title = new Paragraph("HONOR LIST",
+                    FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14));
+            title.setAlignment(Element.ALIGN_CENTER);
+            document.add(title);
             document.add(new Paragraph(" ")); // empty line
-
-            // === Section Information (from comboboxes) ===
-            String section = sectionHonorBox.getSelectedItem() != null ? sectionHonorBox.getSelectedItem().toString() : "N/A";
-            String gradeLevel = gradeLevelHonorBox.getSelectedItem() != null ? gradeLevelHonorBox.getSelectedItem().toString() : "N/A";
-            String strand = strandHonorBox.getSelectedItem() != null ? strandHonorBox.getSelectedItem().toString() : "N/A";
-
-            document.add(new Paragraph("Grade Level: " + gradeLevel));
-            document.add(new Paragraph("Strand: " + strand));
-            document.add(new Paragraph("Section: " + section));
-            document.add(new Paragraph(" ")); // empty line
+            
+            
+            Paragraph sub = new Paragraph(
+                    "Grade " + gradeLevel
+                    + " | Strand: " + strand
+                    + " | Section: " + section + " | quarter: " + quarter,
+                    FontFactory.getFont(FontFactory.HELVETICA, 12)
+            );
+            sub.setAlignment(Element.ALIGN_CENTER);
+            sub.setSpacingAfter(20);
+            document.add(sub);
 
             // === Create table with same columns as JTable ===
             PdfPTable pdfTable = new PdfPTable(ListHonorTable.getColumnCount());
