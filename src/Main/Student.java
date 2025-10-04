@@ -33,23 +33,23 @@ public class Student {
 
     }
 
-    public String getLRN(int studentId) {
-        String lrn = null;
-        String sql = "SELECT LRN FROM student WHERE student_id = ?";
-
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, studentId);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                lrn = rs.getString("LRN");
-            }
-        } catch (SQLException ex) {
-            System.getLogger(Student.class.getName())
-                    .log(System.Logger.Level.ERROR, "Error fetching LRN", ex);
-        }
-
-        return lrn;
-    }
+//    public String getLRN(int studentId) {
+//        String lrn = null;
+//        String sql = "SELECT LRN FROM student WHERE student_id = ?";
+//
+//        try (PreparedStatement ps = con.prepareStatement(sql)) {
+//            ps.setInt(1, studentId);
+//            ResultSet rs = ps.executeQuery();
+//            if (rs.next()) {
+//                lrn = rs.getString("LRN");
+//            }
+//        } catch (SQLException ex) {
+//            System.getLogger(Student.class.getName())
+//                    .log(System.Logger.Level.ERROR, "Error fetching LRN", ex);
+//        }
+//
+//        return lrn;
+//    }
 
     //insert data into student table
     public void insert(int student_id, int user_id, String fname, String midName, String lastName, String date, String gender, String email, String phone,

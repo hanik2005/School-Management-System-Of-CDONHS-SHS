@@ -60,7 +60,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        userID = new javax.swing.JTextField();
+        usernameField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         userPass = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
@@ -101,15 +101,15 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Password: ");
 
-        userID.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        userID.addActionListener(new java.awt.event.ActionListener() {
+        usernameField.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userIDActionPerformed(evt);
+                usernameFieldActionPerformed(evt);
             }
         });
-        userID.addKeyListener(new java.awt.event.KeyAdapter() {
+        usernameField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                userIDKeyTyped(evt);
+                usernameFieldKeyTyped(evt);
             }
         });
 
@@ -193,7 +193,7 @@ public class LoginFrame extends javax.swing.JFrame {
                                         .addGap(75, 75, 75)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(userPass, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(8, 8, 8)
                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,7 +216,7 @@ public class LoginFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)))
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -248,9 +248,9 @@ public class LoginFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIDActionPerformed
+    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userIDActionPerformed
+    }//GEN-LAST:event_usernameFieldActionPerformed
 
     private void userPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userPassActionPerformed
         // TODO add your handling code here:
@@ -263,7 +263,7 @@ public class LoginFrame extends javax.swing.JFrame {
             ResultSet rs = null;
 
             try {
-                String username = userID.getText(); // Now using username instead of user_id
+                String username = usernameField.getText(); // Now using username instead of user_id
                 String password = String.valueOf(userPass.getPassword());
                 String selectedType = userType.getSelectedItem().toString();
 
@@ -293,17 +293,60 @@ public class LoginFrame extends javax.swing.JFrame {
                     String actualType = rs.getString("type_name");
 
                     if ("Student".equals(actualType)) {
-                        StudentPortal portal = new StudentPortal(userId);
-                        portal.setVisible(true);
-                        portal.pack();
+                        int studentId = -1;
+                        try (PreparedStatement psStudent = con.prepareStatement(
+                                "SELECT student_id FROM student WHERE user_id = ?")) {
+                            psStudent.setInt(1, userId);
+                            try (ResultSet rsStudent = psStudent.executeQuery()) {
+                                if (rsStudent.next()) {
+                                    studentId = rsStudent.getInt("student_id");
+                                }
+                            }
+                        }
+
+                        if (studentId != -1) {
+                            StudentPortal portal = new StudentPortal(studentId);
+                            portal.setVisible(true);
+                            portal.pack();
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Student record not found for this user.");
+                        }
                     } else if ("Teacher".equals(actualType)) {
-                        Home home = new Home();
-                        home.setVisible(true);
-                        home.pack();
+                        int teacherId = -1;
+                        try (PreparedStatement psTeacher = con.prepareStatement(
+                                "SELECT teacher_id FROM teacher WHERE user_id = ?")) {
+                            psTeacher.setInt(1, userId);
+                            try (ResultSet rsTeacher = psTeacher.executeQuery()) {
+                                if (rsTeacher.next()) {
+                                    teacherId = rsTeacher.getInt("teacher_id");
+                                }
+                            }
+                        }
+                        if (teacherId != -1) {
+                            Home home = new Home(teacherId);
+                            home.setVisible(true);
+                            home.pack();
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Teacher record not found for this user.");
+                        }
                     } else if ("Admin".equals(actualType)) {
-                        Home home = new Home();
-                        home.setVisible(true);
-                        home.pack();
+                        int adminId = -1;
+                        try (PreparedStatement psAdmin = con.prepareStatement(
+                                "SELECT admin_id FROM admin WHERE user_id = ?")) {
+                            psAdmin.setInt(1, userId);
+                            try (ResultSet rsAdmin = psAdmin.executeQuery()) {
+                                if (rsAdmin.next()) {
+                                    adminId = rsAdmin.getInt("admin_id");
+                                }
+                            }
+                        }
+                        if (adminId != -1) {
+                            AdminFrame admin = new AdminFrame(adminId);
+                            admin.setVisible(true);
+                            admin.pack();
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Admin record not found for this user.");
+                        }
                     }
 
                     this.dispose();
@@ -364,7 +407,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     public boolean isEmpty() {
-        if (userID.getText().isEmpty()) {
+        if (usernameField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "User ID Password missing");
             return false;
         }
@@ -394,11 +437,9 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_eyeImageBtMousePressed
 
-    private void userIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userIDKeyTyped
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_userIDKeyTyped
+    private void usernameFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyTyped
+
+    }//GEN-LAST:event_usernameFieldKeyTyped
 
     /**
      * @param args the command line arguments
@@ -435,8 +476,8 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField userID;
     private javax.swing.JPasswordField userPass;
     private javax.swing.JComboBox<String> userType;
+    private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 }

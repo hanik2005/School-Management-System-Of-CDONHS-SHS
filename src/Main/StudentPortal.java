@@ -10,6 +10,7 @@ import design.BackgroundPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Desktop;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +23,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -45,7 +47,7 @@ public class StudentPortal extends javax.swing.JFrame {
     private String imagePath;
     Student student = new Student();
     private DefaultTableModel model;
-    Home home = new Home();
+    //Home home = new Home();
     Grade grade = new Grade();
     String imagePathDB;
     String birthCertPathDB;
@@ -65,35 +67,20 @@ public class StudentPortal extends javax.swing.JFrame {
 
     public void init() {
         //setBackgroundPanel();
-        home.setTime();
-        home.setDate();
+        setTime();
+        setDate();
         tableStudentGradeView();
         setInformationStudentsDatabase();
         setInformationStrandDatabase();
     }
-    public void tableStudentGradeView(){
+
+    public void tableStudentGradeView() {
         model = (DefaultTableModel) GradeViewTable.getModel();
         GradeViewTable.setRowHeight(30);
         GradeViewTable.setShowGrid(true);
         GradeViewTable.setGridColor(Color.black);
         GradeViewTable.setBackground(Color.white);
-    
-    }
 
-    public void setBackgroundPanel() {
-        BackgroundPanel bgPanel2 = new BackgroundPanel("/assets/background.jpg");
-        bgPanel2.setLayout(new BorderLayout());
-        jPanel2.setLayout(new BorderLayout());
-        jPanel2.add(bgPanel2, BorderLayout.CENTER);
-        jPanel2.revalidate();
-        jPanel2.repaint();
-
-//        BackgroundPanel bgPanel3 = new BackgroundPanel("/assets/background.jpg");
-//        bgPanel3.setLayout(new BorderLayout());
-//        jPanel6.setLayout(new BorderLayout());
-//        jPanel6.add(bgPanel3, BorderLayout.CENTER);
-//        jPanel6.revalidate();
-//        jPanel6.repaint();
     }
 
     public void setInformationStrandDatabase() {
@@ -106,13 +93,20 @@ public class StudentPortal extends javax.swing.JFrame {
             ps.setInt(1, studentId);
             rs = ps.executeQuery();
 
+            String strandName = null;
             if (rs.next()) {
-                String strandName = rs.getString("strand_name");
+                strandName = rs.getString("strand_name");
+            }
 
-                if (strandTxt != null) {
+            // Always check if strandTxt is available
+            if (strandTxt != null) {
+                if (strandName != null && !strandName.isEmpty()) {
                     strandTxt.setText(strandName);
+                } else {
+                    strandTxt.setText("NULL"); // no record found or empty strand
                 }
             }
+
         } catch (SQLException ex) {
             System.getLogger(StudentPortal.class.getName())
                     .log(System.Logger.Level.ERROR, "Database error in setInformationStrandDatabase", ex);
@@ -120,7 +114,6 @@ public class StudentPortal extends javax.swing.JFrame {
     }
 
     public void setInformationStudentsDatabase() {
-
         try {
             ps = con.prepareStatement("SELECT * FROM student WHERE student_id = ?");
             ps.setInt(1, studentId);
@@ -147,7 +140,10 @@ public class StudentPortal extends javax.swing.JFrame {
                 motherTxt.setText(rs.getString("mother_name"));
                 fatherTxt.setText(rs.getString("father_name"));
                 address1Txt.setText(rs.getString("address1"));
-                address2Txt.setText(rs.getString("address2"));
+
+                String address2 = rs.getString("address2");
+                address2Txt.setText(address2 != null && !address2.isEmpty() ? address2 : "NULL");
+
                 stuLrn.setText(rs.getString("LRN"));
 
                 imagePathDB = rs.getString("image_path");
@@ -157,25 +153,29 @@ public class StudentPortal extends javax.swing.JFrame {
                 String existPdfImage = getClass().getResource("/assets/pdf.png").getPath();
 
                 // Profile Image
-                File imgFile = new File(imagePathDB);
-                if (imgFile.exists() && !imgFile.isDirectory()) {
-                    imagePanel.setIcon(home.imageAdjust(imagePathDB, null, imagePanel));
+                if (imagePathDB != null) {
+                    File imgFile = new File(imagePathDB);
+                    if (imgFile.exists() && !imgFile.isDirectory()) {
+                        imagePanel.setIcon(imageAdjust(imagePathDB, null, imagePanel));
+                    } else {
+                        imagePanel.setIcon(imageAdjust(defaultImagePath, null, imagePanel));
+                    }
                 } else {
-                    imagePanel.setIcon(home.imageAdjust(defaultImagePath, null, imagePanel));
+                    imagePanel.setIcon(imageAdjust(defaultImagePath, null, imagePanel));
                 }
 
                 // Birth Certificate
                 if (birthCertPathDB != null && birthCertPathDB.toLowerCase().endsWith(".pdf")) {
-                    imagePanel1.setIcon(home.imageAdjust(existPdfImage, null, imagePanel1));
+                    imagePanel1.setIcon(imageAdjust(existPdfImage, null, imagePanel1));
                 } else {
-                    imagePanel1.setIcon(home.imageAdjust(defaultImagePath, null, imagePanel1));
+                    imagePanel1.setIcon(imageAdjust(defaultImagePath, null, imagePanel1));
                 }
 
                 // Form 137
                 if (form137PathDB != null && form137PathDB.toLowerCase().endsWith(".pdf")) {
-                    imagePanel2.setIcon(home.imageAdjust(existPdfImage, null, imagePanel2));
+                    imagePanel2.setIcon(imageAdjust(existPdfImage, null, imagePanel2));
                 } else {
-                    imagePanel2.setIcon(home.imageAdjust(defaultImagePath, null, imagePanel2));
+                    imagePanel2.setIcon(imageAdjust(defaultImagePath, null, imagePanel2));
                 }
 
             }
@@ -301,9 +301,9 @@ public class StudentPortal extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
-                .addGap(144, 144, 144)
+                .addGap(119, 119, 119)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(31, 31, 31))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -926,10 +926,10 @@ public class StudentPortal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
@@ -1061,7 +1061,7 @@ public class StudentPortal extends javax.swing.JFrame {
 
             // ✅ Handle empty case
             if (model.getRowCount() == 0) {
-                JOptionPane.showMessageDialog(this, "No grades found for this student and quarter.");
+                JOptionPane.showMessageDialog(this, "No grades found for this quarter or You have not enrolled a subject yet .");
             } else {
                 JOptionPane.showMessageDialog(this, "Grade list generated successfully!");
             }
@@ -1076,7 +1076,7 @@ public class StudentPortal extends javax.swing.JFrame {
         try {
             int gradeLevel = Integer.parseInt(gradeLevelStudentBox.getSelectedItem().toString());
 
-            home.loadQuarters(quarterStudentBox);
+            loadQuarters(quarterStudentBox);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -1120,6 +1120,49 @@ public class StudentPortal extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Unable to open file: " + e.getMessage());
         }
+    }
+
+    public void setTime() {
+        javax.swing.Timer timer = new javax.swing.Timer(1000, e -> {
+            java.util.Date date = new java.util.Date();
+            java.text.SimpleDateFormat tf = new java.text.SimpleDateFormat("hh:mm:ss a");
+            txtTime.setText(tf.format(date));
+        });
+        timer.start();
+    }
+
+    public void setDate() {
+        java.util.Date date = new java.util.Date();
+        // EEEE = full day name (e.g., Thursday)
+        java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("EEEE, MMMM dd, yyyy");
+        txtDate.setText(df.format(date));
+    }
+
+    public ImageIcon imageAdjust(String path, byte[] pic, JLabel targetLabel) {
+        ImageIcon myImage = null;
+
+        if (path != null) {
+            myImage = new ImageIcon(path);
+        } else {
+            myImage = new ImageIcon(pic);
+        }
+
+        Image img = myImage.getImage();
+        Image newImage = img.getScaledInstance(
+                targetLabel.getWidth(),
+                targetLabel.getHeight(),
+                Image.SCALE_SMOOTH
+        );
+
+        return new ImageIcon(newImage);
+    }
+
+    public void loadQuarters(JComboBox<String> quarterBox) {
+        quarterBox.removeAllItems();
+        quarterBox.addItem("1");
+        quarterBox.addItem("2");
+        quarterBox.addItem("3");
+        quarterBox.addItem("4");
     }
 
     /**

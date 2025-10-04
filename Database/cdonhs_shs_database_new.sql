@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2025 at 05:20 PM
+-- Generation Time: Oct 04, 2025 at 06:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -90,7 +90,15 @@ INSERT INTO `grade_entry` (`entry_id`, `student_id`, `subject_id`, `section_id`,
 (107, 2, 5, 1, 1, 90.00),
 (108, 2, 6, 1, 1, 90.00),
 (109, 2, 7, 1, 1, 90.00),
-(110, 2, 8, 1, 1, 90.00);
+(110, 2, 8, 1, 1, 90.00),
+(111, 4, 1, 2, 1, 90.00),
+(112, 4, 2, 2, 1, 80.00),
+(113, 4, 3, 2, 1, 76.00),
+(114, 4, 4, 2, 1, 90.00),
+(115, 4, 5, 2, 1, 80.00),
+(116, 4, 6, 2, 1, 70.00),
+(117, 4, 7, 2, 1, 90.00),
+(118, 4, 8, 2, 1, 100.00);
 
 -- --------------------------------------------------------
 
@@ -210,11 +218,11 @@ CREATE TABLE `student` (
   `mother_name` varchar(50) NOT NULL,
   `father_name` varchar(50) NOT NULL,
   `address1` varchar(50) NOT NULL,
-  `address2` varchar(50) NOT NULL,
-  `birth_certificate` varchar(100) NOT NULL,
-  `form_137` varchar(100) NOT NULL,
-  `image_path` varchar(100) NOT NULL,
-  `LRN` varchar(12) DEFAULT NULL
+  `address2` varchar(50) DEFAULT NULL,
+  `birth_certificate` varchar(100) DEFAULT NULL,
+  `form_137` varchar(100) DEFAULT NULL,
+  `image_path` varchar(100) DEFAULT NULL,
+  `LRN` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -226,7 +234,11 @@ INSERT INTO `student` (`student_id`, `user_id`, `first_name`, `middle_name`, `la
 (2, 2, 'Harvey ', 'D.', 'Clarito', '2025-09-04', 'Male', 'dasdsda@gmail.com', '09329239232', 'papa', 'mama', 'dadasda', 'dada', 'dad', 'dasda', 'D:\\PICTURES\\boy_pick_left_2.png', '67439284'),
 (3, 3, 'Andrea', 'Dominican', 'Bagtong', '2007-09-07', 'Female', 'dodo@gmail.com', '09933742', 'mama', 'papa', 'dasdsadsa', 'dadasd', 'dasdda', 'dadasd', 'D:\\PICTURES\\anime-moon-landscape.jpg', '6832924829'),
 (4, 4, 'Niño Christian', 'Palaman', 'Balaba', '2005-08-20', 'Female', 'Balaba@gmail.com', '09944719', 'papa', 'mama', 'sdadd', 'dsdadada', 'num_1.pdf', 'FELISILDA_&_CLARITO.pdf', 'D:\\PICTURES\\anime-moon-landscape.jpg', '4053333424'),
-(5, 5, 'Randy', 'Abecia', 'Clarito', '1988-09-15', 'Male', 'papa@gmail.com', '0965747', 'czcz', 'czczxc', 'czcczc', 'czczc', 'CLARITO, NICK CHARLES D..pdf', 'CLARITO, NICK CHARLES D. – 2003–Present.pdf', 'D:\\PICTURES\\boy_pick_left_2.png', '40998922892');
+(5, 5, 'Randy', 'Abecia', 'Clarito', '1988-09-15', 'Male', 'papa@gmail.com', '0965747', 'czcz', 'czczxc', 'czcczc', 'czczc', 'CLARITO, NICK CHARLES D..pdf', 'CLARITO, NICK CHARLES D. – 2003–Present.pdf', 'D:\\PICTURES\\boy_pick_left_2.png', '40998922892'),
+(6, 8, 'Maria Cristina', 'Durangparang', 'Clarito', '1996-09-07', 'Female', 'Maria@gmail.com', '09262360968', 'papa', 'Dominador', 'dadsa', 'dadda', 'Form137_4.pdf', 'ClassList_11_STEM_A.pdf', 'D:\\PICTURES\\agile.png', '156456864214'),
+(7, 10, 'Micah', 'Bilagbog', 'Micah', '2003-10-10', 'Male', 'baal@gmail.com', '09977564276', 'dasdsad', 'dasdad', 'dadsad', 'dasdasd', 'ClassList_G11_TVL-ICT_SecA.pdf', 'Form137_4.pdf', 'D:\\PICTURES\\agile_model.png', '105220150089'),
+(8, 11, 'Ras', 'Pinignit', 'Lawren', '2006-10-13', 'Male', 'Lawren@gmail.com', '09977718534', 'dsadad', 'dasdsad', 'dasdadadadad', '', '', '', NULL, '404551221678'),
+(9, 12, 'Dominic', 'Dolos', 'Reyes', '2001-06-02', 'Male', 'reyes@gmail.com', '09988716521', 'dadasda', 'dasdd', 'dasdasd', '', '', '', NULL, '109660713467');
 
 -- --------------------------------------------------------
 
@@ -247,12 +259,16 @@ CREATE TABLE `student_strand` (
 --
 
 INSERT INTO `student_strand` (`student_strand_id`, `student_id`, `strand_id`, `grade_level`, `section_id`) VALUES
-(6, 4, 1, 11, 1),
+(6, 4, 1, 11, 2),
 (8, 2, 1, 11, 1),
 (9, 3, 7, 11, 49),
 (12, 1, 5, 11, 33),
 (13, 1, 5, 12, 37),
-(14, 5, 5, 11, 33);
+(14, 5, 5, 11, 33),
+(16, 6, 1, 11, 1),
+(17, 6, 1, 12, 5),
+(18, 7, 5, 11, 33),
+(19, 9, 3, 11, 17);
 
 -- --------------------------------------------------------
 
@@ -273,9 +289,9 @@ CREATE TABLE `student_subjects` (
 --
 
 INSERT INTO `student_subjects` (`enrollment_id`, `student_id`, `subject_id`, `status`, `school_year`) VALUES
-(65, 1, 33, 'Dropped', '2025-2026'),
-(66, 1, 34, 'Dropped', '2025-2026'),
-(67, 1, 35, 'Dropped', '2025-2026'),
+(65, 1, 33, 'Enrolled', '2025-2026'),
+(66, 1, 34, 'Enrolled', '2025-2026'),
+(67, 1, 35, 'Enrolled', '2025-2026'),
 (68, 1, 36, 'Enrolled', '2025-2026'),
 (69, 1, 37, 'Enrolled', '2025-2026'),
 (70, 1, 38, 'Enrolled', '2025-2026'),
@@ -296,7 +312,23 @@ INSERT INTO `student_subjects` (`enrollment_id`, `student_id`, `subject_id`, `st
 (101, 2, 5, 'Enrolled', '2025-2026'),
 (102, 2, 6, 'Enrolled', '2025-2026'),
 (103, 2, 7, 'Enrolled', '2025-2026'),
-(104, 2, 8, 'Enrolled', '2025-2026');
+(104, 2, 8, 'Enrolled', '2025-2026'),
+(129, 4, 1, 'Enrolled', '2025-2026'),
+(130, 4, 2, 'Enrolled', '2025-2026'),
+(131, 4, 3, 'Enrolled', '2025-2026'),
+(132, 4, 4, 'Enrolled', '2025-2026'),
+(133, 4, 5, 'Enrolled', '2025-2026'),
+(134, 4, 6, 'Enrolled', '2025-2026'),
+(135, 4, 7, 'Enrolled', '2025-2026'),
+(136, 4, 8, 'Enrolled', '2025-2026'),
+(137, 7, 33, 'Enrolled', '2025-2026'),
+(138, 7, 34, 'Enrolled', '2025-2026'),
+(139, 7, 35, 'Enrolled', '2025-2026'),
+(140, 7, 36, 'Enrolled', '2025-2026'),
+(141, 7, 37, 'Enrolled', '2025-2026'),
+(142, 7, 38, 'Enrolled', '2025-2026'),
+(143, 7, 39, 'Enrolled', '2025-2026'),
+(144, 7, 40, 'Enrolled', '2025-2026');
 
 -- --------------------------------------------------------
 
@@ -449,7 +481,6 @@ CREATE TABLE `teacher` (
   `address1` varchar(100) NOT NULL,
   `address2` varchar(100) NOT NULL,
   `strand_id` int(11) NOT NULL,
-  `subject_id` int(11) NOT NULL,
   `hire_date` date NOT NULL,
   `image_path` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -458,9 +489,10 @@ CREATE TABLE `teacher` (
 -- Dumping data for table `teacher`
 --
 
-INSERT INTO `teacher` (`teacher_id`, `user_id`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `gender`, `email`, `phone_number`, `address1`, `address2`, `strand_id`, `subject_id`, `hire_date`, `image_path`) VALUES
-(1, 6, 'Bern', 'Bastion', 'Balay', '2006-09-16', 'Male', 'Balay@gmail.com', '09243422442', 'dasda', 'dadasd', 1, 1, '2025-09-15', 'D:\\PICTURES\\boy_pick_left_1.png'),
-(2, 7, 'Sheenna', 'Abecia', 'Clarito', '2005-09-05', 'Male', 'Sheena@gmail.com', '0896979', 'Buena Oro', 'Macasandig', 5, 1, '2025-09-15', 'D:\\PICTURES\\boy_pick_left_2.png');
+INSERT INTO `teacher` (`teacher_id`, `user_id`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `gender`, `email`, `phone_number`, `address1`, `address2`, `strand_id`, `hire_date`, `image_path`) VALUES
+(1, 6, 'Bern', 'Bastion', 'Balay', '2006-09-16', 'Male', 'Balay@gmail.com', '09243422442', 'dasda', 'dadasd', 1, '2025-09-15', 'D:\\PICTURES\\boy_pick_left_1.png'),
+(2, 7, 'Sheenna', 'Abecia', 'Clarito', '2005-09-05', 'Male', 'Sheena@gmail.com', '0896979', 'Buena Oro', 'Macasandig', 5, '2025-09-15', 'D:\\PICTURES\\boy_pick_left_2.png'),
+(3, 9, 'Villy', 'Vastinberg', 'Vilofol', '1999-09-18', 'Male', 'bol@gmail.com', '09988771651', 'djaskdja', 'dasda', 1, '2025-09-24', 'D:\\PICTURES\\boy_pick_down_2.png');
 
 -- --------------------------------------------------------
 
@@ -501,12 +533,17 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `type_id`) VALUES
 (1, 'hdfhhdfhh', 'hdfhhdfhh20250904', 2),
-(2, 'clarito', 'clarito20250904', 2),
+(2, '\"2\"', 'clarito20250904', 2),
 (3, '3', 'bagtong20070907', 2),
 (4, '4', 'balaba20050820', 2),
 (5, '5', 'clarito19880915', 2),
 (6, '1', 'balay20060916', 3),
-(7, '2', 'clarito20050905', 3);
+(7, '2', 'clarito20050905', 3),
+(8, '6', 'clarito19960907', 2),
+(9, '02-3', 'vilofol19990918', 3),
+(10, '105220150089', 'micah20031010', 2),
+(11, '404551221678', 'lawren20061013', 2),
+(12, '109660713467', 'reyes20010602', 2);
 
 --
 -- Indexes for dumped tables
@@ -582,8 +619,7 @@ ALTER TABLE `teacher`
   ADD PRIMARY KEY (`teacher_id`),
   ADD UNIQUE KEY `email` (`email`),
   ADD KEY `user_id` (`user_id`),
-  ADD KEY `strand_id` (`strand_id`),
-  ADD KEY `subject_id` (`subject_id`);
+  ADD KEY `strand_id` (`strand_id`);
 
 --
 -- Indexes for table `type`
@@ -613,7 +649,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `grade_entry`
 --
 ALTER TABLE `grade_entry`
-  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT for table `section`
@@ -631,19 +667,19 @@ ALTER TABLE `strands`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `student_strand`
 --
 ALTER TABLE `student_strand`
-  MODIFY `student_strand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `student_strand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `student_subjects`
 --
 ALTER TABLE `student_subjects`
-  MODIFY `enrollment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `enrollment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT for table `subject`
@@ -655,7 +691,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `type`
@@ -667,7 +703,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
@@ -725,8 +761,7 @@ ALTER TABLE `subject`
 --
 ALTER TABLE `teacher`
   ADD CONSTRAINT `teacher_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `teacher_ibfk_2` FOREIGN KEY (`strand_id`) REFERENCES `strands` (`strand_id`),
-  ADD CONSTRAINT `teacher_ibfk_3` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`);
+  ADD CONSTRAINT `teacher_ibfk_2` FOREIGN KEY (`strand_id`) REFERENCES `strands` (`strand_id`);
 
 --
 -- Constraints for table `user`

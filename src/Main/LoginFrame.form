@@ -81,7 +81,7 @@
                                           <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="userPass" min="-2" pref="288" max="-2" attributes="0"/>
-                                              <Component id="userID" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <Component id="usernameField" min="-2" pref="288" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -117,7 +117,7 @@
                   </Group>
                   <Component id="jLabel3" min="-2" pref="28" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="userID" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="usernameField" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" pref="28" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -164,15 +164,15 @@
             <Property name="text" type="java.lang.String" value="Password: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="userID">
+        <Component class="javax.swing.JTextField" name="usernameField">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="16" style="1"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userIDActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="userIDKeyTyped"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernameFieldActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="usernameFieldKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">

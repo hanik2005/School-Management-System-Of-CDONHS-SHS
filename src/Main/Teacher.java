@@ -5,13 +5,18 @@
 package Main;
 
 import db.MyConnection;
+import java.awt.Image;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,6 +27,7 @@ public class Teacher {
 
     Connection con = MyConnection.getConnection();
     PreparedStatement ps;
+    ResultSet rs;
 
     public int getMax() {
         int id = 0;
@@ -219,5 +225,110 @@ public class Teacher {
 
         }
 
+    }
+    public void setInformationStrandDatabase(int teacherId, JTextField strandTxt) {
+        try {
+            String sql = "SELECT s.strand_name "
+                    + "FROM teacher t "
+                    + "JOIN strands s ON t.strand_id = s.strand_id "
+                    + "WHERE t.teacher_id = ?";
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, teacherId);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String strandName = rs.getString("strand_name");
+
+                if (strandTxt != null) {
+                    strandTxt.setText(strandName);
+                }
+            }
+        } catch (SQLException ex) {
+            System.getLogger(Teacher.class.getName())
+                    .log(System.Logger.Level.ERROR, "Database error in setInformationStrandDatabase", ex);
+        }
+    }
+
+    public void loadStudentInformation(int teacherId,
+            JTextField idTxt, JTextField nameTxt, JTextField genderTxt, JTextField dateTxt,
+            JTextField emailTxt, JTextField phoneTxt,
+            JTextField address1Txt, JTextField address2Txt, JTextField hireDate,
+            JLabel imagePanel3) {
+
+        String sql = "SELECT * FROM teacher WHERE teacher_id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, teacherId);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    // Student basic info
+                    idTxt.setText(rs.getString("teacher_id"));
+
+                    String middleName = rs.getString("middle_name");
+                    String middleInitial = (middleName != null && !middleName.isEmpty())
+                            ? middleName.charAt(0) + "."
+                            : "";
+
+                    String fullName = rs.getString("first_name") + " "
+                            + middleInitial + " "
+                            + rs.getString("last_name");
+                    nameTxt.setText(fullName.trim());
+
+                    genderTxt.setText(rs.getString("gender"));
+                    dateTxt.setText(rs.getString("date_of_birth"));
+                    emailTxt.setText(rs.getString("email"));
+                    phoneTxt.setText(rs.getString("phone_number"));
+                    address1Txt.setText(rs.getString("address1"));
+
+                    String address2 = rs.getString("address2");
+                    address2Txt.setText(
+                            address2 != null && !address2.isEmpty() ? address2 : "NULL"
+                    );
+                    hireDate.setText(rs.getString("hire_date"));
+                    
+
+                    // File paths
+                    String imagePathDB = rs.getString("image_path");
+
+                    // Default assets
+                    String defaultImagePath = getClass().getResource("/assets/default.png").getPath();
+
+                    // Profile Image
+                    if (imagePathDB != null) {
+                        File imgFile = new File(imagePathDB);
+                        if (imgFile.exists() && !imgFile.isDirectory()) {
+                            imagePanel3.setIcon(imageAdjust(imagePathDB, null, imagePanel3));
+                        } else {
+                            imagePanel3.setIcon(imageAdjust(defaultImagePath, null, imagePanel3));
+                        }
+                    } else {
+                        imagePanel3.setIcon(imageAdjust(defaultImagePath, null, imagePanel3));
+                    }
+
+                 
+                }
+            }
+        } catch (SQLException ex) {
+            System.getLogger(Teacher.class.getName()).log(System.Logger.Level.ERROR, "Error loading student information", ex);
+        }
+    }
+    public ImageIcon imageAdjust(String path, byte[] pic, JLabel targetLabel) {
+        ImageIcon myImage = null;
+
+        if (path != null) {
+            myImage = new ImageIcon(path);
+        } else {
+            myImage = new ImageIcon(pic);
+        }
+
+        Image img = myImage.getImage();
+        Image newImage = img.getScaledInstance(
+                targetLabel.getWidth(),
+                targetLabel.getHeight(),
+                Image.SCALE_SMOOTH
+        );
+
+        return new ImageIcon(newImage);
     }
 }

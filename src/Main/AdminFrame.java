@@ -5,6 +5,7 @@
 package Main;
 
 import static Main.Home.sectionClassBox;
+import static Main.Home.stuStrandId;
 import db.MyConnection;
 import design.BackgroundPanel;
 import java.awt.BorderLayout;
@@ -63,11 +64,12 @@ public class AdminFrame extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdminFrame.class.getName());
 
     Student student = new Student();
+    private static int adminId;
     DefaultTableModel subjectModel;
     Strand strand = new Strand();
     Grade grade = new Grade();
     User user = new User();
-    Home home = new Home();
+    //Home home = new Home();
     Teacher teacher = new Teacher();
     ListOfHonor marksSheet = new ListOfHonor();
     Connection con = MyConnection.getConnection();
@@ -83,7 +85,8 @@ public class AdminFrame extends javax.swing.JFrame {
     /**
      * Creates new form AdminFrame
      */
-    public AdminFrame() {
+    public AdminFrame(int adminId) {
+        this.adminId = adminId;
         initComponents();
         init();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -142,6 +145,27 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel27.add(bgPanel6, BorderLayout.CENTER);
         jPanel27.revalidate();
         jPanel27.repaint();
+        
+        BackgroundPanel bgPanel7 = new BackgroundPanel("/assets/background.jpg");
+        bgPanel7.setLayout(new BorderLayout());
+        jPanel38.setLayout(new BorderLayout());
+        jPanel38.add(bgPanel7, BorderLayout.CENTER);
+        jPanel38.revalidate();
+        jPanel38.repaint();
+        
+        BackgroundPanel bgPanel8 = new BackgroundPanel("/assets/background.jpg");
+        bgPanel8.setLayout(new BorderLayout());
+        jPanel41.setLayout(new BorderLayout());
+        jPanel41.add(bgPanel8, BorderLayout.CENTER);
+        jPanel41.revalidate();
+        jPanel41.repaint();
+        
+        BackgroundPanel bgPanel9 = new BackgroundPanel("/assets/background.jpg");
+        bgPanel9.setLayout(new BorderLayout());
+        jPanel31.setLayout(new BorderLayout());
+        jPanel31.add(bgPanel9, BorderLayout.CENTER);
+        jPanel31.revalidate();
+        jPanel31.repaint();
     }
 
     public void tableViewStudent() {
@@ -259,6 +283,141 @@ public class AdminFrame extends javax.swing.JFrame {
         sectionClassBox.removeAllItems();
         ClassListTable.setModel(new DefaultTableModel(null, new Object[]{"LRN", "Student_Name"}));
     }
+    public boolean isEmptyStudent() {
+        // First Name
+        if (stuFname.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student First Name is missing");
+            return false;
+        }
+        if (stuFname.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "First name must not exceed 50 characters");
+            return false;
+        }
+
+        // Middle Name
+        if (stuMiddleName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student Middle Name is missing");
+            return false;
+        }
+        if (stuMiddleName.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "Middle name must not exceed 50 characters");
+            return false;
+        }
+
+        // Last Name
+        if (stuLastName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student Last Name is missing");
+            return false;
+        }
+        if (stuLastName.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "Last name must not exceed 50 characters");
+            return false;
+        }
+
+        // Date of Birth
+        if (stuBirth.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Student date of birth is missing");
+            return false;
+        }
+        if (stuBirth.getDate().compareTo(new Date()) > 0) {
+            JOptionPane.showMessageDialog(this, "No Student from the future are allowed");
+            return false;
+        }
+
+        // Email
+        if (stuEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student email is missing");
+            return false;
+        }
+        if (!stuEmail.getText().matches("^.+@.+\\..+$")) {
+            JOptionPane.showMessageDialog(this, "Invalid Email Address");
+            return false;
+        }
+        if (stuEmail.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "Email must not exceed 50 characters");
+            return false;
+        }
+
+        // Phone
+        if (stuPhone.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student phone number is missing");
+            return false;
+        }
+        if (!stuPhone.getText().matches("\\d{11}")) {
+            JOptionPane.showMessageDialog(this, "Phone number must be exactly 11 digits");
+            return false;
+        }
+
+        // Mother Name
+        if (stuMotherName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student Mother Name is missing");
+            return false;
+        }
+        if (stuMotherName.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "Mother name must not exceed 50 characters");
+            return false;
+        }
+
+        // Father Name
+        if (stuFatherName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student Father Name is missing");
+            return false;
+        }
+        if (stuFatherName.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "Father name must not exceed 50 characters");
+            return false;
+        }
+
+        // Address1
+        if (stuAddress1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Address Line 1 is missing");
+            return false;
+        }
+        if (stuAddress1.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "Address Line 1 must not exceed 50 characters");
+            return false;
+        }
+
+        // Address2
+//        if (stuAddress2.getText().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Address Line 2 is missing");
+//            return false;
+//        }
+//        if (stuAddress2.getText().length() > 50) {
+//            JOptionPane.showMessageDialog(this, "Address Line 2 must not exceed 50 characters");
+//            return false;
+//        }
+
+        // Birth Certificate
+//        if (stuBirthCer.getText().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Birth Certificate path is missing");
+//            return false;
+//        }
+//
+//        // Form 137
+//        if (stuForm137.getText().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Form 137 path is missing");
+//            return false;
+//        }
+
+        // LRN
+        if (stuLRN.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "LRN is missing");
+            return false;
+        }
+        if (!stuLRN.getText().matches("\\d{12}")) {
+            JOptionPane.showMessageDialog(this, "LRN must be exactly 12 digits");
+            return false;
+        }
+
+        // Image
+//        if (imagePath == null) {
+//            JOptionPane.showMessageDialog(this, "Please add your image");
+//            return false;
+//        }
+
+        return true;
+    }
 
     public boolean isEmptyTeacher() {
         if (teacherFirstName.getText().isEmpty()) {
@@ -343,6 +502,16 @@ public class AdminFrame extends javax.swing.JFrame {
         }
 
         return true;
+    }
+     public void clearStrand() {
+        //strandId.setText(String.valueOf(strand.getMax()));
+        stuStrandId.setText(null);
+        stuGradeLevel.setSelectedIndex(0);
+        stuStrand.setSelectedIndex(0);
+        stuSection.setSelectedIndex(0);
+        StudentTrackTable.clearSelection();
+        stuStrandSearchAdminField.setText(null);
+
     }
 
     public boolean check() {
@@ -3142,7 +3311,7 @@ public class AdminFrame extends javax.swing.JFrame {
         if (output == JFileChooser.APPROVE_OPTION) {
             File selectFile = file.getSelectedFile();
             String path = selectFile.getAbsolutePath();
-            imagePanel.setIcon(home.imageAdjust(path, null, imagePanel));
+            imagePanel.setIcon(imageAdjust(path, null, imagePanel));
             imagePath = path;
 
         } else {
@@ -3171,7 +3340,7 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void updateBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtActionPerformed
-        if (home.isEmptyStudent()) {
+        if (isEmptyStudent()) {
             int id = Integer.parseInt(stuID.getText());
             if (student.isidExist(id)) {
                 if (!check()) {
@@ -3196,7 +3365,7 @@ public class AdminFrame extends javax.swing.JFrame {
                     StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
                         "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
                     student.getStudentValue(StudentTable, "");
-                    home.clearStudent();
+                    clearStudent();
 
                 }
 
@@ -3210,9 +3379,9 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void addNewBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewBtActionPerformed
         int id = student.getMax();
-        String username = student.getLRN(id);
+        String username = stuLRN.getText();
         int userId = user.getMax();
-        if (home.isEmptyStudent()) {
+        if (isEmptyStudent()) {
             if (!student.isEmailExist(stuEmail.getText(), id)) {
                 if (!student.isPhoneExist(stuPhone.getText(), id)) {
 
@@ -3261,7 +3430,7 @@ public class AdminFrame extends javax.swing.JFrame {
                     StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
                         "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
                     student.getStudentValue(StudentTable, stuSearchField_1.getText());
-                    home.clearStudent();
+                    clearStudent();
                 } else {
                     JOptionPane.showMessageDialog(this, "This phone number already exist");
 
@@ -3364,7 +3533,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 String path = rs.getString("image_path");
                 imagePath = path;
                 if (path != null && !path.isEmpty()) {
-                    imagePanel.setIcon(home.imageAdjust(path, null, imagePanel));
+                    imagePanel.setIcon(imageAdjust(path, null, imagePanel));
                 } else {
                     imagePanel.setIcon(null); // clear if no image
                 }
@@ -3382,7 +3551,7 @@ public class AdminFrame extends javax.swing.JFrame {
             StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
                 "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
             student.getStudentValue(StudentTable, "");
-            home.clearStudent();
+            clearStudent();
 
         } else {
             JOptionPane.showMessageDialog(this, "the student doesn't exist");
@@ -3506,7 +3675,7 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void stuStrandClearBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandClearBtActionPerformed
-        home.clearStrand();
+       clearStrand();
     }//GEN-LAST:event_stuStrandClearBtActionPerformed
 
     private void stuSaveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSaveBtActionPerformed
@@ -3644,7 +3813,7 @@ public class AdminFrame extends javax.swing.JFrame {
             // Refresh table and clear fields
             StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_Strand_ID", "Student_ID", "Grade_Level", "Strand", "Section"}));
             strand.loadStudentStrandsTable(StudentTrackTable, "");
-            home.clearStrand();
+            clearStrand();
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Please enter a valid numeric Student ID");
@@ -3677,7 +3846,7 @@ public class AdminFrame extends javax.swing.JFrame {
         if (output == JFileChooser.APPROVE_OPTION) {
             File selectFile = file.getSelectedFile();
             String path = selectFile.getAbsolutePath();
-            teacherImagePanel.setIcon(home.imageAdjust(path, null, teacherImagePanel));
+            teacherImagePanel.setIcon(imageAdjust(path, null, teacherImagePanel));
             imagePath = path;
 
         } else {
@@ -3895,7 +4064,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         String path = model.getValueAt(rowIndex, 13).toString();
         imagePath = path;
-        teacherImagePanel.setIcon(home.imageAdjust(path, null, teacherImagePanel));//get image path and called image adjust method path to image
+        teacherImagePanel.setIcon(imageAdjust(path, null, teacherImagePanel));//get image path and called image adjust method path to image
     }//GEN-LAST:event_TeacherTableMouseClicked
 
     private void teacherDelBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherDelBtActionPerformed
@@ -4066,7 +4235,7 @@ public class AdminFrame extends javax.swing.JFrame {
         try {
             String studentId = stuSubjectIDManage.getText().trim();
 
-            String schoolYear = home.getCurrentSchoolYear();
+            String schoolYear = getCurrentSchoolYear();
 
             Subject subjectHelper = new Subject();
             subjectHelper.saveStudentSubjects(studentId, SubjectTable, schoolYear);
@@ -4211,6 +4380,7 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_classListPrintBtActionPerformed
 
+    
     private ImageIcon imageAdjust(String path, byte[] pic) {
         ImageIcon myImage = null;
         if (path != null) {
@@ -4241,6 +4411,24 @@ public class AdminFrame extends javax.swing.JFrame {
         java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("EEEE, MMMM dd, yyyy");
         txtDate.setText(df.format(date));
     }
+    public ImageIcon imageAdjust(String path, byte[] pic, JLabel targetLabel) {
+        ImageIcon myImage = null;
+
+        if (path != null) {
+            myImage = new ImageIcon(path);
+        } else {
+            myImage = new ImageIcon(pic);
+        }
+
+        Image img = myImage.getImage();
+        Image newImage = img.getScaledInstance(
+                targetLabel.getWidth(),
+                targetLabel.getHeight(),
+                Image.SCALE_SMOOTH
+        );
+
+        return new ImageIcon(newImage);
+    }
 
     /**
      * @param args the command line arguments
@@ -4264,7 +4452,7 @@ public class AdminFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new AdminFrame().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new AdminFrame(adminId).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
