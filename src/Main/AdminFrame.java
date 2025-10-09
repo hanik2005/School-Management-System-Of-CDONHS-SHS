@@ -752,9 +752,9 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(135, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(243, 244, 246));
 
-        jPanel3.setBackground(new java.awt.Color(102, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(30, 58, 138));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -768,7 +768,7 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 43)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ADMIN PANEL");
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo_resized_50x50.jpg"))); // NOI18N
@@ -812,21 +812,24 @@ public class AdminFrame extends javax.swing.JFrame {
         jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
         jTabbedPane1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
 
-        jPanel2.setBackground(new java.awt.Color(102, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(30, 58, 138));
 
-        jPanel4.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel4.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel4.setForeground(new java.awt.Color(0, 0, 0));
 
         stuID.setEditable(false);
         stuID.setBackground(new java.awt.Color(204, 204, 204));
         stuID.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         stuFname.setBackground(java.awt.Color.white);
         stuFname.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuFname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         stuMotherName.setBackground(java.awt.Color.white);
         stuMotherName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuMotherName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuMotherName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuMotherNameActionPerformed(evt);
@@ -835,9 +838,11 @@ public class AdminFrame extends javax.swing.JFrame {
 
         stuAddress1.setBackground(java.awt.Color.white);
         stuAddress1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuAddress1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         stuAddress2.setBackground(java.awt.Color.white);
         stuAddress2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuAddress2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuAddress2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuAddress2ActionPerformed(evt);
@@ -869,6 +874,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel61.setText("Date Of Birth");
 
         stuBirth.setBackground(java.awt.Color.white);
+        stuBirth.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuBirth.setDateFormatString("yyyy-MM-dd");
 
         jLabel62.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -877,6 +883,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         stuGender.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        stuGender.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuGender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuGenderActionPerformed(evt);
@@ -889,6 +896,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         stuEmail.setBackground(java.awt.Color.white);
         stuEmail.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         jLabel64.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel64.setForeground(new java.awt.Color(0, 0, 0));
@@ -896,6 +904,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         stuPhone.setBackground(java.awt.Color.white);
         stuPhone.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuPhone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuPhone.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 stuPhoneKeyTyped(evt);
@@ -908,6 +917,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         stuFatherName.setBackground(java.awt.Color.white);
         stuFatherName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuFatherName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuFatherName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuFatherNameActionPerformed(evt);
@@ -922,7 +932,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Form 137");
 
-        browseBirthCertificate.setBackground(new java.awt.Color(102, 255, 255));
+        browseBirthCertificate.setBackground(new java.awt.Color(251, 191, 36));
         browseBirthCertificate.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         browseBirthCertificate.setForeground(new java.awt.Color(0, 0, 0));
         browseBirthCertificate.setText("Browse");
@@ -932,7 +942,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        browseForm137.setBackground(new java.awt.Color(102, 255, 255));
+        browseForm137.setBackground(new java.awt.Color(251, 191, 36));
         browseForm137.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         browseForm137.setForeground(new java.awt.Color(0, 0, 0));
         browseForm137.setText("Browse");
@@ -944,6 +954,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         stuBirthCer.setEditable(false);
         stuBirthCer.setBackground(new java.awt.Color(204, 204, 204));
+        stuBirthCer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuBirthCer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuBirthCerActionPerformed(evt);
@@ -952,6 +963,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         stuForm137.setEditable(false);
         stuForm137.setBackground(new java.awt.Color(204, 204, 204));
+        stuForm137.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -959,6 +971,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         stuMiddleName.setBackground(java.awt.Color.white);
         stuMiddleName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuMiddleName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -966,6 +979,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         stuLastName.setBackground(java.awt.Color.white);
         stuLastName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuLastName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -1106,18 +1120,18 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel5.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel5.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        jPanel9.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel9.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        jPanel14.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel14.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel14.setForeground(new java.awt.Color(0, 0, 0));
 
         jPanel15.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 2, true));
+        jPanel15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 2, true));
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -1132,7 +1146,7 @@ public class AdminFrame extends javax.swing.JFrame {
             .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
         );
 
-        browseImg.setBackground(new java.awt.Color(102, 255, 255));
+        browseImg.setBackground(new java.awt.Color(251, 191, 36));
         browseImg.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         browseImg.setForeground(new java.awt.Color(0, 0, 0));
         browseImg.setText("Browse");
@@ -1175,8 +1189,8 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap(221, Short.MAX_VALUE))
         );
 
-        jPanel39.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel39.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel39.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel39.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel39.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -1185,6 +1199,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         stuLRN.setBackground(java.awt.Color.white);
         stuLRN.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuLRN.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuLRN.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 stuLRNKeyTyped(evt);
@@ -1238,10 +1253,10 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel8.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel8.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        jButton1.setBackground(new java.awt.Color(102, 255, 255));
+        jButton1.setBackground(new java.awt.Color(251, 191, 36));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Logout");
@@ -1251,7 +1266,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        updateBt.setBackground(new java.awt.Color(102, 255, 255));
+        updateBt.setBackground(new java.awt.Color(251, 191, 36));
         updateBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         updateBt.setForeground(new java.awt.Color(0, 0, 0));
         updateBt.setText("Update");
@@ -1261,7 +1276,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        addNewBt.setBackground(new java.awt.Color(102, 255, 255));
+        addNewBt.setBackground(new java.awt.Color(251, 191, 36));
         addNewBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         addNewBt.setForeground(new java.awt.Color(0, 0, 0));
         addNewBt.setText("Add New");
@@ -1271,7 +1286,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        Clear.setBackground(new java.awt.Color(102, 255, 255));
+        Clear.setBackground(new java.awt.Color(251, 191, 36));
         Clear.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Clear.setForeground(new java.awt.Color(0, 0, 0));
         Clear.setText("Clear");
@@ -1352,18 +1367,19 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Student", jPanel2);
 
-        jPanel10.setBackground(new java.awt.Color(153, 255, 255));
+        jPanel10.setBackground(new java.awt.Color(30, 58, 138));
 
-        jPanel11.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel11.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Search Student");
 
         stuSearchField_1.setBackground(new java.awt.Color(255, 255, 255));
+        stuSearchField_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
-        searchBt_1.setBackground(new java.awt.Color(153, 255, 204));
+        searchBt_1.setBackground(new java.awt.Color(251, 191, 36));
         searchBt_1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         searchBt_1.setForeground(new java.awt.Color(0, 0, 0));
         searchBt_1.setText("Search");
@@ -1373,7 +1389,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        stuRefresh_1.setBackground(new java.awt.Color(153, 255, 204));
+        stuRefresh_1.setBackground(new java.awt.Color(251, 191, 36));
         stuRefresh_1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuRefresh_1.setForeground(new java.awt.Color(0, 0, 0));
         stuRefresh_1.setText("Refresh");
@@ -1383,7 +1399,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        stuSort_1.setBackground(new java.awt.Color(153, 255, 204));
+        stuSort_1.setBackground(new java.awt.Color(251, 191, 36));
         stuSort_1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuSort_1.setForeground(new java.awt.Color(0, 0, 0));
         stuSort_1.setText("Sort");
@@ -1423,7 +1439,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel12.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel12.setBackground(new java.awt.Color(243, 244, 246));
 
         StudentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1448,10 +1464,10 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(StudentTable);
 
-        jPanel13.setBackground(new java.awt.Color(153, 255, 255));
-        jPanel13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 4, true));
+        jPanel13.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        delBt.setBackground(new java.awt.Color(102, 255, 255));
+        delBt.setBackground(new java.awt.Color(251, 191, 36));
         delBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         delBt.setForeground(new java.awt.Color(0, 0, 0));
         delBt.setText("Delete");
@@ -1461,7 +1477,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        stuPrint_1.setBackground(new java.awt.Color(102, 255, 255));
+        stuPrint_1.setBackground(new java.awt.Color(251, 191, 36));
         stuPrint_1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuPrint_1.setForeground(new java.awt.Color(0, 0, 0));
         stuPrint_1.setText("Print");
@@ -1535,14 +1551,14 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Student Table", jPanel10);
 
-        jPanel6.setBackground(new java.awt.Color(102, 255, 255));
+        jPanel6.setBackground(new java.awt.Color(30, 58, 138));
 
-        jPanel7.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel7.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel7.setForeground(new java.awt.Color(0, 0, 0));
 
-        jPanel36.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel36.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel36.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel36.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel36.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel66.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -1551,6 +1567,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         stuStrandSearchAdminField.setBackground(new java.awt.Color(255, 255, 255));
         stuStrandSearchAdminField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        stuStrandSearchAdminField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuStrandSearchAdminField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuStrandSearchAdminFieldActionPerformed(evt);
@@ -1562,7 +1579,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        stuStrandSearchBt.setBackground(new java.awt.Color(153, 255, 204));
+        stuStrandSearchBt.setBackground(new java.awt.Color(251, 191, 36));
         stuStrandSearchBt.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         stuStrandSearchBt.setForeground(new java.awt.Color(0, 0, 0));
         stuStrandSearchBt.setText("Search");
@@ -1604,6 +1621,7 @@ public class AdminFrame extends javax.swing.JFrame {
         stuStrandId.setBackground(new java.awt.Color(204, 204, 204));
         stuStrandId.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuStrandId.setForeground(new java.awt.Color(0, 0, 0));
+        stuStrandId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         jLabel19.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
@@ -1613,6 +1631,7 @@ public class AdminFrame extends javax.swing.JFrame {
         stuGradeLevel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         stuGradeLevel.setForeground(new java.awt.Color(0, 0, 0));
         stuGradeLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "11", "12" }));
+        stuGradeLevel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuGradeLevel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuGradeLevelActionPerformed(evt);
@@ -1623,6 +1642,7 @@ public class AdminFrame extends javax.swing.JFrame {
         stuStrand.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         stuStrand.setForeground(new java.awt.Color(0, 0, 0));
         stuStrand.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "STEM", "ABM", "HUMSS", "GAS", "TVL-ICT", "TVL-EIM", "TVL-HE" }));
+        stuStrand.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuStrand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuStrandActionPerformed(evt);
@@ -1644,6 +1664,7 @@ public class AdminFrame extends javax.swing.JFrame {
         stuSection.setBackground(new java.awt.Color(255, 255, 255));
         stuSection.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         stuSection.setForeground(new java.awt.Color(0, 0, 0));
+        stuSection.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuSection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSectionActionPerformed(evt);
@@ -1654,11 +1675,11 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                    .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1669,9 +1690,8 @@ public class AdminFrame extends javax.swing.JFrame {
                             .addComponent(stuStrandId)
                             .addComponent(stuSection, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(stuStrand, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(stuGradeLevel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(6, 6, 6)))
-                .addContainerGap())
+                            .addComponent(stuGradeLevel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(12, 12, 12))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1697,20 +1717,22 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
-        jPanel16.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel16.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel16.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel16.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        jPanel17.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel17.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel17.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel17.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        jPanel35.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel35.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel35.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel35.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
         jLabel22.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("Search Student");
 
-        stuSearchBt_2.setBackground(new java.awt.Color(153, 255, 204));
+        stuSearchField_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+
+        stuSearchBt_2.setBackground(new java.awt.Color(251, 191, 36));
         stuSearchBt_2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuSearchBt_2.setForeground(new java.awt.Color(0, 0, 0));
         stuSearchBt_2.setText("Search");
@@ -1720,7 +1742,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        stuRefresh_2.setBackground(new java.awt.Color(153, 255, 204));
+        stuRefresh_2.setBackground(new java.awt.Color(251, 191, 36));
         stuRefresh_2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuRefresh_2.setForeground(new java.awt.Color(0, 0, 0));
         stuRefresh_2.setText("Refresh");
@@ -1730,7 +1752,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        stuSort_2.setBackground(new java.awt.Color(153, 255, 204));
+        stuSort_2.setBackground(new java.awt.Color(251, 191, 36));
         stuSort_2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuSort_2.setForeground(new java.awt.Color(0, 0, 0));
         stuSort_2.setText("Sort");
@@ -1770,8 +1792,8 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        jPanel18.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel18.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel18.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel18.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
         StudentTrackTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1833,10 +1855,10 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel20.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel20.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel20.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel20.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        jButton2.setBackground(new java.awt.Color(102, 255, 255));
+        jButton2.setBackground(new java.awt.Color(251, 191, 36));
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Logout");
@@ -1846,7 +1868,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        stuStrandClearBt.setBackground(new java.awt.Color(102, 255, 255));
+        stuStrandClearBt.setBackground(new java.awt.Color(251, 191, 36));
         stuStrandClearBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuStrandClearBt.setForeground(new java.awt.Color(0, 0, 0));
         stuStrandClearBt.setText("Clear");
@@ -1856,7 +1878,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        stuSaveBt.setBackground(new java.awt.Color(102, 255, 255));
+        stuSaveBt.setBackground(new java.awt.Color(251, 191, 36));
         stuSaveBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuSaveBt.setForeground(new java.awt.Color(0, 0, 0));
         stuSaveBt.setText("Save");
@@ -1930,23 +1952,23 @@ public class AdminFrame extends javax.swing.JFrame {
                     .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 342, Short.MAX_VALUE)))
+                        .addGap(0, 346, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Student Strand", jPanel6);
 
-        jPanel37.setBackground(new java.awt.Color(102, 255, 255));
+        jPanel37.setBackground(new java.awt.Color(30, 58, 138));
 
-        jPanel38.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel38.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel38.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel38.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        jPanel40.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel40.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel40.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel40.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel40.setPreferredSize(new java.awt.Dimension(1380, 620));
 
-        jPanel46.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel46.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel46.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel46.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
         SubjectTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1982,21 +2004,22 @@ public class AdminFrame extends javax.swing.JFrame {
             jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel46Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel47.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel47.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel47.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel47.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
         stuSubjectIDManage.setBackground(new java.awt.Color(255, 255, 255));
+        stuSubjectIDManage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuSubjectIDManage.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 stuSubjectIDManageKeyTyped(evt);
             }
         });
 
-        stuSubjectSearch.setBackground(new java.awt.Color(153, 255, 204));
+        stuSubjectSearch.setBackground(new java.awt.Color(251, 191, 36));
         stuSubjectSearch.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuSubjectSearch.setForeground(new java.awt.Color(0, 0, 0));
         stuSubjectSearch.setText("Search");
@@ -2006,7 +2029,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        stuGradeManageRefreshTable1.setBackground(new java.awt.Color(153, 255, 204));
+        stuGradeManageRefreshTable1.setBackground(new java.awt.Color(251, 191, 36));
         stuGradeManageRefreshTable1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuGradeManageRefreshTable1.setForeground(new java.awt.Color(0, 0, 0));
         stuGradeManageRefreshTable1.setText("Refresh");
@@ -2022,12 +2045,13 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jLabel40.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel40.setText("Student ID");
+        jLabel40.setText("Grade Level");
 
         gradeLevelSubjectBox.setBackground(new java.awt.Color(255, 255, 255));
         gradeLevelSubjectBox.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         gradeLevelSubjectBox.setForeground(new java.awt.Color(0, 0, 0));
         gradeLevelSubjectBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "11", "12" }));
+        gradeLevelSubjectBox.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         gradeLevelSubjectBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gradeLevelSubjectBoxActionPerformed(evt);
@@ -2051,7 +2075,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addComponent(stuSubjectSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(stuGradeManageRefreshTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
         jPanel47Layout.setVerticalGroup(
             jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2067,10 +2091,10 @@ public class AdminFrame extends javax.swing.JFrame {
             .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel48.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel48.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel48.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel48.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        clearSubjectManageBt.setBackground(new java.awt.Color(102, 255, 255));
+        clearSubjectManageBt.setBackground(new java.awt.Color(251, 191, 36));
         clearSubjectManageBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         clearSubjectManageBt.setForeground(new java.awt.Color(0, 0, 0));
         clearSubjectManageBt.setText("Clear");
@@ -2080,7 +2104,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        logoutFormGradeBt1.setBackground(new java.awt.Color(102, 255, 255));
+        logoutFormGradeBt1.setBackground(new java.awt.Color(251, 191, 36));
         logoutFormGradeBt1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         logoutFormGradeBt1.setForeground(new java.awt.Color(0, 0, 0));
         logoutFormGradeBt1.setText("Logout");
@@ -2090,7 +2114,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        stuSubjectSaveBt.setBackground(new java.awt.Color(102, 255, 255));
+        stuSubjectSaveBt.setBackground(new java.awt.Color(251, 191, 36));
         stuSubjectSaveBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuSubjectSaveBt.setForeground(new java.awt.Color(0, 0, 0));
         stuSubjectSaveBt.setText("Save");
@@ -2160,14 +2184,14 @@ public class AdminFrame extends javax.swing.JFrame {
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel38Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel40, javax.swing.GroupLayout.DEFAULT_SIZE, 1348, Short.MAX_VALUE)
+                .addComponent(jPanel40, javax.swing.GroupLayout.DEFAULT_SIZE, 1336, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel38Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel40, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+                .addComponent(jPanel40, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2175,28 +2199,32 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel37.setLayout(jPanel37Layout);
         jPanel37Layout.setHorizontalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel37Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel37Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel37Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Student Subjects", jPanel37);
 
-        jPanel41.setBackground(new java.awt.Color(102, 255, 255));
+        jPanel41.setBackground(new java.awt.Color(30, 58, 138));
 
-        jPanel42.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel42.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel42.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel42.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel42.setForeground(new java.awt.Color(0, 0, 0));
 
-        jPanel43.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel43.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel43.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel43.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel43.setForeground(new java.awt.Color(0, 0, 0));
 
-        classListSearchBt.setBackground(new java.awt.Color(153, 255, 204));
+        classListSearchBt.setBackground(new java.awt.Color(251, 191, 36));
         classListSearchBt.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         classListSearchBt.setForeground(new java.awt.Color(0, 0, 0));
         classListSearchBt.setText("Search");
@@ -2214,6 +2242,7 @@ public class AdminFrame extends javax.swing.JFrame {
         gradeLevelClassBox.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         gradeLevelClassBox.setForeground(new java.awt.Color(0, 0, 0));
         gradeLevelClassBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "11", "12" }));
+        gradeLevelClassBox.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         gradeLevelClassBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gradeLevelClassBoxActionPerformed(evt);
@@ -2223,6 +2252,7 @@ public class AdminFrame extends javax.swing.JFrame {
         strandClassBox.setBackground(new java.awt.Color(255, 255, 255));
         strandClassBox.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         strandClassBox.setForeground(new java.awt.Color(0, 0, 0));
+        strandClassBox.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         strandClassBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 strandClassBoxActionPerformed(evt);
@@ -2236,6 +2266,7 @@ public class AdminFrame extends javax.swing.JFrame {
         sectionClassBox.setBackground(new java.awt.Color(255, 255, 255));
         sectionClassBox.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         sectionClassBox.setForeground(new java.awt.Color(0, 0, 0));
+        sectionClassBox.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         sectionClassBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sectionClassBoxActionPerformed(evt);
@@ -2310,10 +2341,10 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jScrollPane7.setViewportView(ClassListTable);
 
-        jPanel49.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel49.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel49.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel49.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        classListLogoutBt.setBackground(new java.awt.Color(102, 255, 255));
+        classListLogoutBt.setBackground(new java.awt.Color(251, 191, 36));
         classListLogoutBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         classListLogoutBt.setForeground(new java.awt.Color(0, 0, 0));
         classListLogoutBt.setText("Logout");
@@ -2323,7 +2354,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        classListClearBt.setBackground(new java.awt.Color(102, 255, 255));
+        classListClearBt.setBackground(new java.awt.Color(251, 191, 36));
         classListClearBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         classListClearBt.setForeground(new java.awt.Color(0, 0, 0));
         classListClearBt.setText("Clear");
@@ -2333,7 +2364,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        classListPrintBt.setBackground(new java.awt.Color(102, 255, 255));
+        classListPrintBt.setBackground(new java.awt.Color(251, 191, 36));
         classListPrintBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         classListPrintBt.setForeground(new java.awt.Color(0, 0, 0));
         classListPrintBt.setText("Print");
@@ -2410,24 +2441,28 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Class List", jPanel41);
 
-        jPanel19.setBackground(new java.awt.Color(102, 255, 255));
+        jPanel19.setBackground(new java.awt.Color(30, 58, 138));
 
-        jPanel21.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel21.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel21.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel21.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel21.setForeground(new java.awt.Color(0, 0, 0));
 
         teacherID.setEditable(false);
         teacherID.setBackground(new java.awt.Color(204, 204, 204));
         teacherID.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        teacherID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         teacherFirstName.setBackground(java.awt.Color.white);
         teacherFirstName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        teacherFirstName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         teacherAddress1.setBackground(java.awt.Color.white);
         teacherAddress1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        teacherAddress1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         teacherAddress2.setBackground(java.awt.Color.white);
         teacherAddress2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        teacherAddress2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         teacherAddress2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teacherAddress2ActionPerformed(evt);
@@ -2455,6 +2490,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel67.setText("Date Of Birth");
 
         teacherBirth.setBackground(java.awt.Color.white);
+        teacherBirth.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         teacherBirth.setDateFormatString("yyyy-MM-dd");
 
         jLabel68.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -2463,6 +2499,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         teacherGender.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         teacherGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        teacherGender.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         teacherGender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teacherGenderActionPerformed(evt);
@@ -2475,6 +2512,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         teacherEmail.setBackground(java.awt.Color.white);
         teacherEmail.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        teacherEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         jLabel70.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel70.setForeground(new java.awt.Color(0, 0, 0));
@@ -2482,6 +2520,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         teacherPhone.setBackground(java.awt.Color.white);
         teacherPhone.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        teacherPhone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         teacherPhone.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 teacherPhoneKeyTyped(evt);
@@ -2494,6 +2533,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         teacherMidName.setBackground(java.awt.Color.white);
         teacherMidName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        teacherMidName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         jLabel28.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(0, 0, 0));
@@ -2501,6 +2541,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         teacherLastName.setBackground(java.awt.Color.white);
         teacherLastName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        teacherLastName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         jLabel32.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(0, 0, 0));
@@ -2510,6 +2551,7 @@ public class AdminFrame extends javax.swing.JFrame {
         teacherStrand.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         teacherStrand.setForeground(new java.awt.Color(0, 0, 0));
         teacherStrand.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "STEM", "ABM", "HUMSS", "GAS", "TVL-ICT", "TVL-EIM", "TVL-HE" }));
+        teacherStrand.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         teacherStrand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teacherStrandActionPerformed(evt);
@@ -2625,18 +2667,18 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
-        jPanel22.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel22.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel22.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel22.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        jPanel23.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel23.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel23.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel23.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        jPanel24.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel24.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel24.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel24.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel24.setForeground(new java.awt.Color(0, 0, 0));
 
         jPanel25.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel25.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 2, true));
+        jPanel25.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 2, true));
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
@@ -2651,7 +2693,7 @@ public class AdminFrame extends javax.swing.JFrame {
             .addComponent(teacherImagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
         );
 
-        teacherBrowseImg.setBackground(new java.awt.Color(102, 255, 255));
+        teacherBrowseImg.setBackground(new java.awt.Color(251, 191, 36));
         teacherBrowseImg.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         teacherBrowseImg.setForeground(new java.awt.Color(0, 0, 0));
         teacherBrowseImg.setText("Browse");
@@ -2691,7 +2733,7 @@ public class AdminFrame extends javax.swing.JFrame {
                         .addComponent(jLabel29)
                         .addGap(56, 56, 56)
                         .addComponent(teacherBrowseImg, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
@@ -2705,13 +2747,16 @@ public class AdminFrame extends javax.swing.JFrame {
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanel26.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel26.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel26.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel26.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        jButton3.setBackground(new java.awt.Color(102, 255, 255));
+        jButton3.setBackground(new java.awt.Color(251, 191, 36));
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("Logout");
@@ -2721,7 +2766,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        updateBt1.setBackground(new java.awt.Color(102, 255, 255));
+        updateBt1.setBackground(new java.awt.Color(251, 191, 36));
         updateBt1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         updateBt1.setForeground(new java.awt.Color(0, 0, 0));
         updateBt1.setText("Update");
@@ -2731,7 +2776,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        teacherAddNewBt.setBackground(new java.awt.Color(102, 255, 255));
+        teacherAddNewBt.setBackground(new java.awt.Color(251, 191, 36));
         teacherAddNewBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         teacherAddNewBt.setForeground(new java.awt.Color(0, 0, 0));
         teacherAddNewBt.setText("Add New");
@@ -2741,7 +2786,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        teacherClear.setBackground(new java.awt.Color(102, 255, 255));
+        teacherClear.setBackground(new java.awt.Color(251, 191, 36));
         teacherClear.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         teacherClear.setForeground(new java.awt.Color(0, 0, 0));
         teacherClear.setText("Clear");
@@ -2822,18 +2867,19 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Teacher", jPanel19);
 
-        jPanel27.setBackground(new java.awt.Color(153, 255, 255));
+        jPanel27.setBackground(new java.awt.Color(30, 58, 138));
 
-        jPanel28.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel28.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel28.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel28.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
         jLabel31.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(0, 0, 0));
         jLabel31.setText("Search Teacher");
 
         teacherSearchField_3.setBackground(new java.awt.Color(255, 255, 255));
+        teacherSearchField_3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
-        teacherSearchBt_2.setBackground(new java.awt.Color(153, 255, 204));
+        teacherSearchBt_2.setBackground(new java.awt.Color(251, 191, 36));
         teacherSearchBt_2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         teacherSearchBt_2.setForeground(new java.awt.Color(0, 0, 0));
         teacherSearchBt_2.setText("Search");
@@ -2843,7 +2889,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        teacherRefresh_3.setBackground(new java.awt.Color(153, 255, 204));
+        teacherRefresh_3.setBackground(new java.awt.Color(251, 191, 36));
         teacherRefresh_3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         teacherRefresh_3.setForeground(new java.awt.Color(0, 0, 0));
         teacherRefresh_3.setText("Refresh");
@@ -2853,7 +2899,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        teacherSort_3.setBackground(new java.awt.Color(153, 255, 204));
+        teacherSort_3.setBackground(new java.awt.Color(251, 191, 36));
         teacherSort_3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         teacherSort_3.setForeground(new java.awt.Color(0, 0, 0));
         teacherSort_3.setText("Sort");
@@ -2893,7 +2939,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel29.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel29.setBackground(new java.awt.Color(243, 244, 246));
 
         TeacherTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2918,10 +2964,10 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(TeacherTable);
 
-        jPanel30.setBackground(new java.awt.Color(153, 255, 255));
-        jPanel30.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 4, true));
+        jPanel30.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel30.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        teacherDelBt.setBackground(new java.awt.Color(102, 255, 255));
+        teacherDelBt.setBackground(new java.awt.Color(251, 191, 36));
         teacherDelBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         teacherDelBt.setForeground(new java.awt.Color(0, 0, 0));
         teacherDelBt.setText("Delete");
@@ -2931,7 +2977,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        teacherPrint_3.setBackground(new java.awt.Color(102, 255, 255));
+        teacherPrint_3.setBackground(new java.awt.Color(251, 191, 36));
         teacherPrint_3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         teacherPrint_3.setForeground(new java.awt.Color(0, 0, 0));
         teacherPrint_3.setText("Print");
@@ -3005,18 +3051,19 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Teacher Table", jPanel27);
 
-        jPanel31.setBackground(new java.awt.Color(153, 255, 255));
+        jPanel31.setBackground(new java.awt.Color(30, 58, 138));
 
-        jPanel32.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel32.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel32.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel32.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
         jLabel33.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(0, 0, 0));
         jLabel33.setText("Search Name");
 
         searchSensitive.setBackground(new java.awt.Color(255, 255, 255));
+        searchSensitive.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
-        sensitiveSearch.setBackground(new java.awt.Color(153, 255, 204));
+        sensitiveSearch.setBackground(new java.awt.Color(251, 191, 36));
         sensitiveSearch.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         sensitiveSearch.setForeground(new java.awt.Color(0, 0, 0));
         sensitiveSearch.setText("Search");
@@ -3053,7 +3100,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel33.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel33.setBackground(new java.awt.Color(243, 244, 246));
 
         SensitiveTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -3078,10 +3125,10 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(SensitiveTable);
 
-        jPanel34.setBackground(new java.awt.Color(153, 255, 255));
-        jPanel34.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 4, true));
+        jPanel34.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel34.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        teacherDelBt1.setBackground(new java.awt.Color(102, 255, 255));
+        teacherDelBt1.setBackground(new java.awt.Color(251, 191, 36));
         teacherDelBt1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         teacherDelBt1.setForeground(new java.awt.Color(0, 0, 0));
         teacherDelBt1.setText("Logout");
@@ -3122,10 +3169,10 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
@@ -3136,7 +3183,9 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel31Layout.createSequentialGroup()
+                        .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel31Layout.setVerticalGroup(

@@ -40,7 +40,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="ff" red="87" type="rgb"/>
+          <Color blue="f6" green="f4" red="f3" type="rgb"/>
         </Property>
       </Properties>
 
@@ -72,7 +72,7 @@
         <Container class="javax.swing.JPanel" name="jPanel3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="66" type="rgb"/>
+              <Color blue="8a" green="3a" red="1e" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -127,7 +127,7 @@
                   <Font name="Times New Roman" size="43" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="ADMIN PANEL"/>
               </Properties>
@@ -179,7 +179,7 @@
             <Container class="javax.swing.JPanel" name="jPanel2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="66" type="rgb"/>
+                  <Color blue="8a" green="3a" red="1e" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -219,12 +219,12 @@
                 <Container class="javax.swing.JPanel" name="jPanel4">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="99" type="rgb"/>
+                      <Color blue="f6" green="f4" red="f3" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder roundedCorners="true" thickness="4">
-                          <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                          <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -422,6 +422,13 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="stuFname">
@@ -432,6 +439,13 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="stuMotherName">
@@ -441,6 +455,13 @@
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
                         </Property>
                       </Properties>
                       <Events>
@@ -455,6 +476,13 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="stuAddress2">
@@ -464,6 +492,13 @@
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
                         </Property>
                       </Properties>
                       <Events>
@@ -541,6 +576,13 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                         <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
                       </Properties>
                     </Component>
@@ -565,6 +607,13 @@
                             <StringItem index="0" value="Male"/>
                             <StringItem index="1" value="Female"/>
                           </StringArray>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
                         </Property>
                       </Properties>
                       <Events>
@@ -593,6 +642,13 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel64">
@@ -613,6 +669,13 @@
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
                         </Property>
                       </Properties>
                       <Events>
@@ -637,6 +700,13 @@
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
                         </Property>
                       </Properties>
                       <Events>
@@ -668,7 +738,7 @@
                     <Component class="javax.swing.JButton" name="browseBirthCertificate">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="66" type="rgb"/>
+                          <Color blue="24" green="bf" red="fb" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="20" style="1"/>
@@ -685,7 +755,7 @@
                     <Component class="javax.swing.JButton" name="browseForm137">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="66" type="rgb"/>
+                          <Color blue="24" green="bf" red="fb" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="20" style="1"/>
@@ -705,6 +775,13 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="cc" type="rgb"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuBirthCerActionPerformed"/>
@@ -715,6 +792,13 @@
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
                         </Property>
                       </Properties>
                     </Component>
@@ -737,6 +821,13 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel5">
@@ -758,6 +849,13 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -765,12 +863,12 @@
                 <Container class="javax.swing.JPanel" name="jPanel5">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="99" type="rgb"/>
+                      <Color blue="f6" green="f4" red="f3" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder roundedCorners="true" thickness="4">
-                          <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                          <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -805,12 +903,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel9">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="f6" green="f4" red="f3" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder roundedCorners="true" thickness="4">
-                              <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                              <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -848,12 +946,12 @@
                         <Container class="javax.swing.JPanel" name="jPanel14">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="cc" green="ff" red="99" type="rgb"/>
+                              <Color blue="f6" green="f4" red="f3" type="rgb"/>
                             </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                 <LineBorder roundedCorners="true" thickness="4">
-                                  <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                                  <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                                 </LineBorder>
                               </Border>
                             </Property>
@@ -908,7 +1006,7 @@
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                     <LineBorder roundedCorners="true" thickness="2">
-                                      <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                                      <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                                     </LineBorder>
                                   </Border>
                                 </Property>
@@ -937,7 +1035,7 @@
                             <Component class="javax.swing.JButton" name="browseImg">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="ff" green="ff" red="66" type="rgb"/>
+                                  <Color blue="24" green="bf" red="fb" type="rgb"/>
                                 </Property>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Times New Roman" size="24" style="1"/>
@@ -967,12 +1065,12 @@
                         <Container class="javax.swing.JPanel" name="jPanel39">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="cc" green="ff" red="99" type="rgb"/>
+                              <Color blue="f6" green="f4" red="f3" type="rgb"/>
                             </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                 <LineBorder roundedCorners="true" thickness="4">
-                                  <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                                  <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                                 </LineBorder>
                               </Border>
                             </Property>
@@ -1031,6 +1129,13 @@
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Times New Roman" size="16" style="0"/>
                                 </Property>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                    <LineBorder>
+                                      <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                                    </LineBorder>
+                                  </Border>
+                                </Property>
                               </Properties>
                               <Events>
                                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="stuLRNKeyTyped"/>
@@ -1043,12 +1148,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel8">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="f6" green="f4" red="f3" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder roundedCorners="true" thickness="4">
-                              <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                              <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -1089,7 +1194,7 @@
                         <Component class="javax.swing.JButton" name="jButton1">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -1106,7 +1211,7 @@
                         <Component class="javax.swing.JButton" name="updateBt">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -1123,7 +1228,7 @@
                         <Component class="javax.swing.JButton" name="addNewBt">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -1140,7 +1245,7 @@
                         <Component class="javax.swing.JButton" name="Clear">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -1163,7 +1268,7 @@
             <Container class="javax.swing.JPanel" name="jPanel10">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="99" type="rgb"/>
+                  <Color blue="8a" green="3a" red="1e" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1203,12 +1308,12 @@
                 <Container class="javax.swing.JPanel" name="jPanel11">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="99" type="rgb"/>
+                      <Color blue="f6" green="f4" red="f3" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder roundedCorners="true" thickness="4">
-                          <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                          <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -1265,12 +1370,19 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="searchBt_1">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="24" green="bf" red="fb" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="24" style="1"/>
@@ -1287,7 +1399,7 @@
                     <Component class="javax.swing.JButton" name="stuRefresh_1">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="24" green="bf" red="fb" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="24" style="1"/>
@@ -1304,7 +1416,7 @@
                     <Component class="javax.swing.JButton" name="stuSort_1">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="24" green="bf" red="fb" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="24" style="1"/>
@@ -1323,7 +1435,7 @@
                 <Container class="javax.swing.JPanel" name="jPanel12">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="99" type="rgb"/>
+                      <Color blue="f6" green="f4" red="f3" type="rgb"/>
                     </Property>
                   </Properties>
 
@@ -1466,12 +1578,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel13">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="99" type="rgb"/>
+                          <Color blue="f6" green="f4" red="f3" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder roundedCorners="true" thickness="4">
-                              <Color PropertyName="color" blue="cc" green="cc" red="0" type="rgb"/>
+                              <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -1506,7 +1618,7 @@
                         <Component class="javax.swing.JButton" name="delBt">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -1523,7 +1635,7 @@
                         <Component class="javax.swing.JButton" name="stuPrint_1">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -1546,7 +1658,7 @@
             <Container class="javax.swing.JPanel" name="jPanel6">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="66" type="rgb"/>
+                  <Color blue="8a" green="3a" red="1e" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1577,7 +1689,7 @@
                               <Component id="jPanel16" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="342" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="346" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1589,12 +1701,12 @@
                 <Container class="javax.swing.JPanel" name="jPanel7">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="99" type="rgb"/>
+                      <Color blue="f6" green="f4" red="f3" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder roundedCorners="true" thickness="4">
-                          <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                          <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -1606,11 +1718,11 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jPanel36" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jPanel36" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="jLabel25" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel19" alignment="0" max="32767" attributes="0"/>
@@ -1624,10 +1736,9 @@
                                           <Component id="stuStrand" alignment="0" max="32767" attributes="0"/>
                                           <Component id="stuGradeLevel" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1665,12 +1776,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel36">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="f6" green="f4" red="f3" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder roundedCorners="true" thickness="4">
-                              <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                              <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -1734,6 +1845,13 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="20" style="0"/>
                             </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                <LineBorder>
+                                  <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                                </LineBorder>
+                              </Border>
+                            </Property>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuStrandSearchAdminFieldActionPerformed"/>
@@ -1743,7 +1861,7 @@
                         <Component class="javax.swing.JButton" name="stuStrandSearchBt">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="cc" green="ff" red="99" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="20" style="1"/>
@@ -1770,6 +1888,13 @@
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
                         </Property>
                       </Properties>
                       <AuxValues>
@@ -1804,6 +1929,13 @@
                             <StringItem index="1" value="12"/>
                           </StringArray>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuGradeLevelActionPerformed"/>
@@ -1833,6 +1965,13 @@
                             <StringItem index="5" value="TVL-EIM"/>
                             <StringItem index="6" value="TVL-HE"/>
                           </StringArray>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
                         </Property>
                       </Properties>
                       <Events>
@@ -1889,6 +2028,13 @@
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuSectionActionPerformed"/>
@@ -1902,12 +2048,12 @@
                 <Container class="javax.swing.JPanel" name="jPanel16">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="99" type="rgb"/>
+                      <Color blue="f6" green="f4" red="f3" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder roundedCorners="true" thickness="4">
-                          <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                          <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -1942,12 +2088,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel17">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="f6" green="f4" red="f3" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder roundedCorners="true" thickness="4">
-                              <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                              <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -1982,12 +2128,12 @@
                         <Container class="javax.swing.JPanel" name="jPanel35">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="cc" green="ff" red="99" type="rgb"/>
+                              <Color blue="f6" green="f4" red="f3" type="rgb"/>
                             </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                 <LineBorder roundedCorners="true" thickness="4">
-                                  <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                                  <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                                 </LineBorder>
                               </Border>
                             </Property>
@@ -2040,11 +2186,20 @@
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="stuSearchField_2">
+                              <Properties>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                    <LineBorder>
+                                      <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                                    </LineBorder>
+                                  </Border>
+                                </Property>
+                              </Properties>
                             </Component>
                             <Component class="javax.swing.JButton" name="stuSearchBt_2">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="cc" green="ff" red="99" type="rgb"/>
+                                  <Color blue="24" green="bf" red="fb" type="rgb"/>
                                 </Property>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Times New Roman" size="24" style="1"/>
@@ -2061,7 +2216,7 @@
                             <Component class="javax.swing.JButton" name="stuRefresh_2">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="cc" green="ff" red="99" type="rgb"/>
+                                  <Color blue="24" green="bf" red="fb" type="rgb"/>
                                 </Property>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Times New Roman" size="24" style="1"/>
@@ -2078,7 +2233,7 @@
                             <Component class="javax.swing.JButton" name="stuSort_2">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="cc" green="ff" red="99" type="rgb"/>
+                                  <Color blue="24" green="bf" red="fb" type="rgb"/>
                                 </Property>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Times New Roman" size="24" style="1"/>
@@ -2097,12 +2252,12 @@
                         <Container class="javax.swing.JPanel" name="jPanel18">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="cc" green="ff" red="99" type="rgb"/>
+                              <Color blue="f6" green="f4" red="f3" type="rgb"/>
                             </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                 <LineBorder roundedCorners="true" thickness="4">
-                                  <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                                  <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                                 </LineBorder>
                               </Border>
                             </Property>
@@ -2167,12 +2322,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel20">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="f6" green="f4" red="f3" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder roundedCorners="true" thickness="4">
-                              <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                              <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -2210,7 +2365,7 @@
                         <Component class="javax.swing.JButton" name="jButton2">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -2227,7 +2382,7 @@
                         <Component class="javax.swing.JButton" name="stuStrandClearBt">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -2244,7 +2399,7 @@
                         <Component class="javax.swing.JButton" name="stuSaveBt">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -2267,7 +2422,7 @@
             <Container class="javax.swing.JPanel" name="jPanel37">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="66" type="rgb"/>
+                  <Color blue="8a" green="3a" red="1e" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -2281,12 +2436,17 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPanel38" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel38" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel38" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -2297,12 +2457,12 @@
                 <Container class="javax.swing.JPanel" name="jPanel38">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="99" type="rgb"/>
+                      <Color blue="f6" green="f4" red="f3" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder roundedCorners="true" thickness="4">
-                          <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                          <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -2313,7 +2473,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel40" pref="1348" max="32767" attributes="0"/>
+                              <Component id="jPanel40" pref="1336" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -2322,7 +2482,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel40" pref="634" max="32767" attributes="0"/>
+                              <Component id="jPanel40" pref="628" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -2332,12 +2492,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel40">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="f6" green="f4" red="f3" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder roundedCorners="true" thickness="4">
-                              <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                              <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -2377,12 +2537,12 @@
                         <Container class="javax.swing.JPanel" name="jPanel46">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="cc" green="ff" red="99" type="rgb"/>
+                              <Color blue="f6" green="f4" red="f3" type="rgb"/>
                             </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                 <LineBorder roundedCorners="true" thickness="4">
-                                  <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                                  <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                                 </LineBorder>
                               </Border>
                             </Property>
@@ -2402,7 +2562,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane6" pref="458" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane6" pref="452" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -2437,12 +2597,12 @@
                         <Container class="javax.swing.JPanel" name="jPanel47">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="cc" green="ff" red="99" type="rgb"/>
+                              <Color blue="f6" green="f4" red="f3" type="rgb"/>
                             </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                 <LineBorder roundedCorners="true" thickness="4">
-                                  <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                                  <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                                 </LineBorder>
                               </Border>
                             </Property>
@@ -2464,7 +2624,7 @@
                                       <Component id="stuSubjectSearch" min="-2" pref="135" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="stuGradeManageRefreshTable1" min="-2" pref="138" max="-2" attributes="0"/>
-                                      <EmptySpace pref="240" max="32767" attributes="0"/>
+                                      <EmptySpace pref="212" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2491,6 +2651,13 @@
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                                 </Property>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                    <LineBorder>
+                                      <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                                    </LineBorder>
+                                  </Border>
+                                </Property>
                               </Properties>
                               <Events>
                                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="stuSubjectIDManageKeyTyped"/>
@@ -2499,7 +2666,7 @@
                             <Component class="javax.swing.JButton" name="stuSubjectSearch">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="cc" green="ff" red="99" type="rgb"/>
+                                  <Color blue="24" green="bf" red="fb" type="rgb"/>
                                 </Property>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Times New Roman" size="24" style="1"/>
@@ -2516,7 +2683,7 @@
                             <Component class="javax.swing.JButton" name="stuGradeManageRefreshTable1">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="cc" green="ff" red="99" type="rgb"/>
+                                  <Color blue="24" green="bf" red="fb" type="rgb"/>
                                 </Property>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Times New Roman" size="24" style="1"/>
@@ -2549,7 +2716,7 @@
                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="0" green="0" red="0" type="rgb"/>
                                 </Property>
-                                <Property name="text" type="java.lang.String" value="Student ID"/>
+                                <Property name="text" type="java.lang.String" value="Grade Level"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JComboBox" name="gradeLevelSubjectBox">
@@ -2569,6 +2736,13 @@
                                     <StringItem index="1" value="12"/>
                                   </StringArray>
                                 </Property>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                    <LineBorder>
+                                      <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                                    </LineBorder>
+                                  </Border>
+                                </Property>
                               </Properties>
                               <Events>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gradeLevelSubjectBoxActionPerformed"/>
@@ -2582,12 +2756,12 @@
                         <Container class="javax.swing.JPanel" name="jPanel48">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="cc" green="ff" red="99" type="rgb"/>
+                              <Color blue="f6" green="f4" red="f3" type="rgb"/>
                             </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                 <LineBorder roundedCorners="true" thickness="4">
-                                  <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                                  <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                                 </LineBorder>
                               </Border>
                             </Property>
@@ -2636,7 +2810,7 @@
                             <Component class="javax.swing.JButton" name="clearSubjectManageBt">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="ff" green="ff" red="66" type="rgb"/>
+                                  <Color blue="24" green="bf" red="fb" type="rgb"/>
                                 </Property>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Times New Roman" size="18" style="1"/>
@@ -2653,7 +2827,7 @@
                             <Component class="javax.swing.JButton" name="logoutFormGradeBt1">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="ff" green="ff" red="66" type="rgb"/>
+                                  <Color blue="24" green="bf" red="fb" type="rgb"/>
                                 </Property>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Times New Roman" size="18" style="1"/>
@@ -2670,7 +2844,7 @@
                             <Component class="javax.swing.JButton" name="stuSubjectSaveBt">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="ff" green="ff" red="66" type="rgb"/>
+                                  <Color blue="24" green="bf" red="fb" type="rgb"/>
                                 </Property>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Times New Roman" size="18" style="1"/>
@@ -2695,7 +2869,7 @@
             <Container class="javax.swing.JPanel" name="jPanel41">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="66" type="rgb"/>
+                  <Color blue="8a" green="3a" red="1e" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -2730,12 +2904,12 @@
                 <Container class="javax.swing.JPanel" name="jPanel42">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="99" type="rgb"/>
+                      <Color blue="f6" green="f4" red="f3" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder roundedCorners="true" thickness="4">
-                          <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                          <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -2776,12 +2950,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel43">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="f6" green="f4" red="f3" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder roundedCorners="true" thickness="4">
-                              <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                              <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -2848,7 +3022,7 @@
                         <Component class="javax.swing.JButton" name="classListSearchBt">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="cc" green="ff" red="99" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="20" style="1"/>
@@ -2890,6 +3064,13 @@
                                 <StringItem index="1" value="12"/>
                               </StringArray>
                             </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                <LineBorder>
+                                  <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                                </LineBorder>
+                              </Border>
+                            </Property>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gradeLevelClassBoxActionPerformed"/>
@@ -2911,6 +3092,13 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="0"/>
+                            </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                <LineBorder>
+                                  <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                                </LineBorder>
+                              </Border>
                             </Property>
                           </Properties>
                           <Events>
@@ -2945,6 +3133,13 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="0"/>
+                            </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                <LineBorder>
+                                  <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                                </LineBorder>
+                              </Border>
                             </Property>
                           </Properties>
                           <Events>
@@ -2993,12 +3188,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel49">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="f6" green="f4" red="f3" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder roundedCorners="true" thickness="4">
-                              <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                              <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -3036,7 +3231,7 @@
                         <Component class="javax.swing.JButton" name="classListLogoutBt">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -3053,7 +3248,7 @@
                         <Component class="javax.swing.JButton" name="classListClearBt">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -3070,7 +3265,7 @@
                         <Component class="javax.swing.JButton" name="classListPrintBt">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -3093,7 +3288,7 @@
             <Container class="javax.swing.JPanel" name="jPanel19">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="66" type="rgb"/>
+                  <Color blue="8a" green="3a" red="1e" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -3133,12 +3328,12 @@
                 <Container class="javax.swing.JPanel" name="jPanel21">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="99" type="rgb"/>
+                      <Color blue="f6" green="f4" red="f3" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder roundedCorners="true" thickness="4">
-                          <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                          <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -3298,6 +3493,13 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="teacherFirstName">
@@ -3307,6 +3509,13 @@
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
                         </Property>
                       </Properties>
                     </Component>
@@ -3318,6 +3527,13 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="teacherAddress2">
@@ -3327,6 +3543,13 @@
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
                         </Property>
                       </Properties>
                       <Events>
@@ -3393,6 +3616,13 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                         <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
                       </Properties>
                     </Component>
@@ -3417,6 +3647,13 @@
                             <StringItem index="0" value="Male"/>
                             <StringItem index="1" value="Female"/>
                           </StringArray>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
                         </Property>
                       </Properties>
                       <Events>
@@ -3445,6 +3682,13 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel70">
@@ -3465,6 +3709,13 @@
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
                         </Property>
                       </Properties>
                       <Events>
@@ -3490,6 +3741,13 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel28">
@@ -3510,6 +3768,13 @@
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
                         </Property>
                       </Properties>
                     </Component>
@@ -3546,6 +3811,13 @@
                             <StringItem index="6" value="TVL-HE"/>
                           </StringArray>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teacherStrandActionPerformed"/>
@@ -3559,12 +3831,12 @@
                 <Container class="javax.swing.JPanel" name="jPanel22">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="99" type="rgb"/>
+                      <Color blue="f6" green="f4" red="f3" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder roundedCorners="true" thickness="4">
-                          <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                          <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -3599,12 +3871,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel23">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="f6" green="f4" red="f3" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder roundedCorners="true" thickness="4">
-                              <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                              <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -3622,7 +3894,11 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanel24" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jPanel24" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -3630,12 +3906,12 @@
                         <Container class="javax.swing.JPanel" name="jPanel24">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="cc" green="ff" red="99" type="rgb"/>
+                              <Color blue="f6" green="f4" red="f3" type="rgb"/>
                             </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                 <LineBorder roundedCorners="true" thickness="4">
-                                  <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                                  <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                                 </LineBorder>
                               </Border>
                             </Property>
@@ -3676,7 +3952,7 @@
                                               <Component id="teacherBrowseImg" min="-2" pref="38" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="233" max="32767" attributes="0"/>
+                                      <EmptySpace pref="221" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -3690,7 +3966,7 @@
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                     <LineBorder roundedCorners="true" thickness="2">
-                                      <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                                      <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                                     </LineBorder>
                                   </Border>
                                 </Property>
@@ -3719,7 +3995,7 @@
                             <Component class="javax.swing.JButton" name="teacherBrowseImg">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="ff" green="ff" red="66" type="rgb"/>
+                                  <Color blue="24" green="bf" red="fb" type="rgb"/>
                                 </Property>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Times New Roman" size="24" style="1"/>
@@ -3751,12 +4027,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel26">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="f6" green="f4" red="f3" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder roundedCorners="true" thickness="4">
-                              <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                              <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -3797,7 +4073,7 @@
                         <Component class="javax.swing.JButton" name="jButton3">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -3814,7 +4090,7 @@
                         <Component class="javax.swing.JButton" name="updateBt1">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -3831,7 +4107,7 @@
                         <Component class="javax.swing.JButton" name="teacherAddNewBt">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -3848,7 +4124,7 @@
                         <Component class="javax.swing.JButton" name="teacherClear">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -3871,7 +4147,7 @@
             <Container class="javax.swing.JPanel" name="jPanel27">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="99" type="rgb"/>
+                  <Color blue="8a" green="3a" red="1e" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -3911,12 +4187,12 @@
                 <Container class="javax.swing.JPanel" name="jPanel28">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="99" type="rgb"/>
+                      <Color blue="f6" green="f4" red="f3" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder roundedCorners="true" thickness="4">
-                          <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                          <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -3973,12 +4249,19 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="teacherSearchBt_2">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="24" green="bf" red="fb" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="24" style="1"/>
@@ -3995,7 +4278,7 @@
                     <Component class="javax.swing.JButton" name="teacherRefresh_3">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="24" green="bf" red="fb" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="24" style="1"/>
@@ -4012,7 +4295,7 @@
                     <Component class="javax.swing.JButton" name="teacherSort_3">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="24" green="bf" red="fb" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="24" style="1"/>
@@ -4031,7 +4314,7 @@
                 <Container class="javax.swing.JPanel" name="jPanel29">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="99" type="rgb"/>
+                      <Color blue="f6" green="f4" red="f3" type="rgb"/>
                     </Property>
                   </Properties>
 
@@ -4168,12 +4451,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel30">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="99" type="rgb"/>
+                          <Color blue="f6" green="f4" red="f3" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder roundedCorners="true" thickness="4">
-                              <Color PropertyName="color" blue="cc" green="cc" red="0" type="rgb"/>
+                              <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -4208,7 +4491,7 @@
                         <Component class="javax.swing.JButton" name="teacherDelBt">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -4225,7 +4508,7 @@
                         <Component class="javax.swing.JButton" name="teacherPrint_3">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>
@@ -4248,7 +4531,7 @@
             <Container class="javax.swing.JPanel" name="jPanel31">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="99" type="rgb"/>
+                  <Color blue="8a" green="3a" red="1e" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -4265,8 +4548,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanel33" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jPanel32" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jPanel33" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jPanel32" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -4288,12 +4574,12 @@
                 <Container class="javax.swing.JPanel" name="jPanel32">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="99" type="rgb"/>
+                      <Color blue="f6" green="f4" red="f3" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder roundedCorners="true" thickness="4">
-                          <Color PropertyName="color" blue="cc" green="ff" red="0" type="rgb"/>
+                          <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -4349,12 +4635,19 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="sensitiveSearch">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="99" type="rgb"/>
+                          <Color blue="24" green="bf" red="fb" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="24" style="1"/>
@@ -4373,7 +4666,7 @@
                 <Container class="javax.swing.JPanel" name="jPanel33">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="99" type="rgb"/>
+                      <Color blue="f6" green="f4" red="f3" type="rgb"/>
                     </Property>
                   </Properties>
 
@@ -4393,10 +4686,10 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jScrollPane4" pref="421" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" pref="400" max="32767" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jPanel34" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -4456,12 +4749,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel34">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="99" type="rgb"/>
+                          <Color blue="f6" green="f4" red="f3" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder roundedCorners="true" thickness="4">
-                              <Color PropertyName="color" blue="cc" green="cc" red="0" type="rgb"/>
+                              <Color PropertyName="color" blue="51" green="41" red="37" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -4491,7 +4784,7 @@
                         <Component class="javax.swing.JButton" name="teacherDelBt1">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="66" type="rgb"/>
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="18" style="1"/>

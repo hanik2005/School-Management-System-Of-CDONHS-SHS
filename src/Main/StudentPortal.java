@@ -263,9 +263,9 @@ public class StudentPortal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(135, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(243, 244, 246));
 
-        jPanel3.setBackground(new java.awt.Color(102, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(30, 58, 138));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -279,16 +279,16 @@ public class StudentPortal extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 43)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("STUDENT PORTAL");
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo_resized_50x50.jpg"))); // NOI18N
 
         txtTime.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        txtTime.setForeground(new java.awt.Color(0, 0, 0));
+        txtTime.setForeground(new java.awt.Color(255, 255, 255));
 
         txtDate.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        txtDate.setForeground(new java.awt.Color(0, 0, 0));
+        txtDate.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -301,9 +301,9 @@ public class StudentPortal extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
-                .addGap(119, 119, 119)
+                .addGap(54, 54, 54)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addGap(96, 96, 96))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,14 +322,15 @@ public class StudentPortal extends javax.swing.JFrame {
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
         jTabbedPane1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(1380, 652));
 
-        jPanel2.setBackground(new java.awt.Color(102, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(30, 58, 138));
 
-        jPanel4.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel4.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel4.setForeground(new java.awt.Color(0, 0, 0));
 
-        logStuBt.setBackground(new java.awt.Color(102, 255, 255));
+        logStuBt.setBackground(new java.awt.Color(251, 191, 36));
         logStuBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         logStuBt.setForeground(new java.awt.Color(0, 0, 0));
         logStuBt.setText("Logout");
@@ -356,8 +357,8 @@ public class StudentPortal extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
-        jPanel7.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel7.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel7.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -555,12 +556,12 @@ public class StudentPortal extends javax.swing.JFrame {
                 .addContainerGap(70, Short.MAX_VALUE))
         );
 
-        jPanel14.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel14.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel14.setForeground(new java.awt.Color(0, 0, 0));
 
         birthPanel.setBackground(new java.awt.Color(204, 204, 204));
-        birthPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 2, true));
+        birthPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 2, true));
 
         imagePanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -608,12 +609,12 @@ public class StudentPortal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel16.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel16.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel16.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel16.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel16.setForeground(new java.awt.Color(0, 0, 0));
 
         formPanel.setBackground(new java.awt.Color(204, 204, 204));
-        formPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 2, true));
+        formPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 2, true));
 
         imagePanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -661,12 +662,12 @@ public class StudentPortal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel18.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel18.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel18.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel18.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel18.setForeground(new java.awt.Color(0, 0, 0));
 
         jPanel19.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel19.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 2, true));
+        jPanel19.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 2, true));
 
         imagePanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -721,7 +722,7 @@ public class StudentPortal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -730,9 +731,8 @@ public class StudentPortal extends javax.swing.JFrame {
                             .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 24, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -752,22 +752,22 @@ public class StudentPortal extends javax.swing.JFrame {
                         .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Student Information", jPanel2);
 
-        jPanel24.setBackground(new java.awt.Color(102, 255, 255));
+        jPanel24.setBackground(new java.awt.Color(243, 244, 246));
 
-        jPanel29.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel29.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel29.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel29.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel29.setForeground(new java.awt.Color(0, 0, 0));
 
-        jPanel43.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel43.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel43.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel43.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
         jPanel43.setForeground(new java.awt.Color(0, 0, 0));
 
-        stuGradeStudentSearchBt.setBackground(new java.awt.Color(153, 255, 204));
+        stuGradeStudentSearchBt.setBackground(new java.awt.Color(251, 191, 36));
         stuGradeStudentSearchBt.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuGradeStudentSearchBt.setForeground(new java.awt.Color(0, 0, 0));
         stuGradeStudentSearchBt.setText("Search");
@@ -838,10 +838,10 @@ public class StudentPortal extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel45.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel45.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 204), 4, true));
+        jPanel45.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel45.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        gradeStudentLogout.setBackground(new java.awt.Color(102, 255, 255));
+        gradeStudentLogout.setBackground(new java.awt.Color(251, 191, 36));
         gradeStudentLogout.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         gradeStudentLogout.setForeground(new java.awt.Color(0, 0, 0));
         gradeStudentLogout.setText("Logout");
@@ -851,7 +851,7 @@ public class StudentPortal extends javax.swing.JFrame {
             }
         });
 
-        gradeStudentClear.setBackground(new java.awt.Color(102, 255, 255));
+        gradeStudentClear.setBackground(new java.awt.Color(251, 191, 36));
         gradeStudentClear.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         gradeStudentClear.setForeground(new java.awt.Color(0, 0, 0));
         gradeStudentClear.setText("Clear");
@@ -877,7 +877,7 @@ public class StudentPortal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel45Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gradeStudentLogout, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                    .addComponent(gradeStudentLogout, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
                     .addComponent(gradeStudentClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -926,10 +926,10 @@ public class StudentPortal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
@@ -945,8 +945,8 @@ public class StudentPortal extends javax.swing.JFrame {
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
@@ -961,11 +961,9 @@ public class StudentPortal extends javax.swing.JFrame {
         );
         jPanel25Layout.setVerticalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 671, Short.MAX_VALUE)
+            .addGap(0, 617, Short.MAX_VALUE)
             .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel25Layout.createSequentialGroup()
-                    .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 12, Short.MAX_VALUE)))
+                .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Grade Viewer", jPanel25);
@@ -977,8 +975,8 @@ public class StudentPortal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1384, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -987,7 +985,7 @@ public class StudentPortal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

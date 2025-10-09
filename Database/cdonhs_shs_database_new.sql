@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2025 at 06:10 AM
+-- Generation Time: Oct 09, 2025 at 05:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -80,7 +80,7 @@ INSERT INTO `grade_entry` (`entry_id`, `student_id`, `subject_id`, `section_id`,
 (97, 1, 37, 33, 2, 90.00),
 (98, 1, 37, 33, 3, 80.00),
 (99, 1, 37, 33, 4, 90.00),
-(100, 2, 1, 1, 1, 90.00),
+(100, 2, 1, 1, 1, 80.00),
 (101, 2, 2, 1, 1, 99.00),
 (102, 2, 2, 1, 3, 90.00),
 (103, 2, 3, 1, 3, 90.00),
@@ -98,7 +98,9 @@ INSERT INTO `grade_entry` (`entry_id`, `student_id`, `subject_id`, `section_id`,
 (115, 4, 5, 2, 1, 80.00),
 (116, 4, 6, 2, 1, 70.00),
 (117, 4, 7, 2, 1, 90.00),
-(118, 4, 8, 2, 1, 100.00);
+(118, 4, 8, 2, 1, 100.00),
+(119, 1, 33, 33, 1, 98.00),
+(120, 7, 33, 33, 1, 99.00);
 
 -- --------------------------------------------------------
 
@@ -236,9 +238,10 @@ INSERT INTO `student` (`student_id`, `user_id`, `first_name`, `middle_name`, `la
 (4, 4, 'Niño Christian', 'Palaman', 'Balaba', '2005-08-20', 'Female', 'Balaba@gmail.com', '09944719', 'papa', 'mama', 'sdadd', 'dsdadada', 'num_1.pdf', 'FELISILDA_&_CLARITO.pdf', 'D:\\PICTURES\\anime-moon-landscape.jpg', '4053333424'),
 (5, 5, 'Randy', 'Abecia', 'Clarito', '1988-09-15', 'Male', 'papa@gmail.com', '0965747', 'czcz', 'czczxc', 'czcczc', 'czczc', 'CLARITO, NICK CHARLES D..pdf', 'CLARITO, NICK CHARLES D. – 2003–Present.pdf', 'D:\\PICTURES\\boy_pick_left_2.png', '40998922892'),
 (6, 8, 'Maria Cristina', 'Durangparang', 'Clarito', '1996-09-07', 'Female', 'Maria@gmail.com', '09262360968', 'papa', 'Dominador', 'dadsa', 'dadda', 'Form137_4.pdf', 'ClassList_11_STEM_A.pdf', 'D:\\PICTURES\\agile.png', '156456864214'),
-(7, 10, 'Micah', 'Bilagbog', 'Micah', '2003-10-10', 'Male', 'baal@gmail.com', '09977564276', 'dasdsad', 'dasdad', 'dadsad', 'dasdasd', 'ClassList_G11_TVL-ICT_SecA.pdf', 'Form137_4.pdf', 'D:\\PICTURES\\agile_model.png', '105220150089'),
+(7, 10, 'Micah', 'Bilagbog', 'Baal', '2003-10-10', 'Female', 'baal@gmail.com', '09977564276', 'dasdad', 'dasdsad', 'dadsad', 'dasdasd', 'ClassList_G11_TVL-ICT_SecA.pdf', 'Form137_4.pdf', 'D:\\PICTURES\\agile_model.png', '105220150089'),
 (8, 11, 'Ras', 'Pinignit', 'Lawren', '2006-10-13', 'Male', 'Lawren@gmail.com', '09977718534', 'dsadad', 'dasdsad', 'dasdadadadad', '', '', '', NULL, '404551221678'),
-(9, 12, 'Dominic', 'Dolos', 'Reyes', '2001-06-02', 'Male', 'reyes@gmail.com', '09988716521', 'dadasda', 'dasdd', 'dasdasd', '', '', '', NULL, '109660713467');
+(9, 12, 'Dominic', 'Dolos', 'Reyes', '2001-06-02', 'Male', 'reyes@gmail.com', '09988716521', 'dadasda', 'dasdd', 'dasdasd', '', '', '', NULL, '109660713467'),
+(10, 13, 'Mark', 'Galez', 'Hamot', '2005-10-01', 'Female', 'galez@gmail.com', '09986777535', 'czxcxzc', 'czxczczxc', 'czxczxcz', 'czxczcz', '', '', NULL, '900765325345');
 
 -- --------------------------------------------------------
 
@@ -532,18 +535,19 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `type_id`) VALUES
-(1, 'hdfhhdfhh', 'hdfhhdfhh20250904', 2),
+(1, '74769648759', 'hdfhhdfhh20250904', 2),
 (2, '\"2\"', 'clarito20250904', 2),
 (3, '3', 'bagtong20070907', 2),
 (4, '4', 'balaba20050820', 2),
 (5, '5', 'clarito19880915', 2),
-(6, '1', 'balay20060916', 3),
-(7, '2', 'clarito20050905', 3),
+(6, '02-1', 'balay20060916', 3),
+(7, '02-2', 'clarito20050905', 3),
 (8, '6', 'clarito19960907', 2),
 (9, '02-3', 'vilofol19990918', 3),
 (10, '105220150089', 'micah20031010', 2),
 (11, '404551221678', 'lawren20061013', 2),
-(12, '109660713467', 'reyes20010602', 2);
+(12, '109660713467', 'reyes20010602', 2),
+(13, '900765325345', 'daguplo20051001', 2);
 
 --
 -- Indexes for dumped tables
@@ -649,7 +653,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `grade_entry`
 --
 ALTER TABLE `grade_entry`
-  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `section`
@@ -667,7 +671,7 @@ ALTER TABLE `strands`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `student_strand`
@@ -703,7 +707,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
