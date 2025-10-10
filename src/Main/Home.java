@@ -67,6 +67,7 @@ import javax.swing.Timer;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import model.Calculator;
 import model.ComboItem;
 import model.PageNumberEvent;
 import org.apache.commons.io.IOUtils;
@@ -269,6 +270,7 @@ public class Home extends javax.swing.JFrame {
         gradeClear = new javax.swing.JButton();
         gradeSort = new javax.swing.JButton();
         gradeSectioningPrint = new javax.swing.JButton();
+        calculatorBt = new javax.swing.JButton();
         jPanel28 = new javax.swing.JPanel();
         jPanel26 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
@@ -1009,6 +1011,14 @@ public class Home extends javax.swing.JFrame {
         searchBt_1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         searchBt_1.setForeground(new java.awt.Color(0, 0, 0));
         searchBt_1.setText("Search");
+        searchBt_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                searchBt_1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                searchBt_1MouseExited(evt);
+            }
+        });
         searchBt_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBt_1ActionPerformed(evt);
@@ -1019,6 +1029,14 @@ public class Home extends javax.swing.JFrame {
         stuRefresh_1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuRefresh_1.setForeground(new java.awt.Color(0, 0, 0));
         stuRefresh_1.setText("Refresh");
+        stuRefresh_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuRefresh_1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuRefresh_1MouseExited(evt);
+            }
+        });
         stuRefresh_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuRefresh_1ActionPerformed(evt);
@@ -1029,6 +1047,14 @@ public class Home extends javax.swing.JFrame {
         stuSort_1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuSort_1.setForeground(new java.awt.Color(0, 0, 0));
         stuSort_1.setText("Sort");
+        stuSort_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuSort_1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuSort_1MouseExited(evt);
+            }
+        });
         stuSort_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSort_1ActionPerformed(evt);
@@ -1097,6 +1123,14 @@ public class Home extends javax.swing.JFrame {
         delBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         delBt.setForeground(new java.awt.Color(0, 0, 0));
         delBt.setText("Delete");
+        delBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                delBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                delBtMouseExited(evt);
+            }
+        });
         delBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delBtActionPerformed(evt);
@@ -1107,6 +1141,14 @@ public class Home extends javax.swing.JFrame {
         stuPrint_1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuPrint_1.setForeground(new java.awt.Color(0, 0, 0));
         stuPrint_1.setText("Print");
+        stuPrint_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuPrint_1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuPrint_1MouseExited(evt);
+            }
+        });
         stuPrint_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuPrint_1ActionPerformed(evt);
@@ -1208,6 +1250,11 @@ public class Home extends javax.swing.JFrame {
         stuStrandSearchBt.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         stuStrandSearchBt.setForeground(new java.awt.Color(0, 0, 0));
         stuStrandSearchBt.setText("Search");
+        stuStrandSearchBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuStrandSearchBtMouseEntered(evt);
+            }
+        });
         stuStrandSearchBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuStrandSearchBtActionPerformed(evt);
@@ -2272,33 +2319,47 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        calculatorBt.setBackground(new java.awt.Color(251, 191, 36));
+        calculatorBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        calculatorBt.setForeground(new java.awt.Color(0, 0, 0));
+        calculatorBt.setText("Calculator");
+        calculatorBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calculatorBtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
         jPanel44.setLayout(jPanel44Layout);
         jPanel44Layout.setHorizontalGroup(
             jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel44Layout.createSequentialGroup()
-                .addGap(254, 254, 254)
+                .addGap(134, 134, 134)
                 .addComponent(gradeSaveBt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gradeSectioningPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(gradeClear, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gradeSort, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(calculatorBt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gradeLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(193, 193, 193))
+                .addGap(237, 237, 237))
         );
         jPanel44Layout.setVerticalGroup(
             jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel44Layout.createSequentialGroup()
+            .addGroup(jPanel44Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gradeSaveBt, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                    .addComponent(gradeLogout, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                    .addComponent(gradeClear, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                    .addComponent(gradeSort, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                    .addComponent(gradeSectioningPrint, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))
+                .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gradeLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(gradeSaveBt, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                        .addComponent(gradeClear, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                        .addComponent(gradeSort, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                        .addComponent(gradeSectioningPrint, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                        .addComponent(calculatorBt, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -2311,7 +2372,7 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane3)
-                    .addComponent(jPanel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel44, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel22Layout.setVerticalGroup(
@@ -5255,6 +5316,57 @@ public class Home extends javax.swing.JFrame {
         jButton1.setBackground(ThemeColors.GOLDEN_YELLOW);
     }//GEN-LAST:event_jButton1MouseExited
 
+    private void stuPrint_1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuPrint_1MouseEntered
+        stuPrint_1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuPrint_1MouseEntered
+
+    private void stuPrint_1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuPrint_1MouseExited
+        stuPrint_1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuPrint_1MouseExited
+
+    private void delBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delBtMouseEntered
+        delBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_delBtMouseEntered
+
+    private void delBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delBtMouseExited
+        delBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_delBtMouseExited
+
+    private void searchBt_1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBt_1MouseEntered
+       searchBt_1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_searchBt_1MouseEntered
+
+    private void searchBt_1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBt_1MouseExited
+       searchBt_1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_searchBt_1MouseExited
+
+    private void stuRefresh_1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuRefresh_1MouseEntered
+        stuRefresh_1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuRefresh_1MouseEntered
+
+    private void stuRefresh_1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuRefresh_1MouseExited
+        stuRefresh_1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuRefresh_1MouseExited
+
+    private void stuSort_1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSort_1MouseEntered
+       stuSort_1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuSort_1MouseEntered
+
+    private void stuSort_1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSort_1MouseExited
+       stuSort_1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSort_1MouseExited
+
+    private void stuStrandSearchBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStrandSearchBtMouseEntered
+       //stuStrand
+    }//GEN-LAST:event_stuStrandSearchBtMouseEntered
+
+    private void calculatorBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculatorBtActionPerformed
+        Calculator calculator = new Calculator();
+        calculator.setVisible(true);
+        calculator.setLocationRelativeTo(this);
+    }//GEN-LAST:event_calculatorBtActionPerformed
+
+    
     private String getSelectedStrandName() {
         String name = "";
         try {
@@ -5459,6 +5571,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton browseBirthCertificate;
     private javax.swing.JButton browseForm137;
     private javax.swing.JButton browseImg;
+    private javax.swing.JButton calculatorBt;
     private javax.swing.JButton classListClearBt;
     private javax.swing.JButton classListLogoutBt;
     private javax.swing.JButton classListPrintBt;

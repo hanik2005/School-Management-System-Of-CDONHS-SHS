@@ -1400,6 +1400,8 @@
                         <Property name="text" type="java.lang.String" value="Search"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="searchBt_1MouseEntered"/>
+                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="searchBt_1MouseExited"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchBt_1ActionPerformed"/>
                       </Events>
                     </Component>
@@ -1417,6 +1419,8 @@
                         <Property name="text" type="java.lang.String" value="Refresh"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuRefresh_1MouseEntered"/>
+                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuRefresh_1MouseExited"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuRefresh_1ActionPerformed"/>
                       </Events>
                     </Component>
@@ -1434,6 +1438,8 @@
                         <Property name="text" type="java.lang.String" value="Sort"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuSort_1MouseEntered"/>
+                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuSort_1MouseExited"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuSort_1ActionPerformed"/>
                       </Events>
                     </Component>
@@ -1636,6 +1642,8 @@
                             <Property name="text" type="java.lang.String" value="Delete"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="delBtMouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="delBtMouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delBtActionPerformed"/>
                           </Events>
                         </Component>
@@ -1653,6 +1661,8 @@
                             <Property name="text" type="java.lang.String" value="Print"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuPrint_1MouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuPrint_1MouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuPrint_1ActionPerformed"/>
                           </Events>
                         </Component>
@@ -1872,6 +1882,7 @@
                             <Property name="text" type="java.lang.String" value="Search"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuStrandSearchBtMouseEntered"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuStrandSearchBtActionPerformed"/>
                           </Events>
                         </Component>
@@ -3327,7 +3338,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jPanel37" max="32767" attributes="0"/>
                                   <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jPanel44" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jPanel44" alignment="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -3686,30 +3697,35 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
                                   <Component id="gradeSaveBt" min="-2" pref="165" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="gradeSectioningPrint" min="-2" pref="165" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="gradeClear" min="-2" pref="165" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="gradeSort" min="-2" pref="165" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="calculatorBt" min="-2" pref="165" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="gradeLogout" min="-2" pref="165" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="gradeSaveBt" alignment="3" pref="55" max="32767" attributes="0"/>
-                                      <Component id="gradeLogout" alignment="3" pref="55" max="32767" attributes="0"/>
-                                      <Component id="gradeClear" alignment="3" pref="55" max="32767" attributes="0"/>
-                                      <Component id="gradeSort" alignment="3" pref="55" max="32767" attributes="0"/>
-                                      <Component id="gradeSectioningPrint" alignment="3" pref="55" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="gradeLogout" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="gradeSaveBt" alignment="3" pref="55" max="32767" attributes="0"/>
+                                          <Component id="gradeClear" alignment="3" pref="55" max="32767" attributes="0"/>
+                                          <Component id="gradeSort" alignment="3" pref="55" max="32767" attributes="0"/>
+                                          <Component id="gradeSectioningPrint" alignment="3" pref="55" max="32767" attributes="0"/>
+                                          <Component id="calculatorBt" alignment="3" pref="55" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -3800,6 +3816,23 @@
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gradeSectioningPrintActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="calculatorBt">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="24" green="bf" red="fb" type="rgb"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="18" style="1"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="0" green="0" red="0" type="rgb"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Calculator"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="calculatorBtActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>

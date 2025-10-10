@@ -4,22 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/Main/User.java</file>
-            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/Main/Grade.java</file>
-            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/Main/Strand.java</file>
             <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/Main/AdminFrame.java</file>
-            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/model/ComboItem.java</file>
+            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/Main/StudentPortal.java</file>
             <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/Main/Home.java</file>
             <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/Main/LoginFrame.java</file>
-            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/model/PageNumberEvent.java</file>
-            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/Main/Subject.java</file>
-            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/Main/Student.java</file>
-            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/Main/Teacher.java</file>
-            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/Main/ListOfHonor.java</file>
-            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/model/SubjectGrade.java</file>
-            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/model/SensitiveInformation.java</file>
-            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/model/Information.java</file>
-            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/model/GeneralInformation.java</file>
-            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/Main/StudentPortal.java</file>
+            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/model/Calculator.java</file>
+            <file>file:/D:/PROJECTS/Student_Management_System_CDONHS_SHS/src/design/ThemeColors.java</file>
         </group>
     </open-files>
 </project-private>
