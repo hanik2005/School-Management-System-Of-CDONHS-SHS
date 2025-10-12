@@ -12,11 +12,12 @@ import java.util.Stack;
  * @author ADMIN
  */
 public class Calculator extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Calculator.class.getName());
 
-    
     private StringBuilder input = new StringBuilder();
+    int xx, xy;
+
     /**
      * Creates new form Calculator
      */
@@ -64,6 +65,11 @@ public class Calculator extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(243, 244, 246));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 1, true));
+        jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel2MouseDragged(evt);
+            }
+        });
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         divideBt.setBackground(new java.awt.Color(251, 191, 36));
@@ -332,13 +338,20 @@ public class Calculator extends javax.swing.JFrame {
     }//GEN-LAST:event_equalBtActionPerformed
 
     private void clearBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtActionPerformed
-       calculatorInput.setText("");
+        calculatorInput.setText("");
     }//GEN-LAST:event_clearBtActionPerformed
 
-    private void appendInput(String value){
+    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - xy);
+    }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void appendInput(String value) {
         input.append(value);
         calculatorInput.setText(input.toString());
     }
+
     private double evaluateExpression(String expr) {
         Stack<Double> numbers = new Stack<>();
         Stack<Character> operators = new Stack<>();
@@ -369,16 +382,22 @@ public class Calculator extends javax.swing.JFrame {
     }
 
     private boolean hasPrecedence(char op1, char op2) {
-        if ((op1 == '*' || op1 == '/') && (op2 == '+' || op2 == '-')) return false;
+        if ((op1 == '*' || op1 == '/') && (op2 == '+' || op2 == '-')) {
+            return false;
+        }
         return true;
     }
 
     private double applyOp(char op, double b, double a) {
         switch (op) {
-            case '+': return a + b;
-            case '-': return a - b;
-            case '*': return a * b;
-            case '/': return b == 0 ? 0 : a / b;
+            case '+':
+                return a + b;
+            case '-':
+                return a - b;
+            case '*':
+                return a * b;
+            case '/':
+                return b == 0 ? 0 : a / b;
         }
         return 0;
     }
@@ -394,6 +413,7 @@ public class Calculator extends javax.swing.JFrame {
             input.setLength(0);
         }
     }
+
     /**
      * @param args the command line arguments
      */
