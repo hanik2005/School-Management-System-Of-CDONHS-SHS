@@ -679,4 +679,75 @@ public class Strand {
         }
     }
 
+    //NEWWWWWWWWWWWWWWWWW
+    public boolean archiveStudentStrand(int studentId, int currentStrandId, int newStrandId, int currentGradeLevel, int newGradeLevel) {
+        String reason = (currentStrandId != newStrandId) ? "TRANSFER" : "PROMOTION";
+
+        String sqlInsert = "INSERT INTO archived_student_strand (student_id, strand_id, grade_level, section_id, reason, date_archived) "
+                + "SELECT student_id, strand_id, grade_level, section_id, ?, NOW() "
+                + "FROM student_strand WHERE student_id = ? AND strand_id = ? AND grade_level = ?";
+
+        try (PreparedStatement psInsert = con.prepareStatement(sqlInsert)) {
+            psInsert.setString(1, reason);
+            psInsert.setInt(2, studentId);
+            psInsert.setInt(3, currentStrandId);
+            psInsert.setInt(4, currentGradeLevel);
+            int inserted = psInsert.executeUpdate();
+
+            if (inserted > 0) {
+                if (reason.equals("TRANSFER")) {
+                    // For transfer, delete the old strand record
+                    String sqlDelete = "DELETE FROM student_strand WHERE student_id = ? AND strand_id = ? AND grade_level = ?";
+                    try (PreparedStatement psDelete = con.prepareStatement(sqlDelete)) {
+                        psDelete.setInt(1, studentId);
+                        psDelete.setInt(2, currentStrandId);
+                        psDelete.setInt(3, currentGradeLevel);
+                        psDelete.executeUpdate();
+                    }
+                }
+                return true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean updateStudentGradeLevel(int studentId, int newGradeLevel, String sectionSelect) {
+        int sectionId = getSectionIdByName(sectionSelect); // convert section name to ID
+        if (sectionId == -1) {
+            JOptionPane.showMessageDialog(null, "❌ Section not found: " + sectionSelect);
+            return false;
+        }
+
+        String sql = "UPDATE student_strand SET grade_level = ?, section_id = ? WHERE student_id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, newGradeLevel);
+            ps.setInt(2, sectionId); // use the numeric ID, not the name
+            ps.setInt(3, studentId);
+
+            int rows = ps.executeUpdate();
+            return rows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private int getSectionIdByName(String sectionName) {
+        String sql = "SELECT section_id FROM section WHERE section_name = ?";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, sectionName);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("section_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1; // not found
+    }
+
 }

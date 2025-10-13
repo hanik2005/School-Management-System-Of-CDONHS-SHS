@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2025 at 05:56 AM
+-- Generation Time: Oct 13, 2025 at 12:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,6 +43,30 @@ CREATE TABLE `admin` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `archived_student_strand`
+--
+
+CREATE TABLE `archived_student_strand` (
+  `archive_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `strand_id` int(11) NOT NULL,
+  `grade_level` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL,
+  `date_archived` timestamp NOT NULL DEFAULT current_timestamp(),
+  `reason` enum('PROMOTION','TRANSFER','MANUAL') DEFAULT 'PROMOTION'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `archived_student_strand`
+--
+
+INSERT INTO `archived_student_strand` (`archive_id`, `student_id`, `strand_id`, `grade_level`, `section_id`, `date_archived`, `reason`) VALUES
+(4, 1, 1, 11, 1, '2025-10-13 08:33:10', 'PROMOTION'),
+(7, 2, 5, 11, 33, '2025-10-13 10:13:50', 'PROMOTION');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `grade_entry`
 --
 
@@ -60,47 +84,18 @@ CREATE TABLE `grade_entry` (
 --
 
 INSERT INTO `grade_entry` (`entry_id`, `student_id`, `subject_id`, `section_id`, `quarter`, `grade`) VALUES
-(80, 1, 36, 33, 1, 91.90),
-(81, 1, 37, 33, 1, 90.00),
-(82, 1, 38, 33, 1, 90.00),
-(83, 1, 39, 33, 1, 85.00),
-(84, 1, 40, 33, 1, 86.00),
-(85, 1, 36, 33, 2, 90.00),
-(86, 1, 36, 33, 3, 90.00),
-(87, 1, 36, 33, 4, 98.00),
-(88, 1, 38, 33, 2, 90.00),
-(89, 1, 38, 33, 3, 90.00),
-(90, 1, 38, 33, 4, 60.00),
-(91, 1, 39, 33, 2, 60.00),
-(92, 1, 39, 33, 3, 90.00),
-(93, 1, 39, 33, 4, 90.00),
-(94, 1, 40, 33, 2, 60.00),
-(95, 1, 40, 33, 3, 90.00),
-(96, 1, 40, 33, 4, 60.00),
-(97, 1, 37, 33, 2, 90.00),
-(98, 1, 37, 33, 3, 80.00),
-(99, 1, 37, 33, 4, 90.00),
-(100, 2, 1, 1, 1, 80.00),
-(101, 2, 2, 1, 1, 99.00),
-(102, 2, 2, 1, 3, 90.00),
-(103, 2, 3, 1, 3, 90.00),
-(104, 2, 4, 1, 3, 90.00),
-(105, 2, 3, 1, 1, 90.00),
-(106, 2, 4, 1, 1, 90.00),
-(107, 2, 5, 1, 1, 90.00),
-(108, 2, 6, 1, 1, 90.00),
-(109, 2, 7, 1, 1, 90.00),
-(110, 2, 8, 1, 1, 90.00),
-(111, 4, 1, 2, 1, 90.00),
-(112, 4, 2, 2, 1, 80.00),
-(113, 4, 3, 2, 1, 76.00),
-(114, 4, 4, 2, 1, 90.00),
-(115, 4, 5, 2, 1, 80.00),
-(116, 4, 6, 2, 1, 70.00),
-(117, 4, 7, 2, 1, 90.00),
-(118, 4, 8, 2, 1, 100.00),
-(119, 1, 33, 33, 1, 98.00),
-(120, 7, 33, 33, 1, 99.00);
+(150, 1, 1, 1, 1, 90.00),
+(151, 1, 1, 1, 2, 80.00),
+(152, 1, 1, 1, 3, 98.00),
+(153, 1, 1, 1, 4, 90.00),
+(154, 2, 33, 33, 1, 90.00),
+(155, 2, 33, 33, 2, 100.00),
+(156, 2, 33, 33, 3, 70.00),
+(157, 2, 33, 33, 4, 80.00),
+(158, 2, 34, 33, 1, 90.00),
+(159, 2, 34, 33, 2, 70.00),
+(160, 2, 34, 33, 3, 80.00),
+(161, 2, 34, 33, 4, 90.00);
 
 -- --------------------------------------------------------
 
@@ -241,7 +236,30 @@ INSERT INTO `student` (`student_id`, `user_id`, `first_name`, `middle_name`, `la
 (7, 10, 'Micah', 'Bilagbog', 'Baal', '2003-10-10', 'Female', 'baal@gmail.com', '09977564276', 'dasdad', 'dasdsad', 'dadsad', 'dasdasd', 'ClassList_G11_TVL-ICT_SecA.pdf', 'Form137_4.pdf', 'D:\\PICTURES\\agile_model.png', '105220150089'),
 (8, 11, 'Ras', 'Pinignit', 'Lawren', '2006-10-13', 'Male', 'Lawren@gmail.com', '09977718534', 'dsadad', 'dasdsad', 'dasdadadadad', '', '', '', NULL, '404551221678'),
 (9, 12, 'Dominic', 'Dolos', 'Reyes', '2001-06-02', 'Male', 'reyes@gmail.com', '09988716521', 'dadasda', 'dasdd', 'dasdasd', '', '', '', NULL, '109660713467'),
-(10, 13, 'Mark', 'Galez', 'Hamot', '2005-10-01', 'Female', 'galez@gmail.com', '09986777535', 'czxcxzc', 'czxczczxc', 'czxczxcz', 'czxczcz', '', '', NULL, '900765325345');
+(10, 13, 'Mark', 'Galez', 'Hamot', '2005-10-01', 'Female', 'galez@gmail.com', '09986777535', 'czxcxzc', 'czxczczxc', 'czxczxcz', 'czxczcz', '', '', NULL, '900765325345'),
+(11, 14, 'Nishita', 'Mogumin', 'Daishi', '2003-10-17', 'Female', 'Daishi@gmail.com', '09977181934', 'persti', 'polio', 'hdajhdjak', 'dadadsada', '', '', NULL, '105660718953'),
+(12, 15, 'Rowena', 'Abecia', 'Dominador', '2005-10-14', 'Male', 'Rowena@gmail.com', '09817564321', 'mama', 'papa', 'sadasdsa', 'dadsadasd', '', '', NULL, '176096756432');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_progress`
+--
+
+CREATE TABLE `student_progress` (
+  `progress_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `school_year` varchar(20) NOT NULL,
+  `status` enum('Passed','Failed','Incomplete') DEFAULT 'Incomplete'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `student_progress`
+--
+
+INSERT INTO `student_progress` (`progress_id`, `student_id`, `school_year`, `status`) VALUES
+(3, 1, '2025-2026', 'Passed'),
+(4, 2, '2025-2026', 'Passed');
 
 -- --------------------------------------------------------
 
@@ -262,16 +280,8 @@ CREATE TABLE `student_strand` (
 --
 
 INSERT INTO `student_strand` (`student_strand_id`, `student_id`, `strand_id`, `grade_level`, `section_id`) VALUES
-(6, 4, 1, 11, 2),
-(8, 2, 1, 11, 1),
-(9, 3, 7, 11, 49),
-(12, 1, 5, 11, 33),
-(13, 1, 5, 12, 37),
-(14, 5, 5, 11, 33),
-(16, 6, 1, 11, 1),
-(17, 6, 1, 12, 5),
-(18, 7, 5, 11, 33),
-(19, 9, 3, 11, 17);
+(26, 1, 1, 12, 1),
+(27, 2, 5, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -292,46 +302,22 @@ CREATE TABLE `student_subjects` (
 --
 
 INSERT INTO `student_subjects` (`enrollment_id`, `student_id`, `subject_id`, `status`, `school_year`) VALUES
-(65, 1, 33, 'Enrolled', '2025-2026'),
-(66, 1, 34, 'Enrolled', '2025-2026'),
-(67, 1, 35, 'Enrolled', '2025-2026'),
-(68, 1, 36, 'Enrolled', '2025-2026'),
-(69, 1, 37, 'Enrolled', '2025-2026'),
-(70, 1, 38, 'Enrolled', '2025-2026'),
-(71, 1, 39, 'Enrolled', '2025-2026'),
-(72, 1, 40, 'Enrolled', '2025-2026'),
-(81, 1, 89, 'Enrolled', '2025-2026'),
-(82, 1, 90, 'Enrolled', '2025-2026'),
-(83, 1, 91, 'Enrolled', '2025-2026'),
-(84, 1, 92, 'Enrolled', '2025-2026'),
-(85, 1, 93, 'Enrolled', '2025-2026'),
-(86, 1, 94, 'Enrolled', '2025-2026'),
-(87, 1, 95, 'Enrolled', '2025-2026'),
-(88, 1, 96, 'Enrolled', '2025-2026'),
-(97, 2, 1, 'Enrolled', '2025-2026'),
-(98, 2, 2, 'Enrolled', '2025-2026'),
-(99, 2, 3, 'Enrolled', '2025-2026'),
-(100, 2, 4, 'Enrolled', '2025-2026'),
-(101, 2, 5, 'Enrolled', '2025-2026'),
-(102, 2, 6, 'Enrolled', '2025-2026'),
-(103, 2, 7, 'Enrolled', '2025-2026'),
-(104, 2, 8, 'Enrolled', '2025-2026'),
-(129, 4, 1, 'Enrolled', '2025-2026'),
-(130, 4, 2, 'Enrolled', '2025-2026'),
-(131, 4, 3, 'Enrolled', '2025-2026'),
-(132, 4, 4, 'Enrolled', '2025-2026'),
-(133, 4, 5, 'Enrolled', '2025-2026'),
-(134, 4, 6, 'Enrolled', '2025-2026'),
-(135, 4, 7, 'Enrolled', '2025-2026'),
-(136, 4, 8, 'Enrolled', '2025-2026'),
-(137, 7, 33, 'Enrolled', '2025-2026'),
-(138, 7, 34, 'Enrolled', '2025-2026'),
-(139, 7, 35, 'Enrolled', '2025-2026'),
-(140, 7, 36, 'Enrolled', '2025-2026'),
-(141, 7, 37, 'Enrolled', '2025-2026'),
-(142, 7, 38, 'Enrolled', '2025-2026'),
-(143, 7, 39, 'Enrolled', '2025-2026'),
-(144, 7, 40, 'Enrolled', '2025-2026');
+(153, 1, 1, 'Enrolled', '2025-2026'),
+(154, 1, 2, 'Dropped', '2025-2026'),
+(155, 1, 3, 'Dropped', '2025-2026'),
+(156, 1, 4, 'Dropped', '2025-2026'),
+(157, 1, 5, 'Dropped', '2025-2026'),
+(158, 1, 6, 'Dropped', '2025-2026'),
+(159, 1, 7, 'Dropped', '2025-2026'),
+(160, 1, 8, 'Dropped', '2025-2026'),
+(161, 2, 33, 'Enrolled', '2025-2026'),
+(162, 2, 34, 'Enrolled', '2025-2026'),
+(163, 2, 35, 'Dropped', '2025-2026'),
+(164, 2, 36, 'Dropped', '2025-2026'),
+(165, 2, 37, 'Dropped', '2025-2026'),
+(166, 2, 38, 'Dropped', '2025-2026'),
+(167, 2, 39, 'Dropped', '2025-2026'),
+(168, 2, 40, 'Dropped', '2025-2026');
 
 -- --------------------------------------------------------
 
@@ -536,7 +522,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `type_id`) VALUES
 (1, '74769648759', 'hdfhhdfhh20250904', 2),
-(2, '\"2\"', 'clarito20250904', 2),
+(2, '67439284', 'clarito20250904', 2),
 (3, '3', 'bagtong20070907', 2),
 (4, '4', 'balaba20050820', 2),
 (5, '5', 'clarito19880915', 2),
@@ -547,7 +533,9 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `type_id`) VALUES
 (10, '105220150089', 'micah20031010', 2),
 (11, '404551221678', 'lawren20061013', 2),
 (12, '109660713467', 'reyes20010602', 2),
-(13, '900765325345', 'daguplo20051001', 2);
+(13, '900765325345', 'daguplo20051001', 2),
+(14, '105660718953', 'daishi20031017', 2),
+(15, '176096756432', 'dominador20051014', 2);
 
 --
 -- Indexes for dumped tables
@@ -560,6 +548,15 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`),
   ADD UNIQUE KEY `email` (`email`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `archived_student_strand`
+--
+ALTER TABLE `archived_student_strand`
+  ADD PRIMARY KEY (`archive_id`),
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `strand_id` (`strand_id`),
+  ADD KEY `section_id` (`section_id`);
 
 --
 -- Indexes for table `grade_entry`
@@ -590,6 +587,13 @@ ALTER TABLE `student`
   ADD PRIMARY KEY (`student_id`),
   ADD UNIQUE KEY `LRN` (`LRN`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `student_progress`
+--
+ALTER TABLE `student_progress`
+  ADD PRIMARY KEY (`progress_id`),
+  ADD KEY `student_id` (`student_id`);
 
 --
 -- Indexes for table `student_strand`
@@ -650,10 +654,16 @@ ALTER TABLE `admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `archived_student_strand`
+--
+ALTER TABLE `archived_student_strand`
+  MODIFY `archive_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `grade_entry`
 --
 ALTER TABLE `grade_entry`
-  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
 
 --
 -- AUTO_INCREMENT for table `section`
@@ -671,19 +681,25 @@ ALTER TABLE `strands`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `student_progress`
+--
+ALTER TABLE `student_progress`
+  MODIFY `progress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `student_strand`
 --
 ALTER TABLE `student_strand`
-  MODIFY `student_strand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `student_strand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `student_subjects`
 --
 ALTER TABLE `student_subjects`
-  MODIFY `enrollment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
+  MODIFY `enrollment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
 
 --
 -- AUTO_INCREMENT for table `subject`
@@ -707,7 +723,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
@@ -718,6 +734,14 @@ ALTER TABLE `user`
 --
 ALTER TABLE `admin`
   ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `archived_student_strand`
+--
+ALTER TABLE `archived_student_strand`
+  ADD CONSTRAINT `archived_student_strand_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `archived_student_strand_ibfk_2` FOREIGN KEY (`strand_id`) REFERENCES `strands` (`strand_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `archived_student_strand_ibfk_3` FOREIGN KEY (`section_id`) REFERENCES `section` (`section_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `grade_entry`
@@ -738,6 +762,12 @@ ALTER TABLE `section`
 --
 ALTER TABLE `student`
   ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `student_progress`
+--
+ALTER TABLE `student_progress`
+  ADD CONSTRAINT `student_progress_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `student_strand`

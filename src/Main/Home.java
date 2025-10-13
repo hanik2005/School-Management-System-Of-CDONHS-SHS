@@ -1570,7 +1570,7 @@ public class Home extends javax.swing.JFrame {
         stuSaveBt.setBackground(new java.awt.Color(251, 191, 36));
         stuSaveBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuSaveBt.setForeground(new java.awt.Color(0, 0, 0));
-        stuSaveBt.setText("Save");
+        stuSaveBt.setText("Confirm");
         stuSaveBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSaveBtActionPerformed(evt);
@@ -3973,13 +3973,13 @@ public class Home extends javax.swing.JFrame {
                 return;
             }
 
-            // Check if student exists
+            // ✅ Check if student exists
             if (!strand.studentExists(studentId)) {
                 JOptionPane.showMessageDialog(this, "Student with ID " + studentId + " does not exist");
                 return;
             }
 
-            // Check if student already has this exact enrollment (same strand + same grade level)
+            // ✅ 1. Check if student already enrolled in same strand + grade level
             if (strand.isStudentEnrolledInStrandAndGrade(studentId, strandId, gradeLevel)) {
                 Object[] currentEnrollment = strand.getCurrentEnrollment(studentId);
                 String currentStrand = (String) currentEnrollment[1];
@@ -3992,79 +3992,85 @@ public class Home extends javax.swing.JFrame {
                 return;
             }
 
-            // Check if student is already enrolled in ANY strand
+            // ✅ 2. Check if student is already enrolled in any strand
             if (strand.isStudentEnrolledInAnyStrand(studentId)) {
-                // Get current enrollment details
                 Object[] currentEnrollment = strand.getCurrentEnrollment(studentId);
                 int currentGradeLevel = (int) currentEnrollment[0];
                 String currentStrand = (String) currentEnrollment[1];
                 String currentSection = (String) currentEnrollment[2];
+                int currentStrandId = strand.convertStrandNameToId(currentStrand);
 
-                // Check if it's the same strand but different grade level (promotion)
+                // ✅ Promotion (same strand, higher grade)
                 if (currentStrand.equals(strandName)) {
-                    // Same strand, different grade level - PROMOTION (INSERT NEW RECORD)
-                    int response = JOptionPane.showConfirmDialog(
-                            this,
-                            "Student Promotion:\n\n"
-                            + "Current: " + currentStrand + " - Grade " + currentGradeLevel + " - Section " + currentSection
-                            + "\nNew: " + strandName + " - Grade " + gradeLevel + " - Section " + sectionSelect
-                            + "\n\nPromote student to next grade level?\n"
-                            + "(A new enrollment record will be created)",
-                            "Confirm Student Promotion",
-                            JOptionPane.YES_NO_OPTION,
-                            JOptionPane.QUESTION_MESSAGE
-                    );
-
-                    if (response == JOptionPane.YES_OPTION) {
-                        // INSERT new enrollment record for promotion
-                        boolean success = strand.insertStudentStrand(studentId, strandId, gradeLevel, sectionSelect);
-                        if (success) {
-                            JOptionPane.showMessageDialog(this, "Student promoted to Grade " + gradeLevel);
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Failed to promote student");
+                    if (gradeLevel > currentGradeLevel) {
+                        boolean hasPassed = progress.hasStudentPassed(studentId, currentStrandId, currentGradeLevel);
+                        if (!hasPassed) {
+                            JOptionPane.showMessageDialog(this,
+                                    "This student has not yet passed all required subjects.\n"
+                                    + "Promotion cannot proceed until requirements are met.",
+                                    "Promotion Blocked",
+                                    JOptionPane.WARNING_MESSAGE);
+                            return;
                         }
+
+                        int response = JOptionPane.showConfirmDialog(
+                                this,
+                                "Student Promotion:\n\n"
+                                + "Current: " + currentStrand + " - Grade " + currentGradeLevel + " - Section " + currentSection
+                                + "\nNew: " + strandName + " - Grade " + gradeLevel + " - Section " + sectionSelect
+                                + "\n\nConfirm promotion?",
+                                "Confirm Student Promotion",
+                                JOptionPane.YES_NO_OPTION,
+                                JOptionPane.QUESTION_MESSAGE
+                        );
+
+                        if (response == JOptionPane.YES_OPTION) {
+                            boolean archived = strand.archiveStudentStrand(studentId, currentStrandId, strandId, currentGradeLevel, gradeLevel);
+                            if (!archived) {
+                                JOptionPane.showMessageDialog(this, "❌ Failed to archive existing record. Promotion cancelled.");
+                                return;
+                            }
+
+                            boolean success = strand.updateStudentGradeLevel(studentId, gradeLevel, sectionSelect);
+                            JOptionPane.showMessageDialog(this, success
+                                    ? "✅ Student promoted successfully to Grade " + gradeLevel
+                                    : "❌ Failed to promote student");
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(this,
+                                "Invalid promotion: New grade level must be higher than current grade.");
                     }
+
                 } else {
-                    // Different strand - TRANSFER
+                    // ✅ Transfer to different strand
                     int response = JOptionPane.showConfirmDialog(
                             this,
                             "Student Strand Transfer:\n\n"
                             + "Student ID: " + studentId
                             + "\nCurrent: " + currentStrand + " - Grade " + currentGradeLevel + " - Section " + currentSection
                             + "\nNew: " + strandName + " - Grade " + gradeLevel + " - Section " + sectionSelect
-                            + "\n\nConfirm to transfer this student?\n"
-                            + "⚠ This will DELETE all existing records in " + currentStrand
-                            + " (Grade " + currentGradeLevel + ") before inserting new enrollment.",
+                            + "\n\nConfirm transfer?",
                             "Confirm Strand Transfer",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.WARNING_MESSAGE
                     );
 
                     if (response == JOptionPane.YES_OPTION) {
-                        // ✅ Get current strandId
-                        int currentStrandId = strand.convertStrandNameToId(currentStrand);
-
-                        // ✅ Delete old grades + strand under this strandId and grade level
-                        boolean deleted = strand.deleteStudentStrandAndGrades(studentId, currentStrandId, currentGradeLevel);
-
-                        if (deleted) {
-                            // ✅ Insert new enrollment for transfer
+                        boolean archived = strand.archiveStudentStrand(studentId, currentStrandId, strandId, currentGradeLevel, gradeLevel);
+                        if (archived) {
                             boolean success = strand.insertStudentStrand(studentId, strandId, gradeLevel, sectionSelect);
-                            if (success) {
-                                JOptionPane.showMessageDialog(this,
-                                        "Student ID " + studentId + " transferred successfully:\n"
-                                        + "From " + currentStrand + " (Grade " + currentGradeLevel + ")\n"
-                                        + "To " + strandName + " (Grade " + gradeLevel + ")");
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Failed to insert new enrollment after transfer");
-                            }
+                            JOptionPane.showMessageDialog(this, success
+                                    ? "✅ Student transferred successfully to " + strandName
+                                    : "❌ Failed to insert new enrollment after transfer");
                         } else {
-                            JOptionPane.showMessageDialog(this, "Failed to transfer student (delete failed)");
+                            JOptionPane.showMessageDialog(this, "❌ Failed to archive existing record. Transfer cancelled.");
                         }
                     }
                 }
+
             } else {
-                // New enrollment - student not enrolled in any strand yet
+                // ✅ 3. New enrollment
                 int response = JOptionPane.showConfirmDialog(
                         this,
                         "New Student Enrollment:\n\n"
@@ -4080,31 +4086,24 @@ public class Home extends javax.swing.JFrame {
 
                 if (response == JOptionPane.YES_OPTION) {
                     boolean success = strand.insertStudentStrand(studentId, strandId, gradeLevel, sectionSelect);
-                    if (success) {
-                        JOptionPane.showMessageDialog(this, "Student enrolled in " + strandName);
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Failed to enroll student");
-                    }
+                    
+                    String schoolYear = getCurrentSchoolYear();
+                    String status = "Incomplete";
+                    progress.insert(studentId, schoolYear, status);
+                    JOptionPane.showMessageDialog(this, success
+                            ? "✅ Student enrolled successfully in " + strandName
+                            : "❌ Failed to enroll student");
                 }
             }
 
-            // Refresh table and clear fields
-            StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_ID", "Grade_Level", "Strand", "Section"}));
+            // ✅ Refresh table
+            StudentTrackTable.setModel(new DefaultTableModel(
+                    null,
+                    new Object[]{"Student_ID", "Grade_Level", "Strand", "Section"}
+            ));
             strand.loadStudentStrandsTable(StudentTrackTable, "");
             clearStrand();
 
-//            // Refresh table and clear fields
-//            StudentGradeManagementTable.setModel(new DefaultTableModel(null, new Object[]{
-//                "Student ID", "Grade Level", "Strand", "Section",
-//                "Subject 1", "Score 1", "Subject 2", "Score 2",
-//                "Subject 3", "Score 3", "Subject 4", "Score 4",
-//                "Subject 5", "Score 5", "Subject 6", "Score 6",
-//                "Subject 7", "Score 7", "Subject 8", "Score 8",
-//                "Quarter", "Average"
-//            }));
-//
-//            grade.getGradeValue(StudentGradeManagementTable, "");
-            //clearGradeManage();
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Please enter a valid numeric Student ID");
         } catch (Exception ex) {
@@ -4163,14 +4162,13 @@ public class Home extends javax.swing.JFrame {
                     String birthForPass = passFormat.format(stuBirth.getDate());
                     String password = sLastName.toLowerCase() + birthForPass;
                     int type_id = 2; // student
-                    String schoolYear = getCurrentSchoolYear();
-                    String status = "Incomplete";
+                   
 
                     user.insert(userId, username, password, type_id);
 
                     student.insert(id, userId, sFname, sMiddleName, sLastName, date, gender, email, phone,
                             motherName, fatherName, addressLine1, addressLine2, birthCer, form137, imagePath, stuLrn);
-                    progress.insert(id, schoolYear, status);
+                    
 
                     StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
                         "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));

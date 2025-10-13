@@ -50,7 +50,6 @@ public class Student {
 //
 //        return lrn;
 //    }
-
     //insert data into student table
     public void insert(int student_id, int user_id, String fname, String midName, String lastName, String date, String gender, String email, String phone,
             String motherName, String fatherName, String addressLine1,
@@ -226,36 +225,56 @@ public class Student {
 
     }
 
-    public DefaultTableModel getStudentSubjectGrades(int studentId, int gradeLevel, int quarter) {
-        String[] columnNames = {"Subject", "Grade"};
+    public DefaultTableModel getStudentSubjectGrades(int studentId, int strandId, int gradeLevel, int quarter) {
+        String[] columnNames = {"Subject", "Grade", "Source"};
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 
-        String sql = "SELECT subj.subject_name AS Subject, g.grade AS Grade "
-                + "FROM student_subjects ssj "
-                + "JOIN subject subj ON ssj.subject_id = subj.subject_id "
-                + "LEFT JOIN grade_entry g ON ssj.student_id = g.student_id "
-                + "    AND ssj.subject_id = g.subject_id "
-                + "    AND g.quarter = ? "
-                + "JOIN student_strand ss ON ssj.student_id = ss.student_id "
-                + "WHERE ssj.student_id = ? "
-                + "AND ss.grade_level = ? "
-                + "AND ssj.status = 'Enrolled'";
+        String sql = """
+        SELECT subj.subject_name AS Subject,
+               g.grade AS Grade,
+               'Current' AS Source
+        FROM student_subjects ssj
+        JOIN subject subj ON ssj.subject_id = subj.subject_id
+        LEFT JOIN grade_entry g
+            ON g.subject_id = subj.subject_id
+            AND g.student_id = ssj.student_id
+            AND g.quarter = ?
+        WHERE ssj.student_id = ?
+          AND subj.strand_id = ?
+          AND subj.grade_level = ?
+          AND ssj.status = 'Enrolled'
+        ORDER BY subj.subject_name ASC
+    """;
+
+        boolean hasData = false;
 
         try (PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setInt(1, quarter);      // quarter for LEFT JOIN condition
-            pst.setInt(2, studentId);    // studentId
-            pst.setInt(3, gradeLevel);   // gradeLevel
+            pst.setInt(1, quarter);
+            pst.setInt(2, studentId);
+            pst.setInt(3, strandId);
+            pst.setInt(4, gradeLevel);
 
             ResultSet rs = pst.executeQuery();
+
             while (rs.next()) {
                 String subject = rs.getString("Subject");
-                String grade = rs.getString("Grade"); // may be null if no grade yet
-                model.addRow(new Object[]{subject, grade != null ? grade : "Not Graded"});
+                String grade = rs.getString("Grade");
+                model.addRow(new Object[]{subject, grade != null ? grade : "Not Graded", "Current"});
+                hasData = true;
             }
-        } catch (Exception e) {
+
+        } catch (SQLException e) {
             e.printStackTrace();
+        }
+
+        if (!hasData) {
+            JOptionPane.showMessageDialog(null,
+                    "You are not enrolled in any subjects for this strand and grade level.",
+                    "Information",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
 
         return model;
     }
+
 }

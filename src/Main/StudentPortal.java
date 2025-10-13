@@ -28,6 +28,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import model.ComboItem;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.PDFRenderer;
@@ -40,6 +41,7 @@ public class StudentPortal extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(StudentPortal.class.getName());
     private int studentId;
+    Strand strand = new Strand();
     int xx, xy;
     Connection con = MyConnection.getConnection();
     PreparedStatement ps;
@@ -254,6 +256,8 @@ public class StudentPortal extends javax.swing.JFrame {
         gradeLevelStudentBox = new javax.swing.JComboBox<>();
         quarterStudentBox = new javax.swing.JComboBox<>();
         jLabel77 = new javax.swing.JLabel();
+        jLabel81 = new javax.swing.JLabel();
+        strandStudentBox = new javax.swing.JComboBox<>();
         jPanel45 = new javax.swing.JPanel();
         gradeStudentLogout = new javax.swing.JButton();
         gradeStudentClear = new javax.swing.JButton();
@@ -262,6 +266,11 @@ public class StudentPortal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(243, 244, 246));
 
@@ -804,6 +813,19 @@ public class StudentPortal extends javax.swing.JFrame {
         jLabel77.setForeground(new java.awt.Color(0, 0, 0));
         jLabel77.setText("Quarter");
 
+        jLabel81.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel81.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel81.setText("Strand");
+
+        strandStudentBox.setBackground(new java.awt.Color(255, 255, 255));
+        strandStudentBox.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        strandStudentBox.setForeground(new java.awt.Color(0, 0, 0));
+        strandStudentBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                strandStudentBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel43Layout = new javax.swing.GroupLayout(jPanel43);
         jPanel43.setLayout(jPanel43Layout);
         jPanel43Layout.setHorizontalGroup(
@@ -813,29 +835,42 @@ public class StudentPortal extends javax.swing.JFrame {
                 .addGroup(jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel75)
                     .addComponent(gradeLevelStudentBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(strandStudentBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel43Layout.createSequentialGroup()
+                        .addComponent(jLabel81)
+                        .addGap(190, 190, 190)))
+                .addGap(30, 30, 30)
                 .addGroup(jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(quarterStudentBox, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel77, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(73, 73, 73)
                 .addComponent(stuGradeStudentSearchBt, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel43Layout.setVerticalGroup(
             jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel43Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel75)
-                    .addComponent(jLabel77))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gradeLevelStudentBox)
-                    .addComponent(quarterStudentBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-            .addGroup(jPanel43Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel43Layout.createSequentialGroup()
                 .addComponent(stuGradeStudentSearchBt, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel43Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel43Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel81)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(strandStudentBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel43Layout.createSequentialGroup()
+                        .addGroup(jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel75)
+                            .addComponent(jLabel77))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(gradeLevelStudentBox)
+                            .addComponent(quarterStudentBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
 
         jPanel45.setBackground(new java.awt.Color(243, 244, 246));
@@ -1044,24 +1079,22 @@ public class StudentPortal extends javax.swing.JFrame {
 
     private void stuGradeStudentSearchBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuGradeStudentSearchBtActionPerformed
         try {
-            // ✅ Get Grade Level safely
             String gradeLevelStr = gradeLevelStudentBox.getSelectedItem().toString();
             int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
 
             int studentId = this.studentId;
             int quarter = Integer.parseInt(quarterStudentBox.getSelectedItem().toString());
+            int strandId = getSelectedStudentStrandId(); // ✅ make sure this gets the numeric strand_id
 
-            // ✅ Fetch subject + grade only
-            DefaultTableModel model = student.getStudentSubjectGrades(studentId, gradeLevel, quarter);
+            // ✅ Fetch both current + archived subjects and grades
+            DefaultTableModel model = student.getStudentSubjectGrades(studentId, strandId, gradeLevel, quarter);
 
-            // ✅ Apply results to table
             GradeViewTable.setModel(model);
 
-            // ✅ Handle empty case
             if (model.getRowCount() == 0) {
-                JOptionPane.showMessageDialog(this, "No grades found for this quarter or You have not enrolled a subject yet .");
+                JOptionPane.showMessageDialog(this, "No grades found for this strand or quarter.");
             } else {
-                JOptionPane.showMessageDialog(this, "Grade list generated successfully!");
+                JOptionPane.showMessageDialog(this, "✅ Grade list generated successfully!");
             }
 
         } catch (Exception e) {
@@ -1075,11 +1108,21 @@ public class StudentPortal extends javax.swing.JFrame {
             int gradeLevel = Integer.parseInt(gradeLevelStudentBox.getSelectedItem().toString());
 
             loadQuarters(quarterStudentBox);
+            
+             strand.loadStrands(strandStudentBox, gradeLevel);
+            
+            if (strandStudentBox.getItemCount() > 0) {
+                int strandId = getSelectedStudentStrandId();
+
+            }
 
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error loading strands/sections/subjects.");
         }
+        
+        
+        
     }//GEN-LAST:event_gradeLevelStudentBoxActionPerformed
 
     private void quarterStudentBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quarterStudentBoxActionPerformed
@@ -1100,6 +1143,32 @@ public class StudentPortal extends javax.swing.JFrame {
     private void gradeStudentClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeStudentClearActionPerformed
         //clearListGrade();
     }//GEN-LAST:event_gradeStudentClearActionPerformed
+
+    private void strandStudentBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_strandStudentBoxActionPerformed
+       
+
+    }//GEN-LAST:event_strandStudentBoxActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+         for (double i = 0.1; i <= 1.0; i += 0.1) {
+            String s = i + "";
+            float f = Float.valueOf(s);
+            this.setOpacity(f);
+            try {
+                Thread.sleep(40);
+            } catch (InterruptedException ex) {
+                System.getLogger(Home.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    public int getSelectedStudentStrandId() {
+        ComboItem selectedItem = (ComboItem) strandStudentBox.getSelectedItem();
+        if (selectedItem != null) {
+            return selectedItem.getId(); // assuming ComboItem has getId()
+        }
+        return -1; // or handle appropriately if nothing is selected
+    }
 
     private void openPdfFile(String fileName) {
         try {
@@ -1202,6 +1271,7 @@ public class StudentPortal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel81;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel14;
@@ -1224,6 +1294,7 @@ public class StudentPortal extends javax.swing.JFrame {
     private javax.swing.JTextField nameTxt;
     private javax.swing.JTextField phoneTxt;
     private javax.swing.JComboBox<String> quarterStudentBox;
+    private javax.swing.JComboBox<String> strandStudentBox;
     private javax.swing.JTextField strandTxt;
     private javax.swing.JButton stuGradeStudentSearchBt;
     private javax.swing.JTextField stuLrn;

@@ -64,6 +64,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdminFrame.class.getName());
 
     Student student = new Student();
+    StudentProgress progress = new StudentProgress();
     private static int adminId;
     DefaultTableModel subjectModel;
     Strand strand = new Strand();
@@ -145,21 +146,21 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel27.add(bgPanel6, BorderLayout.CENTER);
         jPanel27.revalidate();
         jPanel27.repaint();
-        
+
         BackgroundPanel bgPanel7 = new BackgroundPanel("/assets/background.jpg");
         bgPanel7.setLayout(new BorderLayout());
         jPanel38.setLayout(new BorderLayout());
         jPanel38.add(bgPanel7, BorderLayout.CENTER);
         jPanel38.revalidate();
         jPanel38.repaint();
-        
+
         BackgroundPanel bgPanel8 = new BackgroundPanel("/assets/background.jpg");
         bgPanel8.setLayout(new BorderLayout());
         jPanel41.setLayout(new BorderLayout());
         jPanel41.add(bgPanel8, BorderLayout.CENTER);
         jPanel41.revalidate();
         jPanel41.repaint();
-        
+
         BackgroundPanel bgPanel9 = new BackgroundPanel("/assets/background.jpg");
         bgPanel9.setLayout(new BorderLayout());
         jPanel31.setLayout(new BorderLayout());
@@ -247,7 +248,8 @@ public class AdminFrame extends javax.swing.JFrame {
         imagePath = null;
 
     }
-     public void clearStudent() {
+
+    public void clearStudent() {
         stuID.setText(String.valueOf(student.getMax()));
         stuFname.setText(null);
         stuMiddleName.setText(null);
@@ -283,6 +285,7 @@ public class AdminFrame extends javax.swing.JFrame {
         sectionClassBox.removeAllItems();
         ClassListTable.setModel(new DefaultTableModel(null, new Object[]{"LRN", "Student_Name"}));
     }
+
     public boolean isEmptyStudent() {
         // First Name
         if (stuFname.getText().isEmpty()) {
@@ -387,7 +390,6 @@ public class AdminFrame extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(this, "Address Line 2 must not exceed 50 characters");
 //            return false;
 //        }
-
         // Birth Certificate
 //        if (stuBirthCer.getText().isEmpty()) {
 //            JOptionPane.showMessageDialog(this, "Birth Certificate path is missing");
@@ -399,7 +401,6 @@ public class AdminFrame extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(this, "Form 137 path is missing");
 //            return false;
 //        }
-
         // LRN
         if (stuLRN.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "LRN is missing");
@@ -415,7 +416,6 @@ public class AdminFrame extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(this, "Please add your image");
 //            return false;
 //        }
-
         return true;
     }
 
@@ -503,7 +503,8 @@ public class AdminFrame extends javax.swing.JFrame {
 
         return true;
     }
-     public void clearStrand() {
+
+    public void clearStrand() {
         //strandId.setText(String.valueOf(strand.getMax()));
         stuStrandId.setText(null);
         stuGradeLevel.setSelectedIndex(0);
@@ -1881,7 +1882,7 @@ public class AdminFrame extends javax.swing.JFrame {
         stuSaveBt.setBackground(new java.awt.Color(251, 191, 36));
         stuSaveBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuSaveBt.setForeground(new java.awt.Color(0, 0, 0));
-        stuSaveBt.setText("Save");
+        stuSaveBt.setText("Confirm");
         stuSaveBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSaveBtActionPerformed(evt);
@@ -3724,7 +3725,7 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void stuStrandClearBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandClearBtActionPerformed
-       clearStrand();
+        clearStrand();
     }//GEN-LAST:event_stuStrandClearBtActionPerformed
 
     private void stuSaveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSaveBtActionPerformed
@@ -3745,13 +3746,13 @@ public class AdminFrame extends javax.swing.JFrame {
                 return;
             }
 
-            // Check if student exists
+            // ✅ Check if student exists
             if (!strand.studentExists(studentId)) {
                 JOptionPane.showMessageDialog(this, "Student with ID " + studentId + " does not exist");
                 return;
             }
 
-            // Check if student already has this exact enrollment (same strand + same grade level)
+            // ✅ 1. Check if student already enrolled in same strand + grade level
             if (strand.isStudentEnrolledInStrandAndGrade(studentId, strandId, gradeLevel)) {
                 Object[] currentEnrollment = strand.getCurrentEnrollment(studentId);
                 String currentStrand = (String) currentEnrollment[1];
@@ -3764,78 +3765,85 @@ public class AdminFrame extends javax.swing.JFrame {
                 return;
             }
 
-            // Check if student is already enrolled in ANY strand
+            // ✅ 2. Check if student is already enrolled in any strand
             if (strand.isStudentEnrolledInAnyStrand(studentId)) {
-                // Get current enrollment details
                 Object[] currentEnrollment = strand.getCurrentEnrollment(studentId);
                 int currentGradeLevel = (int) currentEnrollment[0];
                 String currentStrand = (String) currentEnrollment[1];
                 String currentSection = (String) currentEnrollment[2];
+                int currentStrandId = strand.convertStrandNameToId(currentStrand);
 
-                // Check if it's the same strand but different grade level (promotion)
+                // ✅ Promotion (same strand, higher grade)
                 if (currentStrand.equals(strandName)) {
-                    // Same strand, different grade level - PROMOTION (INSERT NEW RECORD)
-                    int response = JOptionPane.showConfirmDialog(
-                            this,
-                            "Student Promotion:\n\n"
-                            + "Current: " + currentStrand + " - Grade " + currentGradeLevel + " - Section " + currentSection
-                            + "\nNew: " + strandName + " - Grade " + gradeLevel + " - Section " + sectionSelect
-                            + "\n\nPromote student to next grade level?\n"
-                            + "(A new enrollment record will be created)",
-                            "Confirm Student Promotion",
-                            JOptionPane.YES_NO_OPTION,
-                            JOptionPane.QUESTION_MESSAGE
-                    );
-
-                    if (response == JOptionPane.YES_OPTION) {
-                        // INSERT new enrollment record for promotion
-                        boolean success = strand.insertStudentStrand(studentId, strandId, gradeLevel, sectionSelect);
-                        if (success) {
-                            JOptionPane.showMessageDialog(this, "Student promoted to Grade " + gradeLevel);
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Failed to promote student");
+                    if (gradeLevel > currentGradeLevel) {
+                        boolean hasPassed = progress.hasStudentPassed(studentId, currentStrandId, currentGradeLevel);
+                        if (!hasPassed) {
+                            JOptionPane.showMessageDialog(this,
+                                    "This student has not yet passed all required subjects.\n"
+                                    + "Promotion cannot proceed until requirements are met.",
+                                    "Promotion Blocked",
+                                    JOptionPane.WARNING_MESSAGE);
+                            return;
                         }
+
+                        int response = JOptionPane.showConfirmDialog(
+                                this,
+                                "Student Promotion:\n\n"
+                                + "Current: " + currentStrand + " - Grade " + currentGradeLevel + " - Section " + currentSection
+                                + "\nNew: " + strandName + " - Grade " + gradeLevel + " - Section " + sectionSelect
+                                + "\n\nConfirm promotion?",
+                                "Confirm Student Promotion",
+                                JOptionPane.YES_NO_OPTION,
+                                JOptionPane.QUESTION_MESSAGE
+                        );
+
+                        if (response == JOptionPane.YES_OPTION) {
+                            boolean archived = strand.archiveStudentStrand(studentId, currentStrandId, strandId, currentGradeLevel, gradeLevel);
+                            if (!archived) {
+                                JOptionPane.showMessageDialog(this, "❌ Failed to archive existing record. Promotion cancelled.");
+                                return;
+                            }
+
+                            boolean success = strand.updateStudentGradeLevel(studentId, gradeLevel, sectionSelect);
+                            JOptionPane.showMessageDialog(this, success
+                                    ? "✅ Student promoted successfully to Grade " + gradeLevel
+                                    : "❌ Failed to promote student");
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(this,
+                                "Invalid promotion: New grade level must be higher than current grade.");
                     }
+
                 } else {
-                    // Different strand - TRANSFER
+                    // ✅ Transfer to different strand
                     int response = JOptionPane.showConfirmDialog(
                             this,
                             "Student Strand Transfer:\n\n"
                             + "Student ID: " + studentId
                             + "\nCurrent: " + currentStrand + " - Grade " + currentGradeLevel + " - Section " + currentSection
                             + "\nNew: " + strandName + " - Grade " + gradeLevel + " - Section " + sectionSelect
-                            + "\n\nConfirm to transfer this student?\n"
-                            + "⚠ This will DELETE all existing records in " + currentStrand
-                            + " (Grade " + currentGradeLevel + ") before inserting new enrollment.",
+                            + "\n\nConfirm transfer?",
                             "Confirm Strand Transfer",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.WARNING_MESSAGE
                     );
 
                     if (response == JOptionPane.YES_OPTION) {
-                        // ✅ Get current strandId
-                        int currentStrandId = strand.convertStrandNameToId(currentStrand);
-
-                        // ✅ Delete old grades + strand under this strandId and grade level
-                        boolean deleted = strand.deleteStudentStrandAndGrades(studentId, currentStrandId, currentGradeLevel);
-                        if (deleted) {
-                            // ✅ Insert new enrollment for transfer
+                        boolean archived = strand.archiveStudentStrand(studentId, currentStrandId, strandId, currentGradeLevel, gradeLevel);
+                        if (archived) {
                             boolean success = strand.insertStudentStrand(studentId, strandId, gradeLevel, sectionSelect);
-                            if (success) {
-                                JOptionPane.showMessageDialog(this,
-                                        "Student ID " + studentId + " transferred successfully:\n"
-                                        + "From " + currentStrand + " (Grade " + currentGradeLevel + ")\n"
-                                        + "To " + strandName + " (Grade " + gradeLevel + ")");
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Failed to insert new enrollment after transfer");
-                            }
+                            JOptionPane.showMessageDialog(this, success
+                                    ? "✅ Student transferred successfully to " + strandName
+                                    : "❌ Failed to insert new enrollment after transfer");
                         } else {
-                            JOptionPane.showMessageDialog(this, "Failed to transfer student (delete failed)");
+                            JOptionPane.showMessageDialog(this, "❌ Failed to archive existing record. Transfer cancelled.");
                         }
                     }
                 }
+
             } else {
-                // New enrollment - student not enrolled in any strand yet
+                // ✅ 3. New enrollment
                 int response = JOptionPane.showConfirmDialog(
                         this,
                         "New Student Enrollment:\n\n"
@@ -3851,16 +3859,21 @@ public class AdminFrame extends javax.swing.JFrame {
 
                 if (response == JOptionPane.YES_OPTION) {
                     boolean success = strand.insertStudentStrand(studentId, strandId, gradeLevel, sectionSelect);
-                    if (success) {
-                        JOptionPane.showMessageDialog(this, "Student enrolled in " + strandName);
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Failed to enroll student");
-                    }
+
+                    String schoolYear = getCurrentSchoolYear();
+                    String status = "Incomplete";
+                    progress.insert(studentId, schoolYear, status);
+                    JOptionPane.showMessageDialog(this, success
+                            ? "✅ Student enrolled successfully in " + strandName
+                            : "❌ Failed to enroll student");
                 }
             }
 
-            // Refresh table and clear fields
-            StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_Strand_ID", "Student_ID", "Grade_Level", "Strand", "Section"}));
+            // ✅ Refresh table
+            StudentTrackTable.setModel(new DefaultTableModel(
+                    null,
+                    new Object[]{"Student_ID", "Grade_Level", "Strand", "Section"}
+            ));
             strand.loadStudentStrandsTable(StudentTrackTable, "");
             clearStrand();
 
@@ -4429,7 +4442,6 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_classListPrintBtActionPerformed
 
-    
     private ImageIcon imageAdjust(String path, byte[] pic) {
         ImageIcon myImage = null;
         if (path != null) {
@@ -4460,6 +4472,7 @@ public class AdminFrame extends javax.swing.JFrame {
         java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("EEEE, MMMM dd, yyyy");
         txtDate.setText(df.format(date));
     }
+
     public ImageIcon imageAdjust(String path, byte[] pic, JLabel targetLabel) {
         ImageIcon myImage = null;
 
