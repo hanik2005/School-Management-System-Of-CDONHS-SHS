@@ -70,6 +70,7 @@ public class AdminFrame extends javax.swing.JFrame {
     Strand strand = new Strand();
     Grade grade = new Grade();
     User user = new User();
+    Archive archive = new Archive();
     //Home home = new Home();
     Teacher teacher = new Teacher();
     ListOfHonor marksSheet = new ListOfHonor();
@@ -652,6 +653,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         stuStrandClearBt = new javax.swing.JButton();
         stuSaveBt = new javax.swing.JButton();
+        stuStrandRestore = new javax.swing.JButton();
         jPanel37 = new javax.swing.JPanel();
         jPanel38 = new javax.swing.JPanel();
         jPanel40 = new javax.swing.JPanel();
@@ -1889,6 +1891,16 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
+        stuStrandRestore.setBackground(new java.awt.Color(251, 191, 36));
+        stuStrandRestore.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        stuStrandRestore.setForeground(new java.awt.Color(0, 0, 0));
+        stuStrandRestore.setText("Restore");
+        stuStrandRestore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stuStrandRestoreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
@@ -1896,21 +1908,26 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(stuSaveBt, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(stuStrandRestore, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(stuStrandClearBt, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(92, 92, 92))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(stuSaveBt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stuStrandClearBt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(stuStrandClearBt, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(stuSaveBt, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(stuStrandRestore, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
@@ -3751,6 +3768,20 @@ public class AdminFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Student with ID " + studentId + " does not exist");
                 return;
             }
+            System.out.println("StudentId:" + studentId);
+            System.out.println("gradeLevel:" + gradeLevel);
+            System.out.println("strandId:" + strandId);
+
+            // ✅ Check archived enrollment first
+            if (archive.isArchivedEnrollmentExists(studentId, gradeLevel, strandId)) {
+
+                JOptionPane.showMessageDialog(this,
+                        "⚠ You cannot enroll or transfer to the same Grade Level + Strand that already exists in the archive.\n"
+                        + "Use the Restore button if you want to restore this previous enrollment.",
+                        "Archived Enrollment Exists",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
             // ✅ 1. Check if student already enrolled in same strand + grade level
             if (strand.isStudentEnrolledInStrandAndGrade(studentId, strandId, gradeLevel)) {
@@ -3798,13 +3829,18 @@ public class AdminFrame extends javax.swing.JFrame {
                         );
 
                         if (response == JOptionPane.YES_OPTION) {
-                            boolean archived = strand.archiveStudentStrand(studentId, currentStrandId, strandId, currentGradeLevel, gradeLevel);
+                            int newSectionId = strand.getAvailableSection(gradeLevel, strandId);
+                            if (newSectionId == -1) {
+                                JOptionPane.showMessageDialog(this, "No available sections for Grade " + gradeLevel + " in " + strandName);
+                                return;
+                            }
+                            boolean archived = archive.archiveStudentStrand(studentId, currentStrandId, strandId, currentGradeLevel, gradeLevel);
                             if (!archived) {
                                 JOptionPane.showMessageDialog(this, "❌ Failed to archive existing record. Promotion cancelled.");
                                 return;
                             }
 
-                            boolean success = strand.updateStudentGradeLevel(studentId, gradeLevel, sectionSelect);
+                            boolean success = archive.updateStudentGradeLevel(studentId, gradeLevel, newSectionId);
                             JOptionPane.showMessageDialog(this, success
                                     ? "✅ Student promoted successfully to Grade " + gradeLevel
                                     : "❌ Failed to promote student");
@@ -3830,7 +3866,7 @@ public class AdminFrame extends javax.swing.JFrame {
                     );
 
                     if (response == JOptionPane.YES_OPTION) {
-                        boolean archived = strand.archiveStudentStrand(studentId, currentStrandId, strandId, currentGradeLevel, gradeLevel);
+                        boolean archived = archive.archiveStudentStrand(studentId, currentStrandId, strandId, currentGradeLevel, gradeLevel);
                         if (archived) {
                             boolean success = strand.insertStudentStrand(studentId, strandId, gradeLevel, sectionSelect);
                             JOptionPane.showMessageDialog(this, success
@@ -4442,6 +4478,10 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_classListPrintBtActionPerformed
 
+    private void stuStrandRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandRestoreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuStrandRestoreActionPerformed
+
     private ImageIcon imageAdjust(String path, byte[] pic) {
         ImageIcon myImage = null;
         if (path != null) {
@@ -4675,6 +4715,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> stuStrand;
     private javax.swing.JButton stuStrandClearBt;
     public static javax.swing.JTextField stuStrandId;
+    private javax.swing.JButton stuStrandRestore;
     private javax.swing.JTextField stuStrandSearchAdminField;
     private javax.swing.JButton stuStrandSearchBt;
     private javax.swing.JTextField stuSubjectIDManage;

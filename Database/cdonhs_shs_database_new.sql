@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2025 at 12:20 PM
+-- Generation Time: Oct 14, 2025 at 06:07 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,8 +61,8 @@ CREATE TABLE `archived_student_strand` (
 --
 
 INSERT INTO `archived_student_strand` (`archive_id`, `student_id`, `strand_id`, `grade_level`, `section_id`, `date_archived`, `reason`) VALUES
-(4, 1, 1, 11, 1, '2025-10-13 08:33:10', 'PROMOTION'),
-(7, 2, 5, 11, 33, '2025-10-13 10:13:50', 'PROMOTION');
+(11, 1, 1, 11, 1, '2025-10-14 01:19:55', 'PROMOTION'),
+(12, 1, 1, 12, 5, '2025-10-14 03:24:08', 'TRANSFER');
 
 -- --------------------------------------------------------
 
@@ -84,18 +84,18 @@ CREATE TABLE `grade_entry` (
 --
 
 INSERT INTO `grade_entry` (`entry_id`, `student_id`, `subject_id`, `section_id`, `quarter`, `grade`) VALUES
-(150, 1, 1, 1, 1, 90.00),
-(151, 1, 1, 1, 2, 80.00),
-(152, 1, 1, 1, 3, 98.00),
-(153, 1, 1, 1, 4, 90.00),
-(154, 2, 33, 33, 1, 90.00),
-(155, 2, 33, 33, 2, 100.00),
-(156, 2, 33, 33, 3, 70.00),
-(157, 2, 33, 33, 4, 80.00),
-(158, 2, 34, 33, 1, 90.00),
-(159, 2, 34, 33, 2, 70.00),
-(160, 2, 34, 33, 3, 80.00),
-(161, 2, 34, 33, 4, 90.00);
+(168, 1, 1, 1, 1, 90.00),
+(169, 1, 1, 1, 2, 100.00),
+(170, 1, 1, 1, 3, 80.00),
+(171, 1, 1, 1, 4, 90.00),
+(172, 1, 57, 5, 1, 98.00),
+(173, 1, 58, 5, 1, 70.00),
+(174, 1, 59, 5, 1, 90.00),
+(175, 1, 60, 5, 1, 95.00),
+(176, 1, 61, 5, 1, 90.00),
+(177, 1, 62, 5, 1, 95.00),
+(178, 1, 63, 5, 1, 90.00),
+(179, 1, 64, 5, 1, 98.00);
 
 -- --------------------------------------------------------
 
@@ -258,8 +258,7 @@ CREATE TABLE `student_progress` (
 --
 
 INSERT INTO `student_progress` (`progress_id`, `student_id`, `school_year`, `status`) VALUES
-(3, 1, '2025-2026', 'Passed'),
-(4, 2, '2025-2026', 'Passed');
+(7, 1, '2025-2026', 'Passed');
 
 -- --------------------------------------------------------
 
@@ -280,8 +279,7 @@ CREATE TABLE `student_strand` (
 --
 
 INSERT INTO `student_strand` (`student_strand_id`, `student_id`, `strand_id`, `grade_level`, `section_id`) VALUES
-(26, 1, 1, 12, 1),
-(27, 2, 5, 12, 1);
+(31, 1, 4, 11, 25);
 
 -- --------------------------------------------------------
 
@@ -302,22 +300,22 @@ CREATE TABLE `student_subjects` (
 --
 
 INSERT INTO `student_subjects` (`enrollment_id`, `student_id`, `subject_id`, `status`, `school_year`) VALUES
-(153, 1, 1, 'Enrolled', '2025-2026'),
-(154, 1, 2, 'Dropped', '2025-2026'),
-(155, 1, 3, 'Dropped', '2025-2026'),
-(156, 1, 4, 'Dropped', '2025-2026'),
-(157, 1, 5, 'Dropped', '2025-2026'),
-(158, 1, 6, 'Dropped', '2025-2026'),
-(159, 1, 7, 'Dropped', '2025-2026'),
-(160, 1, 8, 'Dropped', '2025-2026'),
-(161, 2, 33, 'Enrolled', '2025-2026'),
-(162, 2, 34, 'Enrolled', '2025-2026'),
-(163, 2, 35, 'Dropped', '2025-2026'),
-(164, 2, 36, 'Dropped', '2025-2026'),
-(165, 2, 37, 'Dropped', '2025-2026'),
-(166, 2, 38, 'Dropped', '2025-2026'),
-(167, 2, 39, 'Dropped', '2025-2026'),
-(168, 2, 40, 'Dropped', '2025-2026');
+(193, 1, 1, 'Enrolled', '2025-2026'),
+(194, 1, 2, 'Dropped', '2025-2026'),
+(195, 1, 3, 'Dropped', '2025-2026'),
+(196, 1, 4, 'Dropped', '2025-2026'),
+(197, 1, 5, 'Dropped', '2025-2026'),
+(198, 1, 6, 'Dropped', '2025-2026'),
+(199, 1, 7, 'Dropped', '2025-2026'),
+(200, 1, 8, 'Dropped', '2025-2026'),
+(201, 1, 57, 'Enrolled', '2025-2026'),
+(202, 1, 58, 'Enrolled', '2025-2026'),
+(203, 1, 59, 'Enrolled', '2025-2026'),
+(204, 1, 60, 'Enrolled', '2025-2026'),
+(205, 1, 61, 'Enrolled', '2025-2026'),
+(206, 1, 62, 'Enrolled', '2025-2026'),
+(207, 1, 63, 'Enrolled', '2025-2026'),
+(208, 1, 64, 'Enrolled', '2025-2026');
 
 -- --------------------------------------------------------
 
@@ -657,13 +655,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `archived_student_strand`
 --
 ALTER TABLE `archived_student_strand`
-  MODIFY `archive_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `archive_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `grade_entry`
 --
 ALTER TABLE `grade_entry`
-  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
 
 --
 -- AUTO_INCREMENT for table `section`
@@ -687,19 +685,19 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `student_progress`
 --
 ALTER TABLE `student_progress`
-  MODIFY `progress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `progress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `student_strand`
 --
 ALTER TABLE `student_strand`
-  MODIFY `student_strand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `student_strand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `student_subjects`
 --
 ALTER TABLE `student_subjects`
-  MODIFY `enrollment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
+  MODIFY `enrollment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
 
 --
 -- AUTO_INCREMENT for table `subject`

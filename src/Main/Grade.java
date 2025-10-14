@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -370,34 +371,37 @@ public class Grade {
 //                new Object[]{"Subject", "First Quarter", "Second Quarter", "Third Quarter", "Fourth Quarter", "Final Grade", "Remarks"}, 0
 //        );
 //
+//        // Use helper method
+//        String schoolYear = getCurrentSchoolYear();
+//
 //        String sql = """
 //        SELECT subj.subject_name,
 //               MAX(CASE WHEN g.quarter = 1 THEN g.grade END) AS first_quarter,
 //               MAX(CASE WHEN g.quarter = 2 THEN g.grade END) AS second_quarter,
 //               MAX(CASE WHEN g.quarter = 3 THEN g.grade END) AS third_quarter,
 //               MAX(CASE WHEN g.quarter = 4 THEN g.grade END) AS fourth_quarter
-//        FROM subject subj
-//        INNER JOIN student_strand ss 
-//               ON subj.strand_id = ss.strand_id 
-//              AND subj.grade_level = ss.grade_level
-//              AND ss.student_id = ?
+//        FROM student_subjects ssj
+//        INNER JOIN subject subj 
+//               ON ssj.subject_id = subj.subject_id
 //        LEFT JOIN grade_entry g 
-//               ON subj.subject_id = g.subject_id 
-//              AND g.student_id = ss.student_id
-//        WHERE ss.grade_level = ?
-//          AND ss.student_id = ?
+//               ON ssj.subject_id = g.subject_id
+//              AND ssj.student_id = g.student_id
+//        WHERE ssj.student_id = ?
+//          AND subj.grade_level = ?
+//          AND ssj.school_year = ?
+//          AND ssj.status = 'Enrolled'
 //        GROUP BY subj.subject_id, subj.subject_name
 //        ORDER BY subj.subject_name
 //    """;
 //
 //        double totalFinalGrades = 0.0;
 //        int subjectsWithFinal = 0;
-//        boolean allSubjectsComplete = true; // track if every subject has 4 quarters
+//        boolean allSubjectsComplete = true;
 //
 //        try (PreparedStatement ps = con.prepareStatement(sql)) {
 //            ps.setInt(1, studentId);
 //            ps.setInt(2, gradeLevel);
-//            ps.setInt(3, studentId);
+//            ps.setString(3, schoolYear);
 //
 //            try (ResultSet rs = ps.executeQuery()) {
 //                while (rs.next()) {
@@ -415,33 +419,21 @@ public class Grade {
 //                    double sum = 0.0;
 //                    int count = 0;
 //
-//                    try {
-//                        if (q1s != null) {
-//                            sum += Double.parseDouble(q1s);
-//                            count++;
-//                        }
-//                    } catch (NumberFormatException ignored) {
+//                    if (q1s != null) {
+//                        sum += Double.parseDouble(q1s);
+//                        count++;
 //                    }
-//                    try {
-//                        if (q2s != null) {
-//                            sum += Double.parseDouble(q2s);
-//                            count++;
-//                        }
-//                    } catch (NumberFormatException ignored) {
+//                    if (q2s != null) {
+//                        sum += Double.parseDouble(q2s);
+//                        count++;
 //                    }
-//                    try {
-//                        if (q3s != null) {
-//                            sum += Double.parseDouble(q3s);
-//                            count++;
-//                        }
-//                    } catch (NumberFormatException ignored) {
+//                    if (q3s != null) {
+//                        sum += Double.parseDouble(q3s);
+//                        count++;
 //                    }
-//                    try {
-//                        if (q4s != null) {
-//                            sum += Double.parseDouble(q4s);
-//                            count++;
-//                        }
-//                    } catch (NumberFormatException ignored) {
+//                    if (q4s != null) {
+//                        sum += Double.parseDouble(q4s);
+//                        count++;
 //                    }
 //
 //                    String finalGradeStr = "N/A";
@@ -456,7 +448,7 @@ public class Grade {
 //                            totalFinalGrades += finalGradeVal;
 //                            subjectsWithFinal++;
 //                        } else {
-//                            allSubjectsComplete = false; // not all quarters filled for this subject
+//                            allSubjectsComplete = false;
 //                        }
 //                    } else {
 //                        allSubjectsComplete = false;
@@ -469,7 +461,7 @@ public class Grade {
 //            e.printStackTrace();
 //        }
 //
-//        // Add General Average row ONLY if all subjects have 4 quarters
+//        // ✅ Add General Average if all subjects complete
 //        if (allSubjectsComplete && subjectsWithFinal > 0) {
 //            double generalAverage = totalFinalGrades / subjectsWithFinal;
 //            String generalAverageStr = String.format("%.2f", generalAverage);
@@ -480,12 +472,11 @@ public class Grade {
 //
 //        return model;
 //    }
-    public DefaultTableModel getStudentFormGrades(int studentId, int gradeLevel) {
+    public DefaultTableModel getStudentFormGrades(int studentId, int gradeLevel, int strandId) {
         DefaultTableModel model = new DefaultTableModel(
                 new Object[]{"Subject", "First Quarter", "Second Quarter", "Third Quarter", "Fourth Quarter", "Final Grade", "Remarks"}, 0
         );
 
-        // Use helper method
         String schoolYear = getCurrentSchoolYear();
 
         String sql = """
@@ -502,6 +493,7 @@ public class Grade {
               AND ssj.student_id = g.student_id
         WHERE ssj.student_id = ?
           AND subj.grade_level = ?
+          AND subj.strand_id = ?
           AND ssj.school_year = ?
           AND ssj.status = 'Enrolled'
         GROUP BY subj.subject_id, subj.subject_name
@@ -515,7 +507,8 @@ public class Grade {
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, studentId);
             ps.setInt(2, gradeLevel);
-            ps.setString(3, schoolYear);
+            ps.setInt(3, strandId);   // filter by strand
+            ps.setString(4, schoolYear);
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
@@ -575,7 +568,7 @@ public class Grade {
             e.printStackTrace();
         }
 
-        // ✅ Add General Average if all subjects complete
+        // Add General Average if all subjects complete
         if (allSubjectsComplete && subjectsWithFinal > 0) {
             double generalAverage = totalFinalGrades / subjectsWithFinal;
             String generalAverageStr = String.format("%.2f", generalAverage);
@@ -598,6 +591,97 @@ public class Grade {
         } else {
             // January to May → previousYear-currentYear
             return (year - 1) + "-" + year;
+        }
+    }
+
+//    public List<String> getStudentStrands(int studentId) {
+//        List<String> strands = new ArrayList<>();
+//
+//        if (studentId <= 0) {
+//            return strands;
+//        }
+//
+//        String sql = "SELECT st.strand_name "
+//                + "FROM student_strand ss "
+//                + "INNER JOIN strands st ON st.strand_id = ss.strand_id "
+//                + "WHERE ss.student_id = ? "
+//                + "UNION "
+//                + "SELECT st.strand_name "
+//                + "FROM archived_student_strand ass "
+//                + "INNER JOIN strands st ON st.strand_id = ass.strand_id "
+//                + "WHERE ass.student_id = ?";
+//
+//        try (Connection conn = MyConnection.getConnection(); PreparedStatement pst = conn.prepareStatement(sql)) {
+//
+//            pst.setInt(1, studentId);
+//            pst.setInt(2, studentId);
+//
+//            try (ResultSet rs = pst.executeQuery()) {
+//                while (rs.next()) {
+//                    strands.add(rs.getString("strand_name"));
+//                }
+//            }
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            JOptionPane.showMessageDialog(null, "Error retrieving student strands.");
+//        }
+//
+//        return strands;
+//    }
+    public int getStrandIdByName(String strandName) {
+        String sql = "SELECT strand_id FROM strand WHERE strand_name = ?";
+        try (Connection conn = MyConnection.getConnection(); PreparedStatement pst = conn.prepareStatement(sql)) {
+
+            pst.setString(1, strandName);
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("strand_id");
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1; // not found
+    }
+
+    public void getloadStudentStrands(JComboBox strandBox, int studentId) {
+        // Clear previous items
+        strandBox.removeAllItems();
+
+        String sql = """
+        SELECT ss.strand_id, st.strand_name
+        FROM student_strand ss
+        INNER JOIN strands st ON st.strand_id = ss.strand_id
+        WHERE ss.student_id = ?
+        UNION
+        SELECT ass.strand_id, st.strand_name
+        FROM archived_student_strand ass
+        INNER JOIN strands st ON st.strand_id = ass.strand_id
+        WHERE ass.student_id = ?
+        ORDER BY strand_name
+    """;
+
+        try (PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setInt(1, studentId);
+            pst.setInt(2, studentId);
+
+            try (ResultSet rs = pst.executeQuery()) {
+                boolean hasStrands = false;
+                while (rs.next()) {
+                    strandBox.addItem(new ComboItem(rs.getInt("strand_id"), rs.getString("strand_name")));
+                    hasStrands = true;
+                }
+
+                if (!hasStrands) {
+                    JOptionPane.showMessageDialog(null, "No strands found for this student.");
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error loading student strands.");
         }
     }
 
