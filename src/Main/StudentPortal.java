@@ -7,8 +7,10 @@ package Main;
 import model.SubjectGrade;
 import db.MyConnection;
 import design.BackgroundPanel;
+import design.ThemeColors;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -21,6 +23,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -46,6 +49,7 @@ public class StudentPortal extends javax.swing.JFrame {
     Connection con = MyConnection.getConnection();
     PreparedStatement ps;
     ResultSet rs;
+    private int rowIndex;
     private String imagePath;
     Student student = new Student();
     private DefaultTableModel model;
@@ -83,6 +87,207 @@ public class StudentPortal extends javax.swing.JFrame {
         GradeViewTable.setGridColor(Color.black);
         GradeViewTable.setBackground(Color.white);
 
+    }
+
+    public void clearStudent() {
+        stuFname.setText(null);
+        stuMiddleName.setText(null);
+        stuLastName.setText(null);
+        stuBirth.setDate(null);
+        stuGender.setSelectedIndex(0);
+        stuEmail.setText(null);
+        stuPhone.setText(null);
+        stuFatherName.setText(null);
+        stuMotherName.setText(null);
+        stuAddress1.setText(null);
+        stuAddress2.setText(null);
+        stuLRN.setText(null);
+
+    }
+
+    public boolean isEmptyStudent() {
+        // First Name
+        if (stuFname.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student First Name is missing");
+            return false;
+        }
+        if (stuFname.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "First name must not exceed 50 characters");
+            return false;
+        }
+
+        // Middle Name
+        if (stuMiddleName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student Middle Name is missing");
+            return false;
+        }
+        if (stuMiddleName.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "Middle name must not exceed 50 characters");
+            return false;
+        }
+
+        // Last Name
+        if (stuLastName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student Last Name is missing");
+            return false;
+        }
+        if (stuLastName.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "Last name must not exceed 50 characters");
+            return false;
+        }
+
+        // Date of Birth
+        if (stuBirth.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Student date of birth is missing");
+            return false;
+        }
+        if (stuBirth.getDate().compareTo(new Date()) > 0) {
+            JOptionPane.showMessageDialog(this, "No Student from the future are allowed");
+            return false;
+        }
+
+        // Email
+        if (stuEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student email is missing");
+            return false;
+        }
+        if (!stuEmail.getText().matches("^.+@.+\\..+$")) {
+            JOptionPane.showMessageDialog(this, "Invalid Email Address");
+            return false;
+        }
+        if (stuEmail.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "Email must not exceed 50 characters");
+            return false;
+        }
+
+        // Phone
+        if (stuPhone.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student phone number is missing");
+            return false;
+        }
+        if (!stuPhone.getText().matches("\\d{11}")) {
+            JOptionPane.showMessageDialog(this, "Phone number must be exactly 11 digits");
+            return false;
+        }
+
+        // Mother Name
+        if (stuMotherName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student Mother Name is missing");
+            return false;
+        }
+        if (stuMotherName.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "Mother name must not exceed 50 characters");
+            return false;
+        }
+
+        // Father Name
+        if (stuFatherName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student Father Name is missing");
+            return false;
+        }
+        if (stuFatherName.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "Father name must not exceed 50 characters");
+            return false;
+        }
+
+        // Address1
+        if (stuAddress1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Address Line 1 is missing");
+            return false;
+        }
+        if (stuAddress1.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "Address Line 1 must not exceed 50 characters");
+            return false;
+        }
+
+        // Address2
+//        if (stuAddress2.getText().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Address Line 2 is missing");
+//            return false;
+//        }
+//        if (stuAddress2.getText().length() > 50) {
+//            JOptionPane.showMessageDialog(this, "Address Line 2 must not exceed 50 characters");
+//            return false;
+//        }
+        // Birth Certificate
+//        if (stuBirthCer.getText().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Birth Certificate path is missing");
+//            return false;
+//        }
+//
+//        // Form 137
+//        if (stuForm137.getText().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Form 137 path is missing");
+//            return false;
+//        }
+        // LRN
+        if (stuLRN.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "LRN is missing");
+            return false;
+        }
+        if (!stuLRN.getText().matches("\\d{12}")) {
+            JOptionPane.showMessageDialog(this, "LRN must be exactly 12 digits");
+            return false;
+        }
+
+        // Image
+//        if (imagePath == null) {
+//            JOptionPane.showMessageDialog(this, "Please add your image");
+//            return false;
+//        }
+        return true;
+    }
+
+    public boolean check() {
+        int id = studentId; // current student ID
+        String newEmail = stuEmail.getText().trim();
+        String newPhone = stuPhone.getText().trim();
+
+        String oldEmail = "";
+        String oldPhone = "";
+
+        try {
+            // 🔹 Get existing student info directly from database
+            String sql = "SELECT email, phone_number FROM student WHERE student_id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                oldEmail = rs.getString("email");
+                oldPhone = rs.getString("phone_number");
+            }
+
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Database error while checking student info: " + ex.getMessage());
+            return true; // stop update if DB error occurs
+        }
+
+        // 🔹 Compare with the new input
+        if (newEmail.equals(oldEmail) && newPhone.equals(oldPhone)) {
+            return false; // nothing changed
+        } else {
+            if (!newEmail.equals(oldEmail)) {
+                boolean emailExists = student.isEmailExist(newEmail, id);
+                if (emailExists) {
+                    JOptionPane.showMessageDialog(this, "The email already exists.");
+                }
+                return emailExists;
+            }
+
+            if (!newPhone.equals(oldPhone)) {
+                boolean phoneExists = student.isPhoneExist(newPhone, id);
+                if (phoneExists) {
+                    JOptionPane.showMessageDialog(this, "The phone number already exists.");
+                }
+                return phoneExists;
+            }
+        }
+
+        return false;
     }
 
     public void setInformationStrandDatabase() {
@@ -247,6 +452,36 @@ public class StudentPortal extends javax.swing.JFrame {
         jPanel19 = new javax.swing.JPanel();
         imagePanel = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        stuFname = new javax.swing.JTextField();
+        stuMotherName = new javax.swing.JTextField();
+        stuAddress1 = new javax.swing.JTextField();
+        stuAddress2 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        stuBirth = new com.toedter.calendar.JDateChooser();
+        jLabel62 = new javax.swing.JLabel();
+        stuGender = new javax.swing.JComboBox<>();
+        jLabel63 = new javax.swing.JLabel();
+        stuEmail = new javax.swing.JTextField();
+        jLabel64 = new javax.swing.JLabel();
+        stuPhone = new javax.swing.JTextField();
+        jLabel65 = new javax.swing.JLabel();
+        stuFatherName = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        stuMiddleName = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        stuLastName = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        stuLRN = new javax.swing.JTextField();
+        jPanel8 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        updateBt = new javax.swing.JButton();
+        Clear = new javax.swing.JButton();
         jPanel25 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
@@ -354,16 +589,16 @@ public class StudentPortal extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(517, 517, 517)
+                .addGap(526, 526, 526)
                 .addComponent(logStuBt, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addComponent(logStuBt, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jPanel7.setBackground(new java.awt.Color(243, 244, 246));
@@ -766,6 +1001,361 @@ public class StudentPortal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Student Information", jPanel2);
 
+        jPanel5.setBackground(new java.awt.Color(30, 58, 138));
+
+        jPanel6.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
+        jPanel6.setForeground(new java.awt.Color(0, 0, 0));
+
+        stuFname.setBackground(java.awt.Color.white);
+        stuFname.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuFname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+
+        stuMotherName.setBackground(java.awt.Color.white);
+        stuMotherName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuMotherName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuMotherName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stuMotherNameActionPerformed(evt);
+            }
+        });
+
+        stuAddress1.setBackground(java.awt.Color.white);
+        stuAddress1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuAddress1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+
+        stuAddress2.setBackground(java.awt.Color.white);
+        stuAddress2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuAddress2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuAddress2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stuAddress2ActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel14.setText("First Name");
+
+        jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel20.setText("Mother's Name");
+
+        jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel21.setText("Address Line 1");
+
+        jLabel22.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel22.setText("Address Line 2");
+
+        jLabel61.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel61.setText("Date Of Birth");
+
+        stuBirth.setBackground(java.awt.Color.white);
+        stuBirth.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuBirth.setDateFormatString("yyyy-MM-dd");
+
+        jLabel62.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel62.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel62.setText("Gender");
+
+        stuGender.setBackground(new java.awt.Color(204, 204, 204));
+        stuGender.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        stuGender.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuGender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stuGenderActionPerformed(evt);
+            }
+        });
+
+        jLabel63.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel63.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel63.setText("Email");
+
+        stuEmail.setBackground(java.awt.Color.white);
+        stuEmail.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+
+        jLabel64.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel64.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel64.setText("Phone Number");
+
+        stuPhone.setBackground(java.awt.Color.white);
+        stuPhone.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuPhone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuPhone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                stuPhoneKeyTyped(evt);
+            }
+        });
+
+        jLabel65.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel65.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel65.setText("Father's Name");
+
+        stuFatherName.setBackground(java.awt.Color.white);
+        stuFatherName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuFatherName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuFatherName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stuFatherNameActionPerformed(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel25.setText("Middle Name");
+
+        stuMiddleName.setBackground(java.awt.Color.white);
+        stuMiddleName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuMiddleName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+
+        jLabel26.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel26.setText("Last Name");
+
+        stuLastName.setBackground(java.awt.Color.white);
+        stuLastName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuLastName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+
+        jLabel28.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel28.setText("LRN");
+
+        stuLRN.setBackground(java.awt.Color.white);
+        stuLRN.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuLRN.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuLRN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                stuLRNKeyTyped(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(stuMotherName, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(stuAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel63)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(stuEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel64, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(stuPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel65, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(stuFatherName, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(stuAddress2, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(31, 31, 31)))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(stuFname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stuMiddleName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(stuLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(stuLRN, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel61)
+                            .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(stuGender, 0, 133, Short.MAX_VALUE)
+                            .addComponent(stuBirth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(stuFname)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(stuMiddleName)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(stuLastName)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel61)
+                    .addComponent(stuBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stuGender, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel63)
+                    .addComponent(stuEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel64)
+                    .addComponent(stuPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel65)
+                    .addComponent(stuFatherName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20)
+                    .addComponent(stuMotherName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel21)
+                    .addComponent(stuAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel22)
+                    .addComponent(stuAddress2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel28)
+                    .addComponent(stuLRN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+
+        jPanel8.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
+
+        jButton1.setBackground(new java.awt.Color(251, 191, 36));
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Logout");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        updateBt.setBackground(new java.awt.Color(251, 191, 36));
+        updateBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        updateBt.setForeground(new java.awt.Color(0, 0, 0));
+        updateBt.setText("Update");
+        updateBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                updateBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                updateBtMouseExited(evt);
+            }
+        });
+        updateBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtActionPerformed(evt);
+            }
+        });
+
+        Clear.setBackground(new java.awt.Color(251, 191, 36));
+        Clear.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Clear.setForeground(new java.awt.Color(0, 0, 0));
+        Clear.setText("Clear");
+        Clear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ClearMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ClearMouseExited(evt);
+            }
+        });
+        Clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(updateBt, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(137, 137, 137))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Clear, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(updateBt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(42, 42, 42))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Edit Information", jPanel5);
+
         jPanel24.setBackground(new java.awt.Color(243, 244, 246));
 
         jPanel29.setBackground(new java.awt.Color(243, 244, 246));
@@ -1108,9 +1698,9 @@ public class StudentPortal extends javax.swing.JFrame {
             int gradeLevel = Integer.parseInt(gradeLevelStudentBox.getSelectedItem().toString());
 
             loadQuarters(quarterStudentBox);
-            
-             strand.loadStrands(strandStudentBox, gradeLevel);
-            
+
+            strand.loadStrands(strandStudentBox, gradeLevel);
+
             if (strandStudentBox.getItemCount() > 0) {
                 int strandId = getSelectedStudentStrandId();
 
@@ -1120,9 +1710,8 @@ public class StudentPortal extends javax.swing.JFrame {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error loading strands/sections/subjects.");
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_gradeLevelStudentBoxActionPerformed
 
     private void quarterStudentBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quarterStudentBoxActionPerformed
@@ -1145,12 +1734,12 @@ public class StudentPortal extends javax.swing.JFrame {
     }//GEN-LAST:event_gradeStudentClearActionPerformed
 
     private void strandStudentBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_strandStudentBoxActionPerformed
-       
+
 
     }//GEN-LAST:event_strandStudentBoxActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-         for (double i = 0.1; i <= 1.0; i += 0.1) {
+        for (double i = 0.1; i <= 1.0; i += 0.1) {
             String s = i + "";
             float f = Float.valueOf(s);
             this.setOpacity(f);
@@ -1161,6 +1750,114 @@ public class StudentPortal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void stuMotherNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuMotherNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuMotherNameActionPerformed
+
+    private void stuAddress2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuAddress2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuAddress2ActionPerformed
+
+    private void stuGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuGenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuGenderActionPerformed
+
+    private void stuPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuPhoneKeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_stuPhoneKeyTyped
+
+    private void stuFatherNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuFatherNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuFatherNameActionPerformed
+
+    private void stuLRNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuLRNKeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_stuLRNKeyTyped
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+
+        jButton1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        // TODO add your handling code here:
+        jButton1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //qrScanTimer.stop();
+
+        int a = JOptionPane.showConfirmDialog(this, "Do you want to Logout now?", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            this.dispose();
+            LoginFrame frame = new LoginFrame();
+            frame.setVisible(true);
+            frame.setLocationRelativeTo(null);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void updateBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtMouseEntered
+        updateBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_updateBtMouseEntered
+
+    private void updateBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtMouseExited
+        updateBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_updateBtMouseExited
+
+    private void updateBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtActionPerformed
+        if (isEmptyStudent()) {
+            int id = studentId;
+            if (student.isidExist(id)) {
+                if (!check()) {
+                    String sfname = stuFname.getText();
+                    String sMidName = stuMiddleName.getText();
+                    String sLastName = stuLastName.getText();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String date = dateFormat.format(stuBirth.getDate());
+                    String gender = stuGender.getSelectedItem().toString();
+                    String email = stuEmail.getText();
+                    String phone = stuPhone.getText();
+                    String motherName = stuMotherName.getText();
+                    String fatherName = stuFatherName.getText();
+                    String addressLine1 = stuAddress1.getText();
+                    String addressLine2 = stuAddress2.getText();
+                    String stuLrn = stuLRN.getText();
+                    student.updateOnlyStudent(id, sfname, sMidName, sLastName, date, gender, email, phone,
+                            motherName, fatherName, addressLine1, addressLine2, stuLrn);
+
+                    clearStudent();
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "student id doesn't exist");
+
+            }
+
+        }
+    }//GEN-LAST:event_updateBtActionPerformed
+
+    private void ClearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearMouseEntered
+        Clear.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_ClearMouseEntered
+
+    private void ClearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearMouseExited
+        Clear.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_ClearMouseExited
+
+    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
+        clearStudent();
+    }//GEN-LAST:event_ClearActionPerformed
 
     public int getSelectedStudentStrandId() {
         ComboItem selectedItem = (ComboItem) strandStudentBox.getSelectedItem();
@@ -1237,6 +1934,7 @@ public class StudentPortal extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Clear;
     private javax.swing.JTable GradeViewTable;
     private javax.swing.JTextField IdTxt;
     private javax.swing.JTextField address1Txt;
@@ -1253,20 +1951,33 @@ public class StudentPortal extends javax.swing.JFrame {
     private javax.swing.JLabel imagePanel;
     private javax.swing.JLabel imagePanel1;
     private javax.swing.JLabel imagePanel2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel77;
@@ -1286,7 +1997,10 @@ public class StudentPortal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel43;
     private javax.swing.JPanel jPanel45;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton logStuBt;
@@ -1296,9 +2010,22 @@ public class StudentPortal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> quarterStudentBox;
     private javax.swing.JComboBox<String> strandStudentBox;
     private javax.swing.JTextField strandTxt;
+    private javax.swing.JTextField stuAddress1;
+    private javax.swing.JTextField stuAddress2;
+    private com.toedter.calendar.JDateChooser stuBirth;
+    private javax.swing.JTextField stuEmail;
+    private javax.swing.JTextField stuFatherName;
+    private javax.swing.JTextField stuFname;
+    private javax.swing.JComboBox<String> stuGender;
     private javax.swing.JButton stuGradeStudentSearchBt;
+    private javax.swing.JTextField stuLRN;
+    private javax.swing.JTextField stuLastName;
     private javax.swing.JTextField stuLrn;
+    private javax.swing.JTextField stuMiddleName;
+    private javax.swing.JTextField stuMotherName;
+    private javax.swing.JTextField stuPhone;
     private javax.swing.JLabel txtDate;
     private javax.swing.JLabel txtTime;
+    private javax.swing.JButton updateBt;
     // End of variables declaration//GEN-END:variables
 }

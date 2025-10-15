@@ -8,6 +8,7 @@ import static Main.Home.sectionClassBox;
 import static Main.Home.stuStrandId;
 import db.MyConnection;
 import design.BackgroundPanel;
+import design.ThemeColors;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -512,7 +513,7 @@ public class AdminFrame extends javax.swing.JFrame {
         stuStrand.setSelectedIndex(0);
         stuSection.setSelectedIndex(0);
         StudentTrackTable.clearSelection();
-        stuStrandSearchAdminField.setText(null);
+       stuStrandSearchField.setText(null);
 
     }
 
@@ -624,11 +625,12 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel13 = new javax.swing.JPanel();
         delBt = new javax.swing.JButton();
         stuPrint_1 = new javax.swing.JButton();
+        stuInfoCurrentOrArchived = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel36 = new javax.swing.JPanel();
         jLabel66 = new javax.swing.JLabel();
-        stuStrandSearchAdminField = new javax.swing.JTextField();
+        stuStrandSearchField = new javax.swing.JTextField();
         stuStrandSearchBt = new javax.swing.JButton();
         stuStrandId = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
@@ -638,6 +640,8 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         stuSection = new javax.swing.JComboBox<>();
+        jLabel26 = new javax.swing.JLabel();
+        stuFullName = new javax.swing.JTextField();
         jPanel16 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         jPanel35 = new javax.swing.JPanel();
@@ -653,7 +657,8 @@ public class AdminFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         stuStrandClearBt = new javax.swing.JButton();
         stuSaveBt = new javax.swing.JButton();
-        stuStrandRestore = new javax.swing.JButton();
+        stuRestore = new javax.swing.JButton();
+        stuCurrentOrArchive = new javax.swing.JButton();
         jPanel37 = new javax.swing.JPanel();
         jPanel38 = new javax.swing.JPanel();
         jPanel40 = new javax.swing.JPanel();
@@ -777,10 +782,10 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo_resized_50x50.jpg"))); // NOI18N
 
         txtTime.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        txtTime.setForeground(new java.awt.Color(0, 0, 0));
+        txtTime.setForeground(new java.awt.Color(255, 255, 255));
 
         txtDate.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        txtDate.setForeground(new java.awt.Color(0, 0, 0));
+        txtDate.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -853,27 +858,27 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(17, 24, 39));
         jLabel2.setText("Student's ID");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(17, 24, 39));
         jLabel3.setText("First Name");
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setForeground(new java.awt.Color(17, 24, 39));
         jLabel9.setText("Mother's Name");
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setForeground(new java.awt.Color(17, 24, 39));
         jLabel10.setText("Address Line 1");
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setForeground(new java.awt.Color(17, 24, 39));
         jLabel11.setText("Address Line 2");
 
         jLabel61.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel61.setForeground(new java.awt.Color(17, 24, 39));
         jLabel61.setText("Date Of Birth");
 
         stuBirth.setBackground(java.awt.Color.white);
@@ -881,9 +886,10 @@ public class AdminFrame extends javax.swing.JFrame {
         stuBirth.setDateFormatString("yyyy-MM-dd");
 
         jLabel62.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel62.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel62.setForeground(new java.awt.Color(17, 24, 39));
         jLabel62.setText("Gender");
 
+        stuGender.setBackground(new java.awt.Color(204, 204, 204));
         stuGender.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
         stuGender.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
@@ -894,7 +900,7 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel63.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel63.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel63.setForeground(new java.awt.Color(17, 24, 39));
         jLabel63.setText("Email");
 
         stuEmail.setBackground(java.awt.Color.white);
@@ -902,7 +908,7 @@ public class AdminFrame extends javax.swing.JFrame {
         stuEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         jLabel64.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel64.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel64.setForeground(new java.awt.Color(17, 24, 39));
         jLabel64.setText("Phone Number");
 
         stuPhone.setBackground(java.awt.Color.white);
@@ -915,7 +921,7 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel65.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel65.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel65.setForeground(new java.awt.Color(17, 24, 39));
         jLabel65.setText("Father's Name");
 
         stuFatherName.setBackground(java.awt.Color.white);
@@ -928,11 +934,11 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setForeground(new java.awt.Color(17, 24, 39));
         jLabel13.setText("Birth Certificate");
 
         jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setForeground(new java.awt.Color(17, 24, 39));
         jLabel14.setText("Form 137");
 
         browseBirthCertificate.setBackground(new java.awt.Color(251, 191, 36));
@@ -969,7 +975,7 @@ public class AdminFrame extends javax.swing.JFrame {
         stuForm137.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setForeground(new java.awt.Color(17, 24, 39));
         jLabel4.setText("Middle Name");
 
         stuMiddleName.setBackground(java.awt.Color.white);
@@ -977,7 +983,7 @@ public class AdminFrame extends javax.swing.JFrame {
         stuMiddleName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setForeground(new java.awt.Color(17, 24, 39));
         jLabel5.setText("Last Name");
 
         stuLastName.setBackground(java.awt.Color.white);
@@ -1197,7 +1203,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel39.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setForeground(new java.awt.Color(17, 24, 39));
         jLabel16.setText("LRN");
 
         stuLRN.setBackground(java.awt.Color.white);
@@ -1263,6 +1269,17 @@ public class AdminFrame extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Logout");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -1273,6 +1290,14 @@ public class AdminFrame extends javax.swing.JFrame {
         updateBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         updateBt.setForeground(new java.awt.Color(0, 0, 0));
         updateBt.setText("Update");
+        updateBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                updateBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                updateBtMouseExited(evt);
+            }
+        });
         updateBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateBtActionPerformed(evt);
@@ -1283,6 +1308,14 @@ public class AdminFrame extends javax.swing.JFrame {
         addNewBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         addNewBt.setForeground(new java.awt.Color(0, 0, 0));
         addNewBt.setText("Add New");
+        addNewBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addNewBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addNewBtMouseExited(evt);
+            }
+        });
         addNewBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addNewBtActionPerformed(evt);
@@ -1293,6 +1326,14 @@ public class AdminFrame extends javax.swing.JFrame {
         Clear.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Clear.setForeground(new java.awt.Color(0, 0, 0));
         Clear.setText("Clear");
+        Clear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ClearMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ClearMouseExited(evt);
+            }
+        });
         Clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ClearActionPerformed(evt);
@@ -1333,16 +1374,16 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addContainerGap()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -1380,12 +1421,21 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel15.setText("Search Student");
 
         stuSearchField_1.setBackground(new java.awt.Color(255, 255, 255));
+        stuSearchField_1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         stuSearchField_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
 
         searchBt_1.setBackground(new java.awt.Color(251, 191, 36));
         searchBt_1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         searchBt_1.setForeground(new java.awt.Color(0, 0, 0));
         searchBt_1.setText("Search");
+        searchBt_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                searchBt_1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                searchBt_1MouseExited(evt);
+            }
+        });
         searchBt_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBt_1ActionPerformed(evt);
@@ -1396,6 +1446,14 @@ public class AdminFrame extends javax.swing.JFrame {
         stuRefresh_1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuRefresh_1.setForeground(new java.awt.Color(0, 0, 0));
         stuRefresh_1.setText("Refresh");
+        stuRefresh_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuRefresh_1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuRefresh_1MouseExited(evt);
+            }
+        });
         stuRefresh_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuRefresh_1ActionPerformed(evt);
@@ -1406,6 +1464,14 @@ public class AdminFrame extends javax.swing.JFrame {
         stuSort_1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuSort_1.setForeground(new java.awt.Color(0, 0, 0));
         stuSort_1.setText("Sort");
+        stuSort_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuSort_1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuSort_1MouseExited(evt);
+            }
+        });
         stuSort_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSort_1ActionPerformed(evt);
@@ -1474,6 +1540,14 @@ public class AdminFrame extends javax.swing.JFrame {
         delBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         delBt.setForeground(new java.awt.Color(0, 0, 0));
         delBt.setText("Delete");
+        delBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                delBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                delBtMouseExited(evt);
+            }
+        });
         delBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delBtActionPerformed(evt);
@@ -1484,9 +1558,35 @@ public class AdminFrame extends javax.swing.JFrame {
         stuPrint_1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuPrint_1.setForeground(new java.awt.Color(0, 0, 0));
         stuPrint_1.setText("Print");
+        stuPrint_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuPrint_1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuPrint_1MouseExited(evt);
+            }
+        });
         stuPrint_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuPrint_1ActionPerformed(evt);
+            }
+        });
+
+        stuInfoCurrentOrArchived.setBackground(new java.awt.Color(251, 191, 36));
+        stuInfoCurrentOrArchived.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        stuInfoCurrentOrArchived.setForeground(new java.awt.Color(0, 0, 0));
+        stuInfoCurrentOrArchived.setText("Current");
+        stuInfoCurrentOrArchived.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuInfoCurrentOrArchivedMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuInfoCurrentOrArchivedMouseExited(evt);
+            }
+        });
+        stuInfoCurrentOrArchived.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stuInfoCurrentOrArchivedActionPerformed(evt);
             }
         });
 
@@ -1495,11 +1595,13 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addContainerGap(368, Short.MAX_VALUE)
+                .addContainerGap(274, Short.MAX_VALUE)
                 .addComponent(stuPrint_1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(stuInfoCurrentOrArchived, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(delBt, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(504, 504, 504))
+                .addGap(393, 393, 393))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1507,8 +1609,9 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(delBt, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stuPrint_1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(stuPrint_1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stuInfoCurrentOrArchived, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
@@ -1565,20 +1668,20 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel36.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel66.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel66.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel66.setForeground(new java.awt.Color(17, 24, 39));
         jLabel66.setText("Student's ID");
 
-        stuStrandSearchAdminField.setBackground(new java.awt.Color(255, 255, 255));
-        stuStrandSearchAdminField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        stuStrandSearchAdminField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
-        stuStrandSearchAdminField.addActionListener(new java.awt.event.ActionListener() {
+        stuStrandSearchField.setBackground(new java.awt.Color(255, 255, 255));
+        stuStrandSearchField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        stuStrandSearchField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuStrandSearchField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stuStrandSearchAdminFieldActionPerformed(evt);
+                stuStrandSearchFieldActionPerformed(evt);
             }
         });
-        stuStrandSearchAdminField.addKeyListener(new java.awt.event.KeyAdapter() {
+        stuStrandSearchField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                stuStrandSearchAdminFieldKeyTyped(evt);
+                stuStrandSearchFieldKeyTyped(evt);
             }
         });
 
@@ -1586,6 +1689,11 @@ public class AdminFrame extends javax.swing.JFrame {
         stuStrandSearchBt.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         stuStrandSearchBt.setForeground(new java.awt.Color(0, 0, 0));
         stuStrandSearchBt.setText("Search");
+        stuStrandSearchBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuStrandSearchBtMouseEntered(evt);
+            }
+        });
         stuStrandSearchBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuStrandSearchBtActionPerformed(evt);
@@ -1603,7 +1711,7 @@ public class AdminFrame extends javax.swing.JFrame {
                         .addComponent(jLabel66)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel36Layout.createSequentialGroup()
-                        .addComponent(stuStrandSearchAdminField, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(stuStrandSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(stuStrandSearchBt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -1616,7 +1724,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(stuStrandSearchBt, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                    .addComponent(stuStrandSearchAdminField))
+                    .addComponent(stuStrandSearchField))
                 .addContainerGap())
         );
 
@@ -1625,9 +1733,14 @@ public class AdminFrame extends javax.swing.JFrame {
         stuStrandId.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuStrandId.setForeground(new java.awt.Color(0, 0, 0));
         stuStrandId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuStrandId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stuStrandIdActionPerformed(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setForeground(new java.awt.Color(17, 24, 39));
         jLabel19.setText("Student's ID");
 
         stuGradeLevel.setBackground(new java.awt.Color(255, 255, 255));
@@ -1644,7 +1757,6 @@ public class AdminFrame extends javax.swing.JFrame {
         stuStrand.setBackground(new java.awt.Color(255, 255, 255));
         stuStrand.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         stuStrand.setForeground(new java.awt.Color(0, 0, 0));
-        stuStrand.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "STEM", "ABM", "HUMSS", "GAS", "TVL-ICT", "TVL-EIM", "TVL-HE" }));
         stuStrand.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuStrand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1653,15 +1765,15 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setForeground(new java.awt.Color(17, 24, 39));
         jLabel20.setText("Grade Level");
 
         jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setForeground(new java.awt.Color(17, 24, 39));
         jLabel21.setText("Strand");
 
         jLabel25.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel25.setForeground(new java.awt.Color(17, 24, 39));
         jLabel25.setText("Section");
 
         stuSection.setBackground(new java.awt.Color(255, 255, 255));
@@ -1674,26 +1786,47 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel26.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel26.setText("Full Name");
+
+        stuFullName.setEditable(false);
+        stuFullName.setBackground(new java.awt.Color(204, 204, 204));
+        stuFullName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuFullName.setForeground(new java.awt.Color(0, 0, 0));
+        stuFullName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuFullName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stuFullNameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+            .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(stuGradeLevel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(stuStrand, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(stuSection, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jPanel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel26))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(stuStrandId)
-                            .addComponent(stuSection, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(stuStrand, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(stuGradeLevel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(stuFullName))))
                 .addGap(12, 12, 12))
         );
         jPanel7Layout.setVerticalGroup(
@@ -1707,6 +1840,10 @@ public class AdminFrame extends javax.swing.JFrame {
                     .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(stuFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(stuGradeLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1717,7 +1854,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(stuSection, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         jPanel16.setBackground(new java.awt.Color(243, 244, 246));
@@ -1730,7 +1867,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel35.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
         jLabel22.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setForeground(new java.awt.Color(17, 24, 39));
         jLabel22.setText("Search Student");
 
         stuSearchField_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
@@ -1803,7 +1940,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Strand_ID", "Student_ID", "Grade Level", "Strand", "Section"
+                "Student_ID", "Student Name", "Grade Level", "Strand", "Section"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -1829,7 +1966,7 @@ public class AdminFrame extends javax.swing.JFrame {
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 432, Short.MAX_VALUE)
             .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel18Layout.createSequentialGroup()
                     .addContainerGap()
@@ -1891,13 +2028,23 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        stuStrandRestore.setBackground(new java.awt.Color(251, 191, 36));
-        stuStrandRestore.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        stuStrandRestore.setForeground(new java.awt.Color(0, 0, 0));
-        stuStrandRestore.setText("Restore");
-        stuStrandRestore.addActionListener(new java.awt.event.ActionListener() {
+        stuRestore.setBackground(new java.awt.Color(251, 191, 36));
+        stuRestore.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        stuRestore.setForeground(new java.awt.Color(0, 0, 0));
+        stuRestore.setText("Restore");
+        stuRestore.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stuStrandRestoreActionPerformed(evt);
+                stuRestoreActionPerformed(evt);
+            }
+        });
+
+        stuCurrentOrArchive.setBackground(new java.awt.Color(251, 191, 36));
+        stuCurrentOrArchive.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        stuCurrentOrArchive.setForeground(new java.awt.Color(0, 0, 0));
+        stuCurrentOrArchive.setText("Current");
+        stuCurrentOrArchive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stuCurrentOrArchiveActionPerformed(evt);
             }
         });
 
@@ -1907,27 +2054,28 @@ public class AdminFrame extends javax.swing.JFrame {
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(stuSaveBt, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(stuStrandRestore, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(stuStrandClearBt, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92))
+                .addComponent(stuSaveBt, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(stuRestore, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(stuCurrentOrArchive, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(stuStrandClearBt, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(stuStrandClearBt, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(stuSaveBt, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(stuStrandRestore, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stuSaveBt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(stuCurrentOrArchive, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(stuRestore, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(stuStrandClearBt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
@@ -1970,7 +2118,7 @@ public class AdminFrame extends javax.swing.JFrame {
                     .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 346, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -3263,401 +3411,6 @@ public class AdminFrame extends javax.swing.JFrame {
         xy = evt.getY();
     }//GEN-LAST:event_jPanel3MousePressed
 
-    private void stuMotherNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuMotherNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stuMotherNameActionPerformed
-
-    private void stuAddress2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuAddress2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stuAddress2ActionPerformed
-
-    private void stuGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuGenderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stuGenderActionPerformed
-
-    private void stuPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuPhoneKeyTyped
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_stuPhoneKeyTyped
-
-    private void stuFatherNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuFatherNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stuFatherNameActionPerformed
-
-    private void browseBirthCertificateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseBirthCertificateActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-
-        // PDF filter only
-        FileNameExtensionFilter pdfFilter = new FileNameExtensionFilter("PDF Documents", "pdf");
-        fileChooser.setFileFilter(pdfFilter);
-
-        int result = fileChooser.showOpenDialog(this);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            birthCertificatePath = selectedFile.getAbsolutePath(); // keep full path
-            String pdfName = selectedFile.getName(); // only filename
-
-            // show only file name in textfield
-            stuBirthCer.setText(pdfName);
-
-            // make it look clickable
-            stuBirthCer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
-            // add mouse click event to open PDF
-            stuBirthCer.addMouseListener(new java.awt.event.MouseAdapter() {
-                @Override
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    try {
-                        if (Desktop.isDesktopSupported() && birthCertificatePath != null) {
-                            Desktop.getDesktop().open(new File(birthCertificatePath));
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Desktop not supported or path is null.");
-                        }
-                    } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Unable to open PDF: " + e.getMessage());
-                    }
-                }
-            });
-        } else {
-            JOptionPane.showMessageDialog(this, "No PDF selected");
-        }
-    }//GEN-LAST:event_browseBirthCertificateActionPerformed
-
-    private void browseForm137ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseForm137ActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-
-        // PDF filter only
-        FileNameExtensionFilter pdfFilter = new FileNameExtensionFilter("PDF Documents", "pdf");
-        fileChooser.setFileFilter(pdfFilter);
-
-        int result = fileChooser.showOpenDialog(this);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            form137Path = selectedFile.getAbsolutePath(); // keep full path
-            String pdfName = selectedFile.getName(); // only filename
-
-            // show only file name in textfield
-            stuForm137.setText(pdfName);
-
-            // make it look clickable
-            stuForm137.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
-            // add mouse click event to open PDF
-            stuForm137.addMouseListener(new java.awt.event.MouseAdapter() {
-                @Override
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    try {
-                        if (Desktop.isDesktopSupported() && form137Path != null) {
-                            Desktop.getDesktop().open(new File(form137Path));
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Desktop not supported or path is null.");
-                        }
-                    } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Unable to open PDF: " + e.getMessage());
-                    }
-                }
-            });
-        } else {
-            JOptionPane.showMessageDialog(this, "No PDF selected");
-        }
-    }//GEN-LAST:event_browseForm137ActionPerformed
-
-    private void stuBirthCerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuBirthCerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stuBirthCerActionPerformed
-
-    private void browseImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseImgActionPerformed
-        JFileChooser file = new JFileChooser();
-        file.setCurrentDirectory(new File(System.getProperty("user.home")));
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("* image", "jpg", "gif", "png");
-        file.addChoosableFileFilter(filter);
-        int output = file.showSaveDialog(file);
-        if (output == JFileChooser.APPROVE_OPTION) {
-            File selectFile = file.getSelectedFile();
-            String path = selectFile.getAbsolutePath();
-            imagePanel.setIcon(imageAdjust(path, null, imagePanel));
-            imagePath = path;
-
-        } else {
-            JOptionPane.showMessageDialog(this, "No image selected");
-
-        }
-    }//GEN-LAST:event_browseImgActionPerformed
-
-    private void stuLRNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuLRNKeyTyped
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_stuLRNKeyTyped
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //qrScanTimer.stop();
-
-        int a = JOptionPane.showConfirmDialog(this, "Do you want to Logout now?", "Select", JOptionPane.YES_NO_OPTION);
-        if (a == 0) {
-            this.dispose();
-            LoginFrame frame = new LoginFrame();
-            frame.setVisible(true);
-            frame.setLocationRelativeTo(null);
-        }
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void updateBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtActionPerformed
-        if (isEmptyStudent()) {
-            int id = Integer.parseInt(stuID.getText());
-            if (student.isidExist(id)) {
-                if (!check()) {
-                    String sfname = stuFname.getText();
-                    String sMidName = stuMiddleName.getText();
-                    String sLastName = stuLastName.getText();
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    String date = dateFormat.format(stuBirth.getDate());
-                    String gender = stuGender.getSelectedItem().toString();
-                    String email = stuEmail.getText();
-                    String phone = stuPhone.getText();
-                    String motherName = stuMotherName.getText();
-                    String fatherName = stuFatherName.getText();
-                    String addressLine1 = stuAddress1.getText();
-                    String addressLine2 = stuAddress2.getText();
-                    String birthCer = stuBirthCer.getText();
-                    String form137 = stuForm137.getText();
-                    String stuLrn = stuLRN.getText();
-                    student.update(id, sfname, sMidName, sLastName, date, gender, email, phone,
-                            motherName, fatherName, addressLine1, addressLine2, birthCer, form137, imagePath, stuLrn);
-
-                    StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
-                        "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
-                    student.getStudentValue(StudentTable, "");
-                    clearStudent();
-
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(this, "student id doesn't exist");
-
-            }
-
-        }
-    }//GEN-LAST:event_updateBtActionPerformed
-
-    private void addNewBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewBtActionPerformed
-        int id = student.getMax();
-        String username = stuLRN.getText();
-        int userId = user.getMax();
-        if (isEmptyStudent()) {
-            if (!student.isEmailExist(stuEmail.getText(), id)) {
-                if (!student.isPhoneExist(stuPhone.getText(), id)) {
-
-                    String sFname = stuFname.getText();
-                    String sMiddleName = stuMiddleName.getText();
-                    String sLastName = stuLastName.getText();
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    String date = dateFormat.format(stuBirth.getDate());
-                    String gender = stuGender.getSelectedItem().toString();
-                    String email = stuEmail.getText();
-                    String phone = stuPhone.getText();
-                    String motherName = stuMotherName.getText();
-                    String fatherName = stuFatherName.getText();
-                    String addressLine1 = stuAddress1.getText();
-                    String addressLine2 = stuAddress2.getText();
-                    String birthCer = stuBirthCer.getText();
-                    String form137 = stuForm137.getText();
-                    String stuLrn = stuLRN.getText();
-
-                    SimpleDateFormat passFormat = new SimpleDateFormat("yyyyMMdd");
-                    String birthForPass = passFormat.format(stuBirth.getDate());
-                    String password = sLastName.toLowerCase() + birthForPass;
-                    int type_id = 2; // student
-
-                    user.insert(userId, username, password, type_id);
-
-                    student.insert(id, userId, sFname, sMiddleName, sLastName, date, gender, email, phone,
-                            motherName, fatherName, addressLine1, addressLine2, birthCer, form137, imagePath, stuLrn);
-
-                    //                    String qrContent = "ID: " + id
-                    //                            + "\nName: " + sname
-                    //                            + "\nBirthdate: " + date
-                    //                            + "\nGender: " + gender
-                    //                            + "\nEmail: " + email
-                    //                            + "\nPhone: " + phone
-                    //                            + "\nMother: " + motherName
-                    //                            + "\nFather: " + fatherName
-                    //                            + "\nAddress 1: " + addressLine1
-                    //                            + "\nAddress 2: " + addressLine2
-                    //                            + "\nBirth Certificate: " + birthCer
-                    //                            + "\nForm 137: " + form137
-                    //                            + "\nImage: " + imagePath;
-                    //
-                    //                    // ✅ Generate QR code with all details
-                    //                    generateQRCode(id, sname, qrContent);
-                    StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
-                        "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
-                    student.getStudentValue(StudentTable, stuSearchField_1.getText());
-                    clearStudent();
-                } else {
-                    JOptionPane.showMessageDialog(this, "This phone number already exist");
-
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(this, "This email already exist");
-            }
-
-        }
-    }//GEN-LAST:event_addNewBtActionPerformed
-
-    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
-        clearStudent();
-    }//GEN-LAST:event_ClearActionPerformed
-
-    private void searchBt_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBt_1ActionPerformed
-        if (stuSearchField_1.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Search field is empty");
-
-        } else {
-            StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
-                "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
-            student.getStudentValue(StudentTable, stuSearchField_1.getText());
-
-        }
-    }//GEN-LAST:event_searchBt_1ActionPerformed
-
-    private void stuRefresh_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuRefresh_1ActionPerformed
-        StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
-            "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
-        student.getStudentValue(StudentTable, "");
-        stuSearchField_1.setText(null);
-    }//GEN-LAST:event_stuRefresh_1ActionPerformed
-
-    private void stuSort_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSort_1ActionPerformed
-        DefaultTableModel model = (DefaultTableModel) StudentTable.getModel();
-
-        // Attach TableRowSorter to your table
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-        StudentTable.setRowSorter(sorter);
-
-        // Example: Sort by Student ID (numerically) and then by Student Name (alphabetically)
-        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
-
-        int studentIdCol = 0;  // Student ID is column 0
-        int studentNameCol = 1; // Student Name is column 1
-
-        // First sort by ID (ascending)
-        sortKeys.add(new RowSorter.SortKey(studentIdCol, SortOrder.ASCENDING));
-
-        // Then sort by Name (ascending)
-        sortKeys.add(new RowSorter.SortKey(studentNameCol, SortOrder.ASCENDING));
-
-        sorter.setSortKeys(sortKeys);
-        sorter.sort();
-    }//GEN-LAST:event_stuSort_1ActionPerformed
-
-    private void StudentTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StudentTableMouseClicked
-        model = (DefaultTableModel) StudentTable.getModel();
-        rowIndex = StudentTable.getSelectedRow();
-
-        // Basic fields from the JTable
-        stuID.setText(model.getValueAt(rowIndex, 0).toString());
-        stuFname.setText(model.getValueAt(rowIndex, 2).toString());
-        stuMiddleName.setText(model.getValueAt(rowIndex, 3).toString());
-        stuLastName.setText(model.getValueAt(rowIndex, 4).toString());
-
-        try {
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(model.getValueAt(rowIndex, 5).toString());
-            stuBirth.setDate(date);
-        } catch (ParseException ex) {
-            System.getLogger(Home.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        }
-
-        String gender = model.getValueAt(rowIndex, 6).toString();
-        if (gender.equalsIgnoreCase("Male")) {
-            stuGender.setSelectedIndex(0);
-        } else {
-            stuGender.setSelectedIndex(1);
-        }
-
-        stuEmail.setText(model.getValueAt(rowIndex, 7).toString());
-        stuPhone.setText(model.getValueAt(rowIndex, 8).toString());
-        stuFatherName.setText(model.getValueAt(rowIndex, 9).toString());
-        stuMotherName.setText(model.getValueAt(rowIndex, 10).toString());
-        stuAddress1.setText(model.getValueAt(rowIndex, 11).toString());
-        stuAddress2.setText(model.getValueAt(rowIndex, 12).toString());
-        stuLRN.setText(model.getValueAt(rowIndex, 13).toString());
-
-        int studentId = Integer.parseInt(model.getValueAt(rowIndex, 0).toString());
-        String sql = "SELECT birth_certificate, form_137, image_path FROM student WHERE student_id = ?";
-
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, studentId);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                stuBirthCer.setText(rs.getString("birth_certificate"));
-                stuForm137.setText(rs.getString("form_137"));
-                String path = rs.getString("image_path");
-                imagePath = path;
-                if (path != null && !path.isEmpty()) {
-                    imagePanel.setIcon(imageAdjust(path, null, imagePanel));
-                } else {
-                    imagePanel.setIcon(null); // clear if no image
-                }
-            }
-        } catch (SQLException ex) {
-            System.getLogger(Home.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        }
-    }//GEN-LAST:event_StudentTableMouseClicked
-
-    private void delBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtActionPerformed
-        int id = Integer.parseInt(stuID.getText());
-        if (student.isidExist(id)) {
-            student.delete(id);
-            user.delete(id);
-            StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
-                "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
-            student.getStudentValue(StudentTable, "");
-            clearStudent();
-
-        } else {
-            JOptionPane.showMessageDialog(this, "the student doesn't exist");
-        }
-    }//GEN-LAST:event_delBtActionPerformed
-
-    private void stuPrint_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuPrint_1ActionPerformed
-        try {
-            MessageFormat header = new MessageFormat("Students Information");
-            MessageFormat footer = new MessageFormat("Page{0,number,integer}");
-            StudentTable.print(JTable.PrintMode.FIT_WIDTH, header, footer);
-        } catch (PrinterException ex) {
-            System.getLogger(Home.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        }
-    }//GEN-LAST:event_stuPrint_1ActionPerformed
-
-    private void stuStrandSearchAdminFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandSearchAdminFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stuStrandSearchAdminFieldActionPerformed
-
-    private void stuStrandSearchAdminFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuStrandSearchAdminFieldKeyTyped
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_stuStrandSearchAdminFieldKeyTyped
-
-    private void stuStrandSearchBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandSearchBtActionPerformed
-        if (stuStrandSearchAdminField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter a student id");
-
-        } else {
-            System.out.println(stuStrandSearchAdminField.getText());
-            int id = Integer.parseInt(stuStrandSearchAdminField.getText());
-            strand.getIdFromAdmin(id);
-            stuGradeLevel.setSelectedIndex(0);
-
-        }
-    }//GEN-LAST:event_stuStrandSearchBtActionPerformed
-
     public void updateSection() {
         String gradeLevelStr = (String) stuGradeLevel.getSelectedItem();
         String strand = (String) stuStrand.getSelectedItem();
@@ -3677,250 +3430,6 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         }
     }
-    private void stuGradeLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuGradeLevelActionPerformed
-        updateSection();
-
-        //stuStrand.addItem("TVL-ICT"); //how to add item inside combo box
-    }//GEN-LAST:event_stuGradeLevelActionPerformed
-
-    private void stuStrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandActionPerformed
-        updateSection();
-    }//GEN-LAST:event_stuStrandActionPerformed
-
-    private void stuSectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSectionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stuSectionActionPerformed
-
-    private void stuSearchBt_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSearchBt_2ActionPerformed
-        if (stuSearchField_2.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Search field is empty");
-
-        } else {
-            StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_Strand_ID", "Student_ID", "Grade_Level", "Strand", "Section"}));
-            strand.loadStudentStrandsTable(StudentTrackTable, stuSearchField_2.getText());
-
-        }
-    }//GEN-LAST:event_stuSearchBt_2ActionPerformed
-
-    private void stuRefresh_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuRefresh_2ActionPerformed
-        StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_Strand_ID", "Student_ID", "Grade_Level", "Strand", "Section"}));
-        strand.loadStudentStrandsTable(StudentTrackTable, "");
-        stuSearchField_2.setText(null);
-    }//GEN-LAST:event_stuRefresh_2ActionPerformed
-
-    private void stuSort_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSort_2ActionPerformed
-        DefaultTableModel model = (DefaultTableModel) StudentTrackTable.getModel();
-
-        // Attach TableRowSorter to your table
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-        StudentTrackTable.setRowSorter(sorter);
-
-        // Example: Sort by Student ID (numerically) and then by Student Name (alphabetically)
-        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
-
-        int IdCol = 0;  // Student ID is column 0
-        int studentStrandIdCol = 1; // Student Name is column 1
-
-        // First sort by ID (ascending)
-        sortKeys.add(new RowSorter.SortKey(IdCol, SortOrder.ASCENDING));
-
-        // Then sort by Name (ascending)
-        sortKeys.add(new RowSorter.SortKey(studentStrandIdCol, SortOrder.ASCENDING));
-
-        sorter.setSortKeys(sortKeys);
-        sorter.sort();
-    }//GEN-LAST:event_stuSort_2ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int a = JOptionPane.showConfirmDialog(this, "Do you want to Logout now?", "Select", JOptionPane.YES_NO_OPTION);
-        if (a == 0) {
-            this.dispose();
-            LoginFrame frame = new LoginFrame();
-            frame.setVisible(true);
-            frame.setLocationRelativeTo(null);
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void stuStrandClearBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandClearBtActionPerformed
-        clearStrand();
-    }//GEN-LAST:event_stuStrandClearBtActionPerformed
-
-    private void stuSaveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSaveBtActionPerformed
-        if (stuStrandId.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Student ID is missing");
-            return;
-        }
-
-        try {
-            int studentId = Integer.parseInt(stuStrandId.getText());
-            int gradeLevel = Integer.parseInt(stuGradeLevel.getSelectedItem().toString());
-            String strandName = stuStrand.getSelectedItem().toString();
-            String sectionSelect = stuSection.getSelectedItem().toString();
-
-            int strandId = strand.convertStrandNameToId(strandName);
-            if (strandId == -1) {
-                JOptionPane.showMessageDialog(this, "Invalid strand selected");
-                return;
-            }
-
-            // ✅ Check if student exists
-            if (!strand.studentExists(studentId)) {
-                JOptionPane.showMessageDialog(this, "Student with ID " + studentId + " does not exist");
-                return;
-            }
-            System.out.println("StudentId:" + studentId);
-            System.out.println("gradeLevel:" + gradeLevel);
-            System.out.println("strandId:" + strandId);
-
-            // ✅ Check archived enrollment first
-            if (archive.isArchivedEnrollmentExists(studentId, gradeLevel, strandId)) {
-
-                JOptionPane.showMessageDialog(this,
-                        "⚠ You cannot enroll or transfer to the same Grade Level + Strand that already exists in the archive.\n"
-                        + "Use the Restore button if you want to restore this previous enrollment.",
-                        "Archived Enrollment Exists",
-                        JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-
-            // ✅ 1. Check if student already enrolled in same strand + grade level
-            if (strand.isStudentEnrolledInStrandAndGrade(studentId, strandId, gradeLevel)) {
-                Object[] currentEnrollment = strand.getCurrentEnrollment(studentId);
-                String currentStrand = (String) currentEnrollment[1];
-                String currentSection = (String) currentEnrollment[2];
-
-                JOptionPane.showMessageDialog(this,
-                        "Student is already enrolled in " + currentStrand
-                        + " Grade " + gradeLevel
-                        + " Section " + currentSection);
-                return;
-            }
-
-            // ✅ 2. Check if student is already enrolled in any strand
-            if (strand.isStudentEnrolledInAnyStrand(studentId)) {
-                Object[] currentEnrollment = strand.getCurrentEnrollment(studentId);
-                int currentGradeLevel = (int) currentEnrollment[0];
-                String currentStrand = (String) currentEnrollment[1];
-                String currentSection = (String) currentEnrollment[2];
-                int currentStrandId = strand.convertStrandNameToId(currentStrand);
-
-                // ✅ Promotion (same strand, higher grade)
-                if (currentStrand.equals(strandName)) {
-                    if (gradeLevel > currentGradeLevel) {
-                        boolean hasPassed = progress.hasStudentPassed(studentId, currentStrandId, currentGradeLevel);
-                        if (!hasPassed) {
-                            JOptionPane.showMessageDialog(this,
-                                    "This student has not yet passed all required subjects.\n"
-                                    + "Promotion cannot proceed until requirements are met.",
-                                    "Promotion Blocked",
-                                    JOptionPane.WARNING_MESSAGE);
-                            return;
-                        }
-
-                        int response = JOptionPane.showConfirmDialog(
-                                this,
-                                "Student Promotion:\n\n"
-                                + "Current: " + currentStrand + " - Grade " + currentGradeLevel + " - Section " + currentSection
-                                + "\nNew: " + strandName + " - Grade " + gradeLevel + " - Section " + sectionSelect
-                                + "\n\nConfirm promotion?",
-                                "Confirm Student Promotion",
-                                JOptionPane.YES_NO_OPTION,
-                                JOptionPane.QUESTION_MESSAGE
-                        );
-
-                        if (response == JOptionPane.YES_OPTION) {
-                            int newSectionId = strand.getAvailableSection(gradeLevel, strandId);
-                            if (newSectionId == -1) {
-                                JOptionPane.showMessageDialog(this, "No available sections for Grade " + gradeLevel + " in " + strandName);
-                                return;
-                            }
-                            boolean archived = archive.archiveStudentStrand(studentId, currentStrandId, strandId, currentGradeLevel, gradeLevel);
-                            if (!archived) {
-                                JOptionPane.showMessageDialog(this, "❌ Failed to archive existing record. Promotion cancelled.");
-                                return;
-                            }
-
-                            boolean success = archive.updateStudentGradeLevel(studentId, gradeLevel, newSectionId);
-                            JOptionPane.showMessageDialog(this, success
-                                    ? "✅ Student promoted successfully to Grade " + gradeLevel
-                                    : "❌ Failed to promote student");
-                        }
-
-                    } else {
-                        JOptionPane.showMessageDialog(this,
-                                "Invalid promotion: New grade level must be higher than current grade.");
-                    }
-
-                } else {
-                    // ✅ Transfer to different strand
-                    int response = JOptionPane.showConfirmDialog(
-                            this,
-                            "Student Strand Transfer:\n\n"
-                            + "Student ID: " + studentId
-                            + "\nCurrent: " + currentStrand + " - Grade " + currentGradeLevel + " - Section " + currentSection
-                            + "\nNew: " + strandName + " - Grade " + gradeLevel + " - Section " + sectionSelect
-                            + "\n\nConfirm transfer?",
-                            "Confirm Strand Transfer",
-                            JOptionPane.YES_NO_OPTION,
-                            JOptionPane.WARNING_MESSAGE
-                    );
-
-                    if (response == JOptionPane.YES_OPTION) {
-                        boolean archived = archive.archiveStudentStrand(studentId, currentStrandId, strandId, currentGradeLevel, gradeLevel);
-                        if (archived) {
-                            boolean success = strand.insertStudentStrand(studentId, strandId, gradeLevel, sectionSelect);
-                            JOptionPane.showMessageDialog(this, success
-                                    ? "✅ Student transferred successfully to " + strandName
-                                    : "❌ Failed to insert new enrollment after transfer");
-                        } else {
-                            JOptionPane.showMessageDialog(this, "❌ Failed to archive existing record. Transfer cancelled.");
-                        }
-                    }
-                }
-
-            } else {
-                // ✅ 3. New enrollment
-                int response = JOptionPane.showConfirmDialog(
-                        this,
-                        "New Student Enrollment:\n\n"
-                        + "Student ID: " + studentId
-                        + "\nStrand: " + strandName
-                        + "\nGrade Level: " + gradeLevel
-                        + "\nSection: " + sectionSelect
-                        + "\n\nConfirm enrollment?",
-                        "Confirm New Enrollment",
-                        JOptionPane.YES_NO_OPTION,
-                        JOptionPane.QUESTION_MESSAGE
-                );
-
-                if (response == JOptionPane.YES_OPTION) {
-                    boolean success = strand.insertStudentStrand(studentId, strandId, gradeLevel, sectionSelect);
-
-                    String schoolYear = getCurrentSchoolYear();
-                    String status = "Incomplete";
-                    progress.insert(studentId, schoolYear, status);
-                    JOptionPane.showMessageDialog(this, success
-                            ? "✅ Student enrolled successfully in " + strandName
-                            : "❌ Failed to enroll student");
-                }
-            }
-
-            // ✅ Refresh table
-            StudentTrackTable.setModel(new DefaultTableModel(
-                    null,
-                    new Object[]{"Student_ID", "Grade_Level", "Strand", "Section"}
-            ));
-            strand.loadStudentStrandsTable(StudentTrackTable, "");
-            clearStrand();
-
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid numeric Student ID");
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
-            ex.printStackTrace();
-        }
-    }//GEN-LAST:event_stuSaveBtActionPerformed
-
     private void teacherAddress2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherAddress2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_teacherAddress2ActionPerformed
@@ -4169,6 +3678,7 @@ public class AdminFrame extends javax.swing.JFrame {
         int id = Integer.parseInt(teacherID.getText());
         if (teacher.isidExist(id)) {
             teacher.delete(id);
+            
             user.delete(id);
             TeacherTable.setModel(new DefaultTableModel(null, new Object[]{"Teacher ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number",
                 "Address Line 1", "Address Line 2", "Strand Name", "hire_date"}));
@@ -4478,9 +3988,921 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_classListPrintBtActionPerformed
 
-    private void stuStrandRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandRestoreActionPerformed
+    private void stuMotherNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuMotherNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_stuStrandRestoreActionPerformed
+    }//GEN-LAST:event_stuMotherNameActionPerformed
+
+    private void stuAddress2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuAddress2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuAddress2ActionPerformed
+
+    private void stuGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuGenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuGenderActionPerformed
+
+    private void stuPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuPhoneKeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_stuPhoneKeyTyped
+
+    private void stuFatherNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuFatherNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuFatherNameActionPerformed
+
+    private void browseBirthCertificateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseBirthCertificateActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+
+        // PDF filter only
+        FileNameExtensionFilter pdfFilter = new FileNameExtensionFilter("PDF Documents", "pdf");
+        fileChooser.setFileFilter(pdfFilter);
+
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            birthCertificatePath = selectedFile.getAbsolutePath(); // keep full path
+            String pdfName = selectedFile.getName(); // only filename
+
+            // show only file name in textfield
+            stuBirthCer.setText(pdfName);
+
+            // make it look clickable
+            stuBirthCer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+            // add mouse click event to open PDF
+            stuBirthCer.addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    try {
+                        if (Desktop.isDesktopSupported() && birthCertificatePath != null) {
+                            Desktop.getDesktop().open(new File(birthCertificatePath));
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Desktop not supported or path is null.");
+                        }
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Unable to open PDF: " + e.getMessage());
+                    }
+                }
+            });
+        } else {
+            JOptionPane.showMessageDialog(this, "No PDF selected");
+        }
+    }//GEN-LAST:event_browseBirthCertificateActionPerformed
+
+    private void browseForm137ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseForm137ActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+
+        // PDF filter only
+        FileNameExtensionFilter pdfFilter = new FileNameExtensionFilter("PDF Documents", "pdf");
+        fileChooser.setFileFilter(pdfFilter);
+
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            form137Path = selectedFile.getAbsolutePath(); // keep full path
+            String pdfName = selectedFile.getName(); // only filename
+
+            // show only file name in textfield
+            stuForm137.setText(pdfName);
+
+            // make it look clickable
+            stuForm137.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+            // add mouse click event to open PDF
+            stuForm137.addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    try {
+                        if (Desktop.isDesktopSupported() && form137Path != null) {
+                            Desktop.getDesktop().open(new File(form137Path));
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Desktop not supported or path is null.");
+                        }
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Unable to open PDF: " + e.getMessage());
+                    }
+                }
+            });
+        } else {
+            JOptionPane.showMessageDialog(this, "No PDF selected");
+        }
+    }//GEN-LAST:event_browseForm137ActionPerformed
+
+    private void stuBirthCerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuBirthCerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuBirthCerActionPerformed
+
+    private void browseImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseImgActionPerformed
+        JFileChooser file = new JFileChooser();
+        file.setCurrentDirectory(new File(System.getProperty("user.home")));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("* image", "jpg", "gif", "png");
+        file.addChoosableFileFilter(filter);
+        int output = file.showSaveDialog(file);
+        if (output == JFileChooser.APPROVE_OPTION) {
+            File selectFile = file.getSelectedFile();
+            String path = selectFile.getAbsolutePath();
+            imagePanel.setIcon(imageAdjust(path, null, imagePanel));
+            imagePath = path;
+
+        } else {
+            JOptionPane.showMessageDialog(this, "No image selected");
+
+        }
+    }//GEN-LAST:event_browseImgActionPerformed
+
+    private void stuLRNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuLRNKeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_stuLRNKeyTyped
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+
+        jButton1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        // TODO add your handling code here:
+        jButton1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //qrScanTimer.stop();
+
+        int a = JOptionPane.showConfirmDialog(this, "Do you want to Logout now?", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            this.dispose();
+            LoginFrame frame = new LoginFrame();
+            frame.setVisible(true);
+            frame.setLocationRelativeTo(null);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void updateBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtMouseEntered
+        updateBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_updateBtMouseEntered
+
+    private void updateBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtMouseExited
+        updateBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_updateBtMouseExited
+
+    private void updateBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtActionPerformed
+        if (isEmptyStudent()) {
+            int id = Integer.parseInt(stuID.getText());
+            if (student.isidExist(id)) {
+                if (!check()) {
+                    String sfname = stuFname.getText();
+                    String sMidName = stuMiddleName.getText();
+                    String sLastName = stuLastName.getText();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String date = dateFormat.format(stuBirth.getDate());
+                    String gender = stuGender.getSelectedItem().toString();
+                    String email = stuEmail.getText();
+                    String phone = stuPhone.getText();
+                    String motherName = stuMotherName.getText();
+                    String fatherName = stuFatherName.getText();
+                    String addressLine1 = stuAddress1.getText();
+                    String addressLine2 = stuAddress2.getText();
+                    String birthCer = stuBirthCer.getText();
+                    String form137 = stuForm137.getText();
+                    String stuLrn = stuLRN.getText();
+                    student.update(id, sfname, sMidName, sLastName, date, gender, email, phone,
+                            motherName, fatherName, addressLine1, addressLine2, birthCer, form137, imagePath, stuLrn);
+
+                    //                    String qrContent = "ID: " + id
+                    //                            + "\nName: " + sname
+                    //                            + "\nBirthdate: " + date
+                    //                            + "\nGender: " + gender
+                    //                            + "\nEmail: " + email
+                    //                            + "\nPhone: " + phone
+                    //                            + "\nMother: " + motherName
+                    //                            + "\nFather: " + fatherName
+                    //                            + "\nAddress 1: " + addressLine1
+                    //                            + "\nAddress 2: " + addressLine2
+                    //                            + "\nBirth Certificate: " + birthCer
+                    //                            + "\nForm 137: " + form137
+                    //                            + "\nImage: " + imagePath;
+                    //
+                    //                    // ✅ Generate QR code with all details
+                    //                    generateQRCode(id, sname, qrContent);
+                    StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
+                        "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
+                    student.getStudentValue(StudentTable, "");
+                    clearStudent();
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "student id doesn't exist");
+
+            }
+
+        }
+    }//GEN-LAST:event_updateBtActionPerformed
+
+    private void addNewBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewBtMouseEntered
+
+        addNewBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_addNewBtMouseEntered
+
+    private void addNewBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewBtMouseExited
+        addNewBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_addNewBtMouseExited
+
+    private void addNewBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewBtActionPerformed
+        int id = student.getMax();
+        String username = stuLRN.getText();
+        int userId = user.getMax();
+        if (isEmptyStudent()) {
+            if (!student.isEmailExist(stuEmail.getText(), id)) {
+                if (!student.isPhoneExist(stuPhone.getText(), id)) {
+
+                    String sFname = stuFname.getText();
+                    String sMiddleName = stuMiddleName.getText();
+                    String sLastName = stuLastName.getText();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String date = dateFormat.format(stuBirth.getDate());
+                    String gender = stuGender.getSelectedItem().toString();
+                    String email = stuEmail.getText();
+                    String phone = stuPhone.getText();
+                    String motherName = stuMotherName.getText();
+                    String fatherName = stuFatherName.getText();
+                    String addressLine1 = stuAddress1.getText();
+                    String addressLine2 = stuAddress2.getText();
+                    String birthCer = stuBirthCer.getText();
+                    String form137 = stuForm137.getText();
+                    String stuLrn = stuLRN.getText();
+
+                    SimpleDateFormat passFormat = new SimpleDateFormat("yyyyMMdd");
+                    String birthForPass = passFormat.format(stuBirth.getDate());
+                    String password = sLastName.toLowerCase() + birthForPass;
+                    int type_id = 2; // student
+
+                    user.insert(userId, username, password, type_id);
+
+                    student.insert(id, userId, sFname, sMiddleName, sLastName, date, gender, email, phone,
+                            motherName, fatherName, addressLine1, addressLine2, birthCer, form137, imagePath, stuLrn);
+
+                    StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
+                        "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
+                    student.getStudentValue(StudentTable, "");
+                    clearStudent();
+                } else {
+                    JOptionPane.showMessageDialog(this, "This phone number already exist");
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "This email already exist");
+            }
+
+        }
+    }//GEN-LAST:event_addNewBtActionPerformed
+
+    private void ClearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearMouseEntered
+        Clear.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_ClearMouseEntered
+
+    private void ClearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearMouseExited
+        Clear.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_ClearMouseExited
+
+    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
+        clearStudent();
+    }//GEN-LAST:event_ClearActionPerformed
+
+    private void searchBt_1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBt_1MouseEntered
+        searchBt_1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_searchBt_1MouseEntered
+
+    private void searchBt_1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBt_1MouseExited
+        searchBt_1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_searchBt_1MouseExited
+
+    private void searchBt_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBt_1ActionPerformed
+        if (stuSearchField_1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Search field is empty");
+
+        } else {
+            String currentText = stuInfoCurrentOrArchived.getText();
+            if (currentText.equalsIgnoreCase("Current")) {
+                StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
+                    "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
+                student.getStudentValue(StudentTable, stuSearchField_1.getText());
+            } else if (currentText.equalsIgnoreCase("Archived")) {
+                StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
+                    "Mother's Name", "Address Line 1", "Address Line 2", "LRN", "Date Archived", "Reason"}));
+                archive.getArchivedStudentValue(StudentTable, "");
+            }
+
+        }
+    }//GEN-LAST:event_searchBt_1ActionPerformed
+
+    private void stuRefresh_1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuRefresh_1MouseEntered
+        stuRefresh_1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuRefresh_1MouseEntered
+
+    private void stuRefresh_1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuRefresh_1MouseExited
+        stuRefresh_1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuRefresh_1MouseExited
+
+    private void stuRefresh_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuRefresh_1ActionPerformed
+        String currentText = stuInfoCurrentOrArchived.getText();
+        if (currentText.equalsIgnoreCase("Current")) {
+            StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
+                "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
+            student.getStudentValue(StudentTable, "");
+            stuSearchField_1.setText(null);
+        } else if (currentText.equalsIgnoreCase("Archived")) {
+            StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
+                "Mother's Name", "Address Line 1", "Address Line 2", "LRN", "Date Archived", "Reason"}));
+            archive.getArchivedStudentValue(StudentTable, "");
+            stuSearchField_1.setText(null);
+        }
+    }//GEN-LAST:event_stuRefresh_1ActionPerformed
+
+    private void stuSort_1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSort_1MouseEntered
+        stuSort_1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuSort_1MouseEntered
+
+    private void stuSort_1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSort_1MouseExited
+        stuSort_1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSort_1MouseExited
+
+    private void stuSort_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSort_1ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) StudentTable.getModel();
+
+        // Attach TableRowSorter to your table
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        StudentTable.setRowSorter(sorter);
+
+        // Example: Sort by Student ID (numerically) and then by Student Name (alphabetically)
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+
+        int studentIdCol = 0;  // Student ID is column 0
+        int studentNameCol = 1; // Student Name is column 1
+
+        // First sort by ID (ascending)
+        sortKeys.add(new RowSorter.SortKey(studentIdCol, SortOrder.ASCENDING));
+
+        // Then sort by Name (ascending)
+        sortKeys.add(new RowSorter.SortKey(studentNameCol, SortOrder.ASCENDING));
+
+        sorter.setSortKeys(sortKeys);
+        sorter.sort();
+    }//GEN-LAST:event_stuSort_1ActionPerformed
+
+    private void StudentTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StudentTableMouseClicked
+        model = (DefaultTableModel) StudentTable.getModel();
+        rowIndex = StudentTable.getSelectedRow();
+
+        // Basic fields from the JTable
+        stuID.setText(model.getValueAt(rowIndex, 0).toString());
+        stuFname.setText(model.getValueAt(rowIndex, 2).toString());
+        stuMiddleName.setText(model.getValueAt(rowIndex, 3).toString());
+        stuLastName.setText(model.getValueAt(rowIndex, 4).toString());
+
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(model.getValueAt(rowIndex, 5).toString());
+            stuBirth.setDate(date);
+        } catch (ParseException ex) {
+            System.getLogger(Home.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+
+        String gender = model.getValueAt(rowIndex, 6).toString();
+        if (gender.equalsIgnoreCase("Male")) {
+            stuGender.setSelectedIndex(0);
+        } else {
+            stuGender.setSelectedIndex(1);
+        }
+
+        stuEmail.setText(model.getValueAt(rowIndex, 7).toString());
+        stuPhone.setText(model.getValueAt(rowIndex, 8).toString());
+        stuFatherName.setText(model.getValueAt(rowIndex, 9).toString());
+        stuMotherName.setText(model.getValueAt(rowIndex, 10).toString());
+        stuAddress1.setText(model.getValueAt(rowIndex, 11).toString());
+        stuAddress2.setText(model.getValueAt(rowIndex, 12).toString());
+        stuLRN.setText(model.getValueAt(rowIndex, 13).toString());
+
+        int studentId = Integer.parseInt(model.getValueAt(rowIndex, 0).toString());
+        String sql = "SELECT birth_certificate, form_137, image_path FROM student WHERE student_id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, studentId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                stuBirthCer.setText(rs.getString("birth_certificate"));
+                stuForm137.setText(rs.getString("form_137"));
+                String path = rs.getString("image_path");
+                imagePath = path;
+                if (path != null && !path.isEmpty()) {
+                    imagePanel.setIcon(imageAdjust(path, null, imagePanel));
+                } else {
+                    imagePanel.setIcon(null); // clear if no image
+                }
+            }
+        } catch (SQLException ex) {
+            System.getLogger(Home.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+    }//GEN-LAST:event_StudentTableMouseClicked
+
+    private void delBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delBtMouseEntered
+        delBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_delBtMouseEntered
+
+    private void delBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delBtMouseExited
+        delBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_delBtMouseExited
+
+    private void delBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtActionPerformed
+        int id = Integer.parseInt(stuID.getText());
+        String currentText = stuInfoCurrentOrArchived.getText();
+        //String anoCurText = delBt.getText();
+
+        if (currentText.equalsIgnoreCase("Current")) {
+            //delBt.setText("Delete");
+            // 🔹 ARCHIVE student logic
+            if (student.isidExist(id)) {
+                // Ask for reason
+                String reason = JOptionPane.showInputDialog(this, "Enter reason for archiving this student:", "Archive Reason", JOptionPane.PLAIN_MESSAGE);
+                if (reason == null || reason.trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Archiving cancelled. Reason is required.");
+                    return;
+                }
+
+                // Archive student
+                archive.archiveStudent(id, reason);
+
+                String lrn = student.getLRNById(id);
+                // Delete related user record
+                user.delete(lrn);
+
+                // Refresh Current Table
+                StudentTable.setModel(new DefaultTableModel(null, new Object[]{
+                    "Student ID", "User_ID", "First Name", "Middle Name", "Last Name",
+                    "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
+                    "Mother's Name", "Address Line 1", "Address Line 2", "LRN"
+                }));
+                student.getStudentValue(StudentTable, "");
+
+                clearStudent();
+                JOptionPane.showMessageDialog(this, "Student successfully archived.");
+            } else {
+                JOptionPane.showMessageDialog(this, "The student doesn't exist.");
+            }
+        } // 🔹 RESTORE student logic if viewing Archived
+        else if (currentText.equalsIgnoreCase("Archived")) {
+            //delBt.setText("Restore");
+            if (archive.isidExist(id)) {
+                int confirm = JOptionPane.showConfirmDialog(this, "Do you want to restore this student?", "Confirm Restore", JOptionPane.YES_NO_OPTION);
+                if (confirm == JOptionPane.YES_OPTION) {
+                    // Restore student
+                    archive.restoreStudent(id);
+
+                    // Refresh Archived Table
+                    StudentTable.setModel(new DefaultTableModel(null, new Object[]{
+                        "Student ID", "User_ID", "First Name", "Middle Name", "Last Name",
+                        "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
+                        "Mother's Name", "Address Line 1", "Address Line 2", "LRN",
+                        "Date Archived", "Reason"
+                    }));
+                    archive.getArchivedStudentValue(StudentTable, "");
+
+                    clearStudent();
+                    JOptionPane.showMessageDialog(this, "Student successfully restored.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "The archived student doesn't exist.");
+            }
+        }
+    }//GEN-LAST:event_delBtActionPerformed
+
+    private void stuPrint_1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuPrint_1MouseEntered
+        stuPrint_1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuPrint_1MouseEntered
+
+    private void stuPrint_1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuPrint_1MouseExited
+        stuPrint_1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuPrint_1MouseExited
+
+    private void stuPrint_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuPrint_1ActionPerformed
+        try {
+            MessageFormat header = new MessageFormat("Students Information");
+            MessageFormat footer = new MessageFormat("Page{0,number,integer}");
+            StudentTable.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+        } catch (PrinterException ex) {
+            System.getLogger(Home.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+    }//GEN-LAST:event_stuPrint_1ActionPerformed
+
+    private void stuInfoCurrentOrArchivedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuInfoCurrentOrArchivedMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuInfoCurrentOrArchivedMouseEntered
+
+    private void stuInfoCurrentOrArchivedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuInfoCurrentOrArchivedMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuInfoCurrentOrArchivedMouseExited
+
+    private void stuInfoCurrentOrArchivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuInfoCurrentOrArchivedActionPerformed
+        String currentText = stuInfoCurrentOrArchived.getText();
+
+        if (currentText.equalsIgnoreCase("Archived")) {
+            StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
+                "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
+            student.getStudentValue(StudentTable, "");
+            stuInfoCurrentOrArchived.setText("Current");
+            delBt.setText("Delete");
+        } else if (currentText.equalsIgnoreCase("Current")) {
+            StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
+                "Mother's Name", "Address Line 1", "Address Line 2", "LRN", "Date Archived", "Reason"}));
+            archive.getArchivedStudentValue(StudentTable, "");
+            stuInfoCurrentOrArchived.setText("Archived");
+            delBt.setText("Restore");
+
+//StudentTrackTable.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+        }
+    }//GEN-LAST:event_stuInfoCurrentOrArchivedActionPerformed
+
+    private void stuStrandSearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandSearchFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuStrandSearchFieldActionPerformed
+
+    private void stuStrandSearchFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuStrandSearchFieldKeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_stuStrandSearchFieldKeyTyped
+
+    private void stuStrandSearchBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStrandSearchBtMouseEntered
+        //stuStrand
+    }//GEN-LAST:event_stuStrandSearchBtMouseEntered
+
+    private void stuStrandSearchBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandSearchBtActionPerformed
+        if (stuStrandSearchField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a student id");
+
+        } else {
+            int id = Integer.parseInt(stuStrandSearchField.getText());
+            strand.getId(id);
+            String fullName = strand.getStudentNameById(id);
+            stuFullName.setText(fullName);
+            //stuGradeLevel.setSelectedIndex(0);
+            try {
+                int gradeLevel = Integer.parseInt(stuGradeLevel.getSelectedItem().toString());
+
+                // 1. Load strands available for that grade level
+                grade.loadStrands(stuStrand, gradeLevel);
+
+                if (stuStrand.getItemCount() > 0) {
+                    int strandId = getSelectedStudentStrandId();
+
+                    //updateSection();
+                    //grade.loadSections(stuSection, strandId, gradeLevel);
+                }
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error loading strands/sections/subjects.");
+            }
+
+        }
+    }//GEN-LAST:event_stuStrandSearchBtActionPerformed
+    public int getSelectedStudentStrandId() {
+        ComboItem selectedItem = (ComboItem) stuStrand.getSelectedItem();
+        if (selectedItem != null) {
+            return selectedItem.getId(); // assuming ComboItem has getId()
+        }
+        return -1; // or handle appropriately if nothing is selected
+    }
+    private void stuStrandIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuStrandIdActionPerformed
+
+    private void stuGradeLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuGradeLevelActionPerformed
+        updateSection();
+
+        //stuStrand.addItem("TVL-ICT"); //how to add item inside combo box
+    }//GEN-LAST:event_stuGradeLevelActionPerformed
+
+    private void stuStrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandActionPerformed
+        updateSection();
+    }//GEN-LAST:event_stuStrandActionPerformed
+
+    private void stuSectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSectionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuSectionActionPerformed
+
+    private void stuFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuFullNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuFullNameActionPerformed
+
+    private void stuSearchBt_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSearchBt_2ActionPerformed
+        if (stuSearchField_2.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Search field is empty");
+
+        } else {
+            String currentText = stuInfoCurrentOrArchived.getText();
+            if (currentText.equalsIgnoreCase("Current")) {
+                StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_ID", "Student Name", "Grade_Level", "Strand", "Section"}));
+                strand.loadStudentStrandsTable(StudentTrackTable, stuSearchField_2.getText());
+            } else if (currentText.equalsIgnoreCase("Current")) {
+                StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_ID", "Student Name", "Grade_Level", "Strand", "Section", "date_archived", "reason"}));
+                archive.loadArchivedStudentStrandsTable(StudentTrackTable, "");
+
+                //StudentTrackTable.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            }
+
+        }
+    }//GEN-LAST:event_stuSearchBt_2ActionPerformed
+
+    private void stuRefresh_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuRefresh_2ActionPerformed
+        String currentText = stuInfoCurrentOrArchived.getText();
+        if (currentText.equalsIgnoreCase("Current")) {
+            StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_ID", "Student Name", "Grade_Level", "Strand", "Section"}));
+            strand.loadStudentStrandsTable(StudentTrackTable, "");
+            stuSearchField_2.setText(null);
+        } else if (currentText.equalsIgnoreCase("Current")) {
+            StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_ID", "Student Name", "Grade_Level", "Strand", "Section", "date_archived", "reason"}));
+            archive.loadArchivedStudentStrandsTable(StudentTrackTable, "");
+            stuSearchField_2.setText(null);
+            //StudentTrackTable.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+        }
+    }//GEN-LAST:event_stuRefresh_2ActionPerformed
+
+    private void stuSort_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSort_2ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) StudentTrackTable.getModel();
+
+        // Attach TableRowSorter to your table
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        StudentTrackTable.setRowSorter(sorter);
+
+        // Example: Sort by Student ID (numerically) and then by Student Name (alphabetically)
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+
+        int IdCol = 0;  // Student ID is column 0
+        int studentStrandIdCol = 1; // Student Name is column 1
+
+        // First sort by ID (ascending)
+        sortKeys.add(new RowSorter.SortKey(IdCol, SortOrder.ASCENDING));
+
+        // Then sort by Name (ascending)
+        sortKeys.add(new RowSorter.SortKey(studentStrandIdCol, SortOrder.ASCENDING));
+
+        sorter.setSortKeys(sortKeys);
+        sorter.sort();
+    }//GEN-LAST:event_stuSort_2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int a = JOptionPane.showConfirmDialog(this, "Do you want to Logout now?", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            this.dispose();
+            LoginFrame frame = new LoginFrame();
+            frame.setVisible(true);
+            frame.setLocationRelativeTo(null);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void stuStrandClearBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandClearBtActionPerformed
+        clearStrand();
+    }//GEN-LAST:event_stuStrandClearBtActionPerformed
+
+    private void stuSaveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSaveBtActionPerformed
+        if (stuStrandId.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student ID is missing");
+            return;
+        }
+
+        try {
+            int studentId = Integer.parseInt(stuStrandId.getText());
+            int gradeLevel = Integer.parseInt(stuGradeLevel.getSelectedItem().toString());
+            String strandName = stuStrand.getSelectedItem().toString();
+            String sectionSelect = stuSection.getSelectedItem().toString();
+
+            int strandId = strand.convertStrandNameToId(strandName);
+            if (strandId == -1) {
+                JOptionPane.showMessageDialog(this, "Invalid strand selected");
+                return;
+            }
+
+            // ✅ Check if student exists
+            if (!strand.studentExists(studentId)) {
+                JOptionPane.showMessageDialog(this, "Student with ID " + studentId + " does not exist");
+                return;
+            }
+            System.out.println("StudentId:" + studentId);
+            System.out.println("gradeLevel:" + gradeLevel);
+            System.out.println("strandId:" + strandId);
+
+            // ✅ Check archived enrollment first
+            if (archive.isArchivedEnrollmentExists(studentId, gradeLevel, strandId)) {
+
+                JOptionPane.showMessageDialog(this,
+                        "⚠ You cannot enroll or transfer to the same Grade Level + Strand that already exists in the archive.\n"
+                        + "Use the Restore button if you want to restore this previous enrollment.",
+                        "Archived Enrollment Exists",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // ✅ 1. Check if student already enrolled in same strand + grade level
+            if (strand.isStudentEnrolledInStrandAndGrade(studentId, strandId, gradeLevel)) {
+                Object[] currentEnrollment = strand.getCurrentEnrollment(studentId);
+                String currentStrand = (String) currentEnrollment[1];
+                String currentSection = (String) currentEnrollment[2];
+
+                JOptionPane.showMessageDialog(this,
+                        "Student is already enrolled in " + currentStrand
+                        + " Grade " + gradeLevel
+                        + " Section " + currentSection);
+                return;
+            }
+
+            // ✅ 2. Check if student is already enrolled in any strand
+            if (strand.isStudentEnrolledInAnyStrand(studentId)) {
+                Object[] currentEnrollment = strand.getCurrentEnrollment(studentId);
+                int currentGradeLevel = (int) currentEnrollment[0];
+                String currentStrand = (String) currentEnrollment[1];
+                String currentSection = (String) currentEnrollment[2];
+                int currentStrandId = strand.convertStrandNameToId(currentStrand);
+
+                // ✅ Promotion (same strand, higher grade)
+                if (currentStrand.equals(strandName)) {
+                    if (gradeLevel > currentGradeLevel) {
+                        boolean hasPassed = progress.hasStudentPassed(studentId, currentStrandId, currentGradeLevel);
+                        if (!hasPassed) {
+                            JOptionPane.showMessageDialog(this,
+                                    "This student has not yet passed all required subjects.\n"
+                                    + "Promotion cannot proceed until requirements are met.",
+                                    "Promotion Blocked",
+                                    JOptionPane.WARNING_MESSAGE);
+                            return;
+                        }
+
+                        int response = JOptionPane.showConfirmDialog(
+                                this,
+                                "Student Promotion:\n\n"
+                                + "Current: " + currentStrand + " - Grade " + currentGradeLevel + " - Section " + currentSection
+                                + "\nNew: " + strandName + " - Grade " + gradeLevel + " - Section " + sectionSelect
+                                + "\n\nConfirm promotion?",
+                                "Confirm Student Promotion",
+                                JOptionPane.YES_NO_OPTION,
+                                JOptionPane.QUESTION_MESSAGE
+                        );
+
+                        if (response == JOptionPane.YES_OPTION) {
+                            int newSectionId = strand.getAvailableSection(gradeLevel, strandId);
+                            if (newSectionId == -1) {
+                                JOptionPane.showMessageDialog(this, "No available sections for Grade " + gradeLevel + " in " + strandName);
+                                return;
+                            }
+                            boolean archived = archive.archiveStudentStrand(studentId, currentStrandId, strandId, currentGradeLevel, gradeLevel);
+                            if (!archived) {
+                                JOptionPane.showMessageDialog(this, "❌ Failed to archive existing record. Promotion cancelled.");
+                                return;
+                            }
+
+                            boolean success = archive.updateStudentGradeLevel(studentId, gradeLevel, newSectionId);
+                            JOptionPane.showMessageDialog(this, success
+                                    ? "✅ Student promoted successfully to Grade " + gradeLevel
+                                    : "❌ Failed to promote student");
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(this,
+                                "Invalid promotion: New grade level must be higher than current grade.");
+                    }
+
+                } else {
+                    // ✅ Transfer to different strand
+                    int response = JOptionPane.showConfirmDialog(
+                            this,
+                            "Student Strand Transfer:\n\n"
+                            + "Student ID: " + studentId
+                            + "\nCurrent: " + currentStrand + " - Grade " + currentGradeLevel + " - Section " + currentSection
+                            + "\nNew: " + strandName + " - Grade " + gradeLevel + " - Section " + sectionSelect
+                            + "\n\nConfirm transfer?",
+                            "Confirm Strand Transfer",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.WARNING_MESSAGE
+                    );
+
+                    if (response == JOptionPane.YES_OPTION) {
+                        boolean archived = archive.archiveStudentStrand(studentId, currentStrandId, strandId, currentGradeLevel, gradeLevel);
+                        if (archived) {
+                            boolean success = strand.insertStudentStrand(studentId, strandId, gradeLevel, sectionSelect);
+                            JOptionPane.showMessageDialog(this, success
+                                    ? "✅ Student transferred successfully to " + strandName
+                                    : "❌ Failed to insert new enrollment after transfer");
+                        } else {
+                            JOptionPane.showMessageDialog(this, "❌ Failed to archive existing record. Transfer cancelled.");
+                        }
+                    }
+                }
+
+            } else {
+                // ✅ 3. New enrollment
+                int response = JOptionPane.showConfirmDialog(
+                        this,
+                        "New Student Enrollment:\n\n"
+                        + "Student ID: " + studentId
+                        + "\nStrand: " + strandName
+                        + "\nGrade Level: " + gradeLevel
+                        + "\nSection: " + sectionSelect
+                        + "\n\nConfirm enrollment?",
+                        "Confirm New Enrollment",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE
+                );
+
+                if (response == JOptionPane.YES_OPTION) {
+                    boolean success = strand.insertStudentStrand(studentId, strandId, gradeLevel, sectionSelect);
+
+                    String schoolYear = getCurrentSchoolYear();
+                    String status = "Incomplete";
+                    progress.insert(studentId, schoolYear, status);
+                    JOptionPane.showMessageDialog(this, success
+                            ? "✅ Student enrolled successfully in " + strandName
+                            : "❌ Failed to enroll student");
+                }
+            }
+
+            // ✅ Refresh table
+            StudentTrackTable.setModel(new DefaultTableModel(
+                    null,
+                    new Object[]{"Student_ID", "Student Name", "Grade_Level", "Strand", "Section"}
+            ));
+            strand.loadStudentStrandsTable(StudentTrackTable, "");
+            clearStrand();
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid numeric Student ID");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_stuSaveBtActionPerformed
+
+    private void stuRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuRestoreActionPerformed
+        try {
+            int studentId = Integer.parseInt(stuStrandId.getText());
+            int gradeLevel = Integer.parseInt(stuGradeLevel.getSelectedItem().toString());
+            String strandName = stuStrand.getSelectedItem().toString();
+            String sectionSelect = stuSection.getSelectedItem().toString();
+
+            int strandId = strand.getStrandIdByName(strandName);
+            int sectionId = strand.getSectionIdByName(sectionSelect);
+
+            // ✅ 1. Check if the record exists in the archive table
+            if (!archive.isAlreadyInStudentStrand(studentId, gradeLevel, strandId, sectionId)) {
+                JOptionPane.showMessageDialog(null,
+                        "This record does not exist in the archive. Nothing to restore.");
+                return;
+            }
+
+            // ✅ 2. Check if the record already exists in the student_strand table
+            if (archive.existsInStudentStrand(studentId, gradeLevel, strandId, sectionId)) {
+                JOptionPane.showMessageDialog(null,
+                        "This record already exists in the student_strand table.");
+                return;
+            }
+
+            // ✅ 3. Restore record (move from archived → student_strand)
+            archive.restoreStudentRecord(studentId, gradeLevel, strandId, sectionId);
+
+            JOptionPane.showMessageDialog(null, "Student successfully restored!");
+            archive.loadArchivedStudentStrandsTable(StudentTrackTable, "");
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Invalid student ID or grade level format.");
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error while restoring: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_stuRestoreActionPerformed
+
+    private void stuCurrentOrArchiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuCurrentOrArchiveActionPerformed
+        String currentText = stuCurrentOrArchive.getText();
+
+        if (currentText.equalsIgnoreCase("Archived")) {
+            StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_ID", "Student Name", "Grade_Level", "Strand", "Section"}));
+            strand.loadStudentStrandsTable(StudentTrackTable, "");
+            stuCurrentOrArchive.setText("Current");
+        } else if (currentText.equalsIgnoreCase("Current")) {
+            StudentTrackTable.setModel(new DefaultTableModel(null, new Object[]{"Student_ID", "Student Name", "Grade_Level", "Strand", "Section", "date_archived", "reason"}));
+            archive.loadArchivedStudentStrandsTable(StudentTrackTable, "");
+            stuCurrentOrArchive.setText("Archived");
+
+            //StudentTrackTable.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+        }
+    }//GEN-LAST:event_stuCurrentOrArchiveActionPerformed
 
     private ImageIcon imageAdjust(String path, byte[] pic) {
         ImageIcon myImage = null;
@@ -4598,6 +5020,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
@@ -4689,14 +5112,17 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTextField stuAddress2;
     private com.toedter.calendar.JDateChooser stuBirth;
     private javax.swing.JTextField stuBirthCer;
+    private javax.swing.JButton stuCurrentOrArchive;
     private javax.swing.JTextField stuEmail;
     private javax.swing.JTextField stuFatherName;
     private javax.swing.JTextField stuFname;
     private javax.swing.JTextField stuForm137;
+    public static javax.swing.JTextField stuFullName;
     private javax.swing.JComboBox<String> stuGender;
     private javax.swing.JComboBox<String> stuGradeLevel;
     private javax.swing.JButton stuGradeManageRefreshTable1;
     private javax.swing.JTextField stuID;
+    private javax.swing.JButton stuInfoCurrentOrArchived;
     private javax.swing.JTextField stuLRN;
     private javax.swing.JTextField stuLastName;
     private javax.swing.JTextField stuMiddleName;
@@ -4705,6 +5131,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton stuPrint_1;
     private javax.swing.JButton stuRefresh_1;
     private javax.swing.JButton stuRefresh_2;
+    private javax.swing.JButton stuRestore;
     private javax.swing.JButton stuSaveBt;
     private javax.swing.JButton stuSearchBt_2;
     private javax.swing.JTextField stuSearchField_1;
@@ -4715,9 +5142,8 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> stuStrand;
     private javax.swing.JButton stuStrandClearBt;
     public static javax.swing.JTextField stuStrandId;
-    private javax.swing.JButton stuStrandRestore;
-    private javax.swing.JTextField stuStrandSearchAdminField;
     private javax.swing.JButton stuStrandSearchBt;
+    private javax.swing.JTextField stuStrandSearchField;
     private javax.swing.JTextField stuSubjectIDManage;
     private javax.swing.JButton stuSubjectSaveBt;
     private javax.swing.JButton stuSubjectSearch;

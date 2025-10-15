@@ -204,6 +204,37 @@ public class Student {
         }
 
     }
+    public void updateOnlyStudent(int student_id, String fname, String midName, String lname, String date, String gender, String email, String phone,
+            String motherName, String fatherName, String addressLine1,
+            String addressLine2, String lrn) {
+
+        String sql = "update student set first_name=?,middle_name=?,last_name=?,date_of_birth=?,gender=?,email=?,phone_number=?,mother_name=?,"
+                + "father_name=?,address1=?,address2=?,LRN=? where student_id=?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, fname);
+            ps.setString(2, midName);
+            ps.setString(3, lname);
+            ps.setString(4, date);
+            ps.setString(5, gender);
+            ps.setString(6, email);
+            ps.setString(7, phone);
+            ps.setString(8, motherName);
+            ps.setString(9, fatherName);
+            ps.setString(10, addressLine1);
+            ps.setString(11, addressLine2);
+            ps.setString(12, lrn);
+            ps.setInt(13, student_id);
+
+            if (ps.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog(null, "Your Information updated successfully ");
+
+            }
+        } catch (SQLException ex) {
+            System.getLogger(Student.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+
+    }
 
     //student data delete
     public void delete(int id) {
@@ -275,6 +306,21 @@ public class Student {
         }
 
         return model;
+    }
+
+    public String getLRNById(int id) {
+        String lrn = null;
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT LRN FROM student WHERE student_id = ?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                lrn = rs.getString("LRN");
+            }
+        } catch (SQLException ex) {
+            System.getLogger(Student.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        return lrn;
     }
 
 }

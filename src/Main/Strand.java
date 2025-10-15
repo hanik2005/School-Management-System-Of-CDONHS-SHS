@@ -62,6 +62,22 @@ public class Strand {
         return false;
     }
 
+    
+
+    public int getSectionIdByName(String sectionName) {
+        String sql = "SELECT section_id FROM section WHERE section_name = ?";
+        try (PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, sectionName);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("section_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1; // Return -1 if not found
+    }
+
     public boolean getIdFromAdmin(int id) {
         try {
             ps = con.prepareStatement("select * from student where student_id= ?");
@@ -324,7 +340,7 @@ public class Strand {
         return String.valueOf(nextChar);
     }
 
-    private int getStrandIdByName(String strandName) {
+    public int getStrandIdByName(String strandName) {
         String sql = "SELECT strand_id FROM strands WHERE strand_name = ?";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -520,22 +536,37 @@ public class Strand {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0); // Clear existing data
 
-        String sql = "SELECT ss.student_id, ss.grade_level, st.strand_name, sec.section_name "
-                + "FROM student_strand ss "
-                + "JOIN strands st ON ss.strand_id = st.strand_id "
-                + "JOIN section sec ON ss.section_id = sec.section_id "
-                + "WHERE ss.student_id LIKE ? OR st.strand_name LIKE ? OR sec.section_name LIKE ? "
-                + "ORDER BY ss.student_id";
+        String sql = """
+            SELECT 
+                ss.student_id,
+                CONCAT(s.last_name, ', ', s.first_name, ' ', COALESCE(s.middle_name, '')) AS student_name,
+                ss.grade_level,
+                st.strand_name,
+                sec.section_name
+            FROM student_strand ss
+            JOIN student s ON ss.student_id = s.student_id
+            JOIN strands st ON ss.strand_id = st.strand_id
+            JOIN section sec ON ss.section_id = sec.section_id
+            WHERE s.last_name LIKE ?
+               OR s.first_name LIKE ?
+               OR s.middle_name LIKE ?
+               OR st.strand_name LIKE ?
+               OR sec.section_name LIKE ?
+               OR CAST(ss.student_id AS CHAR) LIKE ?
+            ORDER BY ss.student_id
+        """;
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, "%" + search + "%");
-            ps.setString(2, "%" + search + "%");
-            ps.setString(3, "%" + search + "%");
+            for (int i = 1; i <= 6; i++) {
+                ps.setString(i, "%" + search + "%");
+            }
+
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 model.addRow(new Object[]{
                     rs.getInt("student_id"),
+                    rs.getString("student_name"),
                     rs.getInt("grade_level"),
                     rs.getString("strand_name"),
                     rs.getString("section_name")
@@ -544,6 +575,27 @@ public class Strand {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public String getStudentNameById(int studentId) {
+        String sql = """
+        SELECT CONCAT(s.last_name, ', ', s.first_name, ' ', COALESCE(s.middle_name, '')) AS student_name
+        FROM student s
+        WHERE s.student_id = ?
+    """;
+
+        try (PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setInt(1, studentId);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("student_name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "Unknown Student"; // Default if no record found
     }
 
     public String[] getStrandAndSectionName(Connection con, int sectionId) {

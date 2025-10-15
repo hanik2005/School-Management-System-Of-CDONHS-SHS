@@ -9,7 +9,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -110,165 +115,282 @@ public class Archive {
         return false;
     }
 
-//     private void stuSaveBtActionPerformed(java.awt.event.ActionEvent evt) {                                          
-//        if (stuStrandId.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Student ID is missing");
-//            return;
-//        }
-//
-//        try {
-//            int studentId = Integer.parseInt(stuStrandId.getText());
-//            int gradeLevel = Integer.parseInt(stuGradeLevel.getSelectedItem().toString());
-//            String strandName = stuStrand.getSelectedItem().toString();
-//            String sectionSelect = stuSection.getSelectedItem().toString();
-//
-//            int strandId = strand.convertStrandNameToId(strandName);
-//            if (strandId == -1) {
-//                JOptionPane.showMessageDialog(this, "Invalid strand selected");
-//                return;
-//            }
-//
-//            // ✅ Check if student exists
-//            if (!strand.studentExists(studentId)) {
-//                JOptionPane.showMessageDialog(this, "Student with ID " + studentId + " does not exist");
-//                return;
-//            }
-//
-//            // ✅ 1. Check if student already enrolled in same strand + grade level
-//            if (strand.isStudentEnrolledInStrandAndGrade(studentId, strandId, gradeLevel)) {
-//                Object[] currentEnrollment = strand.getCurrentEnrollment(studentId);
-//                String currentStrand = (String) currentEnrollment[1];
-//                String currentSection = (String) currentEnrollment[2];
-//
-//                JOptionPane.showMessageDialog(this,
-//                        "Student is already enrolled in " + currentStrand
-//                        + " Grade " + gradeLevel
-//                        + " Section " + currentSection);
-//                return;
-//            }
-//
-//            // ✅ 2. Check if student is already enrolled in any strand
-//            if (strand.isStudentEnrolledInAnyStrand(studentId)) {
-//                Object[] currentEnrollment = strand.getCurrentEnrollment(studentId);
-//                int currentGradeLevel = (int) currentEnrollment[0];
-//                String currentStrand = (String) currentEnrollment[1];
-//                String currentSection = (String) currentEnrollment[2];
-//                int currentStrandId = strand.convertStrandNameToId(currentStrand);
-//
-//                // ✅ Promotion (same strand, higher grade)
-//                if (currentStrand.equals(strandName)) {
-//                    if (gradeLevel > currentGradeLevel) {
-//                        boolean hasPassed = progress.hasStudentPassed(studentId, currentStrandId, currentGradeLevel);
-//                        if (!hasPassed) {
-//                            JOptionPane.showMessageDialog(this,
-//                                    "This student has not yet passed all required subjects.\n"
-//                                    + "Promotion cannot proceed until requirements are met.",
-//                                    "Promotion Blocked",
-//                                    JOptionPane.WARNING_MESSAGE);
-//                            return;
-//                        }
-//
-//                        int response = JOptionPane.showConfirmDialog(
-//                                this,
-//                                "Student Promotion:\n\n"
-//                                + "Current: " + currentStrand + " - Grade " + currentGradeLevel + " - Section " + currentSection
-//                                + "\nNew: " + strandName + " - Grade " + gradeLevel + " - Section " + sectionSelect
-//                                + "\n\nConfirm promotion?",
-//                                "Confirm Student Promotion",
-//                                JOptionPane.YES_NO_OPTION,
-//                                JOptionPane.QUESTION_MESSAGE
-//                        );
-//
-//                        if (response == JOptionPane.YES_OPTION) {
-//                            int newSectionId = strand.getAvailableSection(gradeLevel, strandId);
-//                            if (newSectionId == -1) {
-//                                JOptionPane.showMessageDialog(this, "No available sections for Grade " + gradeLevel + " in " + strandName);
-//                                return;
-//                            }
-//                            boolean archived = archive.archiveStudentStrand(studentId, currentStrandId, strandId, currentGradeLevel, gradeLevel);
-//                            if (!archived) {
-//                                JOptionPane.showMessageDialog(this, "❌ Failed to archive existing record. Promotion cancelled.");
-//                                return;
-//                            }
-//
-//                            boolean success = archive.updateStudentGradeLevel(studentId, gradeLevel, newSectionId);
-//                            JOptionPane.showMessageDialog(this, success
-//                                    ? "✅ Student promoted successfully to Grade " + gradeLevel
-//                                    : "❌ Failed to promote student");
-//                        }
-//
-//                    } else {
-//                        JOptionPane.showMessageDialog(this,
-//                                "Invalid promotion: New grade level must be higher than current grade.");
-//                    }
-//
-//                } else {
-//                    // ✅ Transfer to different strand
-//                    int response = JOptionPane.showConfirmDialog(
-//                            this,
-//                            "Student Strand Transfer:\n\n"
-//                            + "Student ID: " + studentId
-//                            + "\nCurrent: " + currentStrand + " - Grade " + currentGradeLevel + " - Section " + currentSection
-//                            + "\nNew: " + strandName + " - Grade " + gradeLevel + " - Section " + sectionSelect
-//                            + "\n\nConfirm transfer?",
-//                            "Confirm Strand Transfer",
-//                            JOptionPane.YES_NO_OPTION,
-//                            JOptionPane.WARNING_MESSAGE
-//                    );
-//
-//                    if (response == JOptionPane.YES_OPTION) {
-//                        boolean archived = archive.archiveStudentStrand(studentId, currentStrandId, strandId, currentGradeLevel, gradeLevel);
-//                        if (archived) {
-//                            boolean success = strand.insertStudentStrand(studentId, strandId, gradeLevel, sectionSelect);
-//                            JOptionPane.showMessageDialog(this, success
-//                                    ? "✅ Student transferred successfully to " + strandName
-//                                    : "❌ Failed to insert new enrollment after transfer");
-//                        } else {
-//                            JOptionPane.showMessageDialog(this, "❌ Failed to archive existing record. Transfer cancelled.");
-//                        }
-//                    }
-//                }
-//
-//            } else {
-//                // ✅ 3. New enrollment
-//                int response = JOptionPane.showConfirmDialog(
-//                        this,
-//                        "New Student Enrollment:\n\n"
-//                        + "Student ID: " + studentId
-//                        + "\nStrand: " + strandName
-//                        + "\nGrade Level: " + gradeLevel
-//                        + "\nSection: " + sectionSelect
-//                        + "\n\nConfirm enrollment?",
-//                        "Confirm New Enrollment",
-//                        JOptionPane.YES_NO_OPTION,
-//                        JOptionPane.QUESTION_MESSAGE
-//                );
-//
-//                if (response == JOptionPane.YES_OPTION) {
-//                    boolean success = strand.insertStudentStrand(studentId, strandId, gradeLevel, sectionSelect);
-//
-//                    String schoolYear = getCurrentSchoolYear();
-//                    String status = "Incomplete";
-//                    progress.insert(studentId, schoolYear, status);
-//                    JOptionPane.showMessageDialog(this, success
-//                            ? "✅ Student enrolled successfully in " + strandName
-//                            : "❌ Failed to enroll student");
-//                }
-//            }
-//
-//            // ✅ Refresh table
-//            StudentTrackTable.setModel(new DefaultTableModel(
-//                    null,
-//                    new Object[]{"Student_ID", "Grade_Level", "Strand", "Section"}
-//            ));
-//            strand.loadStudentStrandsTable(StudentTrackTable, "");
-//            clearStrand();
-//
-//        } catch (NumberFormatException ex) {
-//            JOptionPane.showMessageDialog(this, "Please enter a valid numeric Student ID");
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
-//            ex.printStackTrace();
-//        }
-//    }                  
+    public void loadArchivedStudentStrandsTable(JTable table, String search) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0); // Clear existing data
+
+        String sql = """
+            SELECT 
+                ass.student_id,
+                CONCAT(s.last_name, ', ', s.first_name, ' ', COALESCE(s.middle_name, '')) AS student_name,
+                ass.grade_level,
+                st.strand_name,
+                sec.section_name,
+                ass.date_archived,
+                ass.reason
+            FROM archived_student_strand ass
+            JOIN student s ON ass.student_id = s.student_id
+            JOIN strands st ON ass.strand_id = st.strand_id
+            JOIN section sec ON ass.section_id = sec.section_id
+            WHERE s.last_name LIKE ?
+               OR s.first_name LIKE ?
+               OR s.middle_name LIKE ?
+               OR st.strand_name LIKE ?
+               OR sec.section_name LIKE ?
+               OR CAST(ass.student_id AS CHAR) LIKE ?
+            ORDER BY ass.date_archived DESC
+        """;
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            for (int i = 1; i <= 6; i++) {
+                ps.setString(i, "%" + search + "%");
+            }
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                model.addRow(new Object[]{
+                    rs.getInt("student_id"),
+                    rs.getString("student_name"),
+                    rs.getInt("grade_level"),
+                    rs.getString("strand_name"),
+                    rs.getString("section_name"),
+                    rs.getString("date_archived"),
+                    rs.getString("reason")
+                });
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public boolean existsInStudentStrand(int studentId, int gradeLevel, int strandId, int sectionId) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM student_strand WHERE student_id = ? AND grade_level = ? AND strand_id = ? AND section_id = ?";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, studentId);
+            ps.setInt(2, gradeLevel);
+            ps.setInt(3, strandId);
+            ps.setInt(4, sectionId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        }
+        return false;
+    }
+
+    public boolean isAlreadyInStudentStrand(int studentId, int gradeLevel, int strandId, int sectionId) throws SQLException {
+        String query = "SELECT COUNT(*) FROM archived_student_strand WHERE student_id = ? AND grade_level = ? AND strand_id = ? AND section_id = ?";
+        try (PreparedStatement pst = con.prepareStatement(query)) {
+            pst.setInt(1, studentId);
+            pst.setInt(2, gradeLevel);
+            pst.setInt(3, strandId);
+            pst.setInt(4, sectionId);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0; // true if record exists in archive
+            }
+        }
+        return false;
+    }
+
+    // 🔹 Restore record: move from archived_student_strand → student_strand, then delete from archived
+    public void restoreStudentRecord(int studentId, int gradeLevel, int strandId, int sectionId) throws SQLException {
+        // 🔹 1. Archive the current active record before restoring
+        String archiveCurrentSql = """
+            INSERT INTO archived_student_strand (student_id, grade_level, strand_id, section_id, date_archived, reason)
+            SELECT student_id, grade_level, strand_id, section_id, NOW(), 'Restored previous record'
+            FROM student_strand
+            WHERE student_id = ?
+        """;
+        try (PreparedStatement ps = con.prepareStatement(archiveCurrentSql)) {
+            ps.setInt(1, studentId);
+            ps.executeUpdate();
+        }
+
+        // 🔹 2. Update student_strand with data from archived_student_strand (restore)
+        String updateSql = """
+            UPDATE student_strand
+            SET grade_level = ?, strand_id = ?, section_id = ?
+            WHERE student_id = ?
+        """;
+        try (PreparedStatement ps = con.prepareStatement(updateSql)) {
+            ps.setInt(1, gradeLevel);
+            ps.setInt(2, strandId);
+            ps.setInt(3, sectionId);
+            ps.setInt(4, studentId);
+            ps.executeUpdate();
+        }
+
+        // 🔹 3. Delete the restored record from archived_student_strand
+        String deleteSql = """
+            DELETE FROM archived_student_strand
+            WHERE student_id = ? AND grade_level = ? AND strand_id = ? AND section_id = ?
+        """;
+        try (PreparedStatement ps = con.prepareStatement(deleteSql)) {
+            ps.setInt(1, studentId);
+            ps.setInt(2, gradeLevel);
+            ps.setInt(3, strandId);
+            ps.setInt(4, sectionId);
+            ps.executeUpdate();
+        }
+    }
+
+    public void getArchivedStudentValue(JTable table, String searchValue) {
+        String sql = "SELECT student_id, user_id, first_name, middle_name, last_name, "
+                + "date_of_birth, gender, email, phone_number, mother_name, father_name, "
+                + "address1, address2, LRN, date_archived, reason "
+                + "FROM archived_student "
+                + "WHERE CONCAT(first_name, middle_name, last_name, email, phone_number, reason) LIKE ? "
+                + "ORDER BY student_id DESC";
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, "%" + searchValue + "%");
+            ResultSet rs = ps.executeQuery();
+
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            model.setRowCount(0); // ✅ Clear previous results
+
+            Object[] row;
+            while (rs.next()) {
+                row = new Object[16];
+                row[0] = rs.getInt("student_id");
+                row[1] = rs.getInt("user_id");
+                row[2] = rs.getString("first_name");
+                row[3] = rs.getString("middle_name");
+                row[4] = rs.getString("last_name");
+                row[5] = rs.getDate("date_of_birth");
+                row[6] = rs.getString("gender");
+                row[7] = rs.getString("email");
+                row[8] = rs.getString("phone_number");
+                row[9] = rs.getString("mother_name");
+                row[10] = rs.getString("father_name");
+                row[11] = rs.getString("address1");
+                row[12] = rs.getString("address2");
+                row[13] = rs.getString("LRN");
+                row[14] = rs.getTimestamp("date_archived");
+                row[15] = rs.getString("reason");
+                model.addRow(row);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void archiveStudent(int studentId, String reason) {
+        String insertSql = """
+        INSERT INTO archived_student (
+            student_id, user_id, first_name, middle_name, last_name, 
+            date_of_birth, gender, email, phone_number, mother_name, 
+            father_name, address1, address2, LRN, image_path, form_137, 
+            birth_certificate, date_archived, reason
+        )
+        SELECT 
+            student_id, user_id, first_name, middle_name, last_name, 
+            date_of_birth, gender, email, phone_number, mother_name, 
+            father_name, address1, address2, LRN, image_path, form_137, 
+            birth_certificate, NOW(), ?
+        FROM student
+        WHERE student_id = ?
+    """;
+
+        String deleteSql = "DELETE FROM student WHERE student_id = ?";
+
+        try (PreparedStatement psInsert = con.prepareStatement(insertSql); PreparedStatement psDelete = con.prepareStatement(deleteSql)) {
+
+            // Insert to archived_student
+            psInsert.setString(1, reason);
+            psInsert.setInt(2, studentId);
+            psInsert.executeUpdate();
+
+            // Delete from student
+            psDelete.setInt(1, studentId);
+            psDelete.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    // Check if archived ID exists
+
+    public boolean isidExist(int id) {
+        boolean exist = false;
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM archived_student WHERE student_id = ?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            exist = rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exist;
+    }
+
+    // Restore student
+    public void restoreStudent(int studentId) {
+        String selectQuery = "SELECT * FROM archived_student WHERE student_id = ?";
+        String insertUserQuery = "INSERT INTO user (user_id, username, password, type_id) VALUES (?, ?, ?, ?)";
+        String insertStudentQuery = "INSERT INTO student (student_id, user_id, first_name, middle_name, last_name, date_of_birth, gender, email, phone_number, father_name, mother_name, address1, address2, LRN) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String deleteArchiveQuery = "DELETE FROM archived_student WHERE student_id = ?";
+
+        try {
+            PreparedStatement psSelect = con.prepareStatement(selectQuery);
+            psSelect.setInt(1, studentId);
+            ResultSet rs = psSelect.executeQuery();
+
+            if (rs.next()) {
+                int userId = rs.getInt("user_id");
+                String lrn = rs.getString("LRN");
+                String lastName = rs.getString("last_name");
+                Date dob = rs.getDate("date_of_birth");
+
+                // ✅ Generate password: lastname + birthForPass (e.g., 2005-03-04 → 030405)
+                String birthForPass = new SimpleDateFormat("MMddyy").format(dob);
+                String password = lastName.toLowerCase() + birthForPass;
+                int type_id = 2; // Student type
+
+                // ✅ Create user record (recreate user)
+                PreparedStatement psInsertUser = con.prepareStatement(insertUserQuery);
+                psInsertUser.setInt(1, userId);
+                psInsertUser.setString(2, lrn);        // username = LRN
+                psInsertUser.setString(3, password);   // password = lastname + birth
+                psInsertUser.setInt(4, type_id);       // type = 2 (student)
+                psInsertUser.executeUpdate();
+
+                // ✅ Restore student record
+                PreparedStatement psInsertStudent = con.prepareStatement(insertStudentQuery);
+                psInsertStudent.setInt(1, rs.getInt("student_id"));
+                psInsertStudent.setInt(2, userId);
+                psInsertStudent.setString(3, rs.getString("first_name"));
+                psInsertStudent.setString(4, rs.getString("middle_name"));
+                psInsertStudent.setString(5, lastName);
+                psInsertStudent.setDate(6, (java.sql.Date) dob);
+                psInsertStudent.setString(7, rs.getString("gender"));
+                psInsertStudent.setString(8, rs.getString("email"));
+                psInsertStudent.setString(9, rs.getString("phone_number"));
+                psInsertStudent.setString(10, rs.getString("father_name"));
+                psInsertStudent.setString(11, rs.getString("mother_name"));
+                psInsertStudent.setString(12, rs.getString("address1"));
+                psInsertStudent.setString(13, rs.getString("address2"));
+                psInsertStudent.setString(14, lrn);
+                psInsertStudent.executeUpdate();
+
+                // ✅ Finally remove from archived table
+                PreparedStatement psDelete = con.prepareStatement(deleteArchiveQuery);
+                psDelete.setInt(1, studentId);
+                psDelete.executeUpdate();
+
+                JOptionPane.showMessageDialog(null, "Student successfully restored to current records.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Archived student record not found.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error restoring student: " + e.getMessage());
+        }
+    }
+
 }

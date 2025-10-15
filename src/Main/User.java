@@ -61,15 +61,26 @@ public class User {
     public void delete(int id) {
         try {
             ps = con.prepareStatement("delete from user where username = ?");
+
             ps.setInt(1, id);
             if (ps.executeUpdate() > 0) {
-                //JOptionPane.showMessageDialog(null, "Student data deleted successfully ");
-
+                JOptionPane.showMessageDialog(null, "Student data deleted successfully ");
             }
         } catch (SQLException ex) {
             System.getLogger(User.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
+    }
 
+    public void delete(String lrn) {
+        try {
+            ps = con.prepareStatement("DELETE FROM user WHERE username = ?");
+            ps.setString(1, lrn);
+            if (ps.executeUpdate() > 0) {
+                // JOptionPane.showMessageDialog(null, "User deleted successfully");
+            }
+        } catch (SQLException ex) {
+            System.getLogger(User.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
     }
     // Helper method to convert user type string to type_id
 
