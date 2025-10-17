@@ -50,6 +50,7 @@ public class StudentPortal extends javax.swing.JFrame {
     PreparedStatement ps;
     ResultSet rs;
     private int rowIndex;
+    private boolean passwordVisible = false;
     private String imagePath;
     Student student = new Student();
     private DefaultTableModel model;
@@ -76,8 +77,53 @@ public class StudentPortal extends javax.swing.JFrame {
         setTime();
         setDate();
         tableStudentGradeView();
+        setEditInformation();
+        setEditPasswordInfo();
         setInformationStudentsDatabase();
         setInformationStrandDatabase();
+    }
+
+    public void setEditPasswordInfo() {
+        try {
+            String sql = "SELECT u.password FROM user u JOIN student s ON u.user_id = s.user_id WHERE s.student_id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, studentId);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String password = rs.getString("password");
+                stuUserPassword.setText(password);
+            }
+
+        }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error" + ex);
+        }
+
+    }
+
+    public void setEditInformation() {
+        try {
+            ps = con.prepareStatement("SELECT * FROM student WHERE student_id = ?");
+            ps.setInt(1, studentId);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                stuFname.setText(rs.getString("first_name"));
+                stuMiddleName.setText(rs.getString("middle_name"));
+                stuLastName.setText(rs.getString("last_name"));
+                stuBirth.setDate(rs.getDate("date_of_birth"));
+                stuGender.setSelectedItem(rs.getString("gender"));
+                stuEmail.setText(rs.getString("email"));
+                stuPhone.setText(rs.getString("phone_number"));
+                stuMotherName.setText(rs.getString("mother_name"));
+                stuFatherName.setText(rs.getString("father_name"));
+                stuAddress1.setText(rs.getString("address1"));
+                stuAddress2.setText(rs.getString("address2"));
+                stuLRN.setText(rs.getString("lrn"));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error" + ex);
+        }
     }
 
     public void tableStudentGradeView() {
@@ -478,6 +524,9 @@ public class StudentPortal extends javax.swing.JFrame {
         stuLastName = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         stuLRN = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        stuUserPassword = new javax.swing.JPasswordField();
+        eyeImageBt = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         updateBt = new javax.swing.JButton();
@@ -1134,6 +1183,26 @@ public class StudentPortal extends javax.swing.JFrame {
             }
         });
 
+        jLabel29.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel29.setText("User Password");
+
+        stuUserPassword.setBackground(new java.awt.Color(255, 255, 255));
+        stuUserPassword.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        stuUserPassword.setForeground(new java.awt.Color(0, 0, 0));
+
+        eyeImageBt.setForeground(new java.awt.Color(0, 0, 0));
+        eyeImageBt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/NotVisible (2).png"))); // NOI18N
+        eyeImageBt.setText("jLabel6");
+        eyeImageBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eyeImageBtMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                eyeImageBtMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -1192,7 +1261,13 @@ public class StudentPortal extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(stuGender, 0, 133, Short.MAX_VALUE)
                             .addComponent(stuBirth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(stuUserPassword)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(eyeImageBt, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -1246,7 +1321,12 @@ public class StudentPortal extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel28)
                     .addComponent(stuLRN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eyeImageBt)
+                    .addComponent(stuUserPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel8.setBackground(new java.awt.Color(243, 244, 246));
@@ -1347,11 +1427,14 @@ public class StudentPortal extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(443, 443, 443)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Edit Information", jPanel5);
@@ -1832,10 +1915,12 @@ public class StudentPortal extends javax.swing.JFrame {
                     String addressLine1 = stuAddress1.getText();
                     String addressLine2 = stuAddress2.getText();
                     String stuLrn = stuLRN.getText();
+                    String password = new String(stuUserPassword.getPassword());
                     student.updateOnlyStudent(id, sfname, sMidName, sLastName, date, gender, email, phone,
                             motherName, fatherName, addressLine1, addressLine2, stuLrn);
+                    User user = new User();
+                    user.updatePasswordOfStudent(studentId, password);
 
-                    clearStudent();
 
                 }
 
@@ -1858,6 +1943,24 @@ public class StudentPortal extends javax.swing.JFrame {
     private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
         clearStudent();
     }//GEN-LAST:event_ClearActionPerformed
+
+    private void eyeImageBtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eyeImageBtMouseClicked
+        if (passwordVisible) {
+            // Hide password again
+            stuUserPassword.setEchoChar('•'); // bullet char
+            eyeImageBt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/NotVisible (2).png")));
+            passwordVisible = false;
+        } else {
+            // Show password
+            stuUserPassword.setEchoChar((char) 0); // 0 means no masking
+            eyeImageBt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/visible-eye-svgrepo-com.png")));
+            passwordVisible = true;
+        }
+    }//GEN-LAST:event_eyeImageBtMouseClicked
+
+    private void eyeImageBtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eyeImageBtMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eyeImageBtMousePressed
 
     public int getSelectedStudentStrandId() {
         ComboItem selectedItem = (ComboItem) strandStudentBox.getSelectedItem();
@@ -1942,6 +2045,7 @@ public class StudentPortal extends javax.swing.JFrame {
     private javax.swing.JPanel birthPanel;
     private javax.swing.JTextField dateTxt;
     private javax.swing.JTextField emailTxt;
+    private javax.swing.JLabel eyeImageBt;
     private javax.swing.JTextField fatherTxt;
     private javax.swing.JPanel formPanel;
     private javax.swing.JTextField genderTxt;
@@ -1969,6 +2073,7 @@ public class StudentPortal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2024,6 +2129,7 @@ public class StudentPortal extends javax.swing.JFrame {
     private javax.swing.JTextField stuMiddleName;
     private javax.swing.JTextField stuMotherName;
     private javax.swing.JTextField stuPhone;
+    private javax.swing.JPasswordField stuUserPassword;
     private javax.swing.JLabel txtDate;
     private javax.swing.JLabel txtTime;
     private javax.swing.JButton updateBt;

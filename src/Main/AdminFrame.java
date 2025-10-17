@@ -509,9 +509,10 @@ public class AdminFrame extends javax.swing.JFrame {
     public void clearStrand() {
         //strandId.setText(String.valueOf(strand.getMax()));
         stuStrandId.setText(null);
+        stuFullName.setText(null);
         stuGradeLevel.setSelectedIndex(0);
-        stuStrand.setSelectedIndex(0);
-        stuSection.setSelectedIndex(0);
+        stuStrand.removeAllItems();
+        stuSection.removeAllItems();
         StudentTrackTable.clearSelection();
        stuStrandSearchField.setText(null);
 
@@ -3756,11 +3757,9 @@ public class AdminFrame extends javax.swing.JFrame {
         try {
             int studentId = Integer.parseInt(studentIdStr);
 
-            // ✅ Get Grade Level from ComboBox
             String gradeLevelStr = gradeLevelSubjectBox.getSelectedItem().toString();
             int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
-
-            // ✅ Clear previous data
+            
             subjectModel.setRowCount(0);
 
             Subject subjectDAO = new Subject();

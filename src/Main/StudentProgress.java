@@ -24,7 +24,7 @@ public class StudentProgress {
     ResultSet rs;
 
     public boolean hasStudentPassed(int studentId, int strandId, int gradeLevel) {
-    String sql = """
+        String sql = """
         SELECT sp.status
         FROM student_progress sp
         JOIN student_strand ss ON sp.student_id = ss.student_id
@@ -33,24 +33,23 @@ public class StudentProgress {
           AND ss.grade_level = ?
     """;
 
-    try (PreparedStatement ps = con.prepareStatement(sql)) {
-        ps.setInt(1, studentId);
-        ps.setInt(2, strandId);
-        ps.setInt(3, gradeLevel);
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, studentId);
+            ps.setInt(2, strandId);
+            ps.setInt(3, gradeLevel);
 
-        try (ResultSet rs = ps.executeQuery()) {
-            if (rs.next()) {
-                String status = rs.getString("status");
-                return status != null && status.equalsIgnoreCase("Passed");
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String status = rs.getString("status");
+                    return status != null && status.equalsIgnoreCase("Passed");
+                }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
+
+        return false;
     }
-
-    return false;
-}
-
 
     public void insert(int student_id, String school_year, String status) {
         String sql = "insert into student_progress (student_id, school_year, status) values(?,?,?)";
@@ -75,14 +74,16 @@ public class StudentProgress {
         model.setRowCount(0); // clear existing rows
 
         String sql = """
-        SELECT s.student_id,
-               CONCAT(s.first_name, ' ', s.last_name) AS student_name,
-               sp.school_year,
-               ROUND(AVG(g.grade), 2) AS final_average,
-               CASE 
-                   WHEN AVG(g.grade) >= 75 THEN 'Passed'
-                   ELSE 'Failed'
-               END AS status
+        SELECT 
+            s.student_id,
+            CONCAT(s.first_name, ' ', s.last_name) AS student_name,
+            sp.school_year,
+            ROUND(AVG(g.grade), 2) AS final_average,
+            CASE 
+                WHEN ? = 12 AND AVG(g.grade) >= 75 THEN 'Ready to Graduate'
+                WHEN AVG(g.grade) >= 75 THEN 'Passed'
+                ELSE 'Failed'
+            END AS status
         FROM student s
         JOIN student_strand ss ON s.student_id = ss.student_id
         JOIN grade_entry g ON s.student_id = g.student_id
@@ -95,12 +96,15 @@ public class StudentProgress {
     """;
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
+            // We pass gradeLevel twice: once for CASE, once for WHERE
             ps.setInt(1, gradeLevel);
-            ps.setInt(2, strandId);
-            ps.setInt(3, sectionId);
+            ps.setInt(2, gradeLevel);
+            ps.setInt(3, strandId);
+            ps.setInt(4, sectionId);
 
             try (ResultSet rs = ps.executeQuery()) {
                 boolean hasData = false;
+
                 while (rs.next()) {
                     hasData = true;
                     model.addRow(new Object[]{

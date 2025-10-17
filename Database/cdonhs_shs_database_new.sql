@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2025 at 06:07 AM
+-- Generation Time: Oct 17, 2025 at 02:33 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,6 +43,35 @@ CREATE TABLE `admin` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `archived_student`
+--
+
+CREATE TABLE `archived_student` (
+  `archive_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `middle_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `date_of_birth` date NOT NULL,
+  `gender` enum('Male','Female') NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone_number` varchar(20) NOT NULL,
+  `mother_name` varchar(50) NOT NULL,
+  `father_name` varchar(50) NOT NULL,
+  `address1` varchar(50) NOT NULL,
+  `address2` varchar(50) DEFAULT NULL,
+  `birth_certificate` varchar(100) DEFAULT NULL,
+  `form_137` varchar(100) DEFAULT NULL,
+  `image_path` varchar(100) DEFAULT NULL,
+  `lrn` varchar(12) NOT NULL,
+  `date_archived` datetime NOT NULL DEFAULT current_timestamp(),
+  `reason` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `archived_student_strand`
 --
 
@@ -61,8 +90,10 @@ CREATE TABLE `archived_student_strand` (
 --
 
 INSERT INTO `archived_student_strand` (`archive_id`, `student_id`, `strand_id`, `grade_level`, `section_id`, `date_archived`, `reason`) VALUES
-(11, 1, 1, 11, 1, '2025-10-14 01:19:55', 'PROMOTION'),
-(12, 1, 1, 12, 5, '2025-10-14 03:24:08', 'TRANSFER');
+(12, 1, 1, 12, 5, '2025-10-14 03:24:08', 'TRANSFER'),
+(13, 13, 4, 11, 25, '2025-10-14 07:27:28', 'PROMOTION'),
+(14, 1, 4, 11, 25, '2025-10-15 13:32:22', 'TRANSFER'),
+(15, 1, 2, 11, 9, '2025-10-15 13:32:53', 'TRANSFER');
 
 -- --------------------------------------------------------
 
@@ -95,7 +126,19 @@ INSERT INTO `grade_entry` (`entry_id`, `student_id`, `subject_id`, `section_id`,
 (176, 1, 61, 5, 1, 90.00),
 (177, 1, 62, 5, 1, 95.00),
 (178, 1, 63, 5, 1, 90.00),
-(179, 1, 64, 5, 1, 98.00);
+(179, 1, 64, 5, 1, 98.00),
+(180, 13, 25, 25, 1, 90.00),
+(181, 1, 25, 25, 1, 70.00),
+(182, 13, 25, 25, 2, 90.00),
+(183, 1, 25, 25, 2, 90.00),
+(184, 13, 25, 25, 3, 90.00),
+(185, 1, 25, 25, 3, 60.00),
+(186, 13, 25, 25, 4, 100.00),
+(187, 1, 25, 25, 4, 60.00),
+(188, 13, 81, 29, 1, 90.00),
+(189, 13, 81, 29, 2, 80.00),
+(190, 13, 81, 29, 3, 90.00),
+(191, 13, 81, 29, 4, 90.00);
 
 -- --------------------------------------------------------
 
@@ -227,9 +270,9 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_id`, `user_id`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `gender`, `email`, `phone_number`, `mother_name`, `father_name`, `address1`, `address2`, `birth_certificate`, `form_137`, `image_path`, `LRN`) VALUES
-(1, 1, 'Nick', 'hfhfdhd', 'hdfhhdfhh', '2025-09-04', 'Male', 'asdaf@gmail.ocm', '09976866868', 'fafasfa', 'fasfaf', 'fasfaf', 'fafafa', 'fafsaf', 'fasfaf', 'D:\\PICTURES\\boy_pick_left_1.png', '74769648759'),
-(2, 2, 'Harvey ', 'D.', 'Clarito', '2025-09-04', 'Male', 'dasdsda@gmail.com', '09329239232', 'papa', 'mama', 'dadasda', 'dada', 'dad', 'dasda', 'D:\\PICTURES\\boy_pick_left_2.png', '67439284'),
-(3, 3, 'Andrea', 'Dominican', 'Bagtong', '2007-09-07', 'Female', 'dodo@gmail.com', '09933742', 'mama', 'papa', 'dasdsadsa', 'dadasd', 'dasdda', 'dadasd', 'D:\\PICTURES\\anime-moon-landscape.jpg', '6832924829'),
+(1, 1, 'Nick Charles', 'Durangparang', 'Clarito', '2005-10-14', 'Female', 'nick@gmail.com', '09988617344', 'mama', 'papa', 'dasdsad', 'dasdad', NULL, NULL, NULL, '809788765415'),
+(2, 2, 'Harvey ', 'D.', 'Clarito', '2025-09-04', 'Male', 'dasdsda@gmail.com', '09329239232', 'papa', 'mama', 'dadasda', 'dada', NULL, NULL, NULL, '67439284'),
+(3, 3, 'Andrea', 'Dominican', 'Bagtong', '2007-09-07', 'Female', 'dodo@gmail.com', '09933742', 'mama', 'papa', 'dasdsadsa', 'dadasd', NULL, NULL, NULL, '6832924829'),
 (4, 4, 'Niño Christian', 'Palaman', 'Balaba', '2005-08-20', 'Female', 'Balaba@gmail.com', '09944719', 'papa', 'mama', 'sdadd', 'dsdadada', 'num_1.pdf', 'FELISILDA_&_CLARITO.pdf', 'D:\\PICTURES\\anime-moon-landscape.jpg', '4053333424'),
 (5, 5, 'Randy', 'Abecia', 'Clarito', '1988-09-15', 'Male', 'papa@gmail.com', '0965747', 'czcz', 'czczxc', 'czcczc', 'czczc', 'CLARITO, NICK CHARLES D..pdf', 'CLARITO, NICK CHARLES D. – 2003–Present.pdf', 'D:\\PICTURES\\boy_pick_left_2.png', '40998922892'),
 (6, 8, 'Maria Cristina', 'Durangparang', 'Clarito', '1996-09-07', 'Female', 'Maria@gmail.com', '09262360968', 'papa', 'Dominador', 'dadsa', 'dadda', 'Form137_4.pdf', 'ClassList_11_STEM_A.pdf', 'D:\\PICTURES\\agile.png', '156456864214'),
@@ -238,7 +281,8 @@ INSERT INTO `student` (`student_id`, `user_id`, `first_name`, `middle_name`, `la
 (9, 12, 'Dominic', 'Dolos', 'Reyes', '2001-06-02', 'Male', 'reyes@gmail.com', '09988716521', 'dadasda', 'dasdd', 'dasdasd', '', '', '', NULL, '109660713467'),
 (10, 13, 'Mark', 'Galez', 'Hamot', '2005-10-01', 'Female', 'galez@gmail.com', '09986777535', 'czxcxzc', 'czxczczxc', 'czxczxcz', 'czxczcz', '', '', NULL, '900765325345'),
 (11, 14, 'Nishita', 'Mogumin', 'Daishi', '2003-10-17', 'Female', 'Daishi@gmail.com', '09977181934', 'persti', 'polio', 'hdajhdjak', 'dadadsada', '', '', NULL, '105660718953'),
-(12, 15, 'Rowena', 'Abecia', 'Dominador', '2005-10-14', 'Male', 'Rowena@gmail.com', '09817564321', 'mama', 'papa', 'sadasdsa', 'dadsadasd', '', '', NULL, '176096756432');
+(12, 15, 'Rowena', 'Abecia', 'Dominador', '2005-10-14', 'Male', 'Rowena@gmail.com', '09817564321', 'mama', 'papa', 'sadasdsa', 'dadsadasd', '', '', NULL, '176096756432'),
+(13, 17, 'Micah', 'Baro', 'Baal', '2005-11-16', 'Female', 'Baal2@gmail.com', '09605195922', 'mama', 'papa', 'dkasjdjkasdas', 'kjhsdajkdajka', 'ClassList_11_STEM_A.pdf', 'ClassList_G11_TVL-ICT_SecA.pdf', 'D:\\PICTURES\\Narita_Taishin.png', '806770450089');
 
 -- --------------------------------------------------------
 
@@ -250,7 +294,7 @@ CREATE TABLE `student_progress` (
   `progress_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `school_year` varchar(20) NOT NULL,
-  `status` enum('Passed','Failed','Incomplete') DEFAULT 'Incomplete'
+  `status` enum('Passed','Failed','Incomplete','Ready to Graduate') DEFAULT 'Incomplete'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -258,7 +302,9 @@ CREATE TABLE `student_progress` (
 --
 
 INSERT INTO `student_progress` (`progress_id`, `student_id`, `school_year`, `status`) VALUES
-(7, 1, '2025-2026', 'Passed');
+(7, 1, '2025-2026', 'Passed'),
+(8, 13, '2025-2026', 'Passed'),
+(9, 7, '2025-2026', 'Incomplete');
 
 -- --------------------------------------------------------
 
@@ -279,7 +325,9 @@ CREATE TABLE `student_strand` (
 --
 
 INSERT INTO `student_strand` (`student_strand_id`, `student_id`, `strand_id`, `grade_level`, `section_id`) VALUES
-(31, 1, 4, 11, 25);
+(32, 13, 4, 12, 29),
+(35, 1, 7, 11, 49),
+(36, 7, 1, 11, 1);
 
 -- --------------------------------------------------------
 
@@ -315,7 +363,31 @@ INSERT INTO `student_subjects` (`enrollment_id`, `student_id`, `subject_id`, `st
 (205, 1, 61, 'Enrolled', '2025-2026'),
 (206, 1, 62, 'Enrolled', '2025-2026'),
 (207, 1, 63, 'Enrolled', '2025-2026'),
-(208, 1, 64, 'Enrolled', '2025-2026');
+(208, 1, 64, 'Enrolled', '2025-2026'),
+(209, 1, 25, 'Enrolled', '2025-2026'),
+(210, 1, 26, 'Enrolled', '2025-2026'),
+(211, 1, 27, 'Dropped', '2025-2026'),
+(212, 1, 28, 'Dropped', '2025-2026'),
+(213, 1, 29, 'Dropped', '2025-2026'),
+(214, 1, 30, 'Dropped', '2025-2026'),
+(215, 1, 31, 'Dropped', '2025-2026'),
+(216, 1, 32, 'Dropped', '2025-2026'),
+(217, 13, 25, 'Enrolled', '2025-2026'),
+(218, 13, 26, 'Dropped', '2025-2026'),
+(219, 13, 27, 'Dropped', '2025-2026'),
+(220, 13, 28, 'Dropped', '2025-2026'),
+(221, 13, 29, 'Dropped', '2025-2026'),
+(222, 13, 30, 'Dropped', '2025-2026'),
+(223, 13, 31, 'Dropped', '2025-2026'),
+(224, 13, 32, 'Dropped', '2025-2026'),
+(225, 13, 81, 'Enrolled', '2025-2026'),
+(226, 13, 82, 'Dropped', '2025-2026'),
+(227, 13, 83, 'Dropped', '2025-2026'),
+(228, 13, 84, 'Dropped', '2025-2026'),
+(229, 13, 85, 'Dropped', '2025-2026'),
+(230, 13, 86, 'Dropped', '2025-2026'),
+(231, 13, 87, 'Dropped', '2025-2026'),
+(232, 13, 88, 'Dropped', '2025-2026');
 
 -- --------------------------------------------------------
 
@@ -519,9 +591,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `type_id`) VALUES
-(1, '74769648759', 'hdfhhdfhh20250904', 2),
-(2, '67439284', 'clarito20250904', 2),
-(3, '3', 'bagtong20070907', 2),
+(1, '809788765415', 'clarito101405', 2),
+(2, '67439284', 'clarito090425', 2),
+(3, '6832924829', 'bagtong090707', 2),
 (4, '4', 'balaba20050820', 2),
 (5, '5', 'clarito19880915', 2),
 (6, '02-1', 'balay20060916', 3),
@@ -533,7 +605,9 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `type_id`) VALUES
 (12, '109660713467', 'reyes20010602', 2),
 (13, '900765325345', 'daguplo20051001', 2),
 (14, '105660718953', 'daishi20031017', 2),
-(15, '176096756432', 'dominador20051014', 2);
+(15, '176096756432', 'dominador20051014', 2),
+(16, '122334567890', 'balaba19961007', 2),
+(17, '806770450089', 'baal20051116', 2);
 
 --
 -- Indexes for dumped tables
@@ -546,6 +620,14 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`),
   ADD UNIQUE KEY `email` (`email`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `archived_student`
+--
+ALTER TABLE `archived_student`
+  ADD PRIMARY KEY (`archive_id`),
+  ADD UNIQUE KEY `user_id` (`user_id`),
+  ADD KEY `fk_student_archived` (`student_id`);
 
 --
 -- Indexes for table `archived_student_strand`
@@ -652,16 +734,22 @@ ALTER TABLE `admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `archived_student`
+--
+ALTER TABLE `archived_student`
+  MODIFY `archive_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `archived_student_strand`
 --
 ALTER TABLE `archived_student_strand`
-  MODIFY `archive_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `archive_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `grade_entry`
 --
 ALTER TABLE `grade_entry`
-  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
+  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
 
 --
 -- AUTO_INCREMENT for table `section`
@@ -679,25 +767,25 @@ ALTER TABLE `strands`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `student_progress`
 --
 ALTER TABLE `student_progress`
-  MODIFY `progress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `progress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `student_strand`
 --
 ALTER TABLE `student_strand`
-  MODIFY `student_strand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `student_strand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `student_subjects`
 --
 ALTER TABLE `student_subjects`
-  MODIFY `enrollment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+  MODIFY `enrollment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=233;
 
 --
 -- AUTO_INCREMENT for table `subject`
@@ -721,7 +809,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
@@ -732,6 +820,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `admin`
   ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `archived_student`
+--
+ALTER TABLE `archived_student`
+  ADD CONSTRAINT `fk_student_archived` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `archived_student_strand`
@@ -779,8 +873,8 @@ ALTER TABLE `student_strand`
 -- Constraints for table `student_subjects`
 --
 ALTER TABLE `student_subjects`
-  ADD CONSTRAINT `fk_student` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`),
-  ADD CONSTRAINT `fk_subject` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`);
+  ADD CONSTRAINT `fk_subject` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`),
+  ADD CONSTRAINT `student_subjects_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`);
 
 --
 -- Constraints for table `subject`

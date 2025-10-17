@@ -97,4 +97,33 @@ public class User {
         }
     }
 
+    public void updatePasswordOfStudent(int studentId, String password) {
+        String sql = """
+        UPDATE user 
+        SET password = ? 
+        WHERE user_id = (
+            SELECT user_id 
+            FROM student 
+            WHERE student_id = ?
+        )
+    """;
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, password);
+            ps.setInt(2, studentId);
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Password updated successfully!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed to update password. Student not found.");
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error updating password: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+    }
+
 }

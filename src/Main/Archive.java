@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.sql.*;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -281,35 +282,76 @@ public class Archive {
     public void archiveStudent(int studentId, String reason) {
         String insertSql = """
         INSERT INTO archived_student (
-            student_id, user_id, first_name, middle_name, last_name, 
-            date_of_birth, gender, email, phone_number, mother_name, 
-            father_name, address1, address2, LRN, image_path, form_137, 
-            birth_certificate, date_archived, reason
+            student_id, user_id, first_name, middle_name, last_name,
+            date_of_birth, gender, email, phone_number, father_name,
+            mother_name, address1, address2, LRN, image_path,
+            form_137, birth_certificate, date_archived, reason
         )
         SELECT 
-            student_id, user_id, first_name, middle_name, last_name, 
-            date_of_birth, gender, email, phone_number, mother_name, 
-            father_name, address1, address2, LRN, image_path, form_137, 
-            birth_certificate, NOW(), ?
+            student_id, user_id, first_name, middle_name, last_name,
+            date_of_birth, gender, email, phone_number, father_name,
+            mother_name, address1, address2, LRN, image_path,
+            form_137, birth_certificate, NOW(), ?
         FROM student
         WHERE student_id = ?
     """;
 
-        String deleteSql = "DELETE FROM student WHERE student_id = ?";
+        String getUserId = "SELECT user_id FROM student WHERE student_id = ?";
+        String deleteUser = "DELETE FROM user WHERE user_id = ?";
+        String deleteStudent = "DELETE FROM student WHERE student_id = ?";
 
-        try (PreparedStatement psInsert = con.prepareStatement(insertSql); PreparedStatement psDelete = con.prepareStatement(deleteSql)) {
+        try (
+                Statement st = con.createStatement(); PreparedStatement psInsert = con.prepareStatement(insertSql); PreparedStatement psGetUser = con.prepareStatement(getUserId); PreparedStatement psDeleteUser = con.prepareStatement(deleteUser); PreparedStatement psDeleteStudent = con.prepareStatement(deleteStudent)) {
+            // Start transaction
+            con.setAutoCommit(false);
 
-            // Insert to archived_student
+            // ✅ Disable foreign key checks
+            st.execute("SET FOREIGN_KEY_CHECKS = 0");
+
+            // ✅ Archive student first
             psInsert.setString(1, reason);
             psInsert.setInt(2, studentId);
             psInsert.executeUpdate();
 
-            // Delete from student
-            psDelete.setInt(1, studentId);
-            psDelete.executeUpdate();
+            // ✅ Get user_id before deleting student
+            psGetUser.setInt(1, studentId);
+            ResultSet rs = psGetUser.executeQuery();
+            int userId = 0;
+            if (rs.next()) {
+                userId = rs.getInt("user_id");
+            }
 
+            // ✅ Delete student
+            psDeleteStudent.setInt(1, studentId);
+            psDeleteStudent.executeUpdate();
+
+            // ✅ Delete user (after student is gone)
+            if (userId > 0) {
+                psDeleteUser.setInt(1, userId);
+                psDeleteUser.executeUpdate();
+            }
+
+            // ✅ Re-enable FK checks
+            st.execute("SET FOREIGN_KEY_CHECKS = 1");
+
+            // ✅ Commit everything
+            con.commit();
+
+            System.out.println("✅ Student archived and user deleted successfully.");
         } catch (SQLException e) {
+            try {
+                con.rollback();
+                System.err.println("❌ Transaction rolled back due to error: " + e.getMessage());
+            } catch (SQLException rollbackEx) {
+                rollbackEx.printStackTrace();
+            }
             e.printStackTrace();
+        } finally {
+            try {
+                con.setAutoCommit(true);
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         }
     }
     // Check if archived ID exists

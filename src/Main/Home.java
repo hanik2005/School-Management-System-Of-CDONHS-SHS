@@ -233,6 +233,8 @@ public class Home extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         gradeLevelSubjectBox = new javax.swing.JComboBox<>();
+        jLabel43 = new javax.swing.JLabel();
+        stuFullNameSub = new javax.swing.JTextField();
         jPanel48 = new javax.swing.JPanel();
         clearSubjectManageBt = new javax.swing.JButton();
         logoutFormGradeBt1 = new javax.swing.JButton();
@@ -291,6 +293,8 @@ public class Home extends javax.swing.JFrame {
         stuGradeManageRefreshTable = new javax.swing.JButton();
         jLabel38 = new javax.swing.JLabel();
         strandStudentBox = new javax.swing.JComboBox<>();
+        jLabel44 = new javax.swing.JLabel();
+        stuFullNameFormGrade = new javax.swing.JTextField();
         jPanel42 = new javax.swing.JPanel();
         clearFormBt = new javax.swing.JButton();
         stuFormGradePrint = new javax.swing.JButton();
@@ -1832,6 +1836,19 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        jLabel43.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel43.setText("Full Name");
+
+        stuFullNameSub.setEditable(false);
+        stuFullNameSub.setBackground(new java.awt.Color(204, 204, 204));
+        stuFullNameSub.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuFullNameSub.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                stuFullNameSubKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel47Layout = new javax.swing.GroupLayout(jPanel47);
         jPanel47.setLayout(jPanel47Layout);
         jPanel47Layout.setHorizontalGroup(
@@ -1840,16 +1857,20 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel39)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(stuSubjectIDManage, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(stuSubjectIDManage, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stuFullNameSub, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel40)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(gradeLevelSubjectBox, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addComponent(gradeLevelSubjectBox, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(stuSubjectSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(stuGradeManageRefreshTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel47Layout.setVerticalGroup(
             jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1860,7 +1881,9 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(stuSubjectSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(stuGradeManageRefreshTable1)
                     .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(gradeLevelSubjectBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gradeLevelSubjectBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stuFullNameSub, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -2643,6 +2666,24 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        jLabel44.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel44.setText("Full Name");
+
+        stuFullNameFormGrade.setEditable(false);
+        stuFullNameFormGrade.setBackground(new java.awt.Color(204, 204, 204));
+        stuFullNameFormGrade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuFullNameFormGrade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stuFullNameFormGradeActionPerformed(evt);
+            }
+        });
+        stuFullNameFormGrade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                stuFullNameFormGradeKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel41Layout = new javax.swing.GroupLayout(jPanel41);
         jPanel41.setLayout(jPanel41Layout);
         jPanel41Layout.setHorizontalGroup(
@@ -2651,35 +2692,40 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel36)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(stuGradeIDManage, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(stuGradeIDManage, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stuFullNameFormGrade)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(gradeLevelStudentBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel38)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(strandStudentBox, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel35)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(gradeLevelStudentBox, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(stuGradeFormSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(stuGradeManageRefreshTable, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(stuGradeFormSearch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(stuGradeManageRefreshTable)
                 .addContainerGap())
         );
         jPanel41Layout.setVerticalGroup(
             jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel41Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel35, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(stuGradeFormSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(stuGradeIDManage, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(stuGradeManageRefreshTable)
-                        .addComponent(jLabel36)
-                        .addComponent(gradeLevelStudentBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel38)
-                        .addComponent(strandStudentBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(stuGradeFormSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(stuGradeIDManage, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stuGradeManageRefreshTable)
+                    .addComponent(jLabel36)
+                    .addComponent(gradeLevelStudentBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel38)
+                    .addComponent(strandStudentBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel44)
+                    .addComponent(stuFullNameFormGrade, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -3836,9 +3882,10 @@ public class Home extends javax.swing.JFrame {
     public void clearStrand() {
         //strandId.setText(String.valueOf(strand.getMax()));
         stuStrandId.setText(null);
+        stuFullName.setText(null);
         stuGradeLevel.setSelectedIndex(0);
-        stuStrand.setSelectedIndex(0);
-        stuSection.setSelectedIndex(0);
+        stuStrand.removeAllItems();
+        stuSection.removeAllItems();
         StudentTrackTable.clearSelection();
         stuStrandSearchField.setText(null);
 
@@ -4968,8 +5015,15 @@ public class Home extends javax.swing.JFrame {
 
 
     private void stuGradeFormSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuGradeFormSearchActionPerformed
+        if (strandStudentBox.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this,"Select GradeLevel to Activate the Strand");
+            return;
+        }
+        
         try {
             int studentId = Integer.parseInt(stuGradeIDManage.getText().trim());
+            String fullName = strand.getStudentNameById(studentId);
+            stuFullNameFormGrade.setText(fullName);
 
             String gradeLevelStr = gradeLevelStudentBox.getSelectedItem().toString();
             int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
@@ -5630,6 +5684,7 @@ public class Home extends javax.swing.JFrame {
 
     private void stuSubjectSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSubjectSearchActionPerformed
         String studentIdStr = stuSubjectIDManage.getText().trim();
+        
 
         if (studentIdStr.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter Student ID.");
@@ -5638,6 +5693,8 @@ public class Home extends javax.swing.JFrame {
 
         try {
             int studentId = Integer.parseInt(studentIdStr);
+            String fullName = strand.getStudentNameById(studentId);
+            stuFullNameSub.setText(fullName);
 
             // ✅ Get Grade Level from ComboBox
             String gradeLevelStr = gradeLevelSubjectBox.getSelectedItem().toString();
@@ -6192,6 +6249,18 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_stuInfoCurrentOrArchivedActionPerformed
 
+    private void stuFullNameSubKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuFullNameSubKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuFullNameSubKeyTyped
+
+    private void stuFullNameFormGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuFullNameFormGradeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuFullNameFormGradeActionPerformed
+
+    private void stuFullNameFormGradeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuFullNameFormGradeKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuFullNameFormGradeKeyTyped
+
     private String getSelectedStrandName() {
         String name = "";
         try {
@@ -6463,6 +6532,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel61;
@@ -6584,6 +6655,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextField stuForm137;
     private javax.swing.JButton stuFormGradePrint;
     public static javax.swing.JTextField stuFullName;
+    private javax.swing.JTextField stuFullNameFormGrade;
+    private javax.swing.JTextField stuFullNameSub;
     private javax.swing.JComboBox<String> stuGender;
     private javax.swing.JButton stuGradeFormSearch;
     private javax.swing.JButton stuGradeHonorSearchBt;
