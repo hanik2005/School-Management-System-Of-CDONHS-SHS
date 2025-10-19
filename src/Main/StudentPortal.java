@@ -627,6 +627,14 @@ public class StudentPortal extends javax.swing.JFrame {
         logStuBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         logStuBt.setForeground(new java.awt.Color(0, 0, 0));
         logStuBt.setText("Logout");
+        logStuBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logStuBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logStuBtMouseExited(evt);
+            }
+        });
         logStuBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logStuBtActionPerformed(evt);
@@ -1453,6 +1461,14 @@ public class StudentPortal extends javax.swing.JFrame {
         stuGradeStudentSearchBt.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuGradeStudentSearchBt.setForeground(new java.awt.Color(0, 0, 0));
         stuGradeStudentSearchBt.setText("Search");
+        stuGradeStudentSearchBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuGradeStudentSearchBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuGradeStudentSearchBtMouseExited(evt);
+            }
+        });
         stuGradeStudentSearchBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuGradeStudentSearchBtActionPerformed(evt);
@@ -1553,6 +1569,14 @@ public class StudentPortal extends javax.swing.JFrame {
         gradeStudentLogout.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         gradeStudentLogout.setForeground(new java.awt.Color(0, 0, 0));
         gradeStudentLogout.setText("Logout");
+        gradeStudentLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gradeStudentLogoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gradeStudentLogoutMouseExited(evt);
+            }
+        });
         gradeStudentLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gradeStudentLogoutActionPerformed(evt);
@@ -1563,6 +1587,14 @@ public class StudentPortal extends javax.swing.JFrame {
         gradeStudentClear.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         gradeStudentClear.setForeground(new java.awt.Color(0, 0, 0));
         gradeStudentClear.setText("Clear");
+        gradeStudentClear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gradeStudentClearMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gradeStudentClearMouseExited(evt);
+            }
+        });
         gradeStudentClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gradeStudentClearActionPerformed(evt);
@@ -1961,6 +1993,38 @@ public class StudentPortal extends javax.swing.JFrame {
     private void eyeImageBtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eyeImageBtMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_eyeImageBtMousePressed
+
+    private void stuGradeStudentSearchBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeStudentSearchBtMouseEntered
+        stuGradeStudentSearchBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuGradeStudentSearchBtMouseEntered
+
+    private void stuGradeStudentSearchBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeStudentSearchBtMouseExited
+        stuGradeStudentSearchBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuGradeStudentSearchBtMouseExited
+
+    private void gradeStudentClearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeStudentClearMouseEntered
+       gradeStudentClear.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_gradeStudentClearMouseEntered
+
+    private void gradeStudentClearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeStudentClearMouseExited
+        gradeStudentClear.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_gradeStudentClearMouseExited
+
+    private void gradeStudentLogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeStudentLogoutMouseEntered
+        gradeStudentLogout.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_gradeStudentLogoutMouseEntered
+
+    private void gradeStudentLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeStudentLogoutMouseExited
+         gradeStudentLogout.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_gradeStudentLogoutMouseExited
+
+    private void logStuBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logStuBtMouseEntered
+        logStuBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_logStuBtMouseEntered
+
+    private void logStuBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logStuBtMouseExited
+        logStuBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_logStuBtMouseExited
 
     public int getSelectedStudentStrandId() {
         ComboItem selectedItem = (ComboItem) strandStudentBox.getSelectedItem();

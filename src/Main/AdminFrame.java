@@ -673,6 +673,8 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         gradeLevelSubjectBox = new javax.swing.JComboBox<>();
+        stuFullNameSub = new javax.swing.JTextField();
+        jLabel43 = new javax.swing.JLabel();
         jPanel48 = new javax.swing.JPanel();
         clearSubjectManageBt = new javax.swing.JButton();
         logoutFormGradeBt1 = new javax.swing.JButton();
@@ -2190,6 +2192,17 @@ public class AdminFrame extends javax.swing.JFrame {
         stuSubjectSearch.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuSubjectSearch.setForeground(new java.awt.Color(0, 0, 0));
         stuSubjectSearch.setText("Search");
+        stuSubjectSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                stuSubjectSearchMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuSubjectSearchMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuSubjectSearchMouseExited(evt);
+            }
+        });
         stuSubjectSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSubjectSearchActionPerformed(evt);
@@ -2200,6 +2213,14 @@ public class AdminFrame extends javax.swing.JFrame {
         stuGradeManageRefreshTable1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuGradeManageRefreshTable1.setForeground(new java.awt.Color(0, 0, 0));
         stuGradeManageRefreshTable1.setText("Refresh");
+        stuGradeManageRefreshTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuGradeManageRefreshTable1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuGradeManageRefreshTable1MouseExited(evt);
+            }
+        });
         stuGradeManageRefreshTable1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuGradeManageRefreshTable1ActionPerformed(evt);
@@ -2225,6 +2246,19 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
+        stuFullNameSub.setEditable(false);
+        stuFullNameSub.setBackground(new java.awt.Color(204, 204, 204));
+        stuFullNameSub.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuFullNameSub.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                stuFullNameSubKeyTyped(evt);
+            }
+        });
+
+        jLabel43.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel43.setText("Full Name");
+
         javax.swing.GroupLayout jPanel47Layout = new javax.swing.GroupLayout(jPanel47);
         jPanel47.setLayout(jPanel47Layout);
         jPanel47Layout.setHorizontalGroup(
@@ -2233,16 +2267,20 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel39)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(stuSubjectIDManage, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(stuSubjectIDManage, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stuFullNameSub, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addGap(43, 43, 43)
                 .addComponent(jLabel40)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(gradeLevelSubjectBox, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(stuSubjectSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stuSubjectSearch)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(stuGradeManageRefreshTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addComponent(stuGradeManageRefreshTable1)
+                .addContainerGap())
         );
         jPanel47Layout.setVerticalGroup(
             jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2253,7 +2291,9 @@ public class AdminFrame extends javax.swing.JFrame {
                     .addComponent(stuSubjectSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(stuGradeManageRefreshTable1)
                     .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(gradeLevelSubjectBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gradeLevelSubjectBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stuFullNameSub, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -2265,6 +2305,14 @@ public class AdminFrame extends javax.swing.JFrame {
         clearSubjectManageBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         clearSubjectManageBt.setForeground(new java.awt.Color(0, 0, 0));
         clearSubjectManageBt.setText("Clear");
+        clearSubjectManageBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                clearSubjectManageBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                clearSubjectManageBtMouseExited(evt);
+            }
+        });
         clearSubjectManageBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearSubjectManageBtActionPerformed(evt);
@@ -2275,6 +2323,14 @@ public class AdminFrame extends javax.swing.JFrame {
         logoutFormGradeBt1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         logoutFormGradeBt1.setForeground(new java.awt.Color(0, 0, 0));
         logoutFormGradeBt1.setText("Logout");
+        logoutFormGradeBt1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutFormGradeBt1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutFormGradeBt1MouseExited(evt);
+            }
+        });
         logoutFormGradeBt1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutFormGradeBt1ActionPerformed(evt);
@@ -2285,6 +2341,14 @@ public class AdminFrame extends javax.swing.JFrame {
         stuSubjectSaveBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuSubjectSaveBt.setForeground(new java.awt.Color(0, 0, 0));
         stuSubjectSaveBt.setText("Save");
+        stuSubjectSaveBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuSubjectSaveBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuSubjectSaveBtMouseExited(evt);
+            }
+        });
         stuSubjectSaveBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSubjectSaveBtActionPerformed(evt);
@@ -2296,7 +2360,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel48Layout.setHorizontalGroup(
             jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel48Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(426, Short.MAX_VALUE)
                 .addComponent(stuSubjectSaveBt, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(clearSubjectManageBt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3756,6 +3820,8 @@ public class AdminFrame extends javax.swing.JFrame {
 
         try {
             int studentId = Integer.parseInt(studentIdStr);
+            String fullName = strand.getStudentNameById(studentId);
+            stuFullNameSub.setText(fullName);
 
             String gradeLevelStr = gradeLevelSubjectBox.getSelectedItem().toString();
             int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
@@ -3840,6 +3906,11 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void stuSubjectSaveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSubjectSaveBtActionPerformed
         try {
+             String studentIdStr = stuSubjectIDManage.getText().trim();
+             if (studentIdStr.isEmpty() ||  SubjectTable.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Please enter Student ID and make sure the table is not empty.");
+                return;
+            }
             String studentId = stuSubjectIDManage.getText().trim();
 
             String schoolYear = getCurrentSchoolYear();
@@ -4903,6 +4974,54 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_stuCurrentOrArchiveActionPerformed
 
+    private void stuFullNameSubKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuFullNameSubKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuFullNameSubKeyTyped
+
+    private void stuSubjectSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSearchMouseClicked
+        //stuSubjectSearch.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSubjectSearchMouseClicked
+
+    private void stuSubjectSearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSearchMouseEntered
+        stuSubjectSearch.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuSubjectSearchMouseEntered
+
+    private void stuSubjectSearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSearchMouseExited
+        stuSubjectSearch.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSubjectSearchMouseExited
+
+    private void stuGradeManageRefreshTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageRefreshTable1MouseEntered
+        stuGradeManageRefreshTable1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuGradeManageRefreshTable1MouseEntered
+
+    private void stuGradeManageRefreshTable1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageRefreshTable1MouseExited
+        stuGradeManageRefreshTable1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuGradeManageRefreshTable1MouseExited
+
+    private void stuSubjectSaveBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSaveBtMouseEntered
+        stuSubjectSaveBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuSubjectSaveBtMouseEntered
+
+    private void stuSubjectSaveBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSaveBtMouseExited
+        stuSubjectSaveBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSubjectSaveBtMouseExited
+
+    private void clearSubjectManageBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearSubjectManageBtMouseEntered
+         clearSubjectManageBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_clearSubjectManageBtMouseEntered
+
+    private void clearSubjectManageBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearSubjectManageBtMouseExited
+        clearSubjectManageBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_clearSubjectManageBtMouseExited
+
+    private void logoutFormGradeBt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutFormGradeBt1MouseEntered
+       logoutFormGradeBt1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_logoutFormGradeBt1MouseEntered
+
+    private void logoutFormGradeBt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutFormGradeBt1MouseExited
+        logoutFormGradeBt1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_logoutFormGradeBt1MouseExited
+
     private ImageIcon imageAdjust(String path, byte[] pic) {
         ImageIcon myImage = null;
         if (path != null) {
@@ -5029,6 +5148,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel61;
@@ -5117,6 +5237,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTextField stuFname;
     private javax.swing.JTextField stuForm137;
     public static javax.swing.JTextField stuFullName;
+    private javax.swing.JTextField stuFullNameSub;
     private javax.swing.JComboBox<String> stuGender;
     private javax.swing.JComboBox<String> stuGradeLevel;
     private javax.swing.JButton stuGradeManageRefreshTable1;

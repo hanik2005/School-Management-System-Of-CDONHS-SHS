@@ -775,6 +775,14 @@ public class Home extends javax.swing.JFrame {
         browseImg.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         browseImg.setForeground(new java.awt.Color(0, 0, 0));
         browseImg.setText("Browse");
+        browseImg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                browseImgMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                browseImgMouseExited(evt);
+            }
+        });
         browseImg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 browseImgActionPerformed(evt);
@@ -1308,6 +1316,9 @@ public class Home extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 stuStrandSearchBtMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuStrandSearchBtMouseExited(evt);
+            }
         });
         stuStrandSearchBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1488,6 +1499,14 @@ public class Home extends javax.swing.JFrame {
         stuSearchBt_2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuSearchBt_2.setForeground(new java.awt.Color(0, 0, 0));
         stuSearchBt_2.setText("Search");
+        stuSearchBt_2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuSearchBt_2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuSearchBt_2MouseExited(evt);
+            }
+        });
         stuSearchBt_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSearchBt_2ActionPerformed(evt);
@@ -1498,6 +1517,14 @@ public class Home extends javax.swing.JFrame {
         stuRefresh_2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuRefresh_2.setForeground(new java.awt.Color(0, 0, 0));
         stuRefresh_2.setText("Refresh");
+        stuRefresh_2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuRefresh_2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuRefresh_2MouseExited(evt);
+            }
+        });
         stuRefresh_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuRefresh_2ActionPerformed(evt);
@@ -1508,6 +1535,14 @@ public class Home extends javax.swing.JFrame {
         stuSort_2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuSort_2.setForeground(new java.awt.Color(0, 0, 0));
         stuSort_2.setText("Sort");
+        stuSort_2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuSort_2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuSort_2MouseExited(evt);
+            }
+        });
         stuSort_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSort_2ActionPerformed(evt);
@@ -1614,6 +1649,14 @@ public class Home extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Logout");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton2MouseExited(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -1624,6 +1667,14 @@ public class Home extends javax.swing.JFrame {
         stuStrandClearBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuStrandClearBt.setForeground(new java.awt.Color(0, 0, 0));
         stuStrandClearBt.setText("Clear");
+        stuStrandClearBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuStrandClearBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuStrandClearBtMouseExited(evt);
+            }
+        });
         stuStrandClearBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuStrandClearBtActionPerformed(evt);
@@ -1634,6 +1685,14 @@ public class Home extends javax.swing.JFrame {
         stuSaveBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuSaveBt.setForeground(new java.awt.Color(0, 0, 0));
         stuSaveBt.setText("Confirm");
+        stuSaveBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuSaveBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuSaveBtMouseExited(evt);
+            }
+        });
         stuSaveBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSaveBtActionPerformed(evt);
@@ -1644,6 +1703,14 @@ public class Home extends javax.swing.JFrame {
         stuRestore.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuRestore.setForeground(new java.awt.Color(0, 0, 0));
         stuRestore.setText("Restore");
+        stuRestore.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuRestoreMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuRestoreMouseExited(evt);
+            }
+        });
         stuRestore.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuRestoreActionPerformed(evt);
@@ -1654,6 +1721,14 @@ public class Home extends javax.swing.JFrame {
         stuCurrentOrArchive.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuCurrentOrArchive.setForeground(new java.awt.Color(0, 0, 0));
         stuCurrentOrArchive.setText("Current");
+        stuCurrentOrArchive.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuCurrentOrArchiveMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuCurrentOrArchiveMouseExited(evt);
+            }
+        });
         stuCurrentOrArchive.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuCurrentOrArchiveActionPerformed(evt);
@@ -1801,6 +1876,14 @@ public class Home extends javax.swing.JFrame {
         stuSubjectSearch.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuSubjectSearch.setForeground(new java.awt.Color(0, 0, 0));
         stuSubjectSearch.setText("Search");
+        stuSubjectSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuSubjectSearchMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuSubjectSearchMouseExited(evt);
+            }
+        });
         stuSubjectSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSubjectSearchActionPerformed(evt);
@@ -1811,6 +1894,14 @@ public class Home extends javax.swing.JFrame {
         stuGradeManageRefreshTable1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuGradeManageRefreshTable1.setForeground(new java.awt.Color(0, 0, 0));
         stuGradeManageRefreshTable1.setText("Refresh");
+        stuGradeManageRefreshTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuGradeManageRefreshTable1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuGradeManageRefreshTable1MouseExited(evt);
+            }
+        });
         stuGradeManageRefreshTable1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuGradeManageRefreshTable1ActionPerformed(evt);
@@ -1876,14 +1967,15 @@ public class Home extends javax.swing.JFrame {
             jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel47Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stuSubjectIDManage, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stuSubjectSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(stuGradeManageRefreshTable1)
-                    .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(gradeLevelSubjectBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stuFullNameSub, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(stuFullNameSub, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel43, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(stuSubjectIDManage, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(stuSubjectSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(stuGradeManageRefreshTable1)
+                        .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(gradeLevelSubjectBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1895,6 +1987,14 @@ public class Home extends javax.swing.JFrame {
         clearSubjectManageBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         clearSubjectManageBt.setForeground(new java.awt.Color(0, 0, 0));
         clearSubjectManageBt.setText("Clear");
+        clearSubjectManageBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                clearSubjectManageBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                clearSubjectManageBtMouseExited(evt);
+            }
+        });
         clearSubjectManageBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearSubjectManageBtActionPerformed(evt);
@@ -1905,6 +2005,14 @@ public class Home extends javax.swing.JFrame {
         logoutFormGradeBt1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         logoutFormGradeBt1.setForeground(new java.awt.Color(0, 0, 0));
         logoutFormGradeBt1.setText("Logout");
+        logoutFormGradeBt1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutFormGradeBt1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutFormGradeBt1MouseExited(evt);
+            }
+        });
         logoutFormGradeBt1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutFormGradeBt1ActionPerformed(evt);
@@ -1915,6 +2023,14 @@ public class Home extends javax.swing.JFrame {
         stuSubjectSaveBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuSubjectSaveBt.setForeground(new java.awt.Color(0, 0, 0));
         stuSubjectSaveBt.setText("Save");
+        stuSubjectSaveBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuSubjectSaveBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuSubjectSaveBtMouseExited(evt);
+            }
+        });
         stuSubjectSaveBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSubjectSaveBtActionPerformed(evt);
@@ -2021,6 +2137,14 @@ public class Home extends javax.swing.JFrame {
         classListSearchBt.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         classListSearchBt.setForeground(new java.awt.Color(0, 0, 0));
         classListSearchBt.setText("Search");
+        classListSearchBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                classListSearchBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                classListSearchBtMouseExited(evt);
+            }
+        });
         classListSearchBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classListSearchBtActionPerformed(evt);
@@ -2141,6 +2265,14 @@ public class Home extends javax.swing.JFrame {
         classListLogoutBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         classListLogoutBt.setForeground(new java.awt.Color(0, 0, 0));
         classListLogoutBt.setText("Logout");
+        classListLogoutBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                classListLogoutBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                classListLogoutBtMouseExited(evt);
+            }
+        });
         classListLogoutBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classListLogoutBtActionPerformed(evt);
@@ -2151,6 +2283,14 @@ public class Home extends javax.swing.JFrame {
         classListClearBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         classListClearBt.setForeground(new java.awt.Color(0, 0, 0));
         classListClearBt.setText("Clear");
+        classListClearBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                classListClearBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                classListClearBtMouseExited(evt);
+            }
+        });
         classListClearBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classListClearBtActionPerformed(evt);
@@ -2161,6 +2301,14 @@ public class Home extends javax.swing.JFrame {
         classListPrintBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         classListPrintBt.setForeground(new java.awt.Color(0, 0, 0));
         classListPrintBt.setText("Print");
+        classListPrintBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                classListPrintBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                classListPrintBtMouseExited(evt);
+            }
+        });
         classListPrintBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classListPrintBtActionPerformed(evt);
@@ -2248,6 +2396,14 @@ public class Home extends javax.swing.JFrame {
         stuGradeManageSearchButton.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         stuGradeManageSearchButton.setForeground(new java.awt.Color(0, 0, 0));
         stuGradeManageSearchButton.setText("Search");
+        stuGradeManageSearchButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuGradeManageSearchButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuGradeManageSearchButtonMouseExited(evt);
+            }
+        });
         stuGradeManageSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuGradeManageSearchButtonActionPerformed(evt);
@@ -2409,6 +2565,14 @@ public class Home extends javax.swing.JFrame {
         gradeSaveBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         gradeSaveBt.setForeground(new java.awt.Color(0, 0, 0));
         gradeSaveBt.setText("Save");
+        gradeSaveBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gradeSaveBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gradeSaveBtMouseExited(evt);
+            }
+        });
         gradeSaveBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gradeSaveBtActionPerformed(evt);
@@ -2419,6 +2583,14 @@ public class Home extends javax.swing.JFrame {
         gradeLogout.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         gradeLogout.setForeground(new java.awt.Color(0, 0, 0));
         gradeLogout.setText("Logout");
+        gradeLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gradeLogoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gradeLogoutMouseExited(evt);
+            }
+        });
         gradeLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gradeLogoutActionPerformed(evt);
@@ -2429,6 +2601,14 @@ public class Home extends javax.swing.JFrame {
         gradeClear.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         gradeClear.setForeground(new java.awt.Color(0, 0, 0));
         gradeClear.setText("Clear");
+        gradeClear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gradeClearMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gradeClearMouseExited(evt);
+            }
+        });
         gradeClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gradeClearActionPerformed(evt);
@@ -2439,6 +2619,14 @@ public class Home extends javax.swing.JFrame {
         gradeSort.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         gradeSort.setForeground(new java.awt.Color(0, 0, 0));
         gradeSort.setText("Sort");
+        gradeSort.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gradeSortMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gradeSortMouseExited(evt);
+            }
+        });
         gradeSort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gradeSortActionPerformed(evt);
@@ -2449,6 +2637,14 @@ public class Home extends javax.swing.JFrame {
         gradeSectioningPrint.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         gradeSectioningPrint.setForeground(new java.awt.Color(0, 0, 0));
         gradeSectioningPrint.setText("Print");
+        gradeSectioningPrint.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gradeSectioningPrintMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gradeSectioningPrintMouseExited(evt);
+            }
+        });
         gradeSectioningPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gradeSectioningPrintActionPerformed(evt);
@@ -2459,6 +2655,14 @@ public class Home extends javax.swing.JFrame {
         calculatorBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         calculatorBt.setForeground(new java.awt.Color(0, 0, 0));
         calculatorBt.setText("Calculator");
+        calculatorBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                calculatorBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                calculatorBtMouseExited(evt);
+            }
+        });
         calculatorBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 calculatorBtActionPerformed(evt);
@@ -2621,6 +2825,14 @@ public class Home extends javax.swing.JFrame {
         stuGradeFormSearch.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuGradeFormSearch.setForeground(new java.awt.Color(0, 0, 0));
         stuGradeFormSearch.setText("Search");
+        stuGradeFormSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuGradeFormSearchMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuGradeFormSearchMouseExited(evt);
+            }
+        });
         stuGradeFormSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuGradeFormSearchActionPerformed(evt);
@@ -2646,6 +2858,14 @@ public class Home extends javax.swing.JFrame {
         stuGradeManageRefreshTable.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuGradeManageRefreshTable.setForeground(new java.awt.Color(0, 0, 0));
         stuGradeManageRefreshTable.setText("Refresh");
+        stuGradeManageRefreshTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuGradeManageRefreshTableMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuGradeManageRefreshTableMouseExited(evt);
+            }
+        });
         stuGradeManageRefreshTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuGradeManageRefreshTableActionPerformed(evt);
@@ -2736,6 +2956,14 @@ public class Home extends javax.swing.JFrame {
         clearFormBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         clearFormBt.setForeground(new java.awt.Color(0, 0, 0));
         clearFormBt.setText("Clear");
+        clearFormBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                clearFormBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                clearFormBtMouseExited(evt);
+            }
+        });
         clearFormBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearFormBtActionPerformed(evt);
@@ -2746,6 +2974,14 @@ public class Home extends javax.swing.JFrame {
         stuFormGradePrint.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuFormGradePrint.setForeground(new java.awt.Color(0, 0, 0));
         stuFormGradePrint.setText("Print");
+        stuFormGradePrint.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuFormGradePrintMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuFormGradePrintMouseExited(evt);
+            }
+        });
         stuFormGradePrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuFormGradePrintActionPerformed(evt);
@@ -2756,6 +2992,14 @@ public class Home extends javax.swing.JFrame {
         logoutFormGradeBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         logoutFormGradeBt.setForeground(new java.awt.Color(0, 0, 0));
         logoutFormGradeBt.setText("Logout");
+        logoutFormGradeBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutFormGradeBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutFormGradeBtMouseExited(evt);
+            }
+        });
         logoutFormGradeBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutFormGradeBtActionPerformed(evt);
@@ -2864,6 +3108,14 @@ public class Home extends javax.swing.JFrame {
         stuGradeHonorSearchBt.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuGradeHonorSearchBt.setForeground(new java.awt.Color(0, 0, 0));
         stuGradeHonorSearchBt.setText("Search");
+        stuGradeHonorSearchBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuGradeHonorSearchBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuGradeHonorSearchBtMouseExited(evt);
+            }
+        });
         stuGradeHonorSearchBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuGradeHonorSearchBtActionPerformed(evt);
@@ -2982,6 +3234,14 @@ public class Home extends javax.swing.JFrame {
         gradeHonorLogout.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         gradeHonorLogout.setForeground(new java.awt.Color(0, 0, 0));
         gradeHonorLogout.setText("Logout");
+        gradeHonorLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gradeHonorLogoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gradeHonorLogoutMouseExited(evt);
+            }
+        });
         gradeHonorLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gradeHonorLogoutActionPerformed(evt);
@@ -2992,6 +3252,14 @@ public class Home extends javax.swing.JFrame {
         gradeHonorClear.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         gradeHonorClear.setForeground(new java.awt.Color(0, 0, 0));
         gradeHonorClear.setText("Clear");
+        gradeHonorClear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gradeHonorClearMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gradeHonorClearMouseExited(evt);
+            }
+        });
         gradeHonorClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gradeHonorClearActionPerformed(evt);
@@ -3002,6 +3270,14 @@ public class Home extends javax.swing.JFrame {
         gradeHonorSectioningPrint.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         gradeHonorSectioningPrint.setForeground(new java.awt.Color(0, 0, 0));
         gradeHonorSectioningPrint.setText("Print");
+        gradeHonorSectioningPrint.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gradeHonorSectioningPrintMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gradeHonorSectioningPrintMouseExited(evt);
+            }
+        });
         gradeHonorSectioningPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gradeHonorSectioningPrintActionPerformed(evt);
@@ -3141,7 +3417,7 @@ public class Home extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Student_Id", "Student_Name", "School_Year", "Final_Average", "Status"
+                "LRN", "Student_Name", "School_Year", "Final_Average", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -3182,6 +3458,14 @@ public class Home extends javax.swing.JFrame {
         stuStudentProgressSearchBox.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuStudentProgressSearchBox.setForeground(new java.awt.Color(0, 0, 0));
         stuStudentProgressSearchBox.setText("Search");
+        stuStudentProgressSearchBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuStudentProgressSearchBoxMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuStudentProgressSearchBoxMouseExited(evt);
+            }
+        });
         stuStudentProgressSearchBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuStudentProgressSearchBoxActionPerformed(evt);
@@ -3203,6 +3487,14 @@ public class Home extends javax.swing.JFrame {
         stuStudentProgressRefresh.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuStudentProgressRefresh.setForeground(new java.awt.Color(0, 0, 0));
         stuStudentProgressRefresh.setText("Refresh");
+        stuStudentProgressRefresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuStudentProgressRefreshMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuStudentProgressRefreshMouseExited(evt);
+            }
+        });
         stuStudentProgressRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuStudentProgressRefreshActionPerformed(evt);
@@ -3286,6 +3578,14 @@ public class Home extends javax.swing.JFrame {
         clearStudentProgressBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         clearStudentProgressBt.setForeground(new java.awt.Color(0, 0, 0));
         clearStudentProgressBt.setText("Clear");
+        clearStudentProgressBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                clearStudentProgressBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                clearStudentProgressBtMouseExited(evt);
+            }
+        });
         clearStudentProgressBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearStudentProgressBtActionPerformed(evt);
@@ -3296,6 +3596,14 @@ public class Home extends javax.swing.JFrame {
         logoutStudentProgressBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         logoutStudentProgressBt.setForeground(new java.awt.Color(0, 0, 0));
         logoutStudentProgressBt.setText("Logout");
+        logoutStudentProgressBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutStudentProgressBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutStudentProgressBtMouseExited(evt);
+            }
+        });
         logoutStudentProgressBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutStudentProgressBtActionPerformed(evt);
@@ -3306,6 +3614,14 @@ public class Home extends javax.swing.JFrame {
         printStudentProgressBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         printStudentProgressBt.setForeground(new java.awt.Color(0, 0, 0));
         printStudentProgressBt.setText("Print");
+        printStudentProgressBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                printStudentProgressBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                printStudentProgressBtMouseExited(evt);
+            }
+        });
         printStudentProgressBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 printStudentProgressBtActionPerformed(evt);
@@ -3316,6 +3632,14 @@ public class Home extends javax.swing.JFrame {
         finalizeBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         finalizeBt.setForeground(new java.awt.Color(0, 0, 0));
         finalizeBt.setText("Finalize Status");
+        finalizeBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                finalizeBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                finalizeBtMouseExited(evt);
+            }
+        });
         finalizeBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 finalizeBtActionPerformed(evt);
@@ -3414,6 +3738,14 @@ public class Home extends javax.swing.JFrame {
         logStuBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         logStuBt.setForeground(new java.awt.Color(0, 0, 0));
         logStuBt.setText("Logout");
+        logStuBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logStuBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logStuBtMouseExited(evt);
+            }
+        });
         logStuBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logStuBtActionPerformed(evt);
@@ -3889,6 +4221,14 @@ public class Home extends javax.swing.JFrame {
         StudentTrackTable.clearSelection();
         stuStrandSearchField.setText(null);
 
+    }
+
+    public void clearStudentProgress() {
+        sectionStudentProgressBox.removeAllItems();
+        strandGradeProgressBox.removeAllItems();
+        ProgressTable.clearSelection();
+        ProgressTable.setModel(new DefaultTableModel(null, new Object[]{"LRN", "Student_Name", "School_Year", 
+            "Final_Average", "Status"}));
     }
 
     public void clearListGrade() {
@@ -5015,11 +5355,17 @@ public class Home extends javax.swing.JFrame {
 
 
     private void stuGradeFormSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuGradeFormSearchActionPerformed
+        String studentIdStr = stuFullNameFormGrade.getText().trim();
+
+//        if (studentIdStr.isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Please enter Student ID.");
+//            return;
+//        }
         if (strandStudentBox.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(this,"Select GradeLevel to Activate the Strand");
+            JOptionPane.showMessageDialog(this, "Select GradeLevel to Activate the Strand");
             return;
         }
-        
+
         try {
             int studentId = Integer.parseInt(stuGradeIDManage.getText().trim());
             String fullName = strand.getStudentNameById(studentId);
@@ -5129,6 +5475,12 @@ public class Home extends javax.swing.JFrame {
 
     private void stuGradeManageSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuGradeManageSearchButtonActionPerformed
         try {
+            if (strandBox.getSelectedItem() == null && sectionBox.getSelectedItem() == null
+                    && subjectBox.getSelectedItem() == null && quarterBox.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this, "Select GradeLevel to Activate the Strand, section, subject, and quarter");
+                return;
+            }
+
             // Get grade level safely
             String gradeLevelStr = gradeLevelBox.getSelectedItem().toString();
             int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
@@ -5160,7 +5512,7 @@ public class Home extends javax.swing.JFrame {
 
             // If no rows were returned
             if (model.getRowCount() == 0) {
-                JOptionPane.showMessageDialog(this, "No results found. Check DB values.");
+                JOptionPane.showMessageDialog(this, "No results found.");
             }
 
         } catch (Exception e) {
@@ -5490,11 +5842,13 @@ public class Home extends javax.swing.JFrame {
 
     private void stuGradeHonorSearchBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuGradeHonorSearchBtActionPerformed
         try {
-            // 1. Get Grade Level safely
+            if (strandHonorBox.getSelectedItem() == null && sectionHonorBox.getSelectedItem() == null
+                    && quarterHonorBox.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this, "Select GradeLevel to Activate the Strand, section, and quarter");
+                return;
+            }
             String gradeLevelStr = gradeLevelHonorBox.getSelectedItem().toString();
             int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
-
-            // 2. Get Strand Id
             int strandId = getSelectedHonorStrandId();
 
             // 3. Get Section Id
@@ -5684,7 +6038,6 @@ public class Home extends javax.swing.JFrame {
 
     private void stuSubjectSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSubjectSearchActionPerformed
         String studentIdStr = stuSubjectIDManage.getText().trim();
-        
 
         if (studentIdStr.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter Student ID.");
@@ -5777,6 +6130,12 @@ public class Home extends javax.swing.JFrame {
 
     private void stuSubjectSaveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSubjectSaveBtActionPerformed
         try {
+            String studentIdStr = stuSubjectIDManage.getText().trim();
+
+            if (studentIdStr.isEmpty() ||  SubjectTable.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Please enter Student ID and make sure the table is not empty.");
+                return;
+            }
             String studentId = stuSubjectIDManage.getText().trim();
 
             String schoolYear = getCurrentSchoolYear();
@@ -5797,6 +6156,10 @@ public class Home extends javax.swing.JFrame {
 
     private void classListSearchBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classListSearchBtActionPerformed
         try {
+            if (strandClassBox.getSelectedItem() == null && sectionClassBox.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this, "Select GradeLevel to Activate the Strand, and section");
+                return;
+            }
             String gradeLevelStr = gradeLevelClassBox.getSelectedItem().toString();
             int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
 
@@ -6061,7 +6424,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_stuSort_1MouseExited
 
     private void stuStrandSearchBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStrandSearchBtMouseEntered
-        //stuStrand
+        stuStrandSearchBt.setBackground(ThemeColors.DEEP_ORANGE);
     }//GEN-LAST:event_stuStrandSearchBtMouseEntered
 
     private void calculatorBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculatorBtActionPerformed
@@ -6071,6 +6434,12 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_calculatorBtActionPerformed
 
     private void stuStudentProgressSearchBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStudentProgressSearchBoxActionPerformed
+        if (strandGradeProgressBox.getSelectedItem() == null
+                && sectionStudentProgressBox.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Select GradeLevel to Activate the Strand, and section");
+            return;
+        }
+
         String gradeLevelStr = gradeLevelStudentProgressBox.getSelectedItem().toString();
         int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
 
@@ -6107,7 +6476,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_stuStudentProgressRefreshActionPerformed
 
     private void clearStudentProgressBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearStudentProgressBtActionPerformed
-        // TODO add your handling code here:
+        clearStudentProgress();
     }//GEN-LAST:event_clearStudentProgressBtActionPerformed
 
     private void logoutStudentProgressBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutStudentProgressBtActionPerformed
@@ -6140,19 +6509,54 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_sectionStudentProgressBoxActionPerformed
 
     private void printStudentProgressBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printStudentProgressBtActionPerformed
-        // TODO add your handling code here:
+        try {
+            if (strandGradeProgressBox.getSelectedItem() == null || sectionStudentProgressBox.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this,
+                        "Please select a Grade Level, Strand, and Section.",
+                        "Missing Field",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // ✅ Get values safely
+            String gradeLevelStr = gradeLevelStudentProgressBox.getSelectedItem().toString();
+            int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
+            int sectionId = strand.getSelectedSectionId(sectionStudentProgressBox);
+            int strandId = getSelectedStudentProgressStrandId();
+
+            // ✅ Fetch strand + section names using helper
+            String[] names = strand.getStrandAndSectionName(con, sectionId);
+            String strandName = names[0];
+            String sectionName = names[1];
+
+            // ✅ Debug check
+            System.out.println("DEBUG: grade=" + gradeLevel
+                    + ", strandId=" + strandId + " (" + strandName + ")"
+                    + ", sectionId=" + sectionId + " (" + sectionName + ")");
+
+            // ✅ Generate the class list with names
+            progress.generateProgressList(ProgressTable, gradeLevel, strandId, sectionId, strandName, sectionName);
+
+            //JOptionPane.showMessageDialog(this, "Class List PDF Generated Successfully!");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,
+                    "An error occurred: " + ex.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_printStudentProgressBtActionPerformed
 
     private void finalizeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizeBtActionPerformed
         DefaultTableModel model = (DefaultTableModel) ProgressTable.getModel();
 
-        // 🧩 Check if the JTable has no rows
         if (model.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null,
                     "No student progress data found. Please generate or view the data first.",
                     "No Data", JOptionPane.WARNING_MESSAGE);
-            return; // stop here
+            return; 
         }
+      
 
         // ✅ Proceed to confirm updates
         progress.confirmStudentProgress(ProgressTable);
@@ -6243,7 +6647,7 @@ public class Home extends javax.swing.JFrame {
                 "Mother's Name", "Address Line 1", "Address Line 2", "LRN", "Date Archived", "Reason"}));
             archive.getArchivedStudentValue(StudentTable, "");
             stuInfoCurrentOrArchived.setText("Archived");
-             delBt.setText("Restore");
+            delBt.setText("Restore");
 
             //StudentTrackTable.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
         }
@@ -6260,6 +6664,338 @@ public class Home extends javax.swing.JFrame {
     private void stuFullNameFormGradeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuFullNameFormGradeKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_stuFullNameFormGradeKeyTyped
+
+    private void stuStrandSearchBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStrandSearchBtMouseExited
+        stuStrandSearchBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuStrandSearchBtMouseExited
+
+    private void stuSearchBt_2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSearchBt_2MouseEntered
+       stuSearchBt_2.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuSearchBt_2MouseEntered
+
+    private void stuSearchBt_2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSearchBt_2MouseExited
+        stuSearchBt_2.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSearchBt_2MouseExited
+
+    private void stuSort_2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSort_2MouseEntered
+        stuSort_2.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuSort_2MouseEntered
+
+    private void stuSort_2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSort_2MouseExited
+        stuSort_2.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSort_2MouseExited
+
+    private void stuRefresh_2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuRefresh_2MouseEntered
+        stuRefresh_2.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuRefresh_2MouseEntered
+
+    private void stuRefresh_2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuRefresh_2MouseExited
+        stuRefresh_2.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuRefresh_2MouseExited
+
+    private void stuSaveBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSaveBtMouseEntered
+        stuSaveBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuSaveBtMouseEntered
+
+    private void stuSaveBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSaveBtMouseExited
+        stuSaveBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSaveBtMouseExited
+
+    private void stuRestoreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuRestoreMouseEntered
+        stuRestore.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuRestoreMouseEntered
+
+    private void stuRestoreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuRestoreMouseExited
+        stuRestore.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuRestoreMouseExited
+
+    private void stuCurrentOrArchiveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuCurrentOrArchiveMouseEntered
+        stuCurrentOrArchive.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuCurrentOrArchiveMouseEntered
+
+    private void stuCurrentOrArchiveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuCurrentOrArchiveMouseExited
+        stuCurrentOrArchive.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuCurrentOrArchiveMouseExited
+
+    private void stuStrandClearBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStrandClearBtMouseEntered
+        stuStrandClearBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuStrandClearBtMouseEntered
+
+    private void stuStrandClearBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStrandClearBtMouseExited
+        stuStrandClearBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuStrandClearBtMouseExited
+
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+        jButton2.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_jButton2MouseEntered
+
+    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
+        jButton2.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_jButton2MouseExited
+
+    private void stuSubjectSearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSearchMouseEntered
+        stuSubjectSearch.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuSubjectSearchMouseEntered
+
+    private void stuSubjectSearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSearchMouseExited
+       stuSubjectSearch.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSubjectSearchMouseExited
+
+    private void stuGradeManageRefreshTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageRefreshTable1MouseEntered
+        stuGradeManageRefreshTable1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuGradeManageRefreshTable1MouseEntered
+
+    private void stuGradeManageRefreshTable1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageRefreshTable1MouseExited
+         stuGradeManageRefreshTable1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuGradeManageRefreshTable1MouseExited
+
+    private void stuSubjectSaveBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSaveBtMouseEntered
+        stuSubjectSaveBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuSubjectSaveBtMouseEntered
+
+    private void stuSubjectSaveBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSaveBtMouseExited
+        stuSubjectSaveBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSubjectSaveBtMouseExited
+
+    private void clearSubjectManageBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearSubjectManageBtMouseEntered
+       clearSubjectManageBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_clearSubjectManageBtMouseEntered
+
+    private void clearSubjectManageBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearSubjectManageBtMouseExited
+         clearSubjectManageBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_clearSubjectManageBtMouseExited
+
+    private void logoutFormGradeBt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutFormGradeBt1MouseEntered
+        logoutFormGradeBt1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_logoutFormGradeBt1MouseEntered
+
+    private void logoutFormGradeBt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutFormGradeBt1MouseExited
+        logoutFormGradeBt1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_logoutFormGradeBt1MouseExited
+
+    private void classListSearchBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListSearchBtMouseEntered
+        classListSearchBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_classListSearchBtMouseEntered
+
+    private void classListSearchBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListSearchBtMouseExited
+        classListSearchBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_classListSearchBtMouseExited
+
+    private void classListPrintBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListPrintBtMouseEntered
+        classListPrintBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_classListPrintBtMouseEntered
+
+    private void classListPrintBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListPrintBtMouseExited
+       classListPrintBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_classListPrintBtMouseExited
+
+    private void classListClearBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListClearBtMouseEntered
+        classListClearBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_classListClearBtMouseEntered
+
+    private void classListClearBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListClearBtMouseExited
+        classListClearBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_classListClearBtMouseExited
+
+    private void classListLogoutBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListLogoutBtMouseEntered
+        classListLogoutBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_classListLogoutBtMouseEntered
+
+    private void classListLogoutBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListLogoutBtMouseExited
+       classListLogoutBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_classListLogoutBtMouseExited
+
+    private void stuGradeManageSearchButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageSearchButtonMouseEntered
+        stuGradeManageSearchButton.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuGradeManageSearchButtonMouseEntered
+
+    private void stuGradeManageSearchButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageSearchButtonMouseExited
+        stuGradeManageSearchButton.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuGradeManageSearchButtonMouseExited
+
+    private void gradeSaveBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeSaveBtMouseEntered
+        gradeSaveBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_gradeSaveBtMouseEntered
+
+    private void gradeSaveBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeSaveBtMouseExited
+        gradeSaveBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_gradeSaveBtMouseExited
+
+    private void gradeSectioningPrintMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeSectioningPrintMouseEntered
+        gradeSectioningPrint.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_gradeSectioningPrintMouseEntered
+
+    private void gradeSectioningPrintMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeSectioningPrintMouseExited
+        gradeSectioningPrint.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_gradeSectioningPrintMouseExited
+
+    private void gradeClearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeClearMouseEntered
+        gradeClear.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_gradeClearMouseEntered
+
+    private void gradeClearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeClearMouseExited
+        gradeClear.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_gradeClearMouseExited
+
+    private void gradeSortMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeSortMouseEntered
+        gradeSort.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_gradeSortMouseEntered
+
+    private void gradeSortMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeSortMouseExited
+        gradeSort.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_gradeSortMouseExited
+
+    private void calculatorBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calculatorBtMouseEntered
+        calculatorBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_calculatorBtMouseEntered
+
+    private void calculatorBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calculatorBtMouseExited
+         calculatorBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_calculatorBtMouseExited
+
+    private void gradeLogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeLogoutMouseEntered
+        gradeLogout.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_gradeLogoutMouseEntered
+
+    private void gradeLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeLogoutMouseExited
+        gradeLogout.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_gradeLogoutMouseExited
+
+    private void stuGradeFormSearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeFormSearchMouseEntered
+        stuGradeFormSearch.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuGradeFormSearchMouseEntered
+
+    private void stuGradeFormSearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeFormSearchMouseExited
+        stuGradeFormSearch.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuGradeFormSearchMouseExited
+
+    private void stuGradeManageRefreshTableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageRefreshTableMouseEntered
+         stuGradeManageRefreshTable.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuGradeManageRefreshTableMouseEntered
+
+    private void stuGradeManageRefreshTableMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageRefreshTableMouseExited
+         stuGradeManageRefreshTable.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuGradeManageRefreshTableMouseExited
+
+    private void stuFormGradePrintMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuFormGradePrintMouseEntered
+        stuFormGradePrint.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuFormGradePrintMouseEntered
+
+    private void stuFormGradePrintMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuFormGradePrintMouseExited
+        stuFormGradePrint.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuFormGradePrintMouseExited
+
+    private void clearFormBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearFormBtMouseEntered
+        clearFormBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_clearFormBtMouseEntered
+
+    private void clearFormBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearFormBtMouseExited
+        clearFormBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_clearFormBtMouseExited
+
+    private void logoutFormGradeBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutFormGradeBtMouseEntered
+        logoutFormGradeBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_logoutFormGradeBtMouseEntered
+
+    private void logoutFormGradeBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutFormGradeBtMouseExited
+        logoutFormGradeBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_logoutFormGradeBtMouseExited
+
+    private void stuGradeHonorSearchBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeHonorSearchBtMouseEntered
+        stuGradeHonorSearchBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuGradeHonorSearchBtMouseEntered
+
+    private void stuGradeHonorSearchBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeHonorSearchBtMouseExited
+        stuGradeHonorSearchBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuGradeHonorSearchBtMouseExited
+
+    private void gradeHonorSectioningPrintMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeHonorSectioningPrintMouseEntered
+        gradeHonorSectioningPrint.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_gradeHonorSectioningPrintMouseEntered
+
+    private void gradeHonorSectioningPrintMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeHonorSectioningPrintMouseExited
+         gradeHonorSectioningPrint.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_gradeHonorSectioningPrintMouseExited
+
+    private void gradeHonorClearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeHonorClearMouseEntered
+        gradeHonorClear.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_gradeHonorClearMouseEntered
+
+    private void gradeHonorClearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeHonorClearMouseExited
+        gradeHonorClear.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_gradeHonorClearMouseExited
+
+    private void gradeHonorLogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeHonorLogoutMouseEntered
+        gradeHonorLogout.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_gradeHonorLogoutMouseEntered
+
+    private void gradeHonorLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeHonorLogoutMouseExited
+          gradeHonorLogout.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_gradeHonorLogoutMouseExited
+
+    private void stuStudentProgressSearchBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStudentProgressSearchBoxMouseEntered
+        stuStudentProgressSearchBox.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuStudentProgressSearchBoxMouseEntered
+
+    private void stuStudentProgressSearchBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStudentProgressSearchBoxMouseExited
+        stuStudentProgressSearchBox.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuStudentProgressSearchBoxMouseExited
+
+    private void stuStudentProgressRefreshMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStudentProgressRefreshMouseEntered
+         stuStudentProgressRefresh.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuStudentProgressRefreshMouseEntered
+
+    private void stuStudentProgressRefreshMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStudentProgressRefreshMouseExited
+        stuStudentProgressRefresh.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuStudentProgressRefreshMouseExited
+
+    private void finalizeBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizeBtMouseEntered
+       finalizeBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_finalizeBtMouseEntered
+
+    private void finalizeBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizeBtMouseExited
+        finalizeBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_finalizeBtMouseExited
+
+    private void clearStudentProgressBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearStudentProgressBtMouseEntered
+        clearStudentProgressBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_clearStudentProgressBtMouseEntered
+
+    private void clearStudentProgressBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearStudentProgressBtMouseExited
+       clearStudentProgressBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_clearStudentProgressBtMouseExited
+
+    private void printStudentProgressBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printStudentProgressBtMouseEntered
+        printStudentProgressBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_printStudentProgressBtMouseEntered
+
+    private void printStudentProgressBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printStudentProgressBtMouseExited
+        printStudentProgressBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_printStudentProgressBtMouseExited
+
+    private void logoutStudentProgressBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutStudentProgressBtMouseEntered
+        logoutStudentProgressBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_logoutStudentProgressBtMouseEntered
+
+    private void logoutStudentProgressBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutStudentProgressBtMouseExited
+        logoutStudentProgressBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_logoutStudentProgressBtMouseExited
+
+    private void logStuBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logStuBtMouseEntered
+        logStuBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_logStuBtMouseEntered
+
+    private void logStuBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logStuBtMouseExited
+        logStuBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_logStuBtMouseExited
+
+    private void browseImgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_browseImgMouseEntered
+        browseImg.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_browseImgMouseEntered
+
+    private void browseImgMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_browseImgMouseExited
+        browseImg.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_browseImgMouseExited
 
     private String getSelectedStrandName() {
         String name = "";

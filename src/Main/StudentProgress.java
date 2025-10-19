@@ -4,7 +4,20 @@
  */
 package Main;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import db.MyConnection;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -12,6 +25,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import javax.swing.JFileChooser;
+import model.PageNumberEvent;
 
 /**
  *
@@ -75,7 +90,7 @@ public class StudentProgress {
 
         String sql = """
         SELECT 
-            s.student_id,
+            s.lrn,
             CONCAT(s.first_name, ' ', s.last_name) AS student_name,
             sp.school_year,
             ROUND(AVG(g.grade), 2) AS final_average,
@@ -91,8 +106,8 @@ public class StudentProgress {
         WHERE ss.grade_level = ? 
           AND ss.strand_id = ? 
           AND ss.section_id = ?
-        GROUP BY s.student_id, student_name, sp.school_year
-        ORDER BY s.student_id;
+        GROUP BY s.lrn, student_name, sp.school_year
+        ORDER BY s.lrn;
     """;
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -108,7 +123,7 @@ public class StudentProgress {
                 while (rs.next()) {
                     hasData = true;
                     model.addRow(new Object[]{
-                        rs.getInt("student_id"),
+                        rs.getString("lrn"),
                         rs.getString("student_name"),
                         rs.getString("school_year"),
                         rs.getDouble("final_average"),
@@ -128,19 +143,36 @@ public class StudentProgress {
     }
 
     public void confirmStudentProgress(JTable table) {
-        String updateSql = "UPDATE student_progress SET status = ? WHERE student_id = ? AND school_year = ?";
+        String updateSql = """
+        UPDATE student_progress sp
+        JOIN student s ON sp.student_id = s.student_id
+        SET sp.status = ?
+        WHERE s.LRN = ? AND sp.school_year = ?
+    """;
 
         try {
             int updatedCount = 0;
 
             for (int i = 0; i < table.getRowCount(); i++) {
-                int studentId = Integer.parseInt(table.getValueAt(i, 0).toString());
-                String schoolYear = table.getValueAt(i, 2).toString();
-                String status = table.getValueAt(i, 4).toString();
+                Object lrnObj = table.getValueAt(i, 0);  // assuming column 0 = LRN
+                Object schoolYearObj = table.getValueAt(i, 2); // column 2 = school_year
+                Object statusObj = table.getValueAt(i, 4); // column 4 = status
+
+                if (lrnObj == null || schoolYearObj == null || statusObj == null) {
+                    continue;
+                }
+
+                String lrn = lrnObj.toString().trim();
+                String schoolYear = schoolYearObj.toString().trim();
+                String status = statusObj.toString().trim();
+
+                if (lrn.isEmpty() || schoolYear.isEmpty() || status.isEmpty()) {
+                    continue;
+                }
 
                 try (PreparedStatement ps = con.prepareStatement(updateSql)) {
                     ps.setString(1, status);
-                    ps.setInt(2, studentId);
+                    ps.setString(2, lrn);
                     ps.setString(3, schoolYear);
 
                     int rows = ps.executeUpdate();
@@ -151,13 +183,115 @@ public class StudentProgress {
             }
 
             if (updatedCount > 0) {
-                JOptionPane.showMessageDialog(null, "Student status successfully updated!");
+                JOptionPane.showMessageDialog(null, "✅ Student status successfully updated!");
             } else {
-                JOptionPane.showMessageDialog(null, "No student statuses were updated. Please check the table data.");
+                JOptionPane.showMessageDialog(null, "⚠️ No student statuses were updated. Please check the table data.");
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error updating student status: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "❌ Error updating student status: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void generateProgressList(JTable table, int gradeLevel, int strandId, int sectionId,
+            String strandName, String sectionName) {
+        try {
+            // Let user choose where to save file
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Save Class List PDF");
+            fileChooser.setSelectedFile(new File("ProgressList_G" + gradeLevel + "_"
+                    + strandName + "_Sec" + sectionName + ".pdf"));
+
+            int userSelection = fileChooser.showSaveDialog(null);
+            if (userSelection != JFileChooser.APPROVE_OPTION) {
+                JOptionPane.showMessageDialog(null, "Save command canceled.");
+                System.out.println("Save command canceled.");
+                return;
+            }
+
+            File fileToSave = fileChooser.getSelectedFile();
+            Document document = new Document(PageSize.A4);
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(fileToSave));
+
+            // ✅ Attach page event for numbering
+            writer.setPageEvent(new PageNumberEvent());
+
+            document.open();
+
+            // 🔹 Add Logo
+            try (InputStream is = getClass().getResourceAsStream("/assets/logo_remBac.png")) {
+                if (is != null) {
+                    byte[] bytes = is.readAllBytes();
+                    Image logo = Image.getInstance(bytes);
+                    logo.scaleAbsolute(80, 80);
+                    logo.setAlignment(Element.ALIGN_CENTER);
+                    document.add(logo);
+                } else {
+                    System.out.println("Logo not found in resources.");
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+            // 🔹 Title
+            Paragraph title = new Paragraph("Progress List",
+                    FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18));
+            title.setAlignment(Element.ALIGN_CENTER);
+            document.add(title);
+
+            // 🔹 Sub info with proper names
+            Paragraph sub = new Paragraph(
+                    "Grade " + gradeLevel
+                    + " | Strand: " + strandName
+                    + " | Section: " + sectionName,
+                    FontFactory.getFont(FontFactory.HELVETICA, 12)
+            );
+            sub.setAlignment(Element.ALIGN_CENTER);
+            sub.setSpacingAfter(20);
+            document.add(sub);
+
+            // 🔹 Table (2 columns: ID, Full Name)
+            PdfPTable pdfTable = new PdfPTable(5);
+            pdfTable.setWidthPercentage(100);
+
+            // ✅ Allow multi-page
+            pdfTable.setSplitLate(false);
+            pdfTable.setHeaderRows(1);
+
+            // Headers
+            PdfPCell header1 = new PdfPCell(new Phrase("LRN"));
+            PdfPCell header2 = new PdfPCell(new Phrase("Full Name"));
+            PdfPCell header3 = new PdfPCell(new Phrase("School Year"));
+            PdfPCell header4 = new PdfPCell(new Phrase("Final Average"));
+            PdfPCell header5 = new PdfPCell(new Phrase("Status"));
+
+            header1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            header2.setHorizontalAlignment(Element.ALIGN_CENTER);
+            pdfTable.addCell(header1);
+            pdfTable.addCell(header2);
+            pdfTable.addCell(header3);
+            pdfTable.addCell(header4);
+            pdfTable.addCell(header5);
+
+            // Fill rows from JTable
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            for (int i = 0; i < model.getRowCount(); i++) {
+                pdfTable.addCell(model.getValueAt(i, 0).toString()); // LRN
+                pdfTable.addCell(model.getValueAt(i, 1).toString()); // Name
+                pdfTable.addCell(model.getValueAt(i, 2).toString());
+                pdfTable.addCell(model.getValueAt(i, 3).toString());
+                pdfTable.addCell(model.getValueAt(i, 4).toString());
+            }
+
+            // 🔹 Add table (will auto break pages)
+            document.add(pdfTable);
+            document.close();
+
+            System.out.println("PDF Created: " + fileToSave.getAbsolutePath());
+            JOptionPane.showMessageDialog(null, "PDF Created: " + fileToSave.getAbsolutePath());
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

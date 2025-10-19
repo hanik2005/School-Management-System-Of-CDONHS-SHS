@@ -754,6 +754,7 @@ public class Strand {
             document.close();
 
             System.out.println("PDF Created: " + fileToSave.getAbsolutePath());
+            JOptionPane.showMessageDialog(null, "PDF Created: " + fileToSave.getAbsolutePath());
 
         } catch (Exception e) {
             e.printStackTrace();

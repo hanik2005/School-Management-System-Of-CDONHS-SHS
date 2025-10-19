@@ -321,6 +321,14 @@ public class Grade {
                     conn.rollback();
                     return;
                 }
+                 if (grade > 100) {
+                JOptionPane.showMessageDialog(null,
+                        "Grade for LRN " + lrn + " cannot be above 100.",
+                        "Invalid Grade",
+                        JOptionPane.WARNING_MESSAGE);
+                conn.rollback();
+                return;
+            }
 
                 // 🔎 Find student_id from LRN
                 getStudentIdStmt.setString(1, lrn);
