@@ -53,6 +53,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import model.Information;
 import java.sql.*;
+import javax.swing.JTextField;
 import model.ComboItem;
 import model.SensitiveInformation;
 
@@ -158,10 +159,10 @@ public class AdminFrame extends javax.swing.JFrame {
 
         BackgroundPanel bgPanel8 = new BackgroundPanel("/assets/background.jpg");
         bgPanel8.setLayout(new BorderLayout());
-        jPanel41.setLayout(new BorderLayout());
-        jPanel41.add(bgPanel8, BorderLayout.CENTER);
-        jPanel41.revalidate();
-        jPanel41.repaint();
+        jPanel44.setLayout(new BorderLayout());
+        jPanel44.add(bgPanel8, BorderLayout.CENTER);
+        jPanel44.revalidate();
+        jPanel44.repaint();
 
         BackgroundPanel bgPanel9 = new BackgroundPanel("/assets/background.jpg");
         bgPanel9.setLayout(new BorderLayout());
@@ -318,6 +319,14 @@ public class AdminFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Last name must not exceed 50 characters");
             return false;
         }
+        String firstName = stuFname.getText();
+        String middleName = stuMiddleName.getText();
+        String lastName = stuLastName.getText();
+
+        if (student.isNameExist(firstName, middleName, lastName)) {
+            JOptionPane.showMessageDialog(this, "this name already exist");
+            return false;
+        }
 
         // Date of Birth
         if (stuBirth.getDate() == null) {
@@ -388,10 +397,10 @@ public class AdminFrame extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(this, "Address Line 2 is missing");
 //            return false;
 //        }
-//        if (stuAddress2.getText().length() > 50) {
-//            JOptionPane.showMessageDialog(this, "Address Line 2 must not exceed 50 characters");
-//            return false;
-//        }
+        if (stuAddress2.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "Address Line 2 must not exceed 50 characters");
+            return false;
+        }
         // Birth Certificate
 //        if (stuBirthCer.getText().isEmpty()) {
 //            JOptionPane.showMessageDialog(this, "Birth Certificate path is missing");
@@ -411,6 +420,11 @@ public class AdminFrame extends javax.swing.JFrame {
         if (!stuLRN.getText().matches("\\d{12}")) {
             JOptionPane.showMessageDialog(this, "LRN must be exactly 12 digits");
             return false;
+        }
+        if (student.isLRNExist(stuLRN.getText())) {
+            JOptionPane.showMessageDialog(this, "This LRN already Exist");
+            return false;
+
         }
 
         // Image
@@ -446,6 +460,14 @@ public class AdminFrame extends javax.swing.JFrame {
         }
         if (teacherLastName.getText().length() > 50) {
             JOptionPane.showMessageDialog(this, "Teacher last name must not exceed 50 characters");
+            return false;
+        }
+        String firstName = teacherFirstName.getText();
+        String middleName = teacherMidName.getText();
+        String lastName = teacherLastName.getText();
+
+        if (teacher.isNameExist(firstName, middleName, lastName)) {
+            JOptionPane.showMessageDialog(this, "this name already exist");
             return false;
         }
 
@@ -489,17 +511,8 @@ public class AdminFrame extends javax.swing.JFrame {
             return false;
         }
 
-        if (teacherAddress2.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Address Line 2 is missing");
-            return false;
-        }
         if (teacherAddress2.getText().length() > 50) {
             JOptionPane.showMessageDialog(this, "Address Line 2 must not exceed 50 characters");
-            return false;
-        }
-
-        if (imagePath == null) {
-            JOptionPane.showMessageDialog(this, "Please add your image");
             return false;
         }
 
@@ -514,7 +527,7 @@ public class AdminFrame extends javax.swing.JFrame {
         stuStrand.removeAllItems();
         stuSection.removeAllItems();
         StudentTrackTable.clearSelection();
-       stuStrandSearchField.setText(null);
+        stuStrandSearchField.setText(null);
 
     }
 
@@ -641,7 +654,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         stuSection = new javax.swing.JComboBox<>();
-        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
         stuFullName = new javax.swing.JTextField();
         jPanel16 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
@@ -679,11 +692,11 @@ public class AdminFrame extends javax.swing.JFrame {
         clearSubjectManageBt = new javax.swing.JButton();
         logoutFormGradeBt1 = new javax.swing.JButton();
         stuSubjectSaveBt = new javax.swing.JButton();
-        jPanel41 = new javax.swing.JPanel();
-        jPanel42 = new javax.swing.JPanel();
-        jPanel43 = new javax.swing.JPanel();
+        jPanel44 = new javax.swing.JPanel();
+        jPanel45 = new javax.swing.JPanel();
+        jPanel50 = new javax.swing.JPanel();
         classListSearchBt = new javax.swing.JButton();
-        jLabel71 = new javax.swing.JLabel();
+        jLabel72 = new javax.swing.JLabel();
         gradeLevelClassBox = new javax.swing.JComboBox<>();
         strandClassBox = new javax.swing.JComboBox<>();
         jLabel81 = new javax.swing.JLabel();
@@ -742,7 +755,6 @@ public class AdminFrame extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         TeacherTable = new javax.swing.JTable();
         jPanel30 = new javax.swing.JPanel();
-        teacherDelBt = new javax.swing.JButton();
         teacherPrint_3 = new javax.swing.JButton();
         jPanel31 = new javax.swing.JPanel();
         jPanel32 = new javax.swing.JPanel();
@@ -753,7 +765,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         SensitiveTable = new javax.swing.JTable();
         jPanel34 = new javax.swing.JPanel();
-        teacherDelBt1 = new javax.swing.JButton();
+        teacherSensitiveLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -837,10 +849,31 @@ public class AdminFrame extends javax.swing.JFrame {
         stuFname.setBackground(java.awt.Color.white);
         stuFname.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuFname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuFname.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                stuFnameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                stuFnameFocusLost(evt);
+            }
+        });
+        stuFname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stuFnameActionPerformed(evt);
+            }
+        });
 
         stuMotherName.setBackground(java.awt.Color.white);
         stuMotherName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuMotherName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuMotherName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                stuMotherNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                stuMotherNameFocusLost(evt);
+            }
+        });
         stuMotherName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuMotherNameActionPerformed(evt);
@@ -850,10 +883,26 @@ public class AdminFrame extends javax.swing.JFrame {
         stuAddress1.setBackground(java.awt.Color.white);
         stuAddress1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuAddress1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuAddress1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                stuAddress1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                stuAddress1FocusLost(evt);
+            }
+        });
 
         stuAddress2.setBackground(java.awt.Color.white);
         stuAddress2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuAddress2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuAddress2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                stuAddress2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                stuAddress2FocusLost(evt);
+            }
+        });
         stuAddress2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuAddress2ActionPerformed(evt);
@@ -930,6 +979,14 @@ public class AdminFrame extends javax.swing.JFrame {
         stuFatherName.setBackground(java.awt.Color.white);
         stuFatherName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuFatherName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuFatherName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                stuFatherNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                stuFatherNameFocusLost(evt);
+            }
+        });
         stuFatherName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuFatherNameActionPerformed(evt);
@@ -984,6 +1041,14 @@ public class AdminFrame extends javax.swing.JFrame {
         stuMiddleName.setBackground(java.awt.Color.white);
         stuMiddleName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuMiddleName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuMiddleName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                stuMiddleNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                stuMiddleNameFocusLost(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(17, 24, 39));
@@ -992,6 +1057,14 @@ public class AdminFrame extends javax.swing.JFrame {
         stuLastName.setBackground(java.awt.Color.white);
         stuLastName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuLastName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuLastName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                stuLastNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                stuLastNameFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -1162,6 +1235,14 @@ public class AdminFrame extends javax.swing.JFrame {
         browseImg.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         browseImg.setForeground(new java.awt.Color(0, 0, 0));
         browseImg.setText("Browse");
+        browseImg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                browseImgMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                browseImgMouseExited(evt);
+            }
+        });
         browseImg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 browseImgActionPerformed(evt);
@@ -1696,6 +1777,9 @@ public class AdminFrame extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 stuStrandSearchBtMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuStrandSearchBtMouseExited(evt);
+            }
         });
         stuStrandSearchBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1750,7 +1834,6 @@ public class AdminFrame extends javax.swing.JFrame {
         stuGradeLevel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         stuGradeLevel.setForeground(new java.awt.Color(0, 0, 0));
         stuGradeLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "11", "12" }));
-        stuGradeLevel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuGradeLevel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuGradeLevelActionPerformed(evt);
@@ -1760,7 +1843,6 @@ public class AdminFrame extends javax.swing.JFrame {
         stuStrand.setBackground(new java.awt.Color(255, 255, 255));
         stuStrand.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         stuStrand.setForeground(new java.awt.Color(0, 0, 0));
-        stuStrand.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuStrand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuStrandActionPerformed(evt);
@@ -1782,16 +1864,15 @@ public class AdminFrame extends javax.swing.JFrame {
         stuSection.setBackground(new java.awt.Color(255, 255, 255));
         stuSection.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         stuSection.setForeground(new java.awt.Color(0, 0, 0));
-        stuSection.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
         stuSection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSectionActionPerformed(evt);
             }
         });
 
-        jLabel26.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(17, 24, 39));
-        jLabel26.setText("Full Name");
+        jLabel27.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel27.setText("Full Name");
 
         stuFullName.setEditable(false);
         stuFullName.setBackground(new java.awt.Color(204, 204, 204));
@@ -1825,7 +1906,7 @@ public class AdminFrame extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel26))
+                            .addComponent(jLabel27))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(stuStrandId)
@@ -1843,7 +1924,7 @@ public class AdminFrame extends javax.swing.JFrame {
                     .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
+                    .addComponent(jLabel27)
                     .addComponent(stuFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1879,6 +1960,14 @@ public class AdminFrame extends javax.swing.JFrame {
         stuSearchBt_2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuSearchBt_2.setForeground(new java.awt.Color(0, 0, 0));
         stuSearchBt_2.setText("Search");
+        stuSearchBt_2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuSearchBt_2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuSearchBt_2MouseExited(evt);
+            }
+        });
         stuSearchBt_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSearchBt_2ActionPerformed(evt);
@@ -1889,6 +1978,14 @@ public class AdminFrame extends javax.swing.JFrame {
         stuRefresh_2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuRefresh_2.setForeground(new java.awt.Color(0, 0, 0));
         stuRefresh_2.setText("Refresh");
+        stuRefresh_2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuRefresh_2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuRefresh_2MouseExited(evt);
+            }
+        });
         stuRefresh_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuRefresh_2ActionPerformed(evt);
@@ -1899,6 +1996,14 @@ public class AdminFrame extends javax.swing.JFrame {
         stuSort_2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         stuSort_2.setForeground(new java.awt.Color(0, 0, 0));
         stuSort_2.setText("Sort");
+        stuSort_2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuSort_2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuSort_2MouseExited(evt);
+            }
+        });
         stuSort_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSort_2ActionPerformed(evt);
@@ -2005,6 +2110,14 @@ public class AdminFrame extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Logout");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton2MouseExited(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -2015,6 +2128,14 @@ public class AdminFrame extends javax.swing.JFrame {
         stuStrandClearBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuStrandClearBt.setForeground(new java.awt.Color(0, 0, 0));
         stuStrandClearBt.setText("Clear");
+        stuStrandClearBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuStrandClearBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuStrandClearBtMouseExited(evt);
+            }
+        });
         stuStrandClearBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuStrandClearBtActionPerformed(evt);
@@ -2025,6 +2146,14 @@ public class AdminFrame extends javax.swing.JFrame {
         stuSaveBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuSaveBt.setForeground(new java.awt.Color(0, 0, 0));
         stuSaveBt.setText("Confirm");
+        stuSaveBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuSaveBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuSaveBtMouseExited(evt);
+            }
+        });
         stuSaveBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuSaveBtActionPerformed(evt);
@@ -2035,6 +2164,14 @@ public class AdminFrame extends javax.swing.JFrame {
         stuRestore.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuRestore.setForeground(new java.awt.Color(0, 0, 0));
         stuRestore.setText("Restore");
+        stuRestore.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuRestoreMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuRestoreMouseExited(evt);
+            }
+        });
         stuRestore.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuRestoreActionPerformed(evt);
@@ -2045,6 +2182,14 @@ public class AdminFrame extends javax.swing.JFrame {
         stuCurrentOrArchive.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         stuCurrentOrArchive.setForeground(new java.awt.Color(0, 0, 0));
         stuCurrentOrArchive.setText("Current");
+        stuCurrentOrArchive.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                stuCurrentOrArchiveMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                stuCurrentOrArchiveMouseExited(evt);
+            }
+        });
         stuCurrentOrArchive.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuCurrentOrArchiveActionPerformed(evt);
@@ -2286,14 +2431,15 @@ public class AdminFrame extends javax.swing.JFrame {
             jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel47Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stuSubjectIDManage, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stuSubjectSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(stuGradeManageRefreshTable1)
-                    .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(gradeLevelSubjectBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stuFullNameSub, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(stuFullNameSub, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel43, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(stuSubjectIDManage, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(stuSubjectSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(stuGradeManageRefreshTable1)
+                        .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(gradeLevelSubjectBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -2445,29 +2591,37 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Student Subjects", jPanel37);
 
-        jPanel41.setBackground(new java.awt.Color(30, 58, 138));
+        jPanel44.setBackground(new java.awt.Color(30, 58, 138));
 
-        jPanel42.setBackground(new java.awt.Color(243, 244, 246));
-        jPanel42.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
-        jPanel42.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel45.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel45.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
+        jPanel45.setForeground(new java.awt.Color(0, 0, 0));
 
-        jPanel43.setBackground(new java.awt.Color(243, 244, 246));
-        jPanel43.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
-        jPanel43.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel50.setBackground(new java.awt.Color(243, 244, 246));
+        jPanel50.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
+        jPanel50.setForeground(new java.awt.Color(0, 0, 0));
 
         classListSearchBt.setBackground(new java.awt.Color(251, 191, 36));
         classListSearchBt.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         classListSearchBt.setForeground(new java.awt.Color(0, 0, 0));
         classListSearchBt.setText("Search");
+        classListSearchBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                classListSearchBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                classListSearchBtMouseExited(evt);
+            }
+        });
         classListSearchBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classListSearchBtActionPerformed(evt);
             }
         });
 
-        jLabel71.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel71.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel71.setText("Grade Level");
+        jLabel72.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel72.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel72.setText("Grade Level");
 
         gradeLevelClassBox.setBackground(new java.awt.Color(255, 255, 255));
         gradeLevelClassBox.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -2491,7 +2645,7 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel81.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel81.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel81.setForeground(new java.awt.Color(17, 24, 39));
         jLabel81.setText("Strand");
 
         sectionClassBox.setBackground(new java.awt.Color(255, 255, 255));
@@ -2505,48 +2659,48 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel82.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel82.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel82.setForeground(new java.awt.Color(17, 24, 39));
         jLabel82.setText("Section");
 
-        javax.swing.GroupLayout jPanel43Layout = new javax.swing.GroupLayout(jPanel43);
-        jPanel43.setLayout(jPanel43Layout);
-        jPanel43Layout.setHorizontalGroup(
-            jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel43Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel50Layout = new javax.swing.GroupLayout(jPanel50);
+        jPanel50.setLayout(jPanel50Layout);
+        jPanel50Layout.setHorizontalGroup(
+            jPanel50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel50Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(gradeLevelClassBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel71))
+                    .addComponent(jLabel72))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel43Layout.createSequentialGroup()
+                .addGroup(jPanel50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel50Layout.createSequentialGroup()
                         .addComponent(strandClassBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18))
-                    .addGroup(jPanel43Layout.createSequentialGroup()
+                    .addGroup(jPanel50Layout.createSequentialGroup()
                         .addComponent(jLabel81)
                         .addGap(208, 208, 208)))
-                .addGroup(jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel82)
                     .addComponent(sectionClassBox, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(classListSearchBt, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(559, 559, 559))
         );
-        jPanel43Layout.setVerticalGroup(
-            jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel43Layout.createSequentialGroup()
+        jPanel50Layout.setVerticalGroup(
+            jPanel50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel50Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel71)
+                .addGroup(jPanel50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel72)
                     .addComponent(jLabel81)
                     .addComponent(jLabel82))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gradeLevelClassBox)
                     .addComponent(strandClassBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sectionClassBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel43Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel50Layout.createSequentialGroup()
                 .addComponent(classListSearchBt, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -2579,6 +2733,14 @@ public class AdminFrame extends javax.swing.JFrame {
         classListLogoutBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         classListLogoutBt.setForeground(new java.awt.Color(0, 0, 0));
         classListLogoutBt.setText("Logout");
+        classListLogoutBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                classListLogoutBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                classListLogoutBtMouseExited(evt);
+            }
+        });
         classListLogoutBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classListLogoutBtActionPerformed(evt);
@@ -2589,6 +2751,14 @@ public class AdminFrame extends javax.swing.JFrame {
         classListClearBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         classListClearBt.setForeground(new java.awt.Color(0, 0, 0));
         classListClearBt.setText("Clear");
+        classListClearBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                classListClearBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                classListClearBtMouseExited(evt);
+            }
+        });
         classListClearBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classListClearBtActionPerformed(evt);
@@ -2599,6 +2769,14 @@ public class AdminFrame extends javax.swing.JFrame {
         classListPrintBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         classListPrintBt.setForeground(new java.awt.Color(0, 0, 0));
         classListPrintBt.setText("Print");
+        classListPrintBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                classListPrintBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                classListPrintBtMouseExited(evt);
+            }
+        });
         classListPrintBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classListPrintBtActionPerformed(evt);
@@ -2629,48 +2807,48 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel42Layout = new javax.swing.GroupLayout(jPanel42);
-        jPanel42.setLayout(jPanel42Layout);
-        jPanel42Layout.setHorizontalGroup(
-            jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel42Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel45Layout = new javax.swing.GroupLayout(jPanel45);
+        jPanel45.setLayout(jPanel45Layout);
+        jPanel45Layout.setHorizontalGroup(
+            jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel45Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane7)
                     .addComponent(jPanel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel42Layout.setVerticalGroup(
-            jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel42Layout.createSequentialGroup()
+        jPanel45Layout.setVerticalGroup(
+            jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel45Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel49, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel41Layout = new javax.swing.GroupLayout(jPanel41);
-        jPanel41.setLayout(jPanel41Layout);
-        jPanel41Layout.setHorizontalGroup(
-            jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel41Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
+        jPanel44.setLayout(jPanel44Layout);
+        jPanel44Layout.setHorizontalGroup(
+            jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel44Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel41Layout.setVerticalGroup(
-            jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel41Layout.createSequentialGroup()
+        jPanel44Layout.setVerticalGroup(
+            jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel44Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Class List", jPanel41);
+        jTabbedPane1.addTab("Class List", jPanel44);
 
         jPanel19.setBackground(new java.awt.Color(30, 58, 138));
 
@@ -2686,14 +2864,38 @@ public class AdminFrame extends javax.swing.JFrame {
         teacherFirstName.setBackground(java.awt.Color.white);
         teacherFirstName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         teacherFirstName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        teacherFirstName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                teacherFirstNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                teacherFirstNameFocusLost(evt);
+            }
+        });
 
         teacherAddress1.setBackground(java.awt.Color.white);
         teacherAddress1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         teacherAddress1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        teacherAddress1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                teacherAddress1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                teacherAddress1FocusLost(evt);
+            }
+        });
 
         teacherAddress2.setBackground(java.awt.Color.white);
         teacherAddress2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         teacherAddress2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        teacherAddress2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                teacherAddress2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                teacherAddress2FocusLost(evt);
+            }
+        });
         teacherAddress2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teacherAddress2ActionPerformed(evt);
@@ -2765,6 +2967,14 @@ public class AdminFrame extends javax.swing.JFrame {
         teacherMidName.setBackground(java.awt.Color.white);
         teacherMidName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         teacherMidName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        teacherMidName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                teacherMidNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                teacherMidNameFocusLost(evt);
+            }
+        });
 
         jLabel28.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(0, 0, 0));
@@ -2773,6 +2983,14 @@ public class AdminFrame extends javax.swing.JFrame {
         teacherLastName.setBackground(java.awt.Color.white);
         teacherLastName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         teacherLastName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        teacherLastName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                teacherLastNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                teacherLastNameFocusLost(evt);
+            }
+        });
 
         jLabel32.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(0, 0, 0));
@@ -2928,6 +3146,14 @@ public class AdminFrame extends javax.swing.JFrame {
         teacherBrowseImg.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         teacherBrowseImg.setForeground(new java.awt.Color(0, 0, 0));
         teacherBrowseImg.setText("Browse");
+        teacherBrowseImg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                teacherBrowseImgMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                teacherBrowseImgMouseExited(evt);
+            }
+        });
         teacherBrowseImg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teacherBrowseImgActionPerformed(evt);
@@ -2991,6 +3217,14 @@ public class AdminFrame extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("Logout");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton3MouseExited(evt);
+            }
+        });
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -3001,6 +3235,14 @@ public class AdminFrame extends javax.swing.JFrame {
         updateBt1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         updateBt1.setForeground(new java.awt.Color(0, 0, 0));
         updateBt1.setText("Update");
+        updateBt1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                updateBt1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                updateBt1MouseExited(evt);
+            }
+        });
         updateBt1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateBt1ActionPerformed(evt);
@@ -3011,6 +3253,14 @@ public class AdminFrame extends javax.swing.JFrame {
         teacherAddNewBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         teacherAddNewBt.setForeground(new java.awt.Color(0, 0, 0));
         teacherAddNewBt.setText("Add New");
+        teacherAddNewBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                teacherAddNewBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                teacherAddNewBtMouseExited(evt);
+            }
+        });
         teacherAddNewBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teacherAddNewBtActionPerformed(evt);
@@ -3021,6 +3271,14 @@ public class AdminFrame extends javax.swing.JFrame {
         teacherClear.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         teacherClear.setForeground(new java.awt.Color(0, 0, 0));
         teacherClear.setText("Clear");
+        teacherClear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                teacherClearMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                teacherClearMouseExited(evt);
+            }
+        });
         teacherClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teacherClearActionPerformed(evt);
@@ -3114,6 +3372,14 @@ public class AdminFrame extends javax.swing.JFrame {
         teacherSearchBt_2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         teacherSearchBt_2.setForeground(new java.awt.Color(0, 0, 0));
         teacherSearchBt_2.setText("Search");
+        teacherSearchBt_2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                teacherSearchBt_2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                teacherSearchBt_2MouseExited(evt);
+            }
+        });
         teacherSearchBt_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teacherSearchBt_2ActionPerformed(evt);
@@ -3124,6 +3390,14 @@ public class AdminFrame extends javax.swing.JFrame {
         teacherRefresh_3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         teacherRefresh_3.setForeground(new java.awt.Color(0, 0, 0));
         teacherRefresh_3.setText("Refresh");
+        teacherRefresh_3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                teacherRefresh_3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                teacherRefresh_3MouseExited(evt);
+            }
+        });
         teacherRefresh_3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teacherRefresh_3ActionPerformed(evt);
@@ -3134,6 +3408,14 @@ public class AdminFrame extends javax.swing.JFrame {
         teacherSort_3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         teacherSort_3.setForeground(new java.awt.Color(0, 0, 0));
         teacherSort_3.setText("Sort");
+        teacherSort_3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                teacherSort_3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                teacherSort_3MouseExited(evt);
+            }
+        });
         teacherSort_3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teacherSort_3ActionPerformed(evt);
@@ -3198,20 +3480,18 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel30.setBackground(new java.awt.Color(243, 244, 246));
         jPanel30.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        teacherDelBt.setBackground(new java.awt.Color(251, 191, 36));
-        teacherDelBt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        teacherDelBt.setForeground(new java.awt.Color(0, 0, 0));
-        teacherDelBt.setText("Delete");
-        teacherDelBt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                teacherDelBtActionPerformed(evt);
-            }
-        });
-
         teacherPrint_3.setBackground(new java.awt.Color(251, 191, 36));
         teacherPrint_3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         teacherPrint_3.setForeground(new java.awt.Color(0, 0, 0));
         teacherPrint_3.setText("Print");
+        teacherPrint_3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                teacherPrint_3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                teacherPrint_3MouseExited(evt);
+            }
+        });
         teacherPrint_3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teacherPrint_3ActionPerformed(evt);
@@ -3223,19 +3503,15 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel30Layout.setHorizontalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel30Layout.createSequentialGroup()
-                .addContainerGap(368, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(teacherPrint_3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(teacherDelBt, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(504, 504, 504))
+                .addGap(480, 480, 480))
         );
         jPanel30Layout.setVerticalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel30Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(teacherDelBt, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(teacherPrint_3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(teacherPrint_3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -3298,6 +3574,14 @@ public class AdminFrame extends javax.swing.JFrame {
         sensitiveSearch.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         sensitiveSearch.setForeground(new java.awt.Color(0, 0, 0));
         sensitiveSearch.setText("Search");
+        sensitiveSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                sensitiveSearchMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                sensitiveSearchMouseExited(evt);
+            }
+        });
         sensitiveSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sensitiveSearchActionPerformed(evt);
@@ -3359,13 +3643,21 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel34.setBackground(new java.awt.Color(243, 244, 246));
         jPanel34.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 65, 81), 4, true));
 
-        teacherDelBt1.setBackground(new java.awt.Color(251, 191, 36));
-        teacherDelBt1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        teacherDelBt1.setForeground(new java.awt.Color(0, 0, 0));
-        teacherDelBt1.setText("Logout");
-        teacherDelBt1.addActionListener(new java.awt.event.ActionListener() {
+        teacherSensitiveLogout.setBackground(new java.awt.Color(251, 191, 36));
+        teacherSensitiveLogout.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        teacherSensitiveLogout.setForeground(new java.awt.Color(0, 0, 0));
+        teacherSensitiveLogout.setText("Logout");
+        teacherSensitiveLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                teacherSensitiveLogoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                teacherSensitiveLogoutMouseExited(evt);
+            }
+        });
+        teacherSensitiveLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                teacherDelBt1ActionPerformed(evt);
+                teacherSensitiveLogoutActionPerformed(evt);
             }
         });
 
@@ -3375,14 +3667,14 @@ public class AdminFrame extends javax.swing.JFrame {
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(teacherDelBt1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(teacherSensitiveLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(524, 524, 524))
         );
         jPanel34Layout.setVerticalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(teacherDelBt1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(teacherSensitiveLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -3558,7 +3850,7 @@ public class AdminFrame extends javax.swing.JFrame {
                     teacher.update(id, tfname, tMidName, tLastName, date, gender, email, phone, addressLine1, addressLine2, imagePath, strandId);
 
                     TeacherTable.setModel(new DefaultTableModel(null, new Object[]{"Teacher ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number",
-                        "Address Line 1", "Address Line 2", "Strand Name", "hire_date", "Image Path"}));
+                        "Address Line 1", "Address Line 2", "Strand Name", "hire_date"}));
                     teacher.getTeacherValue(TeacherTable, "");
                     clearTeacher();
 
@@ -3622,7 +3914,7 @@ public class AdminFrame extends javax.swing.JFrame {
 //                    // ✅ Generate QR code with all details
 //                    generateQRCode(id, sname, qrContent);
                     TeacherTable.setModel(new DefaultTableModel(null, new Object[]{"Teacher ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number",
-                        "Address Line 1", "Address Line 2", "Strand Name", "hire_date", "Image Path"}));
+                        "Address Line 1", "Address Line 2", "Strand Name", "hire_date"}));
                     teacher.getTeacherValue(TeacherTable, "");
                     clearTeacher();
                 } else {
@@ -3739,22 +4031,6 @@ public class AdminFrame extends javax.swing.JFrame {
         teacherImagePanel.setIcon(imageAdjust(path, null, teacherImagePanel));//get image path and called image adjust method path to image
     }//GEN-LAST:event_TeacherTableMouseClicked
 
-    private void teacherDelBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherDelBtActionPerformed
-        int id = Integer.parseInt(teacherID.getText());
-        if (teacher.isidExist(id)) {
-            teacher.delete(id);
-            
-            user.delete(id);
-            TeacherTable.setModel(new DefaultTableModel(null, new Object[]{"Teacher ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number",
-                "Address Line 1", "Address Line 2", "Strand Name", "hire_date"}));
-            teacher.getTeacherValue(TeacherTable, "");
-            clearTeacher();
-
-        } else {
-            JOptionPane.showMessageDialog(this, "the teacher doesn't exist");
-        }
-    }//GEN-LAST:event_teacherDelBtActionPerformed
-
     private void teacherPrint_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherPrint_3ActionPerformed
         try {
             MessageFormat header = new MessageFormat("Teachers Information");
@@ -3800,9 +4076,15 @@ public class AdminFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SensitiveTableMouseClicked
 
-    private void teacherDelBt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherDelBt1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_teacherDelBt1ActionPerformed
+    private void teacherSensitiveLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherSensitiveLogoutActionPerformed
+        int a = JOptionPane.showConfirmDialog(this, "Do you want to Logout now?", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            this.dispose();
+            LoginFrame frame = new LoginFrame();
+            frame.setVisible(true);
+            frame.setLocationRelativeTo(null);
+        }
+    }//GEN-LAST:event_teacherSensitiveLogoutActionPerformed
 
     private void stuSubjectIDManageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuSubjectIDManageKeyTyped
         if (!Character.isDigit(evt.getKeyChar())) {
@@ -3825,7 +4107,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
             String gradeLevelStr = gradeLevelSubjectBox.getSelectedItem().toString();
             int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
-            
+
             subjectModel.setRowCount(0);
 
             Subject subjectDAO = new Subject();
@@ -3906,8 +4188,8 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void stuSubjectSaveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSubjectSaveBtActionPerformed
         try {
-             String studentIdStr = stuSubjectIDManage.getText().trim();
-             if (studentIdStr.isEmpty() ||  SubjectTable.getRowCount() == 0) {
+            String studentIdStr = stuSubjectIDManage.getText().trim();
+            if (studentIdStr.isEmpty() || SubjectTable.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(this, "Please enter Student ID and make sure the table is not empty.");
                 return;
             }
@@ -3925,429 +4207,13 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_stuSubjectSaveBtActionPerformed
 
-    private void classListSearchBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classListSearchBtActionPerformed
-        try {
-            String gradeLevelStr = gradeLevelClassBox.getSelectedItem().toString();
-            int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
-
-            // Get strand id
-            int strandId = getSelectedClassStrandId();
-
-            // Get section id
-            int sectionId = strand.getSelectedSectionId(sectionClassBox);
-
-            System.out.println(gradeLevel);
-            System.out.println(strandId);
-            System.out.println(sectionId);
-
-            DefaultTableModel model = strand.getStudentClassList(gradeLevel, strandId, sectionId);
-
-            // 6. Apply results to the ListHonorTable
-            ClassListTable.setModel(model);
-
-            // 7. Handle empty case
-            if (model.getRowCount() == 0) {
-                JOptionPane.showMessageDialog(this, "No class list results found.");
-            } else {
-                JOptionPane.showMessageDialog(this, "Class list generated successfully!");
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error fetching honor list: " + e.getMessage());
-        }
-    }//GEN-LAST:event_classListSearchBtActionPerformed
-
-    private void gradeLevelClassBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeLevelClassBoxActionPerformed
-        try {
-            int gradeLevel = Integer.parseInt(gradeLevelClassBox.getSelectedItem().toString());
-
-            // 1. Load strands available for that grade level
-            strand.loadStrands(strandClassBox, gradeLevel);
-
-            if (strandClassBox.getItemCount() > 0) {
-                int strandId = getSelectedClassStrandId();
-
-                strand.loadSections(sectionClassBox, strandId, gradeLevel);
-            }
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error loading strands/sections/subjects.");
-        }
-    }//GEN-LAST:event_gradeLevelClassBoxActionPerformed
-
-    private void strandClassBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_strandClassBoxActionPerformed
-
-        try {
-            int gradeLevel = Integer.parseInt(gradeLevelClassBox.getSelectedItem().toString());
-            int strandId = getSelectedClassStrandId(); // helper to parse "1 - STEM"
-
-            // Update dependent dropdowns
-            strand.loadSections(sectionClassBox, strandId, gradeLevel);
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error loading sections/subjects.");
-        }
-    }//GEN-LAST:event_strandClassBoxActionPerformed
-
     public int getSelectedClassStrandId() {
-        System.out.println("it reads fucking reads");
         ComboItem selectedItem = (ComboItem) strandClassBox.getSelectedItem();
         if (selectedItem != null) {
             return selectedItem.getId(); // assuming ComboItem has getId()
         }
         return -1; // or handle appropriately if nothing is selected
     }
-    private void sectionClassBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sectionClassBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sectionClassBoxActionPerformed
-
-    private void classListLogoutBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classListLogoutBtActionPerformed
-        //LOGOUT
-        int a = JOptionPane.showConfirmDialog(this, "Do you want to Logout now?", "Select", JOptionPane.YES_NO_OPTION);
-        if (a == 0) {
-            this.dispose();
-            LoginFrame frame = new LoginFrame();
-            frame.setVisible(true);
-            frame.setLocationRelativeTo(null);
-        }
-    }//GEN-LAST:event_classListLogoutBtActionPerformed
-
-    private void classListClearBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classListClearBtActionPerformed
-        clearClassListManage();
-    }//GEN-LAST:event_classListClearBtActionPerformed
-
-    private void classListPrintBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classListPrintBtActionPerformed
-        try {
-            if (strandClassBox.getSelectedItem() == null || sectionClassBox.getSelectedItem() == null) {
-                JOptionPane.showMessageDialog(this,
-                        "Please select a Grade Level, Strand, and Section.",
-                        "Missing Field",
-                        JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-
-            // ✅ Get values safely
-            String gradeLevelStr = gradeLevelClassBox.getSelectedItem().toString();
-            int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
-            int sectionId = strand.getSelectedSectionId(sectionClassBox);
-            int strandId = getSelectedClassStrandId();
-
-            // ✅ Fetch strand + section names using helper
-            String[] names = strand.getStrandAndSectionName(con, sectionId);
-            String strandName = names[0];
-            String sectionName = names[1];
-
-            // ✅ Debug check
-            System.out.println("DEBUG: grade=" + gradeLevel
-                    + ", strandId=" + strandId + " (" + strandName + ")"
-                    + ", sectionId=" + sectionId + " (" + sectionName + ")");
-
-            // ✅ Generate the class list with names
-            strand.generateClassList(ClassListTable, gradeLevel, strandId, sectionId, strandName, sectionName);
-
-            //JOptionPane.showMessageDialog(this, "Class List PDF Generated Successfully!");
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this,
-                    "An error occurred: " + ex.getMessage(),
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
-        }
-    }//GEN-LAST:event_classListPrintBtActionPerformed
-
-    private void stuMotherNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuMotherNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stuMotherNameActionPerformed
-
-    private void stuAddress2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuAddress2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stuAddress2ActionPerformed
-
-    private void stuGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuGenderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stuGenderActionPerformed
-
-    private void stuPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuPhoneKeyTyped
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_stuPhoneKeyTyped
-
-    private void stuFatherNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuFatherNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stuFatherNameActionPerformed
-
-    private void browseBirthCertificateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseBirthCertificateActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-
-        // PDF filter only
-        FileNameExtensionFilter pdfFilter = new FileNameExtensionFilter("PDF Documents", "pdf");
-        fileChooser.setFileFilter(pdfFilter);
-
-        int result = fileChooser.showOpenDialog(this);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            birthCertificatePath = selectedFile.getAbsolutePath(); // keep full path
-            String pdfName = selectedFile.getName(); // only filename
-
-            // show only file name in textfield
-            stuBirthCer.setText(pdfName);
-
-            // make it look clickable
-            stuBirthCer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
-            // add mouse click event to open PDF
-            stuBirthCer.addMouseListener(new java.awt.event.MouseAdapter() {
-                @Override
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    try {
-                        if (Desktop.isDesktopSupported() && birthCertificatePath != null) {
-                            Desktop.getDesktop().open(new File(birthCertificatePath));
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Desktop not supported or path is null.");
-                        }
-                    } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Unable to open PDF: " + e.getMessage());
-                    }
-                }
-            });
-        } else {
-            JOptionPane.showMessageDialog(this, "No PDF selected");
-        }
-    }//GEN-LAST:event_browseBirthCertificateActionPerformed
-
-    private void browseForm137ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseForm137ActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-
-        // PDF filter only
-        FileNameExtensionFilter pdfFilter = new FileNameExtensionFilter("PDF Documents", "pdf");
-        fileChooser.setFileFilter(pdfFilter);
-
-        int result = fileChooser.showOpenDialog(this);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            form137Path = selectedFile.getAbsolutePath(); // keep full path
-            String pdfName = selectedFile.getName(); // only filename
-
-            // show only file name in textfield
-            stuForm137.setText(pdfName);
-
-            // make it look clickable
-            stuForm137.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
-            // add mouse click event to open PDF
-            stuForm137.addMouseListener(new java.awt.event.MouseAdapter() {
-                @Override
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    try {
-                        if (Desktop.isDesktopSupported() && form137Path != null) {
-                            Desktop.getDesktop().open(new File(form137Path));
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Desktop not supported or path is null.");
-                        }
-                    } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Unable to open PDF: " + e.getMessage());
-                    }
-                }
-            });
-        } else {
-            JOptionPane.showMessageDialog(this, "No PDF selected");
-        }
-    }//GEN-LAST:event_browseForm137ActionPerformed
-
-    private void stuBirthCerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuBirthCerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stuBirthCerActionPerformed
-
-    private void browseImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseImgActionPerformed
-        JFileChooser file = new JFileChooser();
-        file.setCurrentDirectory(new File(System.getProperty("user.home")));
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("* image", "jpg", "gif", "png");
-        file.addChoosableFileFilter(filter);
-        int output = file.showSaveDialog(file);
-        if (output == JFileChooser.APPROVE_OPTION) {
-            File selectFile = file.getSelectedFile();
-            String path = selectFile.getAbsolutePath();
-            imagePanel.setIcon(imageAdjust(path, null, imagePanel));
-            imagePath = path;
-
-        } else {
-            JOptionPane.showMessageDialog(this, "No image selected");
-
-        }
-    }//GEN-LAST:event_browseImgActionPerformed
-
-    private void stuLRNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuLRNKeyTyped
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_stuLRNKeyTyped
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-
-    }//GEN-LAST:event_jButton1MouseClicked
-
-    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-
-        jButton1.setBackground(ThemeColors.DEEP_ORANGE);
-    }//GEN-LAST:event_jButton1MouseEntered
-
-    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        // TODO add your handling code here:
-        jButton1.setBackground(ThemeColors.GOLDEN_YELLOW);
-    }//GEN-LAST:event_jButton1MouseExited
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //qrScanTimer.stop();
-
-        int a = JOptionPane.showConfirmDialog(this, "Do you want to Logout now?", "Select", JOptionPane.YES_NO_OPTION);
-        if (a == 0) {
-            this.dispose();
-            LoginFrame frame = new LoginFrame();
-            frame.setVisible(true);
-            frame.setLocationRelativeTo(null);
-        }
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void updateBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtMouseEntered
-        updateBt.setBackground(ThemeColors.DEEP_ORANGE);
-    }//GEN-LAST:event_updateBtMouseEntered
-
-    private void updateBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtMouseExited
-        updateBt.setBackground(ThemeColors.GOLDEN_YELLOW);
-    }//GEN-LAST:event_updateBtMouseExited
-
-    private void updateBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtActionPerformed
-        if (isEmptyStudent()) {
-            int id = Integer.parseInt(stuID.getText());
-            if (student.isidExist(id)) {
-                if (!check()) {
-                    String sfname = stuFname.getText();
-                    String sMidName = stuMiddleName.getText();
-                    String sLastName = stuLastName.getText();
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    String date = dateFormat.format(stuBirth.getDate());
-                    String gender = stuGender.getSelectedItem().toString();
-                    String email = stuEmail.getText();
-                    String phone = stuPhone.getText();
-                    String motherName = stuMotherName.getText();
-                    String fatherName = stuFatherName.getText();
-                    String addressLine1 = stuAddress1.getText();
-                    String addressLine2 = stuAddress2.getText();
-                    String birthCer = stuBirthCer.getText();
-                    String form137 = stuForm137.getText();
-                    String stuLrn = stuLRN.getText();
-                    student.update(id, sfname, sMidName, sLastName, date, gender, email, phone,
-                            motherName, fatherName, addressLine1, addressLine2, birthCer, form137, imagePath, stuLrn);
-
-                    //                    String qrContent = "ID: " + id
-                    //                            + "\nName: " + sname
-                    //                            + "\nBirthdate: " + date
-                    //                            + "\nGender: " + gender
-                    //                            + "\nEmail: " + email
-                    //                            + "\nPhone: " + phone
-                    //                            + "\nMother: " + motherName
-                    //                            + "\nFather: " + fatherName
-                    //                            + "\nAddress 1: " + addressLine1
-                    //                            + "\nAddress 2: " + addressLine2
-                    //                            + "\nBirth Certificate: " + birthCer
-                    //                            + "\nForm 137: " + form137
-                    //                            + "\nImage: " + imagePath;
-                    //
-                    //                    // ✅ Generate QR code with all details
-                    //                    generateQRCode(id, sname, qrContent);
-                    StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
-                        "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
-                    student.getStudentValue(StudentTable, "");
-                    clearStudent();
-
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(this, "student id doesn't exist");
-
-            }
-
-        }
-    }//GEN-LAST:event_updateBtActionPerformed
-
-    private void addNewBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewBtMouseEntered
-
-        addNewBt.setBackground(ThemeColors.DEEP_ORANGE);
-    }//GEN-LAST:event_addNewBtMouseEntered
-
-    private void addNewBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewBtMouseExited
-        addNewBt.setBackground(ThemeColors.GOLDEN_YELLOW);
-    }//GEN-LAST:event_addNewBtMouseExited
-
-    private void addNewBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewBtActionPerformed
-        int id = student.getMax();
-        String username = stuLRN.getText();
-        int userId = user.getMax();
-        if (isEmptyStudent()) {
-            if (!student.isEmailExist(stuEmail.getText(), id)) {
-                if (!student.isPhoneExist(stuPhone.getText(), id)) {
-
-                    String sFname = stuFname.getText();
-                    String sMiddleName = stuMiddleName.getText();
-                    String sLastName = stuLastName.getText();
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    String date = dateFormat.format(stuBirth.getDate());
-                    String gender = stuGender.getSelectedItem().toString();
-                    String email = stuEmail.getText();
-                    String phone = stuPhone.getText();
-                    String motherName = stuMotherName.getText();
-                    String fatherName = stuFatherName.getText();
-                    String addressLine1 = stuAddress1.getText();
-                    String addressLine2 = stuAddress2.getText();
-                    String birthCer = stuBirthCer.getText();
-                    String form137 = stuForm137.getText();
-                    String stuLrn = stuLRN.getText();
-
-                    SimpleDateFormat passFormat = new SimpleDateFormat("yyyyMMdd");
-                    String birthForPass = passFormat.format(stuBirth.getDate());
-                    String password = sLastName.toLowerCase() + birthForPass;
-                    int type_id = 2; // student
-
-                    user.insert(userId, username, password, type_id);
-
-                    student.insert(id, userId, sFname, sMiddleName, sLastName, date, gender, email, phone,
-                            motherName, fatherName, addressLine1, addressLine2, birthCer, form137, imagePath, stuLrn);
-
-                    StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
-                        "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
-                    student.getStudentValue(StudentTable, "");
-                    clearStudent();
-                } else {
-                    JOptionPane.showMessageDialog(this, "This phone number already exist");
-
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(this, "This email already exist");
-            }
-
-        }
-    }//GEN-LAST:event_addNewBtActionPerformed
-
-    private void ClearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearMouseEntered
-        Clear.setBackground(ThemeColors.DEEP_ORANGE);
-    }//GEN-LAST:event_ClearMouseEntered
-
-    private void ClearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearMouseExited
-        Clear.setBackground(ThemeColors.GOLDEN_YELLOW);
-    }//GEN-LAST:event_ClearMouseExited
-
-    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
-        clearStudent();
-    }//GEN-LAST:event_ClearActionPerformed
-
     private void searchBt_1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBt_1MouseEntered
         searchBt_1.setBackground(ThemeColors.DEEP_ORANGE);
     }//GEN-LAST:event_searchBt_1MouseEntered
@@ -4599,6 +4465,449 @@ public class AdminFrame extends javax.swing.JFrame {
 //StudentTrackTable.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
         }
     }//GEN-LAST:event_stuInfoCurrentOrArchivedActionPerformed
+    public int getSelectedStudentStrandId() {
+        ComboItem selectedItem = (ComboItem) stuStrand.getSelectedItem();
+        if (selectedItem != null) {
+            return selectedItem.getId(); // assuming ComboItem has getId()
+        }
+        return -1; // or handle appropriately if nothing is selected
+    }
+    private void stuFullNameSubKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuFullNameSubKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuFullNameSubKeyTyped
+
+    private void stuSubjectSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSearchMouseClicked
+        //stuSubjectSearch.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSubjectSearchMouseClicked
+
+    private void stuSubjectSearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSearchMouseEntered
+        stuSubjectSearch.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuSubjectSearchMouseEntered
+
+    private void stuSubjectSearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSearchMouseExited
+        stuSubjectSearch.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSubjectSearchMouseExited
+
+    private void stuGradeManageRefreshTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageRefreshTable1MouseEntered
+        stuGradeManageRefreshTable1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuGradeManageRefreshTable1MouseEntered
+
+    private void stuGradeManageRefreshTable1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageRefreshTable1MouseExited
+        stuGradeManageRefreshTable1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuGradeManageRefreshTable1MouseExited
+
+    private void stuSubjectSaveBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSaveBtMouseEntered
+        stuSubjectSaveBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuSubjectSaveBtMouseEntered
+
+    private void stuSubjectSaveBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSaveBtMouseExited
+        stuSubjectSaveBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSubjectSaveBtMouseExited
+
+    private void clearSubjectManageBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearSubjectManageBtMouseEntered
+        clearSubjectManageBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_clearSubjectManageBtMouseEntered
+
+    private void clearSubjectManageBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearSubjectManageBtMouseExited
+        clearSubjectManageBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_clearSubjectManageBtMouseExited
+
+    private void logoutFormGradeBt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutFormGradeBt1MouseEntered
+        logoutFormGradeBt1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_logoutFormGradeBt1MouseEntered
+
+    private void logoutFormGradeBt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutFormGradeBt1MouseExited
+        logoutFormGradeBt1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_logoutFormGradeBt1MouseExited
+
+    private void stuFnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuFnameFocusGained
+        stuFname.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        stuFname.setText(stuFname.getText().trim());
+    }//GEN-LAST:event_stuFnameFocusGained
+
+    private void stuFnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuFnameFocusLost
+        jFocusLost(stuFname);
+    }//GEN-LAST:event_stuFnameFocusLost
+
+    private void stuFnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuFnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuFnameActionPerformed
+
+    private void stuMotherNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuMotherNameFocusGained
+        stuMotherName.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        stuMotherName.setText(stuMotherName.getText().trim());
+    }//GEN-LAST:event_stuMotherNameFocusGained
+
+    private void stuMotherNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuMotherNameFocusLost
+        jFocusLost(stuMotherName);
+    }//GEN-LAST:event_stuMotherNameFocusLost
+
+    private void stuMotherNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuMotherNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuMotherNameActionPerformed
+
+    private void stuAddress1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuAddress1FocusGained
+        stuAddress1.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        stuAddress1.setText(stuAddress1.getText().trim());
+    }//GEN-LAST:event_stuAddress1FocusGained
+
+    private void stuAddress1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuAddress1FocusLost
+        jFocusLost(stuAddress1);
+    }//GEN-LAST:event_stuAddress1FocusLost
+
+    private void stuAddress2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuAddress2FocusGained
+        stuAddress2.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        stuAddress2.setText(stuAddress2.getText().trim());
+    }//GEN-LAST:event_stuAddress2FocusGained
+
+    private void stuAddress2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuAddress2FocusLost
+        jFocusLost(stuAddress2);
+    }//GEN-LAST:event_stuAddress2FocusLost
+
+    private void stuAddress2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuAddress2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuAddress2ActionPerformed
+
+    private void stuGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuGenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuGenderActionPerformed
+
+    private void stuPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuPhoneKeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_stuPhoneKeyTyped
+
+    private void stuFatherNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuFatherNameFocusGained
+        stuFatherName.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        stuFatherName.setText(stuFatherName.getText().trim());
+    }//GEN-LAST:event_stuFatherNameFocusGained
+
+    private void stuFatherNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuFatherNameFocusLost
+        jFocusLost(stuFatherName);
+    }//GEN-LAST:event_stuFatherNameFocusLost
+
+    private void stuFatherNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuFatherNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuFatherNameActionPerformed
+
+    public void jFocusLost(JTextField field) {
+        String text = field.getText().trim();
+        if (!text.isEmpty()) {
+            // Split into words
+            String[] words = text.split("\\s+");
+            StringBuilder formattedText = new StringBuilder();
+
+            for (String word : words) {
+                if (!word.isEmpty()) {
+                    formattedText.append(
+                            word.substring(0, 1).toUpperCase()
+                    ).append(
+                            word.substring(1).toLowerCase()
+                    ).append(" ");
+                }
+            }
+
+            // Set formatted text back (trim to remove extra space at the end)
+            field.setText(formattedText.toString().trim());
+        }
+
+        field.setBackground(java.awt.Color.WHITE);
+
+    }
+    private void browseBirthCertificateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseBirthCertificateActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+
+        // PDF filter only
+        FileNameExtensionFilter pdfFilter = new FileNameExtensionFilter("PDF Documents", "pdf");
+        fileChooser.setFileFilter(pdfFilter);
+
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            birthCertificatePath = selectedFile.getAbsolutePath(); // keep full path
+            String pdfName = selectedFile.getName(); // only filename
+
+            // show only file name in textfield
+            stuBirthCer.setText(pdfName);
+
+            // make it look clickable
+            stuBirthCer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+            // add mouse click event to open PDF
+            stuBirthCer.addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    try {
+                        if (Desktop.isDesktopSupported() && birthCertificatePath != null) {
+                            Desktop.getDesktop().open(new File(birthCertificatePath));
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Desktop not supported or path is null.");
+                        }
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Unable to open PDF: " + e.getMessage());
+                    }
+                }
+            });
+        } else {
+            JOptionPane.showMessageDialog(this, "No PDF selected");
+        }
+    }//GEN-LAST:event_browseBirthCertificateActionPerformed
+
+    private void browseForm137ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseForm137ActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+
+        // PDF filter only
+        FileNameExtensionFilter pdfFilter = new FileNameExtensionFilter("PDF Documents", "pdf");
+        fileChooser.setFileFilter(pdfFilter);
+
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            form137Path = selectedFile.getAbsolutePath(); // keep full path
+            String pdfName = selectedFile.getName(); // only filename
+
+            // show only file name in textfield
+            stuForm137.setText(pdfName);
+
+            // make it look clickable
+            stuForm137.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+            // add mouse click event to open PDF
+            stuForm137.addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    try {
+                        if (Desktop.isDesktopSupported() && form137Path != null) {
+                            Desktop.getDesktop().open(new File(form137Path));
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Desktop not supported or path is null.");
+                        }
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Unable to open PDF: " + e.getMessage());
+                    }
+                }
+            });
+        } else {
+            JOptionPane.showMessageDialog(this, "No PDF selected");
+        }
+    }//GEN-LAST:event_browseForm137ActionPerformed
+
+    private void stuBirthCerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuBirthCerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuBirthCerActionPerformed
+
+    private void stuMiddleNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuMiddleNameFocusGained
+        stuMiddleName.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        stuMiddleName.setText(stuMiddleName.getText().trim());
+    }//GEN-LAST:event_stuMiddleNameFocusGained
+
+    private void stuMiddleNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuMiddleNameFocusLost
+        jFocusLost(stuMiddleName);
+    }//GEN-LAST:event_stuMiddleNameFocusLost
+
+    private void stuLastNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuLastNameFocusGained
+        stuLastName.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        stuLastName.setText(stuLastName.getText().trim());
+    }//GEN-LAST:event_stuLastNameFocusGained
+
+    private void stuLastNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuLastNameFocusLost
+        jFocusLost(stuLastName);
+    }//GEN-LAST:event_stuLastNameFocusLost
+
+    private void browseImgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_browseImgMouseEntered
+        browseImg.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_browseImgMouseEntered
+
+    private void browseImgMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_browseImgMouseExited
+        browseImg.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_browseImgMouseExited
+
+    private void browseImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseImgActionPerformed
+        JFileChooser file = new JFileChooser();
+        file.setCurrentDirectory(new File(System.getProperty("user.home")));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("* image", "jpg", "gif", "png");
+        file.addChoosableFileFilter(filter);
+        int output = file.showSaveDialog(file);
+        if (output == JFileChooser.APPROVE_OPTION) {
+            File selectFile = file.getSelectedFile();
+            String path = selectFile.getAbsolutePath();
+            imagePanel.setIcon(imageAdjust(path, null, imagePanel));
+            imagePath = path;
+
+        } else {
+            JOptionPane.showMessageDialog(this, "No image selected");
+
+        }
+    }//GEN-LAST:event_browseImgActionPerformed
+
+    private void stuLRNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuLRNKeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_stuLRNKeyTyped
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+
+        jButton1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        // TODO add your handling code here:
+        jButton1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //qrScanTimer.stop();
+
+        int a = JOptionPane.showConfirmDialog(this, "Do you want to Logout now?", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            this.dispose();
+            LoginFrame frame = new LoginFrame();
+            frame.setVisible(true);
+            frame.setLocationRelativeTo(null);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void updateBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtMouseEntered
+        updateBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_updateBtMouseEntered
+
+    private void updateBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtMouseExited
+        updateBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_updateBtMouseExited
+
+    private void updateBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtActionPerformed
+        if (isEmptyStudent()) {
+            int id = Integer.parseInt(stuID.getText());
+            if (student.isidExist(id)) {
+                if (!check()) {
+                    String sfname = stuFname.getText();
+                    String sMidName = stuMiddleName.getText();
+                    String sLastName = stuLastName.getText();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String date = dateFormat.format(stuBirth.getDate());
+                    String gender = stuGender.getSelectedItem().toString();
+                    String email = stuEmail.getText();
+                    String phone = stuPhone.getText();
+                    String motherName = stuMotherName.getText();
+                    String fatherName = stuFatherName.getText();
+                    String addressLine1 = stuAddress1.getText();
+                    String addressLine2 = stuAddress2.getText();
+                    String birthCer = stuBirthCer.getText();
+                    String form137 = stuForm137.getText();
+                    String stuLrn = stuLRN.getText();
+                    student.update(id, sfname, sMidName, sLastName, date, gender, email, phone,
+                            motherName, fatherName, addressLine1, addressLine2, birthCer, form137, imagePath, stuLrn);
+
+                    //                    String qrContent = "ID: " + id
+                    //                            + "\nName: " + sname
+                    //                            + "\nBirthdate: " + date
+                    //                            + "\nGender: " + gender
+                    //                            + "\nEmail: " + email
+                    //                            + "\nPhone: " + phone
+                    //                            + "\nMother: " + motherName
+                    //                            + "\nFather: " + fatherName
+                    //                            + "\nAddress 1: " + addressLine1
+                    //                            + "\nAddress 2: " + addressLine2
+                    //                            + "\nBirth Certificate: " + birthCer
+                    //                            + "\nForm 137: " + form137
+                    //                            + "\nImage: " + imagePath;
+                    //
+                    //                    // ✅ Generate QR code with all details
+                    //                    generateQRCode(id, sname, qrContent);
+                    StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
+                        "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
+                    student.getStudentValue(StudentTable, "");
+                    clearStudent();
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "student id doesn't exist");
+
+            }
+
+        }
+    }//GEN-LAST:event_updateBtActionPerformed
+
+    private void addNewBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewBtMouseEntered
+
+        addNewBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_addNewBtMouseEntered
+
+    private void addNewBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewBtMouseExited
+        addNewBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_addNewBtMouseExited
+
+    private void addNewBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewBtActionPerformed
+        int id = student.getMax();
+        String username = stuLRN.getText();
+        int userId = user.getMax();
+        if (isEmptyStudent()) {
+            if (!student.isEmailExist(stuEmail.getText(), id)) {
+                if (!student.isPhoneExist(stuPhone.getText(), id)) {
+
+                    String sFname = stuFname.getText();
+                    String sMiddleName = stuMiddleName.getText();
+                    String sLastName = stuLastName.getText();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String date = dateFormat.format(stuBirth.getDate());
+                    String gender = stuGender.getSelectedItem().toString();
+                    String email = stuEmail.getText();
+                    String phone = stuPhone.getText();
+                    String motherName = stuMotherName.getText();
+                    String fatherName = stuFatherName.getText();
+                    String addressLine1 = stuAddress1.getText();
+                    String addressLine2 = stuAddress2.getText();
+                    String birthCer = stuBirthCer.getText();
+                    String form137 = stuForm137.getText();
+                    String stuLrn = stuLRN.getText();
+
+                    SimpleDateFormat passFormat = new SimpleDateFormat("yyyyMMdd");
+                    String birthForPass = passFormat.format(stuBirth.getDate());
+                    String password = sLastName.toLowerCase() + birthForPass;
+                    int type_id = 2; // student
+
+                    user.insert(userId, username, password, type_id);
+
+                    student.insert(id, userId, sFname, sMiddleName, sLastName, date, gender, email, phone,
+                            motherName, fatherName, addressLine1, addressLine2, birthCer, form137, imagePath, stuLrn);
+
+                    StudentTable.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "User_ID", "First Name", "Middle Name", "Last Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name",
+                        "Mother's Name", "Address Line 1", "Address Line 2", "LRN"}));
+                    student.getStudentValue(StudentTable, "");
+                    clearStudent();
+                } else {
+                    JOptionPane.showMessageDialog(this, "This phone number already exist");
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "This email already exist");
+            }
+
+        }
+    }//GEN-LAST:event_addNewBtActionPerformed
+
+    private void ClearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearMouseEntered
+        Clear.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_ClearMouseEntered
+
+    private void ClearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearMouseExited
+        Clear.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_ClearMouseExited
+
+    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
+        clearStudent();
+    }//GEN-LAST:event_ClearActionPerformed
 
     private void stuStrandSearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandSearchFieldActionPerformed
         // TODO add your handling code here:
@@ -4611,8 +4920,12 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_stuStrandSearchFieldKeyTyped
 
     private void stuStrandSearchBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStrandSearchBtMouseEntered
-        //stuStrand
+        stuStrandSearchBt.setBackground(ThemeColors.DEEP_ORANGE);
     }//GEN-LAST:event_stuStrandSearchBtMouseEntered
+
+    private void stuStrandSearchBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStrandSearchBtMouseExited
+        stuStrandSearchBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuStrandSearchBtMouseExited
 
     private void stuStrandSearchBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandSearchBtActionPerformed
         if (stuStrandSearchField.getText().isEmpty()) {
@@ -4644,13 +4957,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_stuStrandSearchBtActionPerformed
-    public int getSelectedStudentStrandId() {
-        ComboItem selectedItem = (ComboItem) stuStrand.getSelectedItem();
-        if (selectedItem != null) {
-            return selectedItem.getId(); // assuming ComboItem has getId()
-        }
-        return -1; // or handle appropriately if nothing is selected
-    }
+
     private void stuStrandIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_stuStrandIdActionPerformed
@@ -4673,6 +4980,14 @@ public class AdminFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_stuFullNameActionPerformed
 
+    private void stuSearchBt_2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSearchBt_2MouseEntered
+        stuSearchBt_2.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuSearchBt_2MouseEntered
+
+    private void stuSearchBt_2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSearchBt_2MouseExited
+        stuSearchBt_2.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSearchBt_2MouseExited
+
     private void stuSearchBt_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSearchBt_2ActionPerformed
         if (stuSearchField_2.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Search field is empty");
@@ -4692,6 +5007,14 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_stuSearchBt_2ActionPerformed
 
+    private void stuRefresh_2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuRefresh_2MouseEntered
+        stuRefresh_2.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuRefresh_2MouseEntered
+
+    private void stuRefresh_2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuRefresh_2MouseExited
+        stuRefresh_2.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuRefresh_2MouseExited
+
     private void stuRefresh_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuRefresh_2ActionPerformed
         String currentText = stuInfoCurrentOrArchived.getText();
         if (currentText.equalsIgnoreCase("Current")) {
@@ -4705,6 +5028,14 @@ public class AdminFrame extends javax.swing.JFrame {
             //StudentTrackTable.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
         }
     }//GEN-LAST:event_stuRefresh_2ActionPerformed
+
+    private void stuSort_2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSort_2MouseEntered
+        stuSort_2.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuSort_2MouseEntered
+
+    private void stuSort_2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSort_2MouseExited
+        stuSort_2.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSort_2MouseExited
 
     private void stuSort_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSort_2ActionPerformed
         DefaultTableModel model = (DefaultTableModel) StudentTrackTable.getModel();
@@ -4729,6 +5060,14 @@ public class AdminFrame extends javax.swing.JFrame {
         sorter.sort();
     }//GEN-LAST:event_stuSort_2ActionPerformed
 
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+        jButton2.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_jButton2MouseEntered
+
+    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
+        jButton2.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_jButton2MouseExited
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int a = JOptionPane.showConfirmDialog(this, "Do you want to Logout now?", "Select", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
@@ -4739,9 +5078,25 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void stuStrandClearBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStrandClearBtMouseEntered
+        stuStrandClearBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuStrandClearBtMouseEntered
+
+    private void stuStrandClearBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStrandClearBtMouseExited
+        stuStrandClearBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuStrandClearBtMouseExited
+
     private void stuStrandClearBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuStrandClearBtActionPerformed
         clearStrand();
     }//GEN-LAST:event_stuStrandClearBtActionPerformed
+
+    private void stuSaveBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSaveBtMouseEntered
+        stuSaveBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuSaveBtMouseEntered
+
+    private void stuSaveBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSaveBtMouseExited
+        stuSaveBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuSaveBtMouseExited
 
     private void stuSaveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSaveBtActionPerformed
         if (stuStrandId.getText().isEmpty()) {
@@ -4919,6 +5274,14 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_stuSaveBtActionPerformed
 
+    private void stuRestoreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuRestoreMouseEntered
+        stuRestore.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuRestoreMouseEntered
+
+    private void stuRestoreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuRestoreMouseExited
+        stuRestore.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuRestoreMouseExited
+
     private void stuRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuRestoreActionPerformed
         try {
             int studentId = Integer.parseInt(stuStrandId.getText());
@@ -4958,6 +5321,14 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_stuRestoreActionPerformed
 
+    private void stuCurrentOrArchiveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuCurrentOrArchiveMouseEntered
+        stuCurrentOrArchive.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_stuCurrentOrArchiveMouseEntered
+
+    private void stuCurrentOrArchiveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuCurrentOrArchiveMouseExited
+        stuCurrentOrArchive.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_stuCurrentOrArchiveMouseExited
+
     private void stuCurrentOrArchiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuCurrentOrArchiveActionPerformed
         String currentText = stuCurrentOrArchive.getText();
 
@@ -4974,53 +5345,295 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_stuCurrentOrArchiveActionPerformed
 
-    private void stuFullNameSubKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stuFullNameSubKeyTyped
+    private void classListSearchBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListSearchBtMouseEntered
+        classListSearchBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_classListSearchBtMouseEntered
+
+    private void classListSearchBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListSearchBtMouseExited
+        classListSearchBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_classListSearchBtMouseExited
+
+    private void classListSearchBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classListSearchBtActionPerformed
+        try {
+            if (strandClassBox.getSelectedItem() == null && sectionClassBox.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this, "Select GradeLevel to Activate the Strand, and section");
+                return;
+            }
+            String gradeLevelStr = gradeLevelClassBox.getSelectedItem().toString();
+            int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
+
+            // Get strand id
+            int strandId = getSelectedClassStrandId();
+
+            // Get section id
+            int sectionId = strand.getSelectedSectionId(sectionClassBox);
+
+            DefaultTableModel model = strand.getStudentClassList(gradeLevel, strandId, sectionId);
+
+            // 6. Apply results to the ListHonorTable
+            ClassListTable.setModel(model);
+
+            // 7. Handle empty case
+            if (model.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "No class list results found.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Class list generated successfully!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error fetching honor list: " + e.getMessage());
+        }
+    }//GEN-LAST:event_classListSearchBtActionPerformed
+
+    private void gradeLevelClassBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeLevelClassBoxActionPerformed
+        try {
+            int gradeLevel = Integer.parseInt(gradeLevelClassBox.getSelectedItem().toString());
+
+            // 1. Load strands available for that grade level
+            strand.loadStrands(strandClassBox, gradeLevel);
+
+            if (strandClassBox.getItemCount() > 0) {
+                int strandId = getSelectedClassStrandId();
+
+                strand.loadSections(sectionClassBox, strandId, gradeLevel);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error loading strands/sections/subjects.");
+        }
+    }//GEN-LAST:event_gradeLevelClassBoxActionPerformed
+
+    private void strandClassBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_strandClassBoxActionPerformed
+
+        try {
+            int gradeLevel = Integer.parseInt(gradeLevelClassBox.getSelectedItem().toString());
+            int strandId = getSelectedClassStrandId(); // helper to parse "1 - STEM"
+
+            // Update dependent dropdowns
+            strand.loadSections(sectionClassBox, strandId, gradeLevel);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error loading sections/subjects.");
+        }
+    }//GEN-LAST:event_strandClassBoxActionPerformed
+
+    private void sectionClassBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sectionClassBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_stuFullNameSubKeyTyped
+    }//GEN-LAST:event_sectionClassBoxActionPerformed
 
-    private void stuSubjectSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSearchMouseClicked
-        //stuSubjectSearch.setBackground(ThemeColors.GOLDEN_YELLOW);
-    }//GEN-LAST:event_stuSubjectSearchMouseClicked
+    private void classListLogoutBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListLogoutBtMouseEntered
+        classListLogoutBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_classListLogoutBtMouseEntered
 
-    private void stuSubjectSearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSearchMouseEntered
-        stuSubjectSearch.setBackground(ThemeColors.DEEP_ORANGE);
-    }//GEN-LAST:event_stuSubjectSearchMouseEntered
+    private void classListLogoutBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListLogoutBtMouseExited
+        classListLogoutBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_classListLogoutBtMouseExited
 
-    private void stuSubjectSearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSearchMouseExited
-        stuSubjectSearch.setBackground(ThemeColors.GOLDEN_YELLOW);
-    }//GEN-LAST:event_stuSubjectSearchMouseExited
+    private void classListLogoutBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classListLogoutBtActionPerformed
+        //LOGOUT
+        int a = JOptionPane.showConfirmDialog(this, "Do you want to Logout now?", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            this.dispose();
+            LoginFrame frame = new LoginFrame();
+            frame.setVisible(true);
+            frame.setLocationRelativeTo(null);
+        }
+    }//GEN-LAST:event_classListLogoutBtActionPerformed
 
-    private void stuGradeManageRefreshTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageRefreshTable1MouseEntered
-        stuGradeManageRefreshTable1.setBackground(ThemeColors.DEEP_ORANGE);
-    }//GEN-LAST:event_stuGradeManageRefreshTable1MouseEntered
+    private void classListClearBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListClearBtMouseEntered
+        classListClearBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_classListClearBtMouseEntered
 
-    private void stuGradeManageRefreshTable1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageRefreshTable1MouseExited
-        stuGradeManageRefreshTable1.setBackground(ThemeColors.GOLDEN_YELLOW);
-    }//GEN-LAST:event_stuGradeManageRefreshTable1MouseExited
+    private void classListClearBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListClearBtMouseExited
+        classListClearBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_classListClearBtMouseExited
 
-    private void stuSubjectSaveBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSaveBtMouseEntered
-        stuSubjectSaveBt.setBackground(ThemeColors.DEEP_ORANGE);
-    }//GEN-LAST:event_stuSubjectSaveBtMouseEntered
+    private void classListClearBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classListClearBtActionPerformed
+        clearClassListManage();
+    }//GEN-LAST:event_classListClearBtActionPerformed
 
-    private void stuSubjectSaveBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSaveBtMouseExited
-        stuSubjectSaveBt.setBackground(ThemeColors.GOLDEN_YELLOW);
-    }//GEN-LAST:event_stuSubjectSaveBtMouseExited
+    private void classListPrintBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListPrintBtMouseEntered
+        classListPrintBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_classListPrintBtMouseEntered
 
-    private void clearSubjectManageBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearSubjectManageBtMouseEntered
-         clearSubjectManageBt.setBackground(ThemeColors.DEEP_ORANGE);
-    }//GEN-LAST:event_clearSubjectManageBtMouseEntered
+    private void classListPrintBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListPrintBtMouseExited
+        classListPrintBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_classListPrintBtMouseExited
 
-    private void clearSubjectManageBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearSubjectManageBtMouseExited
-        clearSubjectManageBt.setBackground(ThemeColors.GOLDEN_YELLOW);
-    }//GEN-LAST:event_clearSubjectManageBtMouseExited
+    private void classListPrintBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classListPrintBtActionPerformed
+        try {
+            if (strandClassBox.getSelectedItem() == null || sectionClassBox.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this,
+                        "Please select a Grade Level, Strand, and Section.",
+                        "Missing Field",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
-    private void logoutFormGradeBt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutFormGradeBt1MouseEntered
-       logoutFormGradeBt1.setBackground(ThemeColors.DEEP_ORANGE);
-    }//GEN-LAST:event_logoutFormGradeBt1MouseEntered
+            // ✅ Get values safely
+            String gradeLevelStr = gradeLevelClassBox.getSelectedItem().toString();
+            int gradeLevel = Integer.parseInt(gradeLevelStr.split(" - ")[0]);
+            int sectionId = strand.getSelectedSectionId(sectionClassBox);
+            int strandId = getSelectedClassStrandId();
 
-    private void logoutFormGradeBt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutFormGradeBt1MouseExited
-        logoutFormGradeBt1.setBackground(ThemeColors.GOLDEN_YELLOW);
-    }//GEN-LAST:event_logoutFormGradeBt1MouseExited
+            // ✅ Fetch strand + section names using helper
+            String[] names = strand.getStrandAndSectionName(con, sectionId);
+            String strandName = names[0];
+            String sectionName = names[1];
+
+            // ✅ Debug check
+            System.out.println("DEBUG: grade=" + gradeLevel
+                    + ", strandId=" + strandId + " (" + strandName + ")"
+                    + ", sectionId=" + sectionId + " (" + sectionName + ")");
+
+            // ✅ Generate the class list with names
+            strand.generateClassList(ClassListTable, gradeLevel, strandId, sectionId, strandName, sectionName);
+
+            //JOptionPane.showMessageDialog(this, "Class List PDF Generated Successfully!");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,
+                    "An error occurred: " + ex.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_classListPrintBtActionPerformed
+
+    private void teacherFirstNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_teacherFirstNameFocusGained
+        teacherFirstName.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        teacherFirstName.setText(teacherFirstName.getText().trim());
+    }//GEN-LAST:event_teacherFirstNameFocusGained
+
+    private void teacherFirstNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_teacherFirstNameFocusLost
+        jFocusLost(teacherFirstName);
+    }//GEN-LAST:event_teacherFirstNameFocusLost
+
+    private void teacherMidNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_teacherMidNameFocusGained
+        teacherMidName.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        teacherMidName.setText(teacherMidName.getText().trim());
+    }//GEN-LAST:event_teacherMidNameFocusGained
+
+    private void teacherMidNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_teacherMidNameFocusLost
+        jFocusLost(teacherMidName);
+    }//GEN-LAST:event_teacherMidNameFocusLost
+
+    private void teacherLastNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_teacherLastNameFocusGained
+        teacherLastName.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        teacherLastName.setText(teacherLastName.getText().trim());
+    }//GEN-LAST:event_teacherLastNameFocusGained
+
+    private void teacherLastNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_teacherLastNameFocusLost
+        jFocusLost(teacherLastName);
+    }//GEN-LAST:event_teacherLastNameFocusLost
+
+    private void teacherAddress1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_teacherAddress1FocusGained
+        teacherAddress1.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        teacherAddress1.setText(teacherAddress1.getText().trim());
+    }//GEN-LAST:event_teacherAddress1FocusGained
+
+    private void teacherAddress1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_teacherAddress1FocusLost
+        jFocusLost(teacherAddress1);
+    }//GEN-LAST:event_teacherAddress1FocusLost
+
+    private void teacherAddress2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_teacherAddress2FocusGained
+        teacherAddress2.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        teacherAddress2.setText(teacherAddress2.getText().trim());
+    }//GEN-LAST:event_teacherAddress2FocusGained
+
+    private void teacherAddress2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_teacherAddress2FocusLost
+        jFocusLost(teacherAddress2);
+    }//GEN-LAST:event_teacherAddress2FocusLost
+
+    private void teacherBrowseImgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherBrowseImgMouseEntered
+        teacherBrowseImg.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_teacherBrowseImgMouseEntered
+
+    private void teacherBrowseImgMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherBrowseImgMouseExited
+        teacherBrowseImg.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_teacherBrowseImgMouseExited
+
+    private void teacherAddNewBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherAddNewBtMouseEntered
+        teacherAddNewBt.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_teacherAddNewBtMouseEntered
+
+    private void teacherAddNewBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherAddNewBtMouseExited
+        teacherAddNewBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_teacherAddNewBtMouseExited
+
+    private void updateBt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBt1MouseEntered
+        updateBt1.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_updateBt1MouseEntered
+
+    private void updateBt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBt1MouseExited
+        updateBt1.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_updateBt1MouseExited
+
+    private void teacherClearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherClearMouseEntered
+        teacherClear.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_teacherClearMouseEntered
+
+    private void teacherClearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherClearMouseExited
+        teacherClear.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_teacherClearMouseExited
+
+    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
+        jButton3.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_jButton3MouseEntered
+
+    private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
+        jButton3.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_jButton3MouseExited
+
+    private void teacherSearchBt_2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherSearchBt_2MouseEntered
+        teacherSearchBt_2.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_teacherSearchBt_2MouseEntered
+
+    private void teacherSearchBt_2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherSearchBt_2MouseExited
+        teacherSearchBt_2.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_teacherSearchBt_2MouseExited
+
+    private void teacherRefresh_3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherRefresh_3MouseEntered
+        teacherRefresh_3.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_teacherRefresh_3MouseEntered
+
+    private void teacherRefresh_3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherRefresh_3MouseExited
+        teacherRefresh_3.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_teacherRefresh_3MouseExited
+
+    private void teacherSort_3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherSort_3MouseEntered
+        teacherSort_3.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_teacherSort_3MouseEntered
+
+    private void teacherSort_3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherSort_3MouseExited
+        teacherSort_3.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_teacherSort_3MouseExited
+
+    private void teacherPrint_3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherPrint_3MouseEntered
+        teacherPrint_3.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_teacherPrint_3MouseEntered
+
+    private void teacherPrint_3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherPrint_3MouseExited
+        teacherPrint_3.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_teacherPrint_3MouseExited
+
+    private void sensitiveSearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sensitiveSearchMouseEntered
+        sensitiveSearch.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_sensitiveSearchMouseEntered
+
+    private void sensitiveSearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sensitiveSearchMouseExited
+        sensitiveSearch.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_sensitiveSearchMouseExited
+
+    private void teacherSensitiveLogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherSensitiveLogoutMouseEntered
+        teacherSensitiveLogout.setBackground(ThemeColors.DEEP_ORANGE);
+    }//GEN-LAST:event_teacherSensitiveLogoutMouseEntered
+
+    private void teacherSensitiveLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherSensitiveLogoutMouseExited
+        teacherSensitiveLogout.setBackground(ThemeColors.GOLDEN_YELLOW);
+    }//GEN-LAST:event_teacherSensitiveLogoutMouseExited
 
     private ImageIcon imageAdjust(String path, byte[] pic) {
         ImageIcon myImage = null;
@@ -5138,7 +5751,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
@@ -5162,7 +5775,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
-    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel81;
     private javax.swing.JLabel jLabel82;
@@ -5202,14 +5815,14 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
-    private javax.swing.JPanel jPanel41;
-    private javax.swing.JPanel jPanel42;
-    private javax.swing.JPanel jPanel43;
+    private javax.swing.JPanel jPanel44;
+    private javax.swing.JPanel jPanel45;
     private javax.swing.JPanel jPanel46;
     private javax.swing.JPanel jPanel47;
     private javax.swing.JPanel jPanel48;
     private javax.swing.JPanel jPanel49;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel50;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -5273,8 +5886,6 @@ public class AdminFrame extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser teacherBirth;
     private javax.swing.JButton teacherBrowseImg;
     private javax.swing.JButton teacherClear;
-    private javax.swing.JButton teacherDelBt;
-    private javax.swing.JButton teacherDelBt1;
     private javax.swing.JTextField teacherEmail;
     private javax.swing.JTextField teacherFirstName;
     private javax.swing.JComboBox<String> teacherGender;
@@ -5287,6 +5898,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton teacherRefresh_3;
     private javax.swing.JButton teacherSearchBt_2;
     private javax.swing.JTextField teacherSearchField_3;
+    private javax.swing.JButton teacherSensitiveLogout;
     private javax.swing.JButton teacherSort_3;
     private javax.swing.JComboBox<String> teacherStrand;
     private javax.swing.JLabel txtDate;

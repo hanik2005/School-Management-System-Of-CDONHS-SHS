@@ -62,6 +62,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
@@ -450,10 +451,31 @@ public class Home extends javax.swing.JFrame {
         stuFname.setBackground(java.awt.Color.white);
         stuFname.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuFname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuFname.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                stuFnameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                stuFnameFocusLost(evt);
+            }
+        });
+        stuFname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stuFnameActionPerformed(evt);
+            }
+        });
 
         stuMotherName.setBackground(java.awt.Color.white);
         stuMotherName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuMotherName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuMotherName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                stuMotherNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                stuMotherNameFocusLost(evt);
+            }
+        });
         stuMotherName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuMotherNameActionPerformed(evt);
@@ -463,10 +485,26 @@ public class Home extends javax.swing.JFrame {
         stuAddress1.setBackground(java.awt.Color.white);
         stuAddress1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuAddress1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuAddress1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                stuAddress1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                stuAddress1FocusLost(evt);
+            }
+        });
 
         stuAddress2.setBackground(java.awt.Color.white);
         stuAddress2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuAddress2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuAddress2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                stuAddress2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                stuAddress2FocusLost(evt);
+            }
+        });
         stuAddress2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuAddress2ActionPerformed(evt);
@@ -543,6 +581,14 @@ public class Home extends javax.swing.JFrame {
         stuFatherName.setBackground(java.awt.Color.white);
         stuFatherName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuFatherName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuFatherName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                stuFatherNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                stuFatherNameFocusLost(evt);
+            }
+        });
         stuFatherName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuFatherNameActionPerformed(evt);
@@ -597,6 +643,14 @@ public class Home extends javax.swing.JFrame {
         stuMiddleName.setBackground(java.awt.Color.white);
         stuMiddleName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuMiddleName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuMiddleName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                stuMiddleNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                stuMiddleNameFocusLost(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(17, 24, 39));
@@ -605,6 +659,14 @@ public class Home extends javax.swing.JFrame {
         stuLastName.setBackground(java.awt.Color.white);
         stuLastName.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         stuLastName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 58, 138)));
+        stuLastName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                stuLastNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                stuLastNameFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -4227,7 +4289,7 @@ public class Home extends javax.swing.JFrame {
         sectionStudentProgressBox.removeAllItems();
         strandGradeProgressBox.removeAllItems();
         ProgressTable.clearSelection();
-        ProgressTable.setModel(new DefaultTableModel(null, new Object[]{"LRN", "Student_Name", "School_Year", 
+        ProgressTable.setModel(new DefaultTableModel(null, new Object[]{"LRN", "Student_Name", "School_Year",
             "Final_Average", "Status"}));
     }
 
@@ -4370,6 +4432,14 @@ public class Home extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Last name must not exceed 50 characters");
             return false;
         }
+        String firstName = stuFname.getText();
+        String middleName = stuMiddleName.getText();
+        String lastName = stuLastName.getText();
+
+        if (student.isNameExist(firstName, middleName, lastName)) {
+            JOptionPane.showMessageDialog(this, "this name already exist");
+            return false;
+        }
 
         // Date of Birth
         if (stuBirth.getDate() == null) {
@@ -4440,10 +4510,10 @@ public class Home extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(this, "Address Line 2 is missing");
 //            return false;
 //        }
-//        if (stuAddress2.getText().length() > 50) {
-//            JOptionPane.showMessageDialog(this, "Address Line 2 must not exceed 50 characters");
-//            return false;
-//        }
+        if (stuAddress2.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, "Address Line 2 must not exceed 50 characters");
+            return false;
+        }
         // Birth Certificate
 //        if (stuBirthCer.getText().isEmpty()) {
 //            JOptionPane.showMessageDialog(this, "Birth Certificate path is missing");
@@ -4463,6 +4533,11 @@ public class Home extends javax.swing.JFrame {
         if (!stuLRN.getText().matches("\\d{12}")) {
             JOptionPane.showMessageDialog(this, "LRN must be exactly 12 digits");
             return false;
+        }
+        if (student.isLRNExist(stuLRN.getText())) {
+            JOptionPane.showMessageDialog(this, "This LRN already Exist");
+            return false;
+
         }
 
         // Image
@@ -6132,7 +6207,7 @@ public class Home extends javax.swing.JFrame {
         try {
             String studentIdStr = stuSubjectIDManage.getText().trim();
 
-            if (studentIdStr.isEmpty() ||  SubjectTable.getRowCount() == 0) {
+            if (studentIdStr.isEmpty() || SubjectTable.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(this, "Please enter Student ID and make sure the table is not empty.");
                 return;
             }
@@ -6554,9 +6629,8 @@ public class Home extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,
                     "No student progress data found. Please generate or view the data first.",
                     "No Data", JOptionPane.WARNING_MESSAGE);
-            return; 
+            return;
         }
-      
 
         // ✅ Proceed to confirm updates
         progress.confirmStudentProgress(ProgressTable);
@@ -6670,7 +6744,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_stuStrandSearchBtMouseExited
 
     private void stuSearchBt_2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSearchBt_2MouseEntered
-       stuSearchBt_2.setBackground(ThemeColors.DEEP_ORANGE);
+        stuSearchBt_2.setBackground(ThemeColors.DEEP_ORANGE);
     }//GEN-LAST:event_stuSearchBt_2MouseEntered
 
     private void stuSearchBt_2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSearchBt_2MouseExited
@@ -6738,7 +6812,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_stuSubjectSearchMouseEntered
 
     private void stuSubjectSearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSearchMouseExited
-       stuSubjectSearch.setBackground(ThemeColors.GOLDEN_YELLOW);
+        stuSubjectSearch.setBackground(ThemeColors.GOLDEN_YELLOW);
     }//GEN-LAST:event_stuSubjectSearchMouseExited
 
     private void stuGradeManageRefreshTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageRefreshTable1MouseEntered
@@ -6746,7 +6820,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_stuGradeManageRefreshTable1MouseEntered
 
     private void stuGradeManageRefreshTable1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageRefreshTable1MouseExited
-         stuGradeManageRefreshTable1.setBackground(ThemeColors.GOLDEN_YELLOW);
+        stuGradeManageRefreshTable1.setBackground(ThemeColors.GOLDEN_YELLOW);
     }//GEN-LAST:event_stuGradeManageRefreshTable1MouseExited
 
     private void stuSubjectSaveBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuSubjectSaveBtMouseEntered
@@ -6758,11 +6832,11 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_stuSubjectSaveBtMouseExited
 
     private void clearSubjectManageBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearSubjectManageBtMouseEntered
-       clearSubjectManageBt.setBackground(ThemeColors.DEEP_ORANGE);
+        clearSubjectManageBt.setBackground(ThemeColors.DEEP_ORANGE);
     }//GEN-LAST:event_clearSubjectManageBtMouseEntered
 
     private void clearSubjectManageBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearSubjectManageBtMouseExited
-         clearSubjectManageBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+        clearSubjectManageBt.setBackground(ThemeColors.GOLDEN_YELLOW);
     }//GEN-LAST:event_clearSubjectManageBtMouseExited
 
     private void logoutFormGradeBt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutFormGradeBt1MouseEntered
@@ -6786,7 +6860,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_classListPrintBtMouseEntered
 
     private void classListPrintBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListPrintBtMouseExited
-       classListPrintBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+        classListPrintBt.setBackground(ThemeColors.GOLDEN_YELLOW);
     }//GEN-LAST:event_classListPrintBtMouseExited
 
     private void classListClearBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListClearBtMouseEntered
@@ -6802,7 +6876,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_classListLogoutBtMouseEntered
 
     private void classListLogoutBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classListLogoutBtMouseExited
-       classListLogoutBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+        classListLogoutBt.setBackground(ThemeColors.GOLDEN_YELLOW);
     }//GEN-LAST:event_classListLogoutBtMouseExited
 
     private void stuGradeManageSearchButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageSearchButtonMouseEntered
@@ -6850,7 +6924,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_calculatorBtMouseEntered
 
     private void calculatorBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calculatorBtMouseExited
-         calculatorBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+        calculatorBt.setBackground(ThemeColors.GOLDEN_YELLOW);
     }//GEN-LAST:event_calculatorBtMouseExited
 
     private void gradeLogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeLogoutMouseEntered
@@ -6870,11 +6944,11 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_stuGradeFormSearchMouseExited
 
     private void stuGradeManageRefreshTableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageRefreshTableMouseEntered
-         stuGradeManageRefreshTable.setBackground(ThemeColors.DEEP_ORANGE);
+        stuGradeManageRefreshTable.setBackground(ThemeColors.DEEP_ORANGE);
     }//GEN-LAST:event_stuGradeManageRefreshTableMouseEntered
 
     private void stuGradeManageRefreshTableMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuGradeManageRefreshTableMouseExited
-         stuGradeManageRefreshTable.setBackground(ThemeColors.GOLDEN_YELLOW);
+        stuGradeManageRefreshTable.setBackground(ThemeColors.GOLDEN_YELLOW);
     }//GEN-LAST:event_stuGradeManageRefreshTableMouseExited
 
     private void stuFormGradePrintMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuFormGradePrintMouseEntered
@@ -6914,7 +6988,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_gradeHonorSectioningPrintMouseEntered
 
     private void gradeHonorSectioningPrintMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeHonorSectioningPrintMouseExited
-         gradeHonorSectioningPrint.setBackground(ThemeColors.GOLDEN_YELLOW);
+        gradeHonorSectioningPrint.setBackground(ThemeColors.GOLDEN_YELLOW);
     }//GEN-LAST:event_gradeHonorSectioningPrintMouseExited
 
     private void gradeHonorClearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeHonorClearMouseEntered
@@ -6930,7 +7004,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_gradeHonorLogoutMouseEntered
 
     private void gradeHonorLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gradeHonorLogoutMouseExited
-          gradeHonorLogout.setBackground(ThemeColors.GOLDEN_YELLOW);
+        gradeHonorLogout.setBackground(ThemeColors.GOLDEN_YELLOW);
     }//GEN-LAST:event_gradeHonorLogoutMouseExited
 
     private void stuStudentProgressSearchBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStudentProgressSearchBoxMouseEntered
@@ -6942,7 +7016,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_stuStudentProgressSearchBoxMouseExited
 
     private void stuStudentProgressRefreshMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStudentProgressRefreshMouseEntered
-         stuStudentProgressRefresh.setBackground(ThemeColors.DEEP_ORANGE);
+        stuStudentProgressRefresh.setBackground(ThemeColors.DEEP_ORANGE);
     }//GEN-LAST:event_stuStudentProgressRefreshMouseEntered
 
     private void stuStudentProgressRefreshMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stuStudentProgressRefreshMouseExited
@@ -6950,7 +7024,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_stuStudentProgressRefreshMouseExited
 
     private void finalizeBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizeBtMouseEntered
-       finalizeBt.setBackground(ThemeColors.DEEP_ORANGE);
+        finalizeBt.setBackground(ThemeColors.DEEP_ORANGE);
     }//GEN-LAST:event_finalizeBtMouseEntered
 
     private void finalizeBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizeBtMouseExited
@@ -6962,7 +7036,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_clearStudentProgressBtMouseEntered
 
     private void clearStudentProgressBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearStudentProgressBtMouseExited
-       clearStudentProgressBt.setBackground(ThemeColors.GOLDEN_YELLOW);
+        clearStudentProgressBt.setBackground(ThemeColors.GOLDEN_YELLOW);
     }//GEN-LAST:event_clearStudentProgressBtMouseExited
 
     private void printStudentProgressBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printStudentProgressBtMouseEntered
@@ -6997,6 +7071,97 @@ public class Home extends javax.swing.JFrame {
         browseImg.setBackground(ThemeColors.GOLDEN_YELLOW);
     }//GEN-LAST:event_browseImgMouseExited
 
+    private void stuFnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuFnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuFnameActionPerformed
+
+    private void stuFnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuFnameFocusLost
+         jFocusLost(stuFname);
+    }//GEN-LAST:event_stuFnameFocusLost
+
+    private void stuFnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuFnameFocusGained
+        stuFname.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        stuFname.setText(stuFname.getText().trim());
+    }//GEN-LAST:event_stuFnameFocusGained
+
+    private void stuMiddleNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuMiddleNameFocusGained
+        stuMiddleName.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        stuMiddleName.setText(stuMiddleName.getText().trim());
+    }//GEN-LAST:event_stuMiddleNameFocusGained
+
+    private void stuMiddleNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuMiddleNameFocusLost
+        jFocusLost(stuMiddleName);
+    }//GEN-LAST:event_stuMiddleNameFocusLost
+
+    private void stuLastNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuLastNameFocusGained
+        stuLastName.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        stuLastName.setText(stuLastName.getText().trim());
+    }//GEN-LAST:event_stuLastNameFocusGained
+
+    private void stuLastNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuLastNameFocusLost
+        jFocusLost(stuLastName);
+    }//GEN-LAST:event_stuLastNameFocusLost
+
+    private void stuFatherNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuFatherNameFocusGained
+        stuFatherName.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        stuFatherName.setText(stuFatherName.getText().trim());
+    }//GEN-LAST:event_stuFatherNameFocusGained
+
+    private void stuFatherNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuFatherNameFocusLost
+         jFocusLost(stuFatherName);
+    }//GEN-LAST:event_stuFatherNameFocusLost
+
+    private void stuMotherNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuMotherNameFocusGained
+        stuMotherName.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        stuMotherName.setText(stuMotherName.getText().trim());
+    }//GEN-LAST:event_stuMotherNameFocusGained
+
+    private void stuMotherNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuMotherNameFocusLost
+         jFocusLost(stuMotherName);
+    }//GEN-LAST:event_stuMotherNameFocusLost
+
+    private void stuAddress1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuAddress1FocusGained
+        stuAddress1.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        stuAddress1.setText(stuAddress1.getText().trim());
+    }//GEN-LAST:event_stuAddress1FocusGained
+
+    private void stuAddress1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuAddress1FocusLost
+         jFocusLost(stuAddress1);
+    }//GEN-LAST:event_stuAddress1FocusLost
+
+    private void stuAddress2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuAddress2FocusGained
+        stuAddress2.setBackground(new java.awt.Color(255, 255, 204)); // light yellow highlight
+        stuAddress2.setText(stuAddress2.getText().trim());
+    }//GEN-LAST:event_stuAddress2FocusGained
+
+    private void stuAddress2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stuAddress2FocusLost
+        jFocusLost(stuAddress2);
+    }//GEN-LAST:event_stuAddress2FocusLost
+
+    public void jFocusLost(JTextField field){
+         String text = field.getText().trim();
+        if (!text.isEmpty()) {
+            // Split into words
+            String[] words = text.split("\\s+");
+            StringBuilder formattedText = new StringBuilder();
+
+            for (String word : words) {
+                if (!word.isEmpty()) {
+                    formattedText.append(
+                            word.substring(0, 1).toUpperCase()
+                    ).append(
+                            word.substring(1).toLowerCase()
+                    ).append(" ");
+                }
+            }
+
+            // Set formatted text back (trim to remove extra space at the end)
+            field.setText(formattedText.toString().trim());
+        }
+
+        field.setBackground(java.awt.Color.WHITE);
+    
+    }
     private String getSelectedStrandName() {
         String name = "";
         try {

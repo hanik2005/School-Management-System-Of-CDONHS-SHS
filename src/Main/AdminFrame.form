@@ -447,6 +447,11 @@
                           </Border>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="stuFnameFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="stuFnameFocusLost"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuFnameActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="stuMotherName">
                       <Properties>
@@ -465,6 +470,8 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="stuMotherNameFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="stuMotherNameFocusLost"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuMotherNameActionPerformed"/>
                       </Events>
                     </Component>
@@ -484,6 +491,10 @@
                           </Border>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="stuAddress1FocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="stuAddress1FocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="stuAddress2">
                       <Properties>
@@ -502,6 +513,8 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="stuAddress2FocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="stuAddress2FocusLost"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuAddress2ActionPerformed"/>
                       </Events>
                     </Component>
@@ -713,6 +726,8 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="stuFatherNameFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="stuFatherNameFocusLost"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuFatherNameActionPerformed"/>
                       </Events>
                     </Component>
@@ -832,6 +847,10 @@
                           </Border>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="stuMiddleNameFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="stuMiddleNameFocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel5">
                       <Properties>
@@ -860,6 +879,10 @@
                           </Border>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="stuLastNameFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="stuLastNameFocusLost"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1049,6 +1072,8 @@
                                 <Property name="text" type="java.lang.String" value="Browse"/>
                               </Properties>
                               <Events>
+                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="browseImgMouseEntered"/>
+                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="browseImgMouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="browseImgActionPerformed"/>
                               </Events>
                             </Component>
@@ -1711,7 +1736,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel19" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
-                                          <Component id="jLabel26" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel27" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -1736,7 +1761,7 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="stuFullName" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1860,6 +1885,7 @@
                           </Properties>
                           <Events>
                             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuStrandSearchBtMouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuStrandSearchBtMouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuStrandSearchBtActionPerformed"/>
                           </Events>
                         </Component>
@@ -1920,13 +1946,6 @@
                             <StringItem index="1" value="12"/>
                           </StringArray>
                         </Property>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                            <LineBorder>
-                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
-                            </LineBorder>
-                          </Border>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuGradeLevelActionPerformed"/>
@@ -1948,13 +1967,6 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
-                        </Property>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                            <LineBorder>
-                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
-                            </LineBorder>
-                          </Border>
                         </Property>
                       </Properties>
                       <Events>
@@ -2011,13 +2023,6 @@
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
                         </Property>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                            <LineBorder>
-                              <Color PropertyName="color" blue="8a" green="3a" red="1e" type="rgb"/>
-                            </LineBorder>
-                          </Border>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuSectionActionPerformed"/>
@@ -2026,7 +2031,7 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel26">
+                    <Component class="javax.swing.JLabel" name="jLabel27">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="1"/>
@@ -2231,6 +2236,8 @@
                                 <Property name="text" type="java.lang.String" value="Search"/>
                               </Properties>
                               <Events>
+                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuSearchBt_2MouseEntered"/>
+                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuSearchBt_2MouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuSearchBt_2ActionPerformed"/>
                               </Events>
                             </Component>
@@ -2248,6 +2255,8 @@
                                 <Property name="text" type="java.lang.String" value="Refresh"/>
                               </Properties>
                               <Events>
+                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuRefresh_2MouseEntered"/>
+                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuRefresh_2MouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuRefresh_2ActionPerformed"/>
                               </Events>
                             </Component>
@@ -2265,6 +2274,8 @@
                                 <Property name="text" type="java.lang.String" value="Sort"/>
                               </Properties>
                               <Events>
+                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuSort_2MouseEntered"/>
+                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuSort_2MouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuSort_2ActionPerformed"/>
                               </Events>
                             </Component>
@@ -2403,6 +2414,8 @@
                             <Property name="text" type="java.lang.String" value="Logout"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
                           </Events>
                         </Component>
@@ -2420,6 +2433,8 @@
                             <Property name="text" type="java.lang.String" value="Clear"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuStrandClearBtMouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuStrandClearBtMouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuStrandClearBtActionPerformed"/>
                           </Events>
                         </Component>
@@ -2437,6 +2452,8 @@
                             <Property name="text" type="java.lang.String" value="Confirm"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuSaveBtMouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuSaveBtMouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuSaveBtActionPerformed"/>
                           </Events>
                         </Component>
@@ -2454,6 +2471,8 @@
                             <Property name="text" type="java.lang.String" value="Restore"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuRestoreMouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuRestoreMouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuRestoreActionPerformed"/>
                           </Events>
                         </Component>
@@ -2471,6 +2490,8 @@
                             <Property name="text" type="java.lang.String" value="Current"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuCurrentOrArchiveMouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stuCurrentOrArchiveMouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stuCurrentOrArchiveActionPerformed"/>
                           </Events>
                         </Component>
@@ -2697,14 +2718,16 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="stuSubjectIDManage" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                          <Component id="stuSubjectSearch" alignment="3" max="32767" attributes="0"/>
-                                          <Component id="stuGradeManageRefreshTable1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel40" alignment="3" max="32767" attributes="0"/>
-                                          <Component id="gradeLevelSubjectBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="stuFullNameSub" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
                                           <Component id="jLabel43" alignment="1" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="stuSubjectIDManage" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="stuSubjectSearch" alignment="3" max="32767" attributes="0"/>
+                                              <Component id="stuGradeManageRefreshTable1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel40" alignment="3" max="32767" attributes="0"/>
+                                              <Component id="gradeLevelSubjectBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
@@ -2973,7 +2996,7 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel41">
+            <Container class="javax.swing.JPanel" name="jPanel44">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="8a" green="3a" red="1e" type="rgb"/>
@@ -2992,7 +3015,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel42" max="32767" attributes="0"/>
+                          <Component id="jPanel45" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -3001,14 +3024,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel42" max="32767" attributes="0"/>
+                          <Component id="jPanel45" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanel42">
+                <Container class="javax.swing.JPanel" name="jPanel45">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="f6" green="f4" red="f3" type="rgb"/>
@@ -3031,7 +3054,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jPanel43" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jPanel50" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jScrollPane7" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jPanel49" alignment="0" max="32767" attributes="0"/>
                               </Group>
@@ -3043,9 +3066,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel43" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jScrollPane7" min="-2" pref="448" max="-2" attributes="0"/>
+                              <Component id="jPanel50" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane7" min="-2" pref="460" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel49" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
@@ -3054,7 +3077,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JPanel" name="jPanel43">
+                    <Container class="javax.swing.JPanel" name="jPanel50">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="f6" green="f4" red="f3" type="rgb"/>
@@ -3078,7 +3101,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="gradeLevelClassBox" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                                      <Component id="jLabel71" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel72" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -3106,7 +3129,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel71" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel72" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel81" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel82" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -3140,16 +3163,18 @@
                             <Property name="text" type="java.lang.String" value="Search"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="classListSearchBtMouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="classListSearchBtMouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="classListSearchBtActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel71">
+                        <Component class="javax.swing.JLabel" name="jLabel72">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="16" style="1"/>
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
+                              <Color blue="27" green="18" red="11" type="rgb"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Grade Level"/>
                           </Properties>
@@ -3222,7 +3247,7 @@
                               <Font name="Times New Roman" size="16" style="1"/>
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
+                              <Color blue="27" green="18" red="11" type="rgb"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Strand"/>
                           </Properties>
@@ -3263,7 +3288,7 @@
                               <Font name="Times New Roman" size="16" style="1"/>
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
+                              <Color blue="27" green="18" red="11" type="rgb"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Section"/>
                           </Properties>
@@ -3349,6 +3374,8 @@
                             <Property name="text" type="java.lang.String" value="Logout"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="classListLogoutBtMouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="classListLogoutBtMouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="classListLogoutBtActionPerformed"/>
                           </Events>
                         </Component>
@@ -3366,6 +3393,8 @@
                             <Property name="text" type="java.lang.String" value="Clear"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="classListClearBtMouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="classListClearBtMouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="classListClearBtActionPerformed"/>
                           </Events>
                         </Component>
@@ -3383,6 +3412,8 @@
                             <Property name="text" type="java.lang.String" value="Print"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="classListPrintBtMouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="classListPrintBtMouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="classListPrintBtActionPerformed"/>
                           </Events>
                         </Component>
@@ -3625,6 +3656,10 @@
                           </Border>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="teacherFirstNameFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="teacherFirstNameFocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="teacherAddress1">
                       <Properties>
@@ -3642,6 +3677,10 @@
                           </Border>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="teacherAddress1FocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="teacherAddress1FocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="teacherAddress2">
                       <Properties>
@@ -3660,6 +3699,8 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="teacherAddress2FocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="teacherAddress2FocusLost"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teacherAddress2ActionPerformed"/>
                       </Events>
                     </Component>
@@ -3856,6 +3897,10 @@
                           </Border>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="teacherMidNameFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="teacherMidNameFocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel28">
                       <Properties>
@@ -3884,6 +3929,10 @@
                           </Border>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="teacherLastNameFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="teacherLastNameFocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel32">
                       <Properties>
@@ -4113,6 +4162,8 @@
                                 <Property name="text" type="java.lang.String" value="Browse"/>
                               </Properties>
                               <Events>
+                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherBrowseImgMouseEntered"/>
+                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherBrowseImgMouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teacherBrowseImgActionPerformed"/>
                               </Events>
                             </Component>
@@ -4191,6 +4242,8 @@
                             <Property name="text" type="java.lang.String" value="Logout"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
                           </Events>
                         </Component>
@@ -4208,6 +4261,8 @@
                             <Property name="text" type="java.lang.String" value="Update"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="updateBt1MouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="updateBt1MouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateBt1ActionPerformed"/>
                           </Events>
                         </Component>
@@ -4225,6 +4280,8 @@
                             <Property name="text" type="java.lang.String" value="Add New"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherAddNewBtMouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherAddNewBtMouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teacherAddNewBtActionPerformed"/>
                           </Events>
                         </Component>
@@ -4242,6 +4299,8 @@
                             <Property name="text" type="java.lang.String" value="Clear"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherClearMouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherClearMouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teacherClearActionPerformed"/>
                           </Events>
                         </Component>
@@ -4379,6 +4438,8 @@
                         <Property name="text" type="java.lang.String" value="Search"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherSearchBt_2MouseEntered"/>
+                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherSearchBt_2MouseExited"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teacherSearchBt_2ActionPerformed"/>
                       </Events>
                     </Component>
@@ -4396,6 +4457,8 @@
                         <Property name="text" type="java.lang.String" value="Refresh"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherRefresh_3MouseEntered"/>
+                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherRefresh_3MouseExited"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teacherRefresh_3ActionPerformed"/>
                       </Events>
                     </Component>
@@ -4413,6 +4476,8 @@
                         <Property name="text" type="java.lang.String" value="Sort"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherSort_3MouseEntered"/>
+                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherSort_3MouseExited"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teacherSort_3ActionPerformed"/>
                       </Events>
                     </Component>
@@ -4573,11 +4638,9 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="368" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="teacherPrint_3" min="-2" pref="217" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="teacherDelBt" min="-2" pref="217" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="504" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="480" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -4585,33 +4648,13 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="teacherDelBt" alignment="3" min="-2" pref="75" max="-2" attributes="0"/>
-                                      <Component id="teacherPrint_3" alignment="3" min="-2" pref="75" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="teacherPrint_3" min="-2" pref="75" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JButton" name="teacherDelBt">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="24" green="bf" red="fb" type="rgb"/>
-                            </Property>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Times New Roman" size="18" style="1"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Delete"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teacherDelBtActionPerformed"/>
-                          </Events>
-                        </Component>
                         <Component class="javax.swing.JButton" name="teacherPrint_3">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -4626,6 +4669,8 @@
                             <Property name="text" type="java.lang.String" value="Print"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherPrint_3MouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherPrint_3MouseExited"/>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teacherPrint_3ActionPerformed"/>
                           </Events>
                         </Component>
@@ -4765,6 +4810,8 @@
                         <Property name="text" type="java.lang.String" value="Search"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="sensitiveSearchMouseEntered"/>
+                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="sensitiveSearchMouseExited"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sensitiveSearchActionPerformed"/>
                       </Events>
                     </Component>
@@ -4872,7 +4919,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="teacherDelBt1" min="-2" pref="217" max="-2" attributes="0"/>
+                                  <Component id="teacherSensitiveLogout" min="-2" pref="217" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="524" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -4881,14 +4928,14 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="teacherDelBt1" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="teacherSensitiveLogout" min="-2" pref="75" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JButton" name="teacherDelBt1">
+                        <Component class="javax.swing.JButton" name="teacherSensitiveLogout">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="24" green="bf" red="fb" type="rgb"/>
@@ -4902,7 +4949,9 @@
                             <Property name="text" type="java.lang.String" value="Logout"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teacherDelBt1ActionPerformed"/>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherSensitiveLogoutMouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherSensitiveLogoutMouseExited"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teacherSensitiveLogoutActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>

@@ -226,6 +226,7 @@ public class Teacher {
         }
 
     }
+
     public void setInformationStrandDatabase(int teacherId, JTextField strandTxt) {
         try {
             String sql = "SELECT s.strand_name "
@@ -286,7 +287,6 @@ public class Teacher {
                             address2 != null && !address2.isEmpty() ? address2 : "NULL"
                     );
                     hireDate.setText(rs.getString("hire_date"));
-                    
 
                     // File paths
                     String imagePathDB = rs.getString("image_path");
@@ -306,13 +306,13 @@ public class Teacher {
                         imagePanel3.setIcon(imageAdjust(defaultImagePath, null, imagePanel3));
                     }
 
-                 
                 }
             }
         } catch (SQLException ex) {
             System.getLogger(Teacher.class.getName()).log(System.Logger.Level.ERROR, "Error loading student information", ex);
         }
     }
+
     public ImageIcon imageAdjust(String path, byte[] pic, JLabel targetLabel) {
         ImageIcon myImage = null;
 
@@ -330,5 +330,23 @@ public class Teacher {
         );
 
         return new ImageIcon(newImage);
+    }
+
+    public boolean isNameExist(String firstName, String middleName, String lastName) {
+        try {
+            String sql = "select teacher_id from teacher where first_name=? and middle_name=? and last_name=?";
+
+            ps = con.prepareStatement(sql);
+            ps.setString(1, firstName);
+            ps.setString(2, middleName);
+            ps.setString(3, lastName);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.getLogger(Teacher.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        return false;
     }
 }

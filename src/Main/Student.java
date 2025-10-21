@@ -1,5 +1,6 @@
 package Main;
 
+import com.itextpdf.text.pdf.PdfName;
 import java.sql.Connection;
 import db.MyConnection;
 import java.sql.PreparedStatement;
@@ -32,6 +33,7 @@ public class Student {
         return id + 1;
 
     }
+
     //insert data into student table
     public void insert(int student_id, int user_id, String fname, String midName, String lastName, String date, String gender, String email, String phone,
             String motherName, String fatherName, String addressLine1,
@@ -94,7 +96,40 @@ public class Student {
         return false;
     }
 
-    //check if student phone number already exist
+    public boolean isNameExist(String firstName, String middleName, String lastName) {
+        try {
+            String sql = "select student_id from student where first_name=? and middle_name=? and last_name=?";
+
+            ps = con.prepareStatement(sql);
+            ps.setString(1, firstName);
+            ps.setString(2, middleName);
+            ps.setString(3, lastName);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.getLogger(Student.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        return false;
+    }
+    public boolean isLRNExist(String lrn){
+        try{
+            String sql = "select student_id from student where lrn=?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, lrn);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        
+        }catch(SQLException ex){
+            System.getLogger(Student.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        
+        }
+        return false;
+    }
+
     public boolean isidExist(int id) {
         try {
             ps = con.prepareStatement("select * from student where student_id = ?");
@@ -186,6 +221,7 @@ public class Student {
         }
 
     }
+
     public void updateOnlyStudent(int student_id, String fname, String midName, String lname, String date, String gender, String email, String phone,
             String motherName, String fatherName, String addressLine1,
             String addressLine2, String lrn) {
