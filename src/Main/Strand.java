@@ -62,12 +62,12 @@ public class Strand {
         return false;
     }
 
-    
-
-    public int getSectionIdByName(String sectionName) {
-        String sql = "SELECT section_id FROM section WHERE section_name = ?";
+    public int getSectionIdByName(String sectionName, int gradeLevel, int strandId) {
+        String sql = "SELECT section_id FROM section WHERE section_name = ? AND grade_level = ? AND strand_id = ?";
         try (PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, sectionName);
+            pst.setInt(2, gradeLevel);
+            pst.setInt(3, strandId);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 return rs.getInt("section_id");
@@ -123,7 +123,6 @@ public class Strand {
             System.getLogger(Strand.class.getName()).log(System.Logger.Level.ERROR, "Error getting current enrollment", ex);
         }
 
-        // Return default values if no enrollment found
         return new Object[]{0, "Not Enrolled", "N/A"};
     }
 
@@ -166,7 +165,6 @@ public class Strand {
 
     public int getAvailableSection(int gradeLevel, int strandId) {
         try {
-            // 1️⃣ Get all section_ids for this grade and strand
             ResultSet rs = con.createStatement().executeQuery(
                     "SELECT section_id FROM section "
                     + "WHERE grade_level = " + gradeLevel + " AND strand_id = " + strandId
@@ -177,7 +175,6 @@ public class Strand {
                 sections.add(rs.getInt("section_id"));
             }
 
-            // 2️⃣ Get all taken section_ids for this grade and strand
             ResultSet rs2 = con.createStatement().executeQuery(
                     "SELECT section_id FROM student_strand "
                     + "WHERE grade_level = " + gradeLevel + " AND strand_id = " + strandId
@@ -188,7 +185,6 @@ public class Strand {
                 takenSections.add(rs2.getInt("section_id"));
             }
 
-            // 3️⃣ Find first available section_id
             for (Integer secId : sections) {
                 if (!takenSections.contains(secId)) {
                     return secId;

@@ -88,6 +88,50 @@ public class StudentProgress {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0); // clear existing rows
 
+//        String sql = """
+//        SELECT 
+//            s.lrn,
+//            CONCAT(s.first_name, ' ', s.last_name) AS student_name,
+//            sp.school_year,
+//            ROUND(AVG(g.grade), 2) AS final_average,
+//            CASE 
+//                WHEN ? = 12 AND AVG(g.grade) >= 75 THEN 'Ready to Graduate'
+//                WHEN AVG(g.grade) >= 75 THEN 'Passed'
+//                ELSE 'Failed'
+//            END AS status
+//        FROM student s
+//        JOIN student_strand ss ON s.student_id = ss.student_id
+//        JOIN grade_entry g ON s.student_id = g.student_id
+//        JOIN student_progress sp ON s.student_id = sp.student_id
+//        WHERE ss.grade_level = ? 
+//          AND ss.strand_id = ? 
+//          AND ss.section_id = ?
+//        GROUP BY s.lrn, student_name, sp.school_year
+//        ORDER BY s.lrn;
+//    """;
+//        String sql = """
+//        SELECT 
+//            s.lrn,
+//            CONCAT(s.first_name, ' ', s.last_name) AS student_name,
+//            sp.school_year,
+//            ROUND(AVG(g.grade), 2) AS final_average,
+//            CASE 
+//                WHEN ? = 12 AND AVG(g.grade) >= 75 THEN 'Ready to Graduate'
+//                WHEN AVG(g.grade) >= 75 THEN 'Passed'
+//                ELSE 'Failed'
+//            END AS status
+//        FROM student s
+//        JOIN student_strand ss ON s.student_id = ss.student_id
+//        JOIN grade_entry g ON s.student_id = g.student_id
+//        JOIN subject subj ON g.subject_id = subj.subject_id
+//        JOIN student_progress sp ON s.student_id = sp.student_id
+//        WHERE ss.grade_level = ? 
+//          AND ss.strand_id = ? 
+//          AND ss.section_id = ?
+//          AND subj.strand_id = ss.strand_id   -- ✅ only include students whose subjects match their strand
+//        GROUP BY s.student_id, s.lrn, student_name, sp.school_year
+//        ORDER BY s.lrn;
+//    """;
         String sql = """
         SELECT 
             s.lrn,
@@ -100,13 +144,38 @@ public class StudentProgress {
                 ELSE 'Failed'
             END AS status
         FROM student s
-        JOIN student_strand ss ON s.student_id = ss.student_id
-        JOIN grade_entry g ON s.student_id = g.student_id
-        JOIN student_progress sp ON s.student_id = sp.student_id
+        JOIN student_strand ss 
+            ON s.student_id = ss.student_id
+        JOIN student_subjects stu_sub
+            ON s.student_id = stu_sub.student_id
+        JOIN subject subj
+            ON stu_sub.subject_id = subj.subject_id
+            AND subj.strand_id = ss.strand_id
+            AND subj.grade_level = ss.grade_level
+        JOIN grade_entry g 
+            ON s.student_id = g.student_id 
+            AND subj.subject_id = g.subject_id
+        JOIN student_progress sp 
+            ON s.student_id = sp.student_id
         WHERE ss.grade_level = ? 
           AND ss.strand_id = ? 
           AND ss.section_id = ?
-        GROUP BY s.lrn, student_name, sp.school_year
+          AND stu_sub.status = 'Enrolled'
+        GROUP BY s.student_id, s.lrn, student_name, sp.school_year
+        HAVING 
+            COUNT(DISTINCT CASE WHEN g.quarter BETWEEN 1 AND 4 THEN CONCAT(g.subject_id, '-', g.quarter) END)
+            = (
+                SELECT COUNT(*) * 4
+                FROM student_subjects ss2
+                JOIN subject sub2 
+                  ON ss2.subject_id = sub2.subject_id
+                JOIN student_strand ss3 
+                  ON ss3.student_id = ss2.student_id
+                WHERE ss2.student_id = s.student_id
+                  AND sub2.strand_id = ss3.strand_id
+                  AND sub2.grade_level = ss3.grade_level
+                  AND ss2.status = 'Enrolled'
+              )
         ORDER BY s.lrn;
     """;
 

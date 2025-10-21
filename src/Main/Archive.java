@@ -181,7 +181,12 @@ public class Archive {
     }
 
     public boolean isAlreadyInStudentStrand(int studentId, int gradeLevel, int strandId, int sectionId) throws SQLException {
-        String query = "SELECT COUNT(*) FROM archived_student_strand WHERE student_id = ? AND grade_level = ? AND strand_id = ? AND section_id = ?";
+        System.out.println(studentId);
+        System.out.println(gradeLevel);
+        System.out.println(strandId);
+        System.out.println(sectionId);
+        
+        String query = "SELECT archive_id FROM archived_student_strand WHERE student_id = ? AND grade_level = ? AND strand_id = ? AND section_id = ?";
         try (PreparedStatement pst = con.prepareStatement(query)) {
             pst.setInt(1, studentId);
             pst.setInt(2, gradeLevel);
@@ -200,7 +205,7 @@ public class Archive {
         // 🔹 1. Archive the current active record before restoring
         String archiveCurrentSql = """
             INSERT INTO archived_student_strand (student_id, grade_level, strand_id, section_id, date_archived, reason)
-            SELECT student_id, grade_level, strand_id, section_id, NOW(), 'Restored previous record'
+            SELECT student_id, grade_level, strand_id, section_id, NOW(), 'TRANSFER'
             FROM student_strand
             WHERE student_id = ?
         """;

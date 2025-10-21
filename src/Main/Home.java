@@ -4432,14 +4432,14 @@ public class Home extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Last name must not exceed 50 characters");
             return false;
         }
-        String firstName = stuFname.getText();
-        String middleName = stuMiddleName.getText();
-        String lastName = stuLastName.getText();
-
-        if (student.isNameExist(firstName, middleName, lastName)) {
-            JOptionPane.showMessageDialog(this, "this name already exist");
-            return false;
-        }
+//        String firstName = stuFname.getText();
+//        String middleName = stuMiddleName.getText();
+//        String lastName = stuLastName.getText();
+//
+//        if (student.isNameExist(firstName, middleName, lastName)) {
+//            JOptionPane.showMessageDialog(this, "this name already exist");
+//            return false;
+//        }
 
         // Date of Birth
         if (stuBirth.getDate() == null) {
@@ -5495,21 +5495,14 @@ public class Home extends javax.swing.JFrame {
     private void stuSort_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSort_1ActionPerformed
         DefaultTableModel model = (DefaultTableModel) StudentTable.getModel();
 
-        // Attach TableRowSorter to your table
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
         StudentTable.setRowSorter(sorter);
 
-        // Example: Sort by Student ID (numerically) and then by Student Name (alphabetically)
         List<RowSorter.SortKey> sortKeys = new ArrayList<>();
 
-        int studentIdCol = 0;  // Student ID is column 0
-        int studentNameCol = 1; // Student Name is column 1
+        int studentLastNameCol = 4; 
 
-        // First sort by ID (ascending)
-        sortKeys.add(new RowSorter.SortKey(studentIdCol, SortOrder.ASCENDING));
-
-        // Then sort by Name (ascending)
-        sortKeys.add(new RowSorter.SortKey(studentNameCol, SortOrder.ASCENDING));
+        sortKeys.add(new RowSorter.SortKey(studentLastNameCol, SortOrder.ASCENDING));
 
         sorter.setSortKeys(sortKeys);
         sorter.sort();
@@ -5518,21 +5511,16 @@ public class Home extends javax.swing.JFrame {
     private void stuSort_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSort_2ActionPerformed
         DefaultTableModel model = (DefaultTableModel) StudentTrackTable.getModel();
 
-        // Attach TableRowSorter to your table
+ 
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
         StudentTrackTable.setRowSorter(sorter);
 
-        // Example: Sort by Student ID (numerically) and then by Student Name (alphabetically)
         List<RowSorter.SortKey> sortKeys = new ArrayList<>();
 
-        int IdCol = 0;  // Student ID is column 0
-        int studentStrandIdCol = 1; // Student Name is column 1
+        int studentNameCol = 1; // Student Name is column 1
 
-        // First sort by ID (ascending)
-        sortKeys.add(new RowSorter.SortKey(IdCol, SortOrder.ASCENDING));
 
-        // Then sort by Name (ascending)
-        sortKeys.add(new RowSorter.SortKey(studentStrandIdCol, SortOrder.ASCENDING));
+        sortKeys.add(new RowSorter.SortKey(studentNameCol, SortOrder.ASCENDING));
 
         sorter.setSortKeys(sortKeys);
         sorter.sort();
@@ -5566,10 +5554,8 @@ public class Home extends javax.swing.JFrame {
             // Get section id
             int sectionId = grade.getSelectedSectionId(sectionBox);
 
-            // Get subject id
             int subjectId = grade.getSelectedSubjectId(subjectBox);
 
-            // Get quarter safely
             String quarterStr = quarterBox.getSelectedItem().toString();
             int quarter = Integer.parseInt(quarterStr.split(" - ")[0]);
 
@@ -6648,9 +6634,8 @@ public class Home extends javax.swing.JFrame {
             String sectionSelect = stuSection.getSelectedItem().toString();
 
             int strandId = strand.getStrandIdByName(strandName);
-            int sectionId = strand.getSectionIdByName(sectionSelect);
+            int sectionId = strand.getSectionIdByName(sectionSelect, gradeLevel, strandId);
 
-            // ✅ 1. Check if the record exists in the archive table
             if (!archive.isAlreadyInStudentStrand(studentId, gradeLevel, strandId, sectionId)) {
                 JOptionPane.showMessageDialog(null,
                         "This record does not exist in the archive. Nothing to restore.");

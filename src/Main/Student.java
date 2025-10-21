@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -113,8 +114,9 @@ public class Student {
         }
         return false;
     }
-    public boolean isLRNExist(String lrn){
-        try{
+
+    public boolean isLRNExist(String lrn) {
+        try {
             String sql = "select student_id from student where lrn=?";
             ps = con.prepareStatement(sql);
             ps.setString(1, lrn);
@@ -122,10 +124,10 @@ public class Student {
             if (rs.next()) {
                 return true;
             }
-        
-        }catch(SQLException ex){
+
+        } catch (SQLException ex) {
             System.getLogger(Student.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        
+
         }
         return false;
     }
@@ -340,5 +342,7 @@ public class Student {
         }
         return lrn;
     }
+
+   
 
 }

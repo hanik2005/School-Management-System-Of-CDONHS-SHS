@@ -114,7 +114,7 @@ public class Grade {
             @Override
             public Class<?> getColumnClass(int columnIndex) {
                 if (columnIndex == 2) {
-                    return Double.class; // grade column is numeric
+                    return Double.class; 
                 }
                 return String.class;
             }
