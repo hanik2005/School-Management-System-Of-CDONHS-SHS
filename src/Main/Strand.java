@@ -61,6 +61,24 @@ public class Strand {
 
         return false;
     }
+     public boolean getIdInAdmin(int id) {
+        try {
+            ps = con.prepareStatement("select * from student where student_id= ?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                AdminFrame.stuStrandId.setText(String.valueOf(rs.getInt(1)));
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Student Id doesnt exist");
+
+            }
+        } catch (SQLException ex) {
+            System.getLogger(Strand.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+
+        return false;
+    }
 
     public int getSectionIdByName(String sectionName, int gradeLevel, int strandId) {
         String sql = "SELECT section_id FROM section WHERE section_name = ? AND grade_level = ? AND strand_id = ?";

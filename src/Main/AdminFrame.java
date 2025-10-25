@@ -289,7 +289,8 @@ public class AdminFrame extends javax.swing.JFrame {
         ClassListTable.setModel(new DefaultTableModel(null, new Object[]{"LRN", "Student_Name"}));
     }
 
-    public boolean isEmptyStudent() {
+     public boolean isCheckStudent(int studentId) {
+         System.out.println(studentId);
         // First Name
         if (stuFname.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Student First Name is missing");
@@ -323,7 +324,7 @@ public class AdminFrame extends javax.swing.JFrame {
         String middleName = stuMiddleName.getText();
         String lastName = stuLastName.getText();
 
-        if (student.isNameExist(firstName, middleName, lastName)) {
+        if (student.isNameExist(studentId, firstName, middleName, lastName)) {
             JOptionPane.showMessageDialog(this, "this name already exist");
             return false;
         }
@@ -421,7 +422,7 @@ public class AdminFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "LRN must be exactly 12 digits");
             return false;
         }
-        if (student.isLRNExist(stuLRN.getText())) {
+        if (student.isLRNExist(studentId, stuLRN.getText())) {
             JOptionPane.showMessageDialog(this, "This LRN already Exist");
             return false;
 
@@ -3769,22 +3770,46 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MousePressed
 
     public void updateSection() {
-        String gradeLevelStr = (String) stuGradeLevel.getSelectedItem();
-        String strand = (String) stuStrand.getSelectedItem();
+        Object gradeLevelObj = stuGradeLevel.getSelectedItem();
+        Object strandObjItem = stuStrand.getSelectedItem();
 
-        if (gradeLevelStr != null && strand != null) {
+        if (gradeLevelObj != null && strandObjItem != null) {
             try {
-                int gradeLevel = Integer.parseInt(gradeLevelStr); // Convert to int
-                Strand strandObj = new Strand();
-                String section = strandObj.getNextSection(gradeLevel, strand);
+                String gradeLevelStr;
+                if (gradeLevelObj instanceof ComboItem) {
+                    gradeLevelStr = ((ComboItem) gradeLevelObj).toString();
+                } else {
+                    gradeLevelStr = gradeLevelObj.toString();
+                }
+                String strandName;
+                if (strandObjItem instanceof ComboItem) {
+                    strandName = ((ComboItem) strandObjItem).toString();
+                } else {
+                    strandName = strandObjItem.toString();
+                }
 
-                stuSection.removeAllItems(); // Clear old items
-                stuSection.addItem(section);  // Add the new section
+                int gradeLevel = Integer.parseInt(gradeLevelStr);
+                Strand strandObj = new Strand();
+                String sectionName = strandObj.getNextSection(gradeLevel, strandName);
+
+                stuSection.removeAllItems();
+                if (sectionName != null && !sectionName.isEmpty()) {
+                    stuSection.addItem(sectionName);
+                    stuSection.setSelectedItem(sectionName);
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "No section found for Grade " + gradeLevel + " - " + strandName);
+                }
 
             } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Invalid grade level format.");
                 ex.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Invalid grade level selected.");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error updating section: " + ex.getMessage());
+                ex.printStackTrace();
             }
+        } else {
+            //JOptionPane.showMessageDialog(null, "Please select both Grade Level and Strand first.");
         }
     }
     private void teacherAddress2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherAddress2ActionPerformed
@@ -3954,10 +3979,8 @@ public class AdminFrame extends javax.swing.JFrame {
     private void teacherSort_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherSort_3ActionPerformed
         DefaultTableModel model = (DefaultTableModel) StudentTable.getModel();
 
-     
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
         TeacherTable.setRowSorter(sorter);
-
 
         List<RowSorter.SortKey> sortKeys = new ArrayList<>();
 
@@ -4276,7 +4299,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         List<RowSorter.SortKey> sortKeys = new ArrayList<>();
 
-        int studentLastNameCol = 4; 
+        int studentLastNameCol = 4;
 
         sortKeys.add(new RowSorter.SortKey(studentLastNameCol, SortOrder.ASCENDING));
 
@@ -4774,8 +4797,8 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_updateBtMouseExited
 
     private void updateBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtActionPerformed
-        if (isEmptyStudent()) {
-            int id = Integer.parseInt(stuID.getText());
+        int id = Integer.parseInt(stuID.getText());
+        if (isCheckStudent(id)) {
             if (student.isidExist(id)) {
                 if (!check()) {
                     String sfname = stuFname.getText();
@@ -4840,7 +4863,7 @@ public class AdminFrame extends javax.swing.JFrame {
         int id = student.getMax();
         String username = stuLRN.getText();
         int userId = user.getMax();
-        if (isEmptyStudent()) {
+        if (isCheckStudent(id)) {
             if (!student.isEmailExist(stuEmail.getText(), id)) {
                 if (!student.isPhoneExist(stuPhone.getText(), id)) {
 
@@ -4922,7 +4945,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         } else {
             int id = Integer.parseInt(stuStrandSearchField.getText());
-            strand.getId(id);
+            strand.getIdInAdmin(id);
             String fullName = strand.getStudentNameById(id);
             stuFullName.setText(fullName);
             //stuGradeLevel.setSelectedIndex(0);
@@ -5027,7 +5050,7 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_stuSort_2MouseExited
 
     private void stuSort_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuSort_2ActionPerformed
-       DefaultTableModel model = (DefaultTableModel) StudentTrackTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) StudentTrackTable.getModel();
 
         // Attach TableRowSorter to your table
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
@@ -5037,7 +5060,6 @@ public class AdminFrame extends javax.swing.JFrame {
         List<RowSorter.SortKey> sortKeys = new ArrayList<>();
 
         int studentNameCol = 1; // Student Name is column 1
-
 
         sortKeys.add(new RowSorter.SortKey(studentNameCol, SortOrder.ASCENDING));
 

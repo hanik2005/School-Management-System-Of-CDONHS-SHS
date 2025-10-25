@@ -97,14 +97,15 @@ public class Student {
         return false;
     }
 
-    public boolean isNameExist(String firstName, String middleName, String lastName) {
+    public boolean isNameExist(int id, String firstName, String middleName, String lastName) {
         try {
-            String sql = "select student_id from student where first_name=? and middle_name=? and last_name=?";
+            String sql = "SELECT student_id FROM student WHERE first_name = ? AND middle_name = ? AND last_name = ? AND student_id <> ?";
 
             ps = con.prepareStatement(sql);
             ps.setString(1, firstName);
             ps.setString(2, middleName);
             ps.setString(3, lastName);
+            ps.setInt(4, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return true;
@@ -115,11 +116,12 @@ public class Student {
         return false;
     }
 
-    public boolean isLRNExist(String lrn) {
+    public boolean isLRNExist(int id, String lrn) {
         try {
-            String sql = "select student_id from student where lrn=?";
+            String sql = "SELECT student_id FROM student WHERE lrn = ? AND student_id <> ?";
             ps = con.prepareStatement(sql);
             ps.setString(1, lrn);
+            ps.setInt(2, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return true;

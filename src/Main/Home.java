@@ -4402,8 +4402,9 @@ public class Home extends javax.swing.JFrame {
 
     }
 
-    public boolean isEmptyStudent() {
+    public boolean isCheckStudent(int studentId) {
         // First Name
+        System.out.println(studentId);
         if (stuFname.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Student First Name is missing");
             return false;
@@ -4432,14 +4433,14 @@ public class Home extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Last name must not exceed 50 characters");
             return false;
         }
-//        String firstName = stuFname.getText();
-//        String middleName = stuMiddleName.getText();
-//        String lastName = stuLastName.getText();
-//
-//        if (student.isNameExist(firstName, middleName, lastName)) {
-//            JOptionPane.showMessageDialog(this, "this name already exist");
-//            return false;
-//        }
+        String firstName = stuFname.getText();
+        String middleName = stuMiddleName.getText();
+        String lastName = stuLastName.getText();
+
+        if (student.isNameExist(studentId, firstName, middleName, lastName)) {
+            JOptionPane.showMessageDialog(this, "this name already exist");
+            return false;
+        }
 
         // Date of Birth
         if (stuBirth.getDate() == null) {
@@ -4534,7 +4535,7 @@ public class Home extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "LRN must be exactly 12 digits");
             return false;
         }
-        if (student.isLRNExist(stuLRN.getText())) {
+        if (student.isLRNExist(studentId, stuLRN.getText())) {
             JOptionPane.showMessageDialog(this, "This LRN already Exist");
             return false;
 
@@ -4770,7 +4771,7 @@ public class Home extends javax.swing.JFrame {
         int id = student.getMax();
         String username = stuLRN.getText();
         int userId = user.getMax();
-        if (isEmptyStudent()) {
+        if (isCheckStudent(id)) {
             if (!student.isEmailExist(stuEmail.getText(), id)) {
                 if (!student.isPhoneExist(stuPhone.getText(), id)) {
 
@@ -5063,8 +5064,8 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_browseForm137ActionPerformed
 
     private void updateBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtActionPerformed
-        if (isEmptyStudent()) {
-            int id = Integer.parseInt(stuID.getText());
+        int id = Integer.parseInt(stuID.getText());
+        if (isCheckStudent(id)) {
             if (student.isidExist(id)) {
                 if (!check()) {
                     String sfname = stuFname.getText();
