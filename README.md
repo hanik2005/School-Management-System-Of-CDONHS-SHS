@@ -3,4 +3,4 @@
 [FINAL_IM_SMS_PROPOSAL.pdf](https://github.com/user-attachments/files/23137101/FINAL_IM_SMS_PROPOSAL.pdf)
 
 
-The final branch is on UPDATED 3.0(FINAL).
+The final branch is on UPDATED-3.0-Final.
